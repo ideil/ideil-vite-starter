@@ -4,12 +4,12 @@ Frontend boilerplate made with Vite, Twig, Laravel, PostCSS, Tailwind, and the E
 
 ## Contains
 
-* SVG-Sprite customization functionality
+* SVG-Sprite functionality
 * Image optimization features
 * Creating HTML files to match your TWIG files, and prettify after build
 * TWIG data from `.json` files
 * Laravel Vite plugin for `blade` files hot reload
-* Gitlab Pages ci file for building on branch `pages`
+* `.gitlab-ci.yml` file for building on branch `pages`
 * Tailwind CSS framework
 * PostCSS with nesting, imports and color functions
 * Eslint for js code analyze
