@@ -1,0 +1,13 @@
+<div class="c-error__inner">
+    {% if isLogo %}
+        {% include "./logo.twig" %}
+    {% endif %}
+
+    <div class="c-error__code c-title">{{ code }}</div>
+
+    <div class="c-error__title c-title c-title--3">{{ title }}</div>
+
+    <div class="c-error__btns">
+        <a href="home.html" class="f-btn f-btn--primary f-btn--rounded">На головну</a>
+    </div>
+</div>

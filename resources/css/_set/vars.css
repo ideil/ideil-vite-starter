@@ -1,0 +1,8 @@
+:root {
+    --header-height: 65px;
+    --page-space: 100px;
+
+    --transition-duration: theme(transitionDuration.base);
+    --transition-timing-function: theme(transitionTimingFunction.base);
+    --transition-property: var(--transition-duration) var(--transition-function);
+}

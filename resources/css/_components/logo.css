@@ -1,0 +1,17 @@
+.c-logo {
+    width: 100%;
+
+    svg,
+    svg > * {
+        fill: currentColor;
+    }
+
+    svg {
+        width: 100%;
+        height: auto;
+    }
+
+    &__link {
+        display: block;
+    }
+}

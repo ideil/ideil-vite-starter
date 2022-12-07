@@ -1,0 +1,25 @@
+/* Font weight hint
+// 100 – thin
+// 200 – extra light
+// 300 – light
+// 400 – regular (normal)
+// 500 – medium
+// 600 – semibold
+// 700 – bold
+// 800 – extrabold
+// 900 – black */
+
+@font-face {
+    font-family: 'RobotoI';
+    font-display: swap;
+    src: local(RobotoI),
+        url('../../fonts/Roboto-Regular.woff2') format('woff2');
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'RobotoI';
+    font-display: swap;
+    src: local(RobotoI),
+        url('../../fonts/Roboto-Bold.woff2') format('woff2');
+    font-weight: 700;
+}

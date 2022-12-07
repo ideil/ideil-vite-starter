@@ -1,0 +1,17 @@
+<div class="c-breadcrumbs">
+    <div class="c-breadcrumbs__scroll u-scroll">
+        <ul class="c-breadcrumbs__list">
+            {% set links = links ?? ['Ideil.', pageTitle] %}
+
+            {% for item in links %}
+                <li class="c-breadcrumbs__item">
+                    {% if not loop.last %}
+                        <a href="home.html" class="c-breadcrumbs__link">{{ item }}</a>
+                    {% else %}
+                        {{ item }}
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

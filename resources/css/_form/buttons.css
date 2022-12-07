@@ -1,0 +1,105 @@
+.f-btn {
+    appearance: none;
+    height: 52px;
+    display: inline-flex;
+    vertical-align: middle;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 32px;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 700;
+    transition-property:
+        background-color,
+        color,
+        border-color,
+        box-shadow;
+
+    &:disabled,
+    &.is-disabled {
+        opacity: 0.6;
+        pointer-events: none;
+    }
+
+    & .i-icon {
+        margin-right: 8px;
+    }
+
+    &--sm {
+        height: 44px;
+    }
+
+    &--lg {
+        height: 64px;
+    }
+
+    &--primary {
+        background-color: theme(colors[primary]);
+        color: theme(colors[black]);
+
+        &:hover,
+        &:focus {
+            opacity: 1;
+            background-color: color(theme(colors[primary]) blackness(+10%));
+            color: theme(colors[black]);
+        }
+    }
+
+    &--gray {
+        background-color: theme(colors[gray]);
+        color: theme(colors[primary]);
+
+        &:hover,
+        &:focus {
+            background-color: color(theme(colors[gray]) blackness(+10%));
+            color: theme(colors[primary]);
+        }
+    }
+
+    &--rounded {
+        border-radius: 999px;
+    }
+
+    &--link {
+
+        &:hover {
+            text-decoration: none;
+            color: theme(colors[primary]);
+        }
+    }
+
+    &--overlay {
+
+        &:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+        }
+    }
+
+    &--block {
+        width: 100%;
+    }
+
+    &--disabled {
+        pointer-events: none;
+        opacity: 0.2;
+    }
+
+    &--arrow {
+        width: 64px;
+        height: 64px;
+        padding: 10px;
+        border-radius: 999px;
+
+        & .i-icon {
+            margin: 0;
+            width: 18px;
+            height: 18px;
+        }
+    }
+}

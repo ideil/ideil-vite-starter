@@ -1,0 +1,51 @@
+:root {
+    color-scheme: dark;
+}
+
+:focus-visible {
+    outline-color: theme(colors[gray]);
+}
+
+* {
+    scroll-margin: 72px;
+    transition-duration: var(--transition-duration);
+    transition-timing-function: var(--transition-timing-function);
+    transition-property: none;
+    border-color: theme(colors[gray]);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: theme(colors[text]);
+    background-color: theme(colors[body]);
+    font-size: theme(fontSize[base]);
+    line-height: theme(lineHeight[normal]);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility !important;
+    padding-top: var(--header-height);
+
+    .is-nospace & {
+        padding-top: 0;
+    }
+
+    > main {
+        flex-grow: 1;
+    }
+}
+
+a,
+button {
+    color: currentColor;
+    -webkit-tap-highlight-color: transparent;
+    transition-property: border-color, background-color, color, opacity;
+
+    &:hover {
+        opacity: .6;
+    }
+}

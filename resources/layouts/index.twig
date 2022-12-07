@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="uk">
+{% include "./_app/head.twig" with { pageTitle: 'Список сторінок' } %}
+
+<body class="p-0">
+    <header class="py-3 mb-6 text-center text-white bg-bismark md:mb-12">
+        <h1 class="text-lg">Список зверстаних сторінок</h1>
+    </header>
+
+    <div class="px-4 mx-auto mb-6 l-box md:mb-12">
+        <div class="text-black bg-white text-bismark">
+            {% if pages is empty %}
+                <div class="font-bold text-3xl text-gray-400 h-[250px] flex justify-center items-center">Сторінки
+                    відсутні
+                </div>
+            {% else %}
+                {% for page in pages %}
+                    {% if page.slug != 'index' %}
+                        <div class="relative md:flex md:items-center p-2 md:px-6 {% if not loop.first %}border-t border-gray-6{% endif %} hover:bg-gray-6">
+                            <div class="md:flex-grow">
+                                <a
+                                    href="{{ page.html }}"
+                                    class="block font-bold leading-5 text-md f-btn--overlay"
+                                >
+                                    {{ page.title }}
+                                </a>
+                                <div class="mt-1 text-sm leading-5 text-smoke-light">{{ page.html }}</div>
+                            </div>
+
+                            <div class="flex items-center mt-2 md:mt-0 md:ml-4">
+                                <div class="mr-2">
+                                    <div class="px-2 inline-flex text-xs leading-5 rounded-full bg-{{ page.desktop ? 'green' : 'red' }} text-white">
+                                        desktop
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="px-2 inline-flex text-xs leading-5 rounded-full bg-{{ page.responsive ? 'green' : 'red' }} text-white">
+                                        responsive
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <div class="mt-1 text-xs leading-5 text-right">
+            Дата оновлення:
+            <span>{{ "now"|date("d.m.Y H:i:s") }}</span>
+        </div>
+    </div>
+</body>
+</html>

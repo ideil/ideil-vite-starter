@@ -1,0 +1,106 @@
+.f-group {
+    position: relative;
+    width: 100%;
+    margin-bottom: 28px;
+}
+
+.f-input {
+    vertical-align: middle;
+    text-align: left;
+    appearance: none;
+    width: 100%;
+    padding: 20px 0 0;
+    height: 52px;
+    color: theme(colors[white]);
+    font-size: theme(fontSize[base]);
+    font-weight: 700;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid;
+    border-color: theme(colors[gray]);
+    box-shadow: none;
+    outline: none;
+    transition-property: border-color, outline;
+
+    &::placeholder {
+        color: transparent;
+        font-weight: 400;
+        transition-property: color;
+    }
+
+    &:disabled {
+        opacity: .5;
+        pointer-events: none;
+    }
+
+    &:-webkit-autofill {
+        background-color: transparent;
+        -webkit-text-fill-color: theme(colors[white]);
+        box-shadow: 0 0 0 60px color(theme(colors[body]) lightness(+10%)) inset !important;
+    }
+
+    &:focus {
+        border-color: theme(colors[primary]);
+    }
+
+    &:focus,
+    &:not(:placeholder-shown):not(:focus) {
+
+        &::placeholder {
+            color: theme(colors[white] / 50%);
+        }
+    }
+
+    &.has-error {
+        border-color: theme(colors[red]);
+    }
+
+    textarea& {
+        height: auto;
+    }
+}
+
+.f-label {
+    color: theme(colors[white] / 80%);
+    font-size: 18px;
+    line-height: 1;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    height: 51px;
+    pointer-events: none;
+    transition-property: height, font-size;
+
+    .f-input:focus ~ &,
+    .f-input.is-filled ~ &,
+    .f-input:not(:placeholder-shown).f-input:not(:focus) ~ & {
+        font-size: 14px;
+        height: 20px;
+    }
+}
+
+.f-info {
+    font-size: 14px;
+    display: block;
+    line-height: 1.15;
+    margin-top: 4px;
+
+    &.f-info--error {
+        color: theme(colors[red]);
+    }
+
+    a {
+        text-decoration: underline;
+    }
+}
+
+.f-submit {
+    margin-top: 60px;
+
+    & .f-info {
+        margin: 20px 0;
+    }
+}

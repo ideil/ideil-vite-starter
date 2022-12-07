@@ -1,0 +1,102 @@
+.c-title {
+    font-weight: 700;
+    line-height: 1;
+
+    /* 100px -- hero */
+    /* 80px -- h1 */
+    /* 64px -- h2 */
+    /* 36px -- h3 */
+    /* 18px -- main font */
+
+    /* 120px -- card date */
+    /* 28px -- faq title */
+    /* 44px -- footer mail */
+    /* 52px -- lg card */
+
+    &--xl {
+        font-size: 64px;
+        line-height: .9;
+
+        @screen lg {
+            font-size: 80px;
+        }
+
+        @screen xl {
+            font-size: 96px;
+        }
+
+        @screen 2xl {
+            font-size: 120px;
+            line-height: .85;
+        }
+    }
+
+    &--hero {
+        font-size: 48px;
+
+        @screen lg {
+            font-size: 64px;
+            line-height: .9;
+        }
+
+        @screen xl {
+            font-size: 80px;
+        }
+
+        @screen 2xl {
+            font-size: 100px;
+            line-height: .85;
+        }
+    }
+
+    &--1 {
+        font-size: 48px;
+        line-height: .9;
+
+        @screen md {
+            font-size: 56px;
+        }
+
+        @screen lg {
+            font-size: 64px;
+            line-height: .9;
+        }
+
+        @screen xl {
+            font-size: 80px;
+        }
+    }
+
+    &--2 {
+        font-size: 36px;
+        line-height: .9;
+
+        @screen md {
+            font-size: 48px;
+        }
+
+        @screen lg {
+            font-size: 56px;
+        }
+
+        @screen xl {
+            font-size: 64px;
+        }
+    }
+
+    &--3 {
+        font-size: 26px;
+
+        @screen md {
+            font-size: 28px;
+        }
+
+        @screen lg {
+            font-size: 32px;
+        }
+
+        @screen xl {
+            font-size: 36px;
+        }
+    }
+}

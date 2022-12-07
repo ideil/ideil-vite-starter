@@ -1,0 +1,54 @@
+// @import '~vue-next-select/dist/index.css';
+@import '~@vueform/multiselect/themes/default.css';
+
+.f-select {
+    --ms-radius: 10px;
+    --ms-color: #{theme(colors[black])};
+    --ms-border-width: 1px;
+    --ms-border-color: #{theme(colors[gray])};
+    --ms-bg: #{theme(colors[white])};
+    --ms-px: 16px;
+    --ms-font-size: 16px;
+
+    --ms-dropdown-radius: var(--ms-radius);
+    --ms-dropdown-border-width: var(--ms-border-width);
+    --ms-dropdown-border-color: var(--ms-border-color);
+    --ms-dropdown-bg: var(--ms-bg);
+
+    --ms-option-bg-pointed: #{theme(colors[gray])};
+    --ms-option-color-pointed: var(--ms-color);
+    --ms-option-px: var(--ms-px);
+
+    --ms-option-bg-selected: #{theme(colors[green])};
+    --ms-option-color-selected: #{theme(colors[white])};
+
+    --ms-option-bg-selected-pointed: #{theme(colors[green])};
+    --ms-option-color-selected-pointed: var(--ms-option-color-selected);
+
+    height: 52px;
+    color: theme(colors[black]);
+    box-shadow: none !important;
+    outline: 1px solid transparent;
+    transition-property: border-color,
+        outline;
+
+    &.is-active {
+        outline-color: theme(colors[gray]);
+    }
+
+    .multiselect-option {
+        transition-property: background-color,
+            color;
+    }
+
+    .multiselect-caret {
+        height: 16px;
+        width: 16px;
+        transform: rotate(90deg);
+        mask-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='8' height='13' viewBox='0 0 8 13' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill-rule='evenodd' clip-rule='evenodd' d='M4.4654 6.493L0.274414 10.8624L1.74575 12.2742L7.27441 6.49298L1.74575 0.726562L0.274414 2.13845L4.4654 6.493Z' /%3e%3c/svg%3e");
+
+        &.is-open {
+            transform: rotate(270deg);
+        }
+    }
+}

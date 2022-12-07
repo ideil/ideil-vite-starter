@@ -1,0 +1,25 @@
+{
+    "extends": "./resources/presets/vue/tsconfig.json",
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "ESNext",
+        "sourceMap": true,
+        "strict": true,
+        "esModuleInterop": true,
+        "noEmit": true,
+        "skipLibCheck": true,
+        "allowJs": true,
+        "baseUrl": "./",
+        "paths": {
+            "@src/*": [
+                "./resources/js@src/*"
+            ],
+            "@pub/*": [
+                "./resources/js@pub/*"
+            ],
+        }
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}

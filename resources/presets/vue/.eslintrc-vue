@@ -1,0 +1,15 @@
+{
+    "extends": [
+        "plugin:vue/vue3-recommended",
+        "@vue/eslint-config-typescript/recommended"
+    ],
+    "rules": {
+        "vue/html-indent": [
+            "error",
+            4
+        ],
+        "vue/no-multiple-template-root": "off"
+    },
+    "plugins": [],
+    "settings": {}
+}

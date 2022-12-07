@@ -1,0 +1,17 @@
+{% extends '_templates/base.twig' %}
+
+{% set pageTitle = '404' %}
+{% set pageId = '404' %}
+{% set mainClass = 'c-error' %}
+{% set styleLinks = ['error'] %}
+{# {% set htmlClass = 'is-nospace' %} #}
+{# {% set scriptLinks = ['accordion'] %} #}
+
+{% block content %}
+    <div class="l-box">
+        {% include "_components/error.twig" with {
+            code: 404,
+            title: 'Сторінку не знайдено'
+        } %}
+    </div>
+{% endblock %}

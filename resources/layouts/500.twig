@@ -1,0 +1,18 @@
+{% extends '_templates/errors.twig' %}
+
+{% set pageTitle = '500' %}
+{% set pageId = '500' %}
+{% set bodyClass = 'c-error' %}
+{% set styleLinks = ['error'] %}
+{% set htmlClass = 'is-nospace' %}
+{# {% set scriptLinks = ['accordion'] %} #}
+
+{% block content %}
+    <div class="l-box">
+        {% include "_components/error.twig" with {
+            isLogo: true,
+            code: 500,
+            title: 'Помилка серверу'
+        } %}
+    </div>
+{% endblock %}

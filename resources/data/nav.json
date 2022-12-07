@@ -1,0 +1,17 @@
+[
+    {
+        "id": "home",
+        "link": "home.html",
+        "title": "Головна"
+    },
+    {
+        "id": "404",
+        "link": "404.html",
+        "title": "404"
+    },
+    {
+        "id": "500",
+        "link": "500.html",
+        "title": "500"
+    }
+]

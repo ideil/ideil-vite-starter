@@ -1,0 +1,50 @@
+.c-error {
+    display: flex;
+    align-items: center;
+    z-index: 1;
+
+    .l-box {
+        margin: auto;
+    }
+
+    &__inner {
+        padding: 100px 0;
+        text-align: center;
+    }
+
+    .c-logo {
+        margin: auto;
+        margin-bottom: 40px;
+        width: 200px;
+
+        @screen md {
+            margin-bottom: 64px;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    &__code {
+        line-height: 0.9;
+        font-size: 140px;
+
+        @screen sm {
+            font-size: 200px;
+        }
+    }
+
+    &__title {
+        margin-top: 20px;
+    }
+
+    &__btns {
+        margin-top: 28px;
+
+        @screen md {
+            margin-top: 40px;
+        }
+    }
+}

@@ -1,0 +1,27 @@
+<div
+    class="text-center m-modal"
+    id="successModal"
+    tabindex="-1"
+    aria-hidden="true"
+    aria-labelledby="successModalTitle"
+>
+    <div class="m-dialog m-dialog--lg m-dialog--centered">
+        <div class="m-content u-cutout">
+            <div class="m-header">
+                <button type="button" class="m-close" data-modal-dismiss="" aria-label="Закрити">
+                    {% include "../../_app/icon.twig" with { id: 'close' } %}
+                </button>
+            </div>
+
+            <div class="m-body">
+                <div class="m-icon">
+                    {% include "../../_app/icon.twig" with { id: 'symbol' } %}
+                </div>
+
+                <div class="m-title c-title c-title--hero" id="successModalTitle">Дякуємо!</div>
+
+                <div class="m-text">Ми&nbsp;зв&rsquo;яжемось з&nbsp;вами найближчим часом</div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+image: node:18
+
+pages:
+  only:
+    - pages
+  cache:
+    paths:
+      - node_modules/
+  tags:
+    - docker
+  script:
+    - yarn
+    - yarn build
+    - cp -r static/build public
+  artifacts:
+    paths:
+      - public
+

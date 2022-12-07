@@ -1,0 +1,18 @@
+<div class="c-tabs u-scroll--shadow">
+    <div class="c-tabs__scroll u-scroll">
+        <ul class="c-tabs__list">
+            {% set links = links ?? ['Таб', 'Таб', 'Таб', 'Таб'] %}
+
+            {% for item in links %}
+                <li class="c-tabs__item {{ loop.first and not noActive ? 'is-active' }}">
+                    <a href="#" class="c-tabs__link {{ loop.last and not noActive ? 'text-green' }}">
+                        {{ item }}
+                        {% if not noActive %}
+                            <span class="c-tabs__count">{{ random(1..30) }}</span>
+                        {% endif %}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

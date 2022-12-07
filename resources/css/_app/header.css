@@ -1,0 +1,130 @@
+.c-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: theme(zIndex.20);
+    line-height: 1;
+    background-color: theme(colors[black]);
+    transition-property: color, background-color;
+
+    .c-socials {
+        display: none;
+        --icon-size: 22px;
+
+        @screen lg {
+            display: block;
+            margin-left: auto;
+        }
+
+        @screen xl {
+            &__list {
+                margin-left: -29px;
+                margin-right: -29px;
+            }
+
+            &__link {
+                padding-left: 29px;
+                padding-right: 29px;
+            }
+        }
+    }
+
+    .c-nav {
+        display: none;
+
+        @screen lg {
+            display: block;
+        }
+    }
+
+    &__inner {
+        display: flex;
+        align-items: flex-end;
+        padding-top: 10px;
+        padding-bottom: 20px;
+    }
+
+    &__main {
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+    }
+
+    &__logo {
+        width: 100px;
+        margin-right: 32px;
+        align-self: center;
+        transition-property: width, padding;
+
+        @screen xl {
+            margin-right: 60px;
+        }
+    }
+
+    &__hamburger {
+        margin-left: auto;
+        line-height: 0;
+
+        @screen lg {
+            display: none;
+        }
+
+        &-btn {
+            display: block;
+            margin: -20px;
+            padding: 20px;
+        }
+
+        &-icon {
+            display: block;
+            height: 18px;
+            width: 22px;
+            justify-content: space-between;
+            position: relative;
+
+            & div {
+                height: 2px;
+                width: 22px;
+                position: absolute;
+                flex-shrink: 0;
+                left: 0;
+                background-color: currentColor;
+                transition-property: width, inset, transform;
+
+                &:nth-child(1) {
+                    top: 0;
+                }
+
+                &:nth-child(2) {
+                    top: calc(50% - 1px);
+                }
+
+                &:nth-child(3) {
+                    bottom: 0;
+                }
+            }
+
+            .is-menu-open & {
+
+                & div {
+
+                    &:nth-child(1) {
+                        top: 8px;
+                        transform: rotate(-45deg);
+                    }
+
+                    &:nth-child(2) {
+                        width: 0;
+                        left: 50%;
+                    }
+
+                    &:nth-child(3) {
+                        bottom: 8px;
+                        transform: rotate(45deg);
+                    }
+                }
+            }
+        }
+    }
+}

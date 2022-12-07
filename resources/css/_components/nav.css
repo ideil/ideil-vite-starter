@@ -1,0 +1,14 @@
+.c-nav {
+    font-weight: 700;
+    white-space: nowrap;
+
+    &__list {
+        display: flex;
+        margin: -20px;
+    }
+
+    &__link {
+        padding: 20px;
+        display: block;
+    }
+}

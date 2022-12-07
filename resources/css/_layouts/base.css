@@ -1,0 +1,26 @@
+.l-box {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
+
+    @screen sm {
+        max-width: theme(maxWidth[sm]);
+    }
+
+    @screen md {
+        max-width: theme(maxWidth[md]);
+    }
+
+    @screen lg {
+        max-width: theme(maxWidth[lg]);
+    }
+
+    @screen xl {
+        max-width: theme(maxWidth[xl]);
+    }
+
+    @screen 2xl {
+        max-width: theme(maxWidth[2xl]);
+    }
+}

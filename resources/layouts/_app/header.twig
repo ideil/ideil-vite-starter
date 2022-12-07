@@ -1,0 +1,27 @@
+<header class="c-header js-header">
+    <nav class="c-header__inner l-box">
+        <div class="c-header__logo">
+            {% include "../_components/logo.twig" %}
+        </div>
+
+        <div class="c-header__main">
+            {% include "../_components/nav.twig" %}
+
+            {% include "../_components/socials.twig" %}
+
+            {% if hasSubscribe %}
+                {% include "./header/subscribe.twig" %}
+            {% endif %}
+
+            <div class="c-header__hamburger">
+                <button class="c-header__hamburger-btn js-menu-toggle">
+                    <i class="c-header__hamburger-icon">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </i>
+                </button>
+            </div>
+        </div>
+    </nav>
+</header>

@@ -1,0 +1,34 @@
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="HandheldFriendly" content="True" />
+    <meta http-equiv="cleartype" content="on" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="address=no" />
+
+    <title>{{ pageTitle|striptags }} | {{ app.brandName }}</title>
+    <meta name="description" content="">
+
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Fonts -->
+    <link rel="preload" crossorigin as="font" href="../fonts/Roboto-Regular.woff2">
+    <link rel="preload" crossorigin as="font" href="../fonts/Roboto-Bold.woff2">
+
+    <!-- Styles -->
+    {% for link in ['app'] | merge(styleLinks ?? []) | merge(['utilities']) %}
+        <link rel="stylesheet" href="../css/{{ link }}.css">
+    {% endfor %}
+
+    <script>
+        window.App = {
+            baseUrl: '/',
+            staticUrl: '../',
+            cdn: '../js/',
+            currentLanguage: 'uk'
+        };
+    </script>
+
+    <script type="module" defer="defer" src="../js@src/app.js"></script>
+</head>

@@ -1,0 +1,7 @@
+.c-map {
+    position: relative;
+    background-color: theme(colors[gray]);
+    border-radius: 10px;
+    overflow: hidden;
+    min-height: 532px;
+}

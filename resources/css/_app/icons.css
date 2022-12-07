@@ -1,0 +1,20 @@
+.i-icon {
+    pointer-events: none;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    display: inline-block;
+    vertical-align: middle;
+    fill: currentColor;
+}
+.i-icon--left {
+    transform: rotate(180deg);
+}
+.i-icon--top {
+    transform: rotate(-90deg);
+}
+.i-icon--right {
+}
+.i-icon--bottom {
+    transform: rotate(90deg);
+}

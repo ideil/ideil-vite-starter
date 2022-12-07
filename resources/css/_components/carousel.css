@@ -1,0 +1,146 @@
+@import '@splidejs/splide/css/core';
+
+.c-carousel {
+    overflow: hidden;
+
+    .splide {
+
+        &__slide {
+            width: 100%;
+            display: flex;
+            margin-right: 20px;
+        }
+
+        &__arrows {
+            position: absolute;
+            top: 0;
+            right: 0;
+            transform: translateY(-100%);
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 16px;
+        }
+
+        &__arrow {
+            width: 52px;
+            height: 52px;
+            display: grid;
+            place-items: center;
+
+            @screen md-max {
+                display: none;
+            }
+
+            @screen xl {
+                width: 64px;
+                height: 64px;
+            }
+
+            &:disabled {
+                opacity: .3;
+            }
+
+            svg {
+                width: 24px;
+                height: 24px;
+                fill: currentColor;
+            }
+
+            &--prev {
+                transform: rotate(180deg);
+            }
+        }
+
+        &__track {
+            width: 100%;
+
+            @screen lg-max {
+                overflow: visible;
+            }
+        }
+
+        &__pagination {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            left: 0;
+            gap: 8px;
+            padding-bottom: 10px;
+
+            li {
+                line-height: 0;
+            }
+
+            &__page {
+                width: 10px;
+                height: 10px;
+                border-radius: 99px;
+                background-color: theme(colors[black]);
+
+                &:not(.is-active) {
+                    opacity: .25;
+                }
+            }
+        }
+    }
+
+    &-inner {
+
+        @screen md {
+            overflow: hidden;
+        }
+    }
+
+    &-title {
+        margin-bottom: 20px;
+
+        @screen lg {
+            margin-bottom: 28px;
+        }
+    }
+
+    &--4 {
+
+        .splide__slide {
+            width: 95%;
+
+            @screen sm {
+                width: calc(50% - 20px * 1 / 2);
+            }
+
+            @screen lg {
+                width: calc(33.333% - 20px * 2 / 3);
+            }
+
+            @screen xl {
+                width: calc(25% - 20px * 3 / 4);
+            }
+        }
+    }
+
+    &--3 {
+
+        .splide__slide {
+            width: 95%;
+
+            @screen md {
+                width: calc(50% - 20px * 1 / 2);
+            }
+
+            @screen xl {
+                width: calc(33.333% - 20px * 2 / 3);
+            }
+        }
+    }
+
+    &--2 {
+
+        .splide__slide {
+            width: 95%;
+
+            @screen md {
+                width: calc(50% - 20px * 1 / 2);
+            }
+        }
+    }
+}

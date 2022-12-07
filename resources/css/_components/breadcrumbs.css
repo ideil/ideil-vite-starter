@@ -1,0 +1,31 @@
+.c-breadcrumbs {
+    position: relative;
+    display: flex;
+    font-size: 14px;
+    line-height: 1;
+    padding-top: 10px;
+    margin-bottom: var(--page-space);
+
+    &__list {
+        white-space: nowrap;
+        flex-grow: 1;
+        display: flex;
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+
+        &:not(:last-child) {
+
+            &:after {
+                content: '/';
+                margin: 0 28px;
+            }
+        }
+
+        &:last-child {
+            opacity: .5;
+        }
+    }
+}

@@ -1,0 +1,23 @@
+[
+    {
+        "html": "home.html",
+        "title": "Головна",
+        "slug": "home",
+        "desktop": true,
+        "responsive": true
+    },
+    {
+        "html": "404.html",
+        "title": "404",
+        "slug": "404",
+        "desktop": true,
+        "responsive": true
+    },
+    {
+        "html": "500.html",
+        "title": "500",
+        "slug": "500",
+        "desktop": true,
+        "responsive": true
+    }
+]

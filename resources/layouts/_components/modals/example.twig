@@ -1,0 +1,24 @@
+<div
+    class="m-modal"
+    id="exampleModal"
+    tabindex="-1"
+    aria-hidden="true"
+    aria-labelledby="exampleModalTitle"
+>
+    <div class="m-dialog m-dialog--md m-dialog--centered">
+        <div class="m-content u-cutout">
+            <div class="m-header">
+                <div class="m-title c-title c-title--3" id="exampleModalTitle">Приклад</div>
+
+                <button type="button" class="m-close" data-modal-dismiss="" aria-label="Закрити">
+                    {% include "../../_app/icon.twig" with { id: 'close' } %}
+                </button>
+            </div>
+
+            <div class="m-body">
+                <p class="mb-3">Приклад</p>
+                <p><span data-tooltip-target="#exampleTooltip">Тултіп ↑</span></p>
+            </div>
+        </div>
+    </div>
+</div>

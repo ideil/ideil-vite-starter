@@ -1,0 +1,37 @@
+<nav class="c-pagination" aria-label="navigation">
+    <ul class="c-pagination__list">
+        <li class="c-pagination__item is-prev is-disabled">
+            <a class="c-pagination__link f-btn f-btn--arrow" href="#" tabindex="-1" aria-disabled="true">
+                <span class="sr-only">Назад</span>
+
+                {% include "../_app/icon.twig" with { id: 'arrow', class: 'i-icon--left' } %}
+            </a>
+        </li>
+
+        <li class="c-pagination__item is-active" aria-current="page">
+            <a class="c-pagination__link" href="#">1 <span class="sr-only">(current)</span></a>
+        </li>
+
+        {% for page in 2..5 %}
+            <li class="c-pagination__item">
+                <a class="c-pagination__link" href="#">{{ page }}</a>
+            </li>
+        {% endfor %}
+
+        <li class="c-pagination__item">
+            <span class="c-pagination__link">...</span>
+        </li>
+
+        <li class="c-pagination__item">
+            <a class="c-pagination__link" href="#">15</a>
+        </li>
+
+        <li class="c-pagination__item is-next">
+            <a class="c-pagination__link f-btn f-btn--arrow" href="#">
+                <span class="sr-only">Далі</span>
+
+                {% include "../_app/icon.twig" with { id: 'arrow' } %}
+            </a>
+        </li>
+    </ul>
+</nav>

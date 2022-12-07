@@ -1,0 +1,12 @@
+.c-collapse {
+
+    &:not(.is-shown) {
+        display: none;
+    }
+}
+
+.is-collapsing {
+    height: 0;
+    overflow: hidden;
+    transition-property: height;
+}

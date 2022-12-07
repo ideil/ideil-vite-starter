@@ -1,0 +1,19 @@
+<div class="c-accordion">
+    {% for index in 1..3 %}
+        <div class="c-accordion__item">
+            <div class="c-accordion__heading">
+                <h3 class="c-accordion__title">Питання {{ index }}</h3>
+
+                <button type="button" aria-label="Відкрити відповідь" data-collapse-target="#accordionAnswer{{ index }}" class="c-accordion__btn f-btn--overlay {{ index == 1 ? 'is-open' }}">
+                    {% include "../_app/icon.twig" with { id: 'angle' } %}
+                </button>
+            </div>
+
+            <div class="c-accordion__collapse c-collapse {{ index == 1 ? 'is-open is-shown' }}" id="accordionAnswer{{ index }}">
+                <div class="c-accordion__collapse-inner" data-collapse-content>
+                    <p>Далеко-далеко за&nbsp;словесними горами країни голосних і&nbsp;приголосних живуть рибні тексти. Рибними, лишилося? До, маленька буквоград? Погляд безорфографічний, міста рядок, він промовою знаках своє те, рукописи вони безпечні&nbsp;до! Країну, дороге!</p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

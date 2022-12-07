@@ -1,0 +1,56 @@
+.c-tabs {
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+    min-width: 0;
+    flex-shrink: 0;
+    max-width: 100%;
+    line-height: 22px;
+
+    &__list {
+        white-space: nowrap;
+        flex-grow: 1;
+        display: flex;
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+
+        &:not(:last-child) {
+            margin-right: 12px;
+        }
+
+        &.is-active {
+            pointer-events: none;
+        }
+    }
+
+    &__link {
+        background-color: theme(colors[white]);
+        color: theme(colors[black]);
+        display: flex;
+        font-weight: 700;
+        gap: 8px;
+        height: 44px;
+        padding: 0 20px;
+        align-items: center;
+        border-radius: 99px;
+
+        &:hover {
+            background-color: theme(colors[primary]);
+            color: theme(colors[black]);
+        }
+
+        .c-tabs__item.is-active & {
+            background-color: theme(colors[primary]);
+            color: theme(colors[black]);
+        }
+    }
+
+    &__count {
+        color: theme(colors[black]);
+        font-weight: 400;
+        transition-property: color;
+    }
+}

@@ -1,0 +1,95 @@
+/* Scroll */
+.u-scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    display: flex;
+    flex-grow: 1;
+    margin: 0 -10px;
+
+    @screen sm {
+        margin: 0 -20px;
+    }
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    &:after,
+    &:before {
+        content: '';
+        display: block;
+        flex-shrink: 0;
+        width: 10px;
+
+        @screen sm {
+            width: 20px;
+        }
+    }
+
+    @screen lg {
+
+        &::-webkit-scrollbar {
+            display: block;
+        }
+    }
+}
+.u-scroll--shadow {
+    position: relative;
+
+    &:after,
+    &:before {
+        content: '';
+        z-index: 2;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        height: 100%;
+        width: 10px;
+        background-image: linear-gradient(to left, theme(colors[body] / 0%), theme(colors[body]));
+
+        @screen sm {
+            width: 20px;
+        }
+    }
+
+    &:before {
+        left: -10px;
+
+        @screen sm {
+            left: -20px;
+        }
+    }
+
+    &:after {
+        right: -10px;
+        transform: rotate(180deg);
+
+        @screen sm {
+            right: -20px;
+        }
+    }
+}
+
+/* Cover */
+.u-cover {
+    display: block;
+    position: relative;
+    overflow: hidden;
+
+    &:before {
+        content: '';
+        display: block;
+    }
+
+    & img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+/* Custom */
+
