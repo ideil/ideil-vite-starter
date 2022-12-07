@@ -6,6 +6,9 @@
         "dev": "vite"
     },
     "keywords": [
+        "frontend",
+        "boilerplate",
+        "starter",
         "postcss",
         "css",
         "twig",
