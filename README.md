@@ -1,7 +1,18 @@
 # ideil-vite-starter
 
 Frontend boilerplate made with Vite, Twig, Laravel, PostCSS, Tailwind, and the ES6 modules.
-Contains SVG-Sprite customization functionality, some image optimization features, and creating HTML files to match your TWIG files.
+
+## Contains
+
+* SVG-Sprite customization functionality
+* Image optimization features
+* Creating HTML files to match your TWIG files, and prettify after build
+* TWIG data from `.json` files
+* Laravel Vite plugin for `blade` files hot reload
+* Gitlab Pages ci file for building on branch `pages`
+* Tailwind CSS framework
+* PostCSS with nesting, imports and color functions
+* Eslint for js code analyze
 
 ## Requirements
 
@@ -66,4 +77,4 @@ For more information you can refer to [`tailwindcss`](https://github.com/tailwin
 
 ### PostCSS
 
-For more PostCSS plugins or configurations you can refer to [`postcss parts`](https://www.postcss.parts/)
+For more PostCSS plugins or configurations you can refer to [`PostCSS parts`](https://www.postcss.parts/)
