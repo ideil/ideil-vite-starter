@@ -5,6 +5,17 @@
         "build": "vite build",
         "dev": "vite"
     },
+    "keywords": [
+        "postcss",
+        "css",
+        "twig",
+        "vite",
+        "laravel",
+        "SVG",
+        "sprite",
+        "tailwind",
+        "eslint"
+    ],
     "devDependencies": {
         "@floating-ui/dom": "^1.0.8",
         "@googlemaps/js-api-loader": "^1.15.1",
