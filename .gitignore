@@ -9,6 +9,7 @@
 
 /node_modules
 /static/build
+/resources/html
 /storage/*.key
 /vendor
 .env

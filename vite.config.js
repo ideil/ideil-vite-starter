@@ -2,16 +2,12 @@ import vuePlugin from '@vitejs/plugin-vue';
 import { sync as globSync } from 'fast-glob';
 import path from 'path';
 import { defineConfig } from 'vite';
-import imageminPlugin from 'vite-plugin-imagemin';
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
-import twigPlugin from 'vite-plugin-twig';
+// import imageminPlugin from 'vite-plugin-imagemin';
 
 import config from './vite-config/config.js';
 import laravelPlugin from './vite-config/laravel.js';
-import {
-    twigHtmlPlugin,
-    prettifyHtmlPlugin,
-} from './vite-config/twig-html.js';
+import twigHtmlPlugin from './vite-config/twig-html.js';
 
 export default defineConfig({
     server: {
@@ -47,6 +43,15 @@ export default defineConfig({
         },
     },
     plugins: [
+        twigHtmlPlugin(),
+        createSvgIconsPlugin({
+            iconDirs: [ path.resolve(`${ config.iconsDir }`) ],
+        }),
+        vuePlugin({
+            template: {
+                transformAssetUrls: true,
+            },
+        }),
         laravelPlugin({
             input: [
                 ...globSync(path.resolve(`${ config.rootDir }/html/*.html`)),
@@ -56,21 +61,6 @@ export default defineConfig({
             ],
             publicDirectory: 'static',
         }),
-        twigHtmlPlugin(),
-        twigPlugin({
-            settings: {
-                views: config.twigDir,
-            },
-        }),
-        imageminPlugin(config.imagemin),
-        createSvgIconsPlugin({
-            iconDirs: [ path.resolve(`${ config.iconsDir }`) ],
-        }),
-        vuePlugin({
-            template: {
-                transformAssetUrls: true,
-            },
-        }),
-        prettifyHtmlPlugin(),
+        // imageminPlugin(config.imagemin),
     ],
 });

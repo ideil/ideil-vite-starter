@@ -2,6 +2,7 @@ import { sync as globSync } from 'fast-glob';
 import fs from 'fs-extra';
 import path from 'path';
 import pretty from 'pretty';
+import twigPlugin from 'vite-plugin-twig';
 
 import config from './config.js';
 
@@ -15,59 +16,78 @@ const getData = () => {
     return data;
 };
 
-const createFiles = () => {
+const createHtml = twigFilePath => {
+    const twigFileProps = path.parse(twigFilePath);
+    const twigFileName = twigFileProps.name;
+    const twigFileBase = twigFileProps.base;
+    const htmlIndexPath = path.resolve(`${ config.htmlDir }/${ twigFileName }.html`);
+    const twigIndexPath = path.resolve(`${ config.twigDir }/${ twigFileName }.twig`);
+
+    if (
+        fs.existsSync(htmlIndexPath) ||
+        !fs.existsSync(twigIndexPath)
+    ) {
+        return;
+    }
+
+    fs.writeFile(
+        htmlIndexPath,
+        `<script type="application/json" data-template="${ twigFileBase }">{}</script>`,
+        err => {
+            if (err) throw err;
+        },
+    );
+};
+
+const createAllHTML = () => {
     fs.emptyDirSync(path.resolve(config.htmlDir));
 
     globSync(path.resolve(`${ config.twigDir }/*.twig`)).forEach(twigPath => {
-        const twigName = path.parse(twigPath).name;
-
-        fs.writeFile(
-            path.resolve(`${ config.htmlDir }/${ twigName }.html`),
-            `<script type="application/json" data-template="${ path.relative(config.twigDir, twigPath) }">{}</script>`,
-            err => {
-                if (err) throw err;
-            },
-        );
+        createHtml(twigPath);
     });
 };
 
+export default function twigHtmlPlugin() {
+    createAllHTML();
 
-const twigHtmlPlugin = () => {
-    createFiles();
-
-    return {
-        name: 'twig-html',
-        transformIndexHtml: {
+    return [
+        {
+            name: 'twig-html',
             enforce: 'pre',
-            async transform(content) {
-                if (!content.startsWith('<script type="application/json" data-template')) {
-                    return content;
+            transformIndexHtml: {
+                enforce: 'pre',
+                async transform(content) {
+                    if (!content.startsWith('<script type="application/json" data-template')) {
+                        return content;
+                    }
+
+                    return content.replace('{}', JSON.stringify(getData()));
+                },
+            },
+            handleHotUpdate({ file, server }) {
+                if (/.(twig)$/.test(file)) {
+                    createHtml(file);
                 }
 
-                return content.replace('{}', JSON.stringify(getData()));
+                if (/.(json)$/.test(file)) {
+                    server.ws.send({ type: 'full-reload' });
+                }
             },
         },
-        handleHotUpdate({ file, server }) {
-            if (/.(json)$/.test(file)) {
-                server.ws.send({ type: 'full-reload' });
-            }
-        },
-    };
-};
-
-const prettifyHtmlPlugin = () => {
-    return {
-        name: 'prettify-html',
-        transformIndexHtml: {
-            enforce: 'post',
-            async transform(content) {
-                return pretty(content);
+        twigPlugin({
+            settings: {
+                views: config.twigDir,
+            },
+        }),
+        {
+            name: 'prettify-html',
+            apply: 'build',
+            transformIndexHtml: {
+                enforce: 'post',
+                async transform(content) {
+                    return pretty(content);
+                },
             },
         },
-    };
-};
-
-export {
-    twigHtmlPlugin,
-    prettifyHtmlPlugin,
-};
+    ];
+}

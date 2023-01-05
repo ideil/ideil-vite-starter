@@ -9,6 +9,7 @@ module.exports = {
         './resources/layouts/**/*.twig',
     ],
     prefix: '',
+    important: false,
     theme: {
         fontFamily: {
             sans: [ 'RobotoI', ...defaultTheme.fontFamily.sans ],
@@ -72,5 +73,8 @@ module.exports = {
             },
         },
     },
-    important: false,
+    plugins: [
+        require('@tailwindcss/aspect-ratio'),
+        require('@tailwindcss/line-clamp'),
+    ],
 };

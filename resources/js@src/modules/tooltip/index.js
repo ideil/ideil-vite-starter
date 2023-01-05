@@ -10,6 +10,7 @@
     toggleEls.forEach(el => {
         const tooltipTarget = el.dataset.tooltipTarget;
         const placement = el.dataset.tooltipPlacement;
+        const type = el.dataset.tooltipType;
 
         if (!tooltipTarget) {
             return;
@@ -25,6 +26,7 @@
             targetEl: el,
             tooltipEl,
             placement,
+            type,
         });
     });
 })();

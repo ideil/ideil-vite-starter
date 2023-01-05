@@ -9,23 +9,39 @@ export default class Tooltip {
 
         this.spacer = 10;
 
-        showEvents.forEach(event => {
-            this.targetEl.addEventListener(event, () => {
-                this.show();
+        if (this.type === 'clickable') {
+            this.targetEl.addEventListener('click', () => {
+                if (this.isOpened) {
+                    this.hide();
+                } else {
+                    this.show();
+                }
+            }, false);
+            this.dismissEls.forEach(dismissEl => {
+                dismissEl.addEventListener('click', () => {
+                    this.hide();
+                }, false);
             });
-        });
-        hideEvents.forEach(event => {
-            this.targetEl.addEventListener(event, () => {
-                this.hide();
+            this.tooltipEl.addEventListener('click', e => e.stopPropagation(), false);
+        } else {
+            showEvents.forEach(event => {
+                this.targetEl.addEventListener(event, () => {
+                    this.show();
+                }, false);
             });
-        });
-        this.updatePosition();
+            hideEvents.forEach(event => {
+                this.targetEl.addEventListener(event, () => {
+                    this.hide();
+                }, false);
+            });
+        }
     }
 
-    constructor({ targetEl, tooltipEl, placement }) {
+    constructor({ targetEl, tooltipEl, placement, type }) {
         this.targetEl = getElement(targetEl);
         this.tooltipEl = getElement(tooltipEl);
         this.placement = placement;
+        this.type = type;
 
         if (!this.targetEl) {
             throw new Error(`Tooltip target element ${ targetEl } doesn't exist.`);
@@ -35,6 +51,19 @@ export default class Tooltip {
             throw new Error(`Tooltip element ${ tooltipEl } doesn't exist.`);
         }
 
+        this.onDocumentClick = e => {
+            this.hide();
+        };
+
+        this.onWindowScroll = e => {
+            this.updatePosition();
+        };
+
+        this.onWindowResize = e => {
+            this.updatePosition();
+        };
+
+        this.dismissEls = this.tooltipEl.querySelectorAll('[data-tooltip-dismiss]');
         this.arrowEl = this.tooltipEl.querySelector('.c-tooltip__arrow');
 
         this.init();
@@ -87,11 +116,24 @@ export default class Tooltip {
     }
 
     show() {
+        if (this.type === 'clickable') {
+            setTimeout(() => {
+                document.addEventListener('click', this.onDocumentClick, false);
+            });
+        }
+        window.addEventListener('scroll', this.onWindowScroll, false);
+        window.addEventListener('resize', this.onWindowResize, false);
+        this.isOpened = true;
         this.tooltipEl.setAttribute('data-show', '');
         this.updatePosition();
     }
 
     hide() {
         this.tooltipEl.removeAttribute('data-show');
+        this.isOpened = false;
+
+        document.removeEventListener('click', this.onDocumentClick);
+        window.removeEventListener('scroll', this.onWindowScroll);
+        window.removeEventListener('resize', this.onWindowResize);
     }
 }
