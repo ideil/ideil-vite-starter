@@ -16,6 +16,14 @@ const getData = () => {
     return data;
 };
 
+const getHtml = htmlFilePath => {
+    const fileProps = path.parse(htmlFilePath);
+    const htmlIndexPath = path.resolve(`${ config.htmlDir }/${ fileProps.name }.html`);
+    const twigIndexPath = path.resolve(`${ config.twigDir }/${ fileProps.name }.twig`);
+
+    console.log(fileProps);
+};
+
 const createHtml = twigFilePath => {
     const twigFileProps = path.parse(twigFilePath);
     const twigFileName = twigFileProps.name;
@@ -48,15 +56,41 @@ const createAllHTML = () => {
 };
 
 export default function twigHtmlPlugin() {
-    createAllHTML();
+    let resolvedConfig;
+    // createAllHTML();
 
     return [
         {
             name: 'twig-html',
             enforce: 'pre',
+            configResolved(config) {
+                resolvedConfig = config;
+            },
+            configureServer(server) {
+                return () => {
+                    server.middlewares.use((req, res, next) => {
+                        try {
+                            console.log(req.originalUrl);
+                            const rawHtml = getHtml(req.originalUrl);
+                            // const transformedHtml = await server.transformIndexHtml(
+                            //     req.url, rawHtml, req.originalUrl
+                            // );
+
+                            console.log(rawHtml);
+
+                            // res.set(server.config.server.headers);
+                            // res.send(transformedHtml);
+                            return next();
+                        } catch (error) {
+                            return next(error);
+                        }
+                    });
+                };
+            },
             transformIndexHtml: {
                 enforce: 'pre',
                 async transform(content) {
+                    console.log('transformIndexHtml', content);
                     if (!content.startsWith('<script type="application/json" data-template')) {
                         return content;
                     }
