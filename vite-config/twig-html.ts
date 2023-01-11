@@ -9,7 +9,7 @@ import config from './config';
 
 type Pages = { [entryAlias: string]: string };
 
-function getData() {
+function getData(): any {
     const data = {};
 
     globSync(path.resolve(`${ config.rootDir }/${ config.dataDir }/**/*.json`)).forEach(filePath => {
@@ -25,8 +25,6 @@ function getTwigHtml(twigFilePath: string): string {
 
 function createPages(): Pages {
     const pages: Pages = {};
-
-    // fs.mkdirSync(`${ config.rootDir }/${ VIRTUAL_HTML_FOLDER }`, { recursive: true });
 
     globSync(path.resolve(`${ config.rootDir }/${ config.layoutsDir }/*.twig`)).forEach(filePath => {
         const fileProps = path.parse(filePath);
@@ -45,7 +43,6 @@ function createPages(): Pages {
 
 export default function twigHtmlPlugin() {
     let pages: Pages;
-    let resolvedConfig: UserConfig;
 
     return [
         {
@@ -75,17 +72,12 @@ export default function twigHtmlPlugin() {
                     next();
                 });
             },
-            configResolved(config: UserConfig) {
-                resolvedConfig = config;
-            },
             transformIndexHtml: {
                 enforce: 'pre',
                 async transform(content: string) {
                     if (!content.startsWith('<script type="application/json" data-template')) {
                         return content;
                     }
-
-                    console.log('transformIndexHtml', content);
 
                     return content.replace('{}', JSON.stringify(getData()));
                 },
@@ -95,7 +87,7 @@ export default function twigHtmlPlugin() {
                     server.ws.send({ type: 'full-reload' });
                 }
             },
-            async config(config: UserConfig, { command }: {command: string}) {
+            config(config: UserConfig, { command }: {command: string}) {
                 if (command === 'build') {
                     pages = createPages();
 
@@ -113,8 +105,7 @@ export default function twigHtmlPlugin() {
 
                 return null;
             },
-
-            async closeBundle() {
+            closeBundle() {
                 for (const [ name, filePath ] of Object.entries(pages)) {
                     if (fs.existsSync(filePath)) {
                         fs.rmSync(filePath, {
@@ -136,7 +127,9 @@ export default function twigHtmlPlugin() {
             transformIndexHtml: {
                 enforce: 'post',
                 async transform(content: string) {
-                    return pretty(content);
+                    return pretty(content, {
+                        ocd: true,
+                    });
                 },
             },
         },
