@@ -1,21 +1,16 @@
 export default {
     base: './',
     server: {
-        open: '/html/',
+        open: '/layouts/index.html',
         host: true,
     },
     rootDir: 'resources',
     publicDir: 'static',
     buildDir: 'static/build',
 
-    twigDir: 'resources/layouts',
-    htmlDir: 'resources/html',
-    viewsDir: 'resources/views',
-    imagesDir: 'resources/img',
-    styleDir: 'resources/css',
-    fontsDir: 'resources/fonts',
-    dataDir: 'resources/data',
-    iconsDir: 'resources/icons',
+    layoutsDir: 'layouts',
+    dataDir: 'data',
+    iconsDir: 'icons',
 
     imagemin: {
         webp: false,

@@ -1,12 +1,12 @@
 import vuePlugin from '@vitejs/plugin-vue';
 import { sync as globSync } from 'fast-glob';
+import laravel from 'laravel-vite-plugin';
 import path from 'path';
 import { defineConfig } from 'vite';
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 // import imageminPlugin from 'vite-plugin-imagemin';
 
 import config from './vite-config/config.js';
-import laravelPlugin from './vite-config/laravel.js';
 import twigHtmlPlugin from './vite-config/twig-html.js';
 
 export default defineConfig({
@@ -34,6 +34,11 @@ export default defineConfig({
                 chunkFileNames: 'js/chunks/[name].[hash].js',
                 entryFileNames: 'js/[name].[hash].js',
             },
+            input: [
+                ...globSync(path.resolve(`${ config.rootDir }/css/*.css`)),
+                `${ config.rootDir }/js@src/app.js`,
+                `${ config.rootDir }/js@pub/app.js`,
+            ],
         },
     },
     resolve: {
@@ -43,23 +48,26 @@ export default defineConfig({
         },
     },
     plugins: [
+        laravel({
+            input: '',
+            publicDirectory: 'static',
+        }),
+        {
+            name: 'laravel-fix',
+            enforce: 'post',
+            config(userConfig) {
+                userConfig.base = config.base;
+                userConfig.server.origin = undefined;
+            },
+        },
         twigHtmlPlugin(),
         createSvgIconsPlugin({
-            iconDirs: [ path.resolve(`${ config.iconsDir }`) ],
+            iconDirs: [ path.resolve(`${ config.rootDir }/${ config.iconsDir }`) ],
         }),
         vuePlugin({
             template: {
                 transformAssetUrls: true,
             },
-        }),
-        laravelPlugin({
-            input: [
-                ...globSync(path.resolve(`${ config.rootDir }/html/*.html`)),
-                ...globSync(path.resolve(`${ config.rootDir }/css/*.css`)),
-                `${ config.rootDir }/js@src/app.js`,
-                `${ config.rootDir }/js@pub/app.js`,
-            ],
-            publicDirectory: 'static',
         }),
         // imageminPlugin(config.imagemin),
     ],

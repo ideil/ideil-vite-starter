@@ -14,6 +14,8 @@
         new Splide(el, {
             autoWidth: true,
             arrows: arrowsEl,
+            omitEnd: true,
+            focus: 0,
             pagination: paginationEl,
         }).mount();
     };

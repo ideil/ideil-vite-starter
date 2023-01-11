@@ -26,6 +26,8 @@
         "@tailwindcss/aspect-ratio": "^0.4.2",
         "@tailwindcss/line-clamp": "^0.4.2",
         "@tailwindcss/nesting": "^0.0.0-insiders.565cd3e",
+        "@types/fs-extra": "^11.0.1",
+        "@types/pretty": "^2.0.1",
         "@typescript-eslint/eslint-plugin": "^5.44.0",
         "@vitejs/plugin-vue": "^3.2.0",
         "@vue/eslint-config-typescript": "^11.0.2",
