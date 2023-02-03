@@ -38,7 +38,7 @@
     &__item {
 
         &:not(:first-child) {
-            border-top: 1px solid theme(colors[white] / 20%);
+            border-top: 1px solid theme(colors.white / 20%);
         }
     }
 

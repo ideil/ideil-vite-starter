@@ -5,7 +5,7 @@
     width: 100%;
     z-index: theme(zIndex.20);
     line-height: 1;
-    background-color: theme(colors[black]);
+    background-color: theme(colors.black);
     transition-property: color, background-color;
 
     .c-socials {

@@ -24,12 +24,26 @@ export default defineConfig({
         rollupOptions: {
             output: {
                 assetFileNames: assetInfo => {
-                    let folders = assetInfo.name.split(`${ config.rootDir }/`).at(1);
-                    if (!folders) {
-                        folders = assetInfo.name;
+                    let folders = '';
+                    const extType = assetInfo.name.split('.').at(1);
+
+                    if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(extType)) {
+                        folders = 'img/';
                     }
-                    folders = folders.split(path.basename(assetInfo.name)).at(0);
-                    return `${ folders }[name].[hash][extname]`;
+
+                    if (/woff2?|ttf/i.test(extType)) {
+                        folders = 'fonts/';
+                    }
+
+                    if (/json/i.test(extType)) {
+                        folders = 'json/';
+                    }
+
+                    if (/css/i.test(extType)) {
+                        folders = 'css/';
+                    }
+
+                    return `${ folders }[name].[hash].[ext]`;
                 },
                 chunkFileNames: 'js/chunks/[name].[hash].js',
                 entryFileNames: 'js/[name].[hash].js',

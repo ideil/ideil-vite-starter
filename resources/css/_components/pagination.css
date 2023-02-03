@@ -58,12 +58,12 @@
         justify-content: center;
 
         a&:hover{
-            background-color: theme(colors[black]);
+            background-color: theme(colors.black);
         }
 
         .is-active & {
-            background-color: theme(colors[primary]);
-            color: theme(colors[black]);
+            background-color: theme(colors.primary.DEFAULT);
+            color: theme(colors.black);
         }
     }
 }

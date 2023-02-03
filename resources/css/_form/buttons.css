@@ -34,25 +34,25 @@
     }
 
     &--primary {
-        background-color: theme(colors[primary]);
-        color: theme(colors[black]);
+        background-color: theme(colors.primary.DEFAULT);
+        color: theme(colors.black);
 
         &:hover,
         &:focus {
             opacity: 1;
-            background-color: color(theme(colors[primary]) blackness(+10%));
-            color: theme(colors[black]);
+            background-color: color(theme(colors.primary.DEFAULT) blackness(+10%));
+            color: theme(colors.black);
         }
     }
 
     &--gray {
-        background-color: theme(colors[gray]);
-        color: theme(colors[primary]);
+        background-color: theme(colors.gray.DEFAULT);
+        color: theme(colors.primary.DEFAULT);
 
         &:hover,
         &:focus {
-            background-color: color(theme(colors[gray]) blackness(+10%));
-            color: theme(colors[primary]);
+            background-color: color(theme(colors.gray.DEFAULT) blackness(+10%));
+            color: theme(colors.primary.DEFAULT);
         }
     }
 
@@ -64,7 +64,7 @@
 
         &:hover {
             text-decoration: none;
-            color: theme(colors[primary]);
+            color: theme(colors.primary.DEFAULT);
         }
     }
 

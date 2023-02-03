@@ -11,7 +11,7 @@
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: theme(colors[black]);
+    background-color: theme(colors.black);
     opacity: 0;
     visibility: hidden;
     transition-property: opacity,

@@ -44,20 +44,29 @@ module.exports = {
         },
         extend: {
             colors: {
-                'black': '#000000',
-                'white': '#ffffff',
+                black: '#000000',
+                white: '#ffffff',
 
-                'gray': '#E3E3E3',
-                'gray-light': '#F1F1F1',
+                gray: {
+                    DEFAULT: '#E3E3E3',
+                    50: '#F1F1F1',
+                    // 100: '#EDEFF4',
+                    200: '#E3E3E3',
+                    // 300: ,
+                    // 400: '#A1A1A1',
+                    // 500: '#787878',
+                    // 600: ,
+                    // 700: '#28272E',
+                    // 800: '#222222',
+                    // 900: '#19191B',
+                },
 
-                'blue': '#4477FA',
-                'green': '#4D874D',
-                'red': '#FD5846',
+                primary: {
+                    DEFAULT: '#e4ff3c',
+                },
 
-                'primary': '#e4ff3c',
-
-                'body': '#000000',
-                'text': '#ffffff',
+                body: '#000000',
+                text: '#ffffff',
             },
             maxWidth: {
                 'xs': '480px',

@@ -3,10 +3,10 @@
 
 .f-select {
     --ms-radius: 10px;
-    --ms-color: #{theme(colors[black])};
+    --ms-color: #{theme(colors.black)};
     --ms-border-width: 1px;
-    --ms-border-color: #{theme(colors[gray])};
-    --ms-bg: #{theme(colors[white])};
+    --ms-border-color: #{theme(colors.gray.DEFAULT)};
+    --ms-bg: #{theme(colors.white)};
     --ms-px: 16px;
     --ms-font-size: 16px;
 
@@ -15,25 +15,25 @@
     --ms-dropdown-border-color: var(--ms-border-color);
     --ms-dropdown-bg: var(--ms-bg);
 
-    --ms-option-bg-pointed: #{theme(colors[gray])};
+    --ms-option-bg-pointed: #{theme(colors.gray.DEFAULT)};
     --ms-option-color-pointed: var(--ms-color);
     --ms-option-px: var(--ms-px);
 
-    --ms-option-bg-selected: #{theme(colors[green])};
-    --ms-option-color-selected: #{theme(colors[white])};
+    --ms-option-bg-selected: #{theme(colors.green.500)};
+    --ms-option-color-selected: #{theme(colors.white)};
 
-    --ms-option-bg-selected-pointed: #{theme(colors[green])};
+    --ms-option-bg-selected-pointed: #{theme(colors.green.500)};
     --ms-option-color-selected-pointed: var(--ms-option-color-selected);
 
     height: 52px;
-    color: theme(colors[black]);
+    color: theme(colors.black);
     box-shadow: none !important;
     outline: 1px solid transparent;
     transition-property: border-color,
         outline;
 
     &.is-active {
-        outline-color: theme(colors[gray]);
+        outline-color: theme(colors.gray.DEFAULT);
     }
 
     .multiselect-option {

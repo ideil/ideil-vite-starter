@@ -2,9 +2,6 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 
-/* Vars */
-@import '_set/vars.css';
-
 /* Base */
 @import '_app/fonts.css';
 @import '_app/reset.css';

@@ -1,17 +1,24 @@
 :root {
     color-scheme: dark;
+
+    --header-height: 65px;
+    --page-space: 100px;
+
+    --transition-duration: theme(transitionDuration.base);
+    --transition-timing-function: theme(transitionTimingFunction.base);
+    --transition-property: var(--transition-duration) var(--transition-function);
 }
 
 :focus-visible {
-    outline-color: theme(colors[gray]);
+    outline-color: theme(colors.gray.DEFAULT);
 }
 
 * {
-    scroll-margin: 72px;
+    scroll-margin: var(--header-height + 20px);
     transition-duration: var(--transition-duration);
     transition-timing-function: var(--transition-timing-function);
     transition-property: none;
-    border-color: theme(colors[gray]);
+    border-color: theme(colors.gray.DEFAULT);
 }
 
 html {
@@ -22,10 +29,10 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    color: theme(colors[text]);
-    background-color: theme(colors[body]);
-    font-size: theme(fontSize[base]);
-    line-height: theme(lineHeight[normal]);
+    color: theme(colors.text);
+    background-color: theme(colors.body);
+    font-size: theme(fontSize.base);
+    line-height: theme(lineHeight.normal);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility !important;
     padding-top: var(--header-height);

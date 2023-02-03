@@ -2,8 +2,8 @@
 //# Vite
 
 import.meta.glob([
-    '../img/**',
-    '../fonts/**',
+    './img/**',
+    './fonts/**',
 ]);
 
 // Init svg sprite build

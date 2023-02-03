@@ -16,7 +16,7 @@
     overflow-y: auto;
     outline: 0;
     opacity: 0;
-    background-color: theme(colors[black] / 30%);
+    background-color: theme(colors.black / 30%);
     transition-property: opacity;
 
     &.is-shown {
@@ -78,8 +78,8 @@
     flex-direction: column;
     width: 100%;
     pointer-events: auto;
-    color: theme(colors[black]);
-    background-color: theme(colors[white]);
+    color: theme(colors.black);
+    background-color: theme(colors.white);
     background-clip: padding-box;
     outline: 0;
     --cutout-offset: 60px;
@@ -123,7 +123,7 @@
             display: block;
             position: absolute;
             inset: 0;
-            background-color: theme(colors[black] / 20%);
+            background-color: theme(colors.black / 20%);
         }
     }
 
