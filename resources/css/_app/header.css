@@ -5,8 +5,9 @@
     width: 100%;
     z-index: theme(zIndex.20);
     line-height: 1;
-    background-color: theme(colors.black);
-    transition-property: color, background-color;
+    color: theme(colors.text);
+    background-color: theme(colors.body);
+    border-bottom: 1px solid theme(colors.gray.200);
 
     .c-socials {
         display: none;
@@ -18,14 +19,15 @@
         }
 
         @screen xl {
+
             &__list {
-                margin-left: -29px;
-                margin-right: -29px;
+                margin-left: calc(-1 * theme(spacing.4));
+                margin-right: calc(-1 * theme(spacing.4));
             }
 
             &__link {
-                padding-left: 29px;
-                padding-right: 29px;
+                padding-left: theme(spacing.4);
+                padding-right: theme(spacing.4);
             }
         }
     }
@@ -39,10 +41,11 @@
     }
 
     &__inner {
+        height: theme(spacing.headerHeight);
         display: flex;
-        align-items: flex-end;
-        padding-top: 10px;
-        padding-bottom: 20px;
+        align-items: center;
+        /* padding-top: theme(spacing[2.5]); */
+        /* padding-bottom: theme(spacing[2.5]); */
     }
 
     &__main {
@@ -52,13 +55,13 @@
     }
 
     &__logo {
-        width: 100px;
-        margin-right: 32px;
+        width: 75px;
+        margin-right: theme(spacing.8);
         align-self: center;
         transition-property: width, padding;
 
         @screen xl {
-            margin-right: 60px;
+            margin-right: theme(spacing.15);
         }
     }
 
@@ -72,8 +75,8 @@
 
         &-btn {
             display: block;
-            margin: -20px;
-            padding: 20px;
+            margin: calc(theme(spacing.5) * -1);
+            padding: theme(spacing.5);
         }
 
         &-icon {
@@ -83,7 +86,7 @@
             justify-content: space-between;
             position: relative;
 
-            & div {
+            div {
                 height: 2px;
                 width: 22px;
                 position: absolute;
@@ -104,10 +107,19 @@
                     bottom: 0;
                 }
             }
+        }
+    }
+}
 
-            .is-menu-open & {
+.is-menu-open {
 
-                & div {
+    .c-header {
+
+        &__hamburger {
+
+            &-icon {
+
+                div {
 
                     &:nth-child(1) {
                         top: 8px;

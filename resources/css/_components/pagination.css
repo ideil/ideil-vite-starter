@@ -1,6 +1,6 @@
 .c-pagination {
     text-align: center;
-    margin-top: 32px;
+    margin-top: theme(spacing.8);
 
     &__list {
         display: inline-flex;
@@ -11,8 +11,8 @@
     }
 
     &__item {
-        padding-left: 5px;
-        padding-right: 5px;
+        padding-left: theme(spacing[1.5]);
+        padding-right: theme(spacing[1.5]);
 
         &.is-disabled {
             pointer-events: none;
@@ -32,38 +32,39 @@
             }
 
             .i-icon {
-                width: 15px;
-                height: 15px;
+                width: theme(spacing.4);
+                height: theme(spacing.4);
             }
         }
 
         &.is-prev {
             padding-left: 0;
-            margin-right: 16px;
+            margin-right: theme(spacing.4);
         }
 
         &.is-next {
             padding-right: 0;
-            margin-left: 16px;
+            margin-left: theme(spacing.4);
         }
     }
 
     &__link {
         font-weight: 700;
-        min-width: 28px;
-        height: 28px;
+        min-width: theme(spacing.7);
+        height: theme(spacing.7);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
 
         a&:hover{
-            background-color: theme(colors.black);
+            background-color: theme(colors.gray.200);
+            color: theme(colors.text);
         }
 
         .is-active & {
             background-color: theme(colors.primary.DEFAULT);
-            color: theme(colors.black);
+            color: theme(colors.white);
         }
     }
 }

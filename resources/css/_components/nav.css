@@ -4,11 +4,11 @@
 
     &__list {
         display: flex;
-        margin: -20px;
+        margin: calc(theme(spacing.5) * -1);
     }
 
     &__link {
-        padding: 20px;
+        padding: theme(spacing.5);
         display: block;
     }
 }

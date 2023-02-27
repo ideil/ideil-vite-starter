@@ -1,17 +1,22 @@
 import 'intersection-observer';
-import staticAsset from '@src/helpers/staticAsset';
 
 /*global google*/
 
 (() => {
-    const mapBlock = document.querySelector('.js-map');
+    const mapBlock = document.querySelector('[data-map]');
 
     if (!mapBlock) {
         return;
     }
 
     const startMap = async mapBlock => {
-        const { Loader } = await import('@googlemaps/js-api-loader');
+        const [
+            { Loader },
+            { default: markUrl },
+        ] = await Promise.all([
+            await import('@googlemaps/js-api-loader'),
+            await import('@img/svg/mark.svg?url'),
+        ]);
 
         const loader = new Loader({
             apiKey: '', // apiKey
@@ -137,11 +142,9 @@ import staticAsset from '@src/helpers/staticAsset';
             ];
 
             const mapMarker = {
-                url: staticAsset('../img/mark@2x.png'),
-                size: new google.maps.Size(137, 137),
-                scaledSize: new google.maps.Size(137, 137),
-                // origin: new google.maps.Point(0, 0),
-                // anchor: new google.maps.Point(0, 32),
+                url: markUrl,
+                size: new google.maps.Size(44, 44),
+                scaledSize: new google.maps.Size(44, 44),
             };
 
             const target = {
@@ -168,7 +171,7 @@ import staticAsset from '@src/helpers/staticAsset';
             new google.maps.Marker({
                 position: markerPosition,
                 map: map,
-                // icon: mapMarker,
+                icon: mapMarker,
             });
         });
     };

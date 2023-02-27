@@ -1,6 +1,5 @@
 
-const headerEl = document.querySelector('.js-header') || document.querySelector('.c-header');
-const menuEl = document.querySelector('.js-menu') || document.querySelector('.c-menu');
+const headerEl = document.querySelector('[data-header]') || document.querySelector('.c-header');
 
 const getScrollBarWidth = () => {
     const scrollDiv = document.createElement('div');
@@ -14,50 +13,48 @@ const getScrollBarWidth = () => {
 
 const scrollbarSpace = getScrollBarWidth();
 
+const setSpace = el => {
+    el.style.paddingRight = `${ scrollbarSpace }px`;
+};
+
+const clearSpace = el => {
+    el.style.paddingRight = '';
+};
+
 const setBodySpace = () => {
-    document.body.style.paddingRight = scrollbarSpace + 'px';
+    setSpace(document.body);
 };
 
 const clearBodySpace = () => {
-    document.body.style.paddingRight = '';
+    clearSpace(document.body);
 };
 
 const setHeaderSpace = () => {
-    headerEl.style.paddingRight = scrollbarSpace + 'px';
+    setSpace(headerEl);
 };
 
 const clearHeaderSpace = () => {
-    headerEl.style.paddingRight = '';
-};
-
-const setMenuElSpace = () => {
-    menuEl.style.paddingRight = scrollbarSpace + 'px';
-};
-
-const clearMenuElSpace = () => {
-    menuEl.style.paddingRight = '';
+    clearSpace(headerEl);
 };
 
 const setSpaces = () => {
     setBodySpace();
     setHeaderSpace();
-    // setMenuElSpace();
 };
 
 const clearSpaces = () => {
     clearBodySpace();
     clearHeaderSpace();
-    // clearMenuElSpace();
 };
 
 export {
     scrollbarSpace,
     setBodySpace,
-    setHeaderSpace,
-    setMenuElSpace,
-    setSpaces,
     clearBodySpace,
+    setHeaderSpace,
     clearHeaderSpace,
-    clearMenuElSpace,
+    setSpaces,
     clearSpaces,
+    setSpace,
+    clearSpace,
 };

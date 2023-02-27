@@ -1,7 +1,5 @@
 <script>
-import { defineComponent, computed } from 'vue';
-
-import staticAsset from '@src/helpers/staticAsset';
+import { defineComponent } from 'vue';
 
 export default defineComponent({
     props: {
@@ -14,11 +12,6 @@ export default defineComponent({
             default: null,
         },
     },
-    setup(props) {
-        return {
-            url: computed(() => staticAsset(`#${ props.id }`)),
-        };
-    },
 });
 </script>
 
@@ -27,6 +20,6 @@ export default defineComponent({
         class="i-icon"
         :class="`i-${id}`"
     >
-        <use :xlink:href="url" />
+        <use :xlink:href="`#icon-${folder ? folder + '-' : ''}${id}`" />
     </svg>
 </template>

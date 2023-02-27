@@ -1,0 +1,25 @@
+:root {
+    --transition-duration: theme(transitionDuration.base);
+    --transition-timing-function: theme(transitionTimingFunction.base);
+    --transition-property: var(--transition-duration) var(--transition-function);
+
+    --header-height: theme(spacing.15);
+
+    --page-space: theme(spacing.10);
+
+    --box-space: theme(spacing.5);
+
+    --col-gap: theme(spacing.8);
+
+    @screen md {
+        --box-space: theme(spacing.8);
+    }
+
+    @screen lg {
+        --box-space: theme(spacing.10);
+    }
+
+    @screen xl {
+        --box-space: theme(spacing.12);
+    }
+}

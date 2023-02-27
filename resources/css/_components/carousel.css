@@ -60,22 +60,19 @@
         }
 
         &__pagination {
-            position: absolute;
-            bottom: 0;
             width: 100%;
-            left: 0;
-            gap: 8px;
-            padding-bottom: 10px;
+            gap: theme(spacing.2);
+            margin-top: theme(spacing.4);
 
             li {
                 line-height: 0;
             }
 
             &__page {
-                width: 10px;
-                height: 10px;
+                width: theme(spacing[2.5]);
+                height: theme(spacing[2.5]);
                 border-radius: 99px;
-                background-color: theme(colors.black);
+                background-color: currentColor;
 
                 &:not(.is-active) {
                     opacity: .25;

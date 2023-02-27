@@ -9,21 +9,22 @@
     }
 
     &__title {
-        font-size: 20px;
-        padding-right: 12px;
+        font-size: theme(fontSize.md);
+        font-weight: 700;
+        padding-right: theme(spacing.3);
     }
 
     &__btn {
-        width: 24px;
-        height: 24px;
+        width: theme(spacing.6);
+        height: theme(spacing.6);
         display: flex;
         justify-content: center;
         align-items: center;
         margin-top: 3px;
 
         .i-icon {
-            width: 16px;
-            height: 16px;
+            width: theme(spacing.4);
+            height: theme(spacing.4);
             transition-property: transform;
         }
 
@@ -38,11 +39,11 @@
     &__item {
 
         &:not(:first-child) {
-            border-top: 1px solid theme(colors.white / 20%);
+            border-top: 1px solid theme(colors.gray.200);
         }
     }
 
     &__collapse-inner {
-        padding-bottom: 32px;
+        padding-bottom: theme(spacing.8);
     }
 }

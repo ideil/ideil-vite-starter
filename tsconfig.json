@@ -17,6 +17,12 @@
             "@pub/*": [
                 "./resources/js@pub/*"
             ],
+            "@data/*": [
+                "./resources/data/*"
+            ],
+            "@img/*": [
+                "./resources/img/*"
+            ],
         }
     },
     "exclude": [

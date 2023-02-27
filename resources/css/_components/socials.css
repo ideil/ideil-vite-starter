@@ -1,5 +1,5 @@
 .c-socials {
-    --icon-size: 24px;
+    --icon-size: theme(spacing.6);
 
     .i-icon {
         width: var(--icon-size);
@@ -8,11 +8,11 @@
 
     &__list {
         display: flex;
-        margin: -16px;
+        margin: calc(theme(spacing.4) * -1);
     }
 
     &__link {
-        padding: 16px;
+        padding: theme(spacing.4);
         display: block;
     }
 }

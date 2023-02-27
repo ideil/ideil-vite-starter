@@ -1,13 +1,13 @@
 .f-btn {
     appearance: none;
-    height: 52px;
+    height: theme(spacing.12);
     display: inline-flex;
     vertical-align: middle;
     align-items: center;
     justify-content: center;
-    padding: 10px 32px;
-    font-size: 18px;
-    line-height: 24px;
+    padding: 0 theme(spacing.8);
+    font-size: theme(fontSize.md);
+    line-height: theme(lineHeight.tight);
     font-weight: 700;
     transition-property:
         background-color,
@@ -21,38 +21,27 @@
         pointer-events: none;
     }
 
-    & .i-icon {
-        margin-right: 8px;
+    .i-icon {
+        margin-right: theme(spacing.2);
     }
 
     &--sm {
-        height: 44px;
+        height: theme(spacing.10);
     }
 
     &--lg {
-        height: 64px;
+        height: theme(spacing.16);
     }
 
     &--primary {
         background-color: theme(colors.primary.DEFAULT);
-        color: theme(colors.black);
+        color: theme(colors.white);
 
         &:hover,
         &:focus {
             opacity: 1;
             background-color: color(theme(colors.primary.DEFAULT) blackness(+10%));
-            color: theme(colors.black);
-        }
-    }
-
-    &--gray {
-        background-color: theme(colors.gray.DEFAULT);
-        color: theme(colors.primary.DEFAULT);
-
-        &:hover,
-        &:focus {
-            background-color: color(theme(colors.gray.DEFAULT) blackness(+10%));
-            color: theme(colors.primary.DEFAULT);
+            color: theme(colors.white);
         }
     }
 

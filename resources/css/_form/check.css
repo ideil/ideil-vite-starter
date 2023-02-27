@@ -11,7 +11,7 @@
     &-input {
         width: 20px;
         height: 20px;
-        border: 1px solid theme(colors.black)-5;
+        border: 1px solid theme(colors.black);
         background-color: theme(colors.white);
         float: left;
         border-radius: 5px;

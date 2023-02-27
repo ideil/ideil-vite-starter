@@ -1,7 +1,7 @@
 .f-group {
     position: relative;
     width: 100%;
-    margin-bottom: 28px;
+    margin-bottom: theme(spacing.7);
 }
 
 .f-input {
@@ -9,15 +9,15 @@
     text-align: left;
     appearance: none;
     width: 100%;
-    padding: 20px 0 0;
+    padding: theme(spacing.5) 0 0;
     height: 52px;
-    color: theme(colors.white);
+    color: currentColor;
     font-size: theme(fontSize.base);
     font-weight: 700;
     background: transparent;
     border: none;
     border-bottom: 1px solid;
-    border-color: theme(colors.gray.DEFAULT);
+    border-color: currentColor;
     box-shadow: none;
     outline: none;
     transition-property: border-color, outline;
@@ -47,7 +47,8 @@
     &:not(:placeholder-shown):not(:focus) {
 
         &::placeholder {
-            color: theme(colors.white / 50%);
+            color: currentColor;
+            opacity: .5;
         }
     }
 
@@ -61,8 +62,9 @@
 }
 
 .f-label {
-    color: theme(colors.white / 80%);
-    font-size: 18px;
+    color: currentColor;
+    opacity: .6;
+    font-size: theme(fontSize.md);
     line-height: 1;
     display: block;
     position: absolute;
@@ -77,16 +79,16 @@
     .f-input:focus ~ &,
     .f-input.is-filled ~ &,
     .f-input:not(:placeholder-shown).f-input:not(:focus) ~ & {
-        font-size: 14px;
-        height: 20px;
+        font-size: theme(fontSize.xs);
+        height: theme(spacing.5);
     }
 }
 
 .f-info {
-    font-size: 14px;
+    font-size: theme(fontSize.xs);
     display: block;
-    line-height: 1.15;
-    margin-top: 4px;
+    line-height: theme(lineHeight.tight);
+    margin-top: theme(spacing.1);
 
     &.f-info--error {
         color: theme(colors.red.500);
@@ -98,9 +100,9 @@
 }
 
 .f-submit {
-    margin-top: 60px;
+    margin-top: theme(spacing.15);
 
     & .f-info {
-        margin: 20px 0;
+        margin: theme(spacing.5) 0;
     }
 }

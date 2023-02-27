@@ -1,20 +1,22 @@
 :root {
-    color-scheme: dark;
-
-    --header-height: 65px;
-    --page-space: 100px;
-
-    --transition-duration: theme(transitionDuration.base);
-    --transition-timing-function: theme(transitionTimingFunction.base);
-    --transition-property: var(--transition-duration) var(--transition-function);
+    /* color-scheme: dark; */
 }
 
 :focus-visible {
     outline-color: theme(colors.gray.DEFAULT);
 }
 
+::selection {
+    background-color: theme(colors.primary.DEFAULT / 50%);
+}
+
 * {
-    scroll-margin: var(--header-height + 20px);
+    scroll-margin: var(--header-height + theme(spacing.5));
+}
+
+*,
+*:before,
+*:after {
     transition-duration: var(--transition-duration);
     transition-timing-function: var(--transition-timing-function);
     transition-property: none;
@@ -34,12 +36,8 @@ body {
     font-size: theme(fontSize.base);
     line-height: theme(lineHeight.normal);
     -webkit-font-smoothing: antialiased;
+    padding-top: var(--header-height, 0);
     text-rendering: optimizeLegibility !important;
-    padding-top: var(--header-height);
-
-    .is-nospace & {
-        padding-top: 0;
-    }
 
     > main {
         flex-grow: 1;
@@ -50,9 +48,13 @@ a,
 button {
     color: currentColor;
     -webkit-tap-highlight-color: transparent;
-    transition-property: border-color, background-color, color, opacity;
+    transition-property:
+        border-color,
+        background-color,
+        color,
+        opacity;
 
     &:hover {
-        opacity: .6;
+        color: var(--hover-color, theme(colors.primary.DEFAULT));
     }
 }

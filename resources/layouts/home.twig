@@ -21,7 +21,7 @@
     </div>
 
     {% for carouselIndex in 1..2 %}
-        <section class="mb-16 splide c-carousel js-carousel c-carousel--{{ carouselIndex + 1 }}" aria-labelledby="carouselHeading{{ carouselIndex }}">
+        <section class="mb-16 splide c-carousel c-carousel--{{ carouselIndex + 1 }}" data-carousel aria-labelledby="carouselHeading{{ carouselIndex }}">
             <div class="l-box">
                 <h2 id="carouselHeading{{ carouselIndex }}" class="mb-5 c-title c-title--3">Карусель {{ carouselIndex }}</h2>
 

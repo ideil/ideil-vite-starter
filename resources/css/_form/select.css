@@ -1,12 +1,12 @@
-// @import '~vue-next-select/dist/index.css';
-@import '~@vueform/multiselect/themes/default.css';
+/* @import 'vue-next-select/dist/index.css'; */
+@import '@vueform/multiselect/themes/default.css';
 
 .f-select {
     --ms-radius: 10px;
-    --ms-color: #{theme(colors.black)};
+    --ms-color: theme(colors.black);
     --ms-border-width: 1px;
-    --ms-border-color: #{theme(colors.gray.DEFAULT)};
-    --ms-bg: #{theme(colors.white)};
+    --ms-border-color: theme(colors.gray.DEFAULT);
+    --ms-bg: theme(colors.white);
     --ms-px: 16px;
     --ms-font-size: 16px;
 
@@ -15,14 +15,14 @@
     --ms-dropdown-border-color: var(--ms-border-color);
     --ms-dropdown-bg: var(--ms-bg);
 
-    --ms-option-bg-pointed: #{theme(colors.gray.DEFAULT)};
+    --ms-option-bg-pointed: theme(colors.gray.DEFAULT);
     --ms-option-color-pointed: var(--ms-color);
     --ms-option-px: var(--ms-px);
 
-    --ms-option-bg-selected: #{theme(colors.green.500)};
-    --ms-option-color-selected: #{theme(colors.white)};
+    --ms-option-bg-selected: theme(colors.primary.DEFAULT);
+    --ms-option-color-selected: theme(colors.white);
 
-    --ms-option-bg-selected-pointed: #{theme(colors.green.500)};
+    --ms-option-bg-selected-pointed: theme(colors.primary.DEFAULT);
     --ms-option-color-selected-pointed: var(--ms-option-color-selected);
 
     height: 52px;

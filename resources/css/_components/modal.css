@@ -82,7 +82,6 @@
     background-color: theme(colors.white);
     background-clip: padding-box;
     outline: 0;
-    --cutout-offset: 60px;
 
     &--bg {
 
@@ -133,8 +132,9 @@
 }
 
 .m-header {
+    margin: 0;
     display: flex;
-    padding: 20px 20px 0;
+    padding: theme(spacing.5) theme(spacing.5) 0;
 
     .m-title {
         margin-bottom: 0;
@@ -142,12 +142,12 @@
 }
 
 .m-body {
-    padding: 20px 20px 40px;
+    padding: theme(spacing.5) theme(spacing.5) theme(spacing.10);
 
-    @screen md {
+    .m-content--bg & {
 
-        .m-content--bg & {
-            padding: 20px 40px 40px;
+        @screen md {
+            padding: theme(spacing.5) theme(spacing.10) theme(spacing.10);
         }
     }
 }
@@ -162,16 +162,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: -10px -10px -10px auto;
+    margin: calc(theme(spacing[2.5]) * -1) calc(theme(spacing[2.5]) * -1) calc(theme(spacing[2.5]) * -1) auto;
 
     .i-icon {
-        width: 24px;
-        height: 24px;
+        width: theme(spacing.6);
+        height: theme(spacing.6);
     }
 }
 
 .m-title {
-    margin-bottom: 32px;
+    margin-bottom: theme(spacing.8);
 
     &:last-child {
         margin-bottom: 0;

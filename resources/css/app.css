@@ -2,6 +2,9 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 
+/* Set */
+@import '_set/vars.css';
+
 /* Base */
 @import '_app/fonts.css';
 @import '_app/reset.css';
@@ -10,11 +13,13 @@
 @import '_app/typography.css';
 
 /* Layouts */
-@import '_layouts/base.css';
+@import '_layouts/box.css';
 
 /* Form */
 @import '_form/buttons.css';
 @import '_form/forms.css';
+@import '_form/check.css';
+@import '_form/select.css';
 
 /* Parts */
 @import '_app/header.css';

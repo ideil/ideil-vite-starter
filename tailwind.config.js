@@ -44,14 +44,11 @@ module.exports = {
         },
         extend: {
             colors: {
-                black: '#000000',
-                white: '#ffffff',
-
                 gray: {
                     DEFAULT: '#E3E3E3',
-                    50: '#F1F1F1',
+                    // 50: '#F1F1F1',
                     // 100: '#EDEFF4',
-                    200: '#E3E3E3',
+                    // 200: '#E3E3E3',
                     // 300: ,
                     // 400: '#A1A1A1',
                     // 500: '#787878',
@@ -62,11 +59,12 @@ module.exports = {
                 },
 
                 primary: {
-                    DEFAULT: '#e4ff3c',
+                    DEFAULT: '#E74C3C',
+                    hover: '#D64535',
                 },
 
-                body: '#000000',
-                text: '#ffffff',
+                body: '#ffffff',
+                text: '#000000',
             },
             maxWidth: {
                 'xs': '480px',
@@ -79,6 +77,20 @@ module.exports = {
             lineHeight: {
                 normal: '1.4',
                 tight: '1.2',
+            },
+            spacing: {
+                13: '3.25rem', // 52px
+                15: '3.75rem', // 60px
+                17: '4.25rem', // 68px
+                18: '4.5rem', // 72px
+                22: '5.5rem', // 88px
+
+                78: '19.5em', // 312px
+
+                boxSpace: 'var(--box-space)',
+                pageSpace: 'var(--page-space)',
+
+                headerHeight: 'var(--header-height)',
             },
         },
     },

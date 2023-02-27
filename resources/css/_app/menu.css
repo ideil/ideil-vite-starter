@@ -11,19 +11,12 @@
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: theme(colors.black);
+    background-color: theme(colors.body);
+    color: theme(colors.text);
     opacity: 0;
     visibility: hidden;
     transition-property: opacity,
         visibility;
-
-    .is-menu-open & {
-
-        @screen lg-max {
-            opacity: 1;
-            visibility: visible;
-        }
-    }
 
     .c-lines {
         opacity: .05;
@@ -47,11 +40,11 @@
         &__list {
             flex-direction: column;
             align-items: center;
-            margin: -16px;
+            margin: calc(theme(spacing.4) * -1);
         }
 
         &__link {
-            padding: 16px;
+            padding: theme(spacing.4);
         }
     }
 
@@ -59,16 +52,16 @@
         margin-top: auto;
 
         .i-icon {
-            width: 24px;
-            height: 24px;
+            width: theme(spacing.6);
+            height: theme(spacing.6);
         }
 
         &__list {
-            margin: -20px;
+            margin: calc(theme(spacing.5) * -1);
         }
 
         &__link {
-            padding: 20px;
+            padding: theme(spacing.5);
         }
     }
 
@@ -86,11 +79,22 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding-top: 60px;
-            padding-bottom: 44px;
+            padding-top: theme(spacing.15);
+            padding-bottom: theme(spacing.11);
+        }
+    }
+}
+
+.is-menu-open {
+
+    .c-menu {
+
+        @screen lg-max {
+            opacity: 1;
+            visibility: visible;
         }
 
-        .is-menu-open & {
+        &__inner {
             transform: none;
             overflow-y: scroll;
         }

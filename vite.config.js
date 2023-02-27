@@ -59,6 +59,8 @@ export default defineConfig({
         alias: {
             '@src': path.resolve(`${ config.rootDir }/js@src`),
             '@pub': path.resolve(`${ config.rootDir }/js@pub`),
+            '@data': path.resolve(`${ config.rootDir }/data`),
+            '@img': path.resolve(`${ config.rootDir }/img`),
         },
     },
     plugins: [

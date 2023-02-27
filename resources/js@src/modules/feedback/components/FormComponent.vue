@@ -4,7 +4,7 @@ import { defineComponent, ref, toRefs, reactive } from 'vue';
 import PhoneField from '@src/components/form/PhoneField.vue';
 import TextareaField from '@src/components/form/TextareaField.vue';
 import TextField from '@src/components/form/TextField.vue';
-import staticAsset from '@src/helpers/staticAsset';
+import Icon from '@src/components/IconComponent.vue';
 
 export default defineComponent({
     name: 'FeedbackForm',
@@ -12,6 +12,7 @@ export default defineComponent({
         TextField,
         PhoneField,
         TextareaField,
+        Icon,
     },
     props: {
         url: {
@@ -99,7 +100,6 @@ export default defineComponent({
         return {
             isSending,
             errors,
-            staticAsset,
             ...toRefs(form),
             submit,
         };
@@ -161,6 +161,11 @@ export default defineComponent({
             name="comment"
             label="Ваше запитання"
             @change="delete errors['comment']"
+        />
+
+        <Icon
+            id="facebook"
+            folder="socials"
         />
 
         <div class="f-submit">

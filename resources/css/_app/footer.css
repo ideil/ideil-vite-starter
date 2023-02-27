@@ -1,23 +1,23 @@
 .c-footer {
-    margin-top: 60px;
-    background-color: theme(colors.primary.DEFAULT);
-    color: theme(colors.black);
-    padding: 20px 0;
+    margin-top: theme(spacing.15);
+    background-color: theme(colors.text);
+    color: theme(colors.body);
+    padding: theme(spacing.5) 0;
     position: relative;
     z-index: 1;
 
     @screen md {
-        padding: 28px 0;
-        margin-top: 80px;
+        padding: theme(spacing.8) 0;
+        margin-top: theme(spacing.20);
     }
 
     &__top {
         display: grid;
-        gap: 20px;
-        margin-bottom: 40px;
+        gap: theme(spacing.5);
+        margin-bottom: theme(spacing.10);
 
         @screen md {
-            margin-bottom: 20px;
+            margin-bottom: theme(spacing.5);
             justify-content: space-between;
             grid-template-columns: repeat(2, minmax(0, 1fr));
         }
@@ -29,10 +29,10 @@
 
     &__bottom {
         display: grid;
-        gap: 40px;
+        gap: theme(spacing.10);
 
         @screen md {
-            gap: 20px;
+            gap: theme(spacing.5);
             align-items: flex-end;
             justify-content: space-between;
             grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -54,7 +54,7 @@
 
     &__privacy {
         width: 100%;
-        margin-bottom: 28px;
+        margin-bottom: theme(spacing.7);
 
         @screen sm {
             width: auto;
@@ -67,7 +67,7 @@
     }
 
     &__copy {
-        padding-right: 20px;
+        padding-right: theme(spacing.5);
     }
 
     &__contacts {
@@ -80,7 +80,7 @@
         }
 
         dd {
-            margin-bottom: 16px;
+            margin-bottom: theme(spacing.4);
         }
 
         &-lg {
