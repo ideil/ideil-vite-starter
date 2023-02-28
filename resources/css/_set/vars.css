@@ -11,6 +11,14 @@
 
     --col-gap: theme(spacing.8);
 
+    --input-color: currentColor;
+    --input-border-color: currentColor;
+    --input-border-active-color: theme(colors.primary.DEFAULT);
+    --input-height: theme(spacing.13);
+    --input-border-width: 1px;
+    --input-spacing: theme(spacing.5) 0 0;
+    --input-font-size: theme(fontSize.base);
+
     @screen md {
         --box-space: theme(spacing.8);
     }

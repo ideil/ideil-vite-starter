@@ -1,21 +1,21 @@
 .f-check {
     display: block;
-    padding-left: 30px;
-    min-height: 22px;
-    font-size: 14px;
+    padding-left: theme(spacing.8);
+    min-height: theme(spacing.5);
+    font-size: theme(fontSize.xs);
 
     & + .f-check {
-        margin-top: 15px;
+        margin-top: theme(spacing.4);
     }
 
     &-input {
-        width: 20px;
-        height: 20px;
-        border: 1px solid theme(colors.black);
-        background-color: theme(colors.white);
+        width: theme(spacing.5);
+        height: theme(spacing.5);
+        border: 1px solid var(--input-border-color);
+        background-color: transparent;
         float: left;
-        border-radius: 5px;
-        margin-left: -28px;
+        border-radius: theme(borderRadius.none);
+        margin-left: calc(theme(spacing.8) * -1);
         appearance: none;
         transition-property: border-color,
             background-color;
@@ -23,15 +23,15 @@
         &:disabled {
             opacity: .5;
             pointer-events: none;
-            border-color: theme(colors.primary.DEFAULT);
+            border-color: var(--input-border-active-color);
         }
 
         &:hover {
-            border-color: theme(colors.primary.DEFAULT);
+            border-color: var(--input-border-active-color);
         }
 
         &:checked {
-            border-color: theme(colors.primary.DEFAULT);
+            border-color: var(--input-border-active-color);
         }
 
         &[type=radio] {
@@ -45,7 +45,7 @@
         &[type=checkbox] {
 
             &:checked {
-                background-color: theme(colors.primary.DEFAULT);
+                background-color: var(--input-border-active-color);
                 background-image: url("data:image/svg+xml,%3Csvg width='13' height='10' viewBox='0 0 13 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M12.8536 1.35359L5.00004 9.20714L0.146484 4.35359L0.853591 3.64648L5.00004 7.79293L12.1465 0.646484L12.8536 1.35359Z' fill='white'/%3E%3C/svg%3E%0A");
                 background-size: 14px;
                 background-position: center bottom 4px;
@@ -55,8 +55,8 @@
     }
 
     &-label {
-        padding-top: 2px;
-        line-height: 1.2;
+        padding-top: theme(spacing[0.5]);
+        line-height: theme(lineHeight.tight);
         display: block;
         max-width: 258px;
         cursor: pointer;

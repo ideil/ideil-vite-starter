@@ -9,15 +9,15 @@
     text-align: left;
     appearance: none;
     width: 100%;
-    padding: theme(spacing.5) 0 0;
-    height: 52px;
-    color: currentColor;
-    font-size: theme(fontSize.base);
+    padding: var(--input-spacing);
+    height: var(--input-height);
+    color: var(--input-color);
+    font-size: var(--input-font-size);
     font-weight: 700;
     background: transparent;
     border: none;
-    border-bottom: 1px solid;
-    border-color: currentColor;
+    border: none;
+    border-bottom: var(--input-border-width) solid var(--input-border-color);
     box-shadow: none;
     outline: none;
     transition-property: border-color, outline;
@@ -35,12 +35,13 @@
 
     &:-webkit-autofill {
         background-color: transparent;
-        -webkit-text-fill-color: theme(colors.white);
-        box-shadow: 0 0 0 60px color(theme(colors.body) lightness(+10%)) inset !important;
+        -webkit-text-fill-color: theme(colors.text);
+        box-shadow: 0 0 0 60px theme(colors.gray.100) inset !important;
     }
 
-    &:focus {
-        border-color: theme(colors.primary.DEFAULT);
+    &:focus,
+    &:hover {
+        border-color: var(--input-border-active-color);
     }
 
     &:focus,
@@ -64,7 +65,7 @@
 .f-label {
     color: currentColor;
     opacity: .6;
-    font-size: theme(fontSize.md);
+    font-size: var(--input-font-size);
     line-height: 1;
     display: block;
     position: absolute;
@@ -72,13 +73,14 @@
     top: 0;
     display: flex;
     align-items: center;
-    height: 51px;
+    height: var(--input-height);
     pointer-events: none;
     transition-property: height, font-size;
 
     .f-input:focus ~ &,
-    .f-input.is-filled ~ &,
-    .f-input:not(:placeholder-shown).f-input:not(:focus) ~ & {
+    .f-input:not(:placeholder-shown).f-input:not(:focus) ~ &,
+    .is-filled ~ &,
+    .f-select.is-active ~ & {
         font-size: theme(fontSize.xs);
         height: theme(spacing.5);
     }

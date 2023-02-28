@@ -91,6 +91,8 @@ module.exports = {
                 pageSpace: 'var(--page-space)',
 
                 headerHeight: 'var(--header-height)',
+
+                inputHeight: 'var(--input-height)',
             },
         },
     },

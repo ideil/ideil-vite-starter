@@ -1,0 +1,74 @@
+<script>
+import { defineComponent, computed } from 'vue';
+
+export default defineComponent({
+    name: 'CheckField',
+    inheritAttrs: false,
+    props: {
+        modelValue: {
+            type: [ String, Number, null ],
+            required: true,
+        },
+        error: {
+            type: [ String, Array ],
+            required: false,
+            default: '',
+        },
+        id: {
+            type: String,
+            required: true,
+        },
+        label: {
+            type: String,
+            required: false,
+            default: '',
+        },
+        placeholder: {
+            type: String,
+            default: ' ',
+        },
+    },
+    emits: [ 'update:modelValue' ],
+    setup(props, { emit }) {
+        const value = computed({
+            get() {
+                return props.modelValue;
+            },
+            set(value) {
+                emit('update:modelValue', value);
+            },
+        });
+
+        return {
+            value,
+        };
+    },
+});
+</script>
+
+<template>
+    <div class="f-group">
+        <div class="f-check">
+            <input
+                :id="id"
+                v-model="value"
+                v-bind="$attrs"
+                :placeholder="placeholder"
+                type="checkbox"
+                class="f-check-input"
+                :class="{ 'has-error': error }"
+            >
+            <label
+                :for="id"
+                class="f-check-label"
+            >{{ label }}</label>
+        </div>
+
+        <div
+            v-if="error"
+            class="f-info f-info--error"
+        >
+            {{ error[0] }}
+        </div>
+    </div>
+</template>

@@ -1,7 +1,9 @@
 <script>
 import { defineComponent, ref, toRefs, reactive } from 'vue';
 
+import CheckField from '@src/components/form/CheckField.vue';
 import PhoneField from '@src/components/form/PhoneField.vue';
+import SelectField from '@src/components/form/SelectField.vue';
 import TextareaField from '@src/components/form/TextareaField.vue';
 import TextField from '@src/components/form/TextField.vue';
 import Icon from '@src/components/IconComponent.vue';
@@ -13,6 +15,8 @@ export default defineComponent({
         PhoneField,
         TextareaField,
         Icon,
+        CheckField,
+        SelectField,
     },
     props: {
         url: {
@@ -29,6 +33,10 @@ export default defineComponent({
             surname: null,
             email: null,
             phone: null,
+            type1: null,
+            type2: null,
+            type3: null,
+            agree: false,
             comment: null,
         };
         const isSending = ref(false);
@@ -161,6 +169,85 @@ export default defineComponent({
             name="comment"
             label="Ваше запитання"
             @change="delete errors['comment']"
+        />
+        <SelectField
+            id="feedbackType1"
+            v-model="type1"
+            :disabled="isSending"
+            :error="errors.type1"
+            name="type1"
+            :can-clear="false"
+            :can-deselect="false"
+            :options="[
+                { value: '1', label: 'Опція 1' },
+                { value: '2', label: 'Опція 2' },
+                { value: '3', label: 'Опція 3' },
+                { value: '4', label: 'Опція 4' },
+                { value: '5', label: 'Опція 5' },
+                { value: '6', label: 'Опція 6' },
+                { value: '7', label: 'Опція 7' },
+                { value: '8', label: 'Опція 8' },
+                { value: '9', label: 'Опція 9' },
+            ]"
+            :required="true"
+            label="Тип запитання"
+            @change="delete errors['type1']"
+        />
+        <SelectField
+            id="feedbackType2"
+            v-model="type2"
+            :disabled="isSending"
+            :error="errors.type2"
+            name="type2"
+            mode="multiple"
+            :close-on-select="false"
+            :options="[
+                { value: '1', label: 'Опція 1' },
+                { value: '2', label: 'Опція 2' },
+                { value: '3', label: 'Опція 3' },
+                { value: '4', label: 'Опція 4' },
+                { value: '5', label: 'Опція 5' },
+                { value: '6', label: 'Опція 6' },
+                { value: '7', label: 'Опція 7' },
+                { value: '8', label: 'Опція 8' },
+                { value: '9', label: 'Опція 9' },
+            ]"
+            :required="true"
+            label="Тип запитання"
+            @change="delete errors['type2']"
+        />
+        <SelectField
+            id="feedbackType3"
+            v-model="type3"
+            :disabled="isSending"
+            :error="errors.type3"
+            name="type3"
+            mode="tags"
+            :close-on-select="false"
+            :options="[
+                { value: '1', label: 'Опція 1' },
+                { value: '2', label: 'Опція 2' },
+                { value: '3', label: 'Опція 3' },
+                { value: '4', label: 'Опція 4' },
+                { value: '5', label: 'Опція 5' },
+                { value: '6', label: 'Опція 6' },
+                { value: '7', label: 'Опція 7' },
+                { value: '8', label: 'Опція 8' },
+                { value: '9', label: 'Опція 9' },
+            ]"
+            :required="true"
+            label="Тип запитання"
+            @change="delete errors['type3']"
+        />
+        <CheckField
+            id="feedbackAgree"
+            v-model="agree"
+            :disabled="isSending"
+            :error="errors.agree"
+            name="agree"
+            :required="true"
+            label="Я погоджуюсь з умовами обробки персональних даних"
+            @change="delete errors['agree']"
         />
 
         <Icon

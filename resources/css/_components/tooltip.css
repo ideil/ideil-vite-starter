@@ -12,7 +12,7 @@
     z-index: theme(zIndex.50);
     padding: theme(spacing.4);
     line-height: theme(lineHeight.tight);
-    border-radius: theme(borderRadius.DEFAULT);
+    border-radius: theme(borderRadius.none);
     transition-property: opacity,
         visibility;
     opacity: 0;
