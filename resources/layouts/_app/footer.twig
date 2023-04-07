@@ -1,7 +1,9 @@
 <footer class="c-footer">
-    <div class="l-box c-footer__inner">
+    <div class="l-container c-footer__inner">
         <div class="c-footer__top">
-            {% include "../_components/logo.twig" %}
+            {% include "./logo.twig" with {
+                class: 'c-footer__logo',
+            } %}
 
             <dl class="c-footer__contacts">
                 <dt class="sr-only">Email</dt>
@@ -17,7 +19,7 @@
 
         <div class="c-footer__bottom">
             <div class="c-footer__copy">© {{ "now"|date("Y") }} <span class="whitespace-nowrap md:sr-only lg:not-sr-only">Всі права захищені</span></div>
-            {% include "../_components/ideil.twig" %}
+            {% include "./ideil.twig" %}
         </div>
     </div>
 </footer>

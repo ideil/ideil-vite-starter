@@ -1,5 +1,6 @@
 import { sync as globSync } from 'fast-glob';
 import fs from 'fs-extra';
+import merge from 'merge';
 import path from 'path';
 import pretty from 'pretty';
 import type { ViteDevServer, UserConfig, HmrContext } from 'vite';
@@ -10,10 +11,19 @@ import config from './config';
 type Pages = { [entryAlias: string]: string };
 
 function getData(): any {
-    const data = {};
+    let data = {};
 
     globSync(path.resolve(`${ config.rootDir }/${ config.dataDir }/**/*.json`)).forEach(filePath => {
-        (data as any)[path.parse(filePath).name] = JSON.parse(fs.readFileSync(filePath).toString());
+        const pathParse = path.parse(filePath);
+        const dataPath = path.resolve(`${ config.rootDir }/${ config.dataDir }`);
+        const foldersPath = (pathParse.dir + `/${ pathParse.name }`).replace(dataPath, '').replace(/^\//, '');
+        const folders = foldersPath.split('/');
+        const newData = folders.reverse().reduce((prev, current) => (
+            { [current]: { ...prev } }
+        ), JSON.parse(fs.readFileSync(filePath).toString()));
+
+
+        data = merge.recursive(data, newData);
     });
 
     return data;
@@ -87,7 +97,7 @@ export default function twigHtmlPlugin() {
                     server.ws.send({ type: 'full-reload' });
                 }
             },
-            config(config: UserConfig, { command }: {command: string}) {
+            config(config: UserConfig, { command }: { command: string }) {
                 if (command === 'build') {
                     pages = createPages();
 

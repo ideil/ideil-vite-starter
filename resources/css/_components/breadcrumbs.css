@@ -1,9 +1,9 @@
 .c-breadcrumbs {
     position: relative;
     display: flex;
-    font-size: 14px;
+    font-size: theme(fontSize.xs);
     line-height: 1;
-    padding-top: 10px;
+    padding-top: theme(spacing[2.5]);
     margin-bottom: var(--page-space);
 
     &__list {
@@ -20,7 +20,7 @@
 
             &:after {
                 content: '/';
-                margin: 0 theme(spacing.7);
+                margin: 0 theme(spacing.3);
             }
         }
 

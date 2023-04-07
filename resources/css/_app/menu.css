@@ -18,53 +18,6 @@
     transition-property: opacity,
         visibility;
 
-    .c-lines {
-        opacity: .05;
-
-        &__inner {
-            &::before {
-                border-right: none;
-            }
-            &::after {
-                border-left: none;
-            }
-        }
-    }
-
-    .c-nav {
-        font-size: 26px;
-        font-weight: 400;
-        margin: auto;
-        line-height: 1;
-
-        &__list {
-            flex-direction: column;
-            align-items: center;
-            margin: calc(theme(spacing.4) * -1);
-        }
-
-        &__link {
-            padding: theme(spacing.4);
-        }
-    }
-
-    .c-socials {
-        margin-top: auto;
-
-        .i-icon {
-            width: theme(spacing.6);
-            height: theme(spacing.6);
-        }
-
-        &__list {
-            margin: calc(theme(spacing.5) * -1);
-        }
-
-        &__link {
-            padding: theme(spacing.5);
-        }
-    }
-
     &__inner {
         overflow: hidden;
         max-height: 100%;
@@ -75,12 +28,48 @@
         transform: translateY(-20px);
         transition-property: transform;
 
-        > .l-box {
+        > .l-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             padding-top: theme(spacing.15);
             padding-bottom: theme(spacing.11);
+        }
+    }
+
+    &__nav {
+        font-size: theme(spacing.6);
+        font-weight: 400;
+        margin: auto;
+        line-height: 1;
+
+        .c-nav {
+
+            &__list {
+                flex-direction: column;
+                align-items: center;
+                margin: calc(theme(spacing.4) * -1);
+            }
+
+            &__link {
+                padding: theme(spacing.4);
+            }
+        }
+    }
+
+    &__socials {
+        --icon-size: theme(spacing.6);
+        margin-top: auto;
+
+        .c-socials {
+
+            &__list {
+                margin: calc(theme(spacing.5) * -1);
+            }
+
+            &__link {
+                padding: theme(spacing.5);
+            }
         }
     }
 }

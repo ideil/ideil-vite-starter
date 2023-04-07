@@ -1,6 +1,6 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
-const config = require('./resources/data/config.json');
+const screens = require('./resources/data/config/screens.json');
 
 module.exports = {
     content: [
@@ -20,7 +20,7 @@ module.exports = {
         transitionDuration: {
             base: '.3s',
         },
-        screens: config.screens,
+        screens: screens,
         fontSize: {
             'DEFAULT': '1rem', // 16px
             '2xs': '.75rem', // 12px
@@ -28,19 +28,34 @@ module.exports = {
             'sm': '1rem', // 16px
             'base': '1rem', // 16px
             'md': '1.125rem', // 18px
-            'lg': '1.75rem', // 28px
+            'lg': '1.25rem', // 20px
+            '2lg': '1.375rem', // 22px
 
-            'xl': '2rem', // 32px
-            '2xl': '2.25rem', // 36px
-            '3xl': '2.5rem', // 40px
-            '4xl': '2.75rem', // 44px
-            '5xl': '3rem', // 48px
-            '6xl': '3.25rem', // 52px
-            '7xl': '3.5rem', // 56px
-            '8xl': '4rem', // 64px
-            '9xl': '5rem', // 80px
-            '10xl': '6.25rem', // 100px
-            '11xl': '7.5rem', // 120px
+            'xl': '1.5rem', // 24px
+            '2xl': '1.75rem', // 28px
+
+            '4': '1rem', // 16px
+            '4.5': '1.125rem', // 18px
+            '5': '1.25rem', // 20px
+            '5.5': '1.375rem', // 22px
+            '6': '1.5rem', // 24px
+            '7': '1.75rem', // 28px
+            '8': '2rem', // 32px
+            '9': '2.25rem', // 36px
+            '10': '2.5rem', // 40px
+            '11': '2.75rem', // 44px
+            '12': '3rem', // 48px
+            '14': '3.5rem', // 56px
+            '15': '3.75rem', // 60px
+            '35': '8.75rem', // 140px
+            '50': '12.5rem', // 200px
+
+            '14px': '14px', // 14px
+            '16px': '16px', // 16px
+            '18px': '18px', // 18px
+            '22px': '22px', // 22px
+            '24px': '24px', // 24px
+            '28px': '28px', // 28px
         },
         extend: {
             colors: {
@@ -67,12 +82,12 @@ module.exports = {
                 text: '#000000',
             },
             maxWidth: {
-                'xs': '480px',
-                'sm': '576px',
-                'md': '768px',
-                'lg': '992px',
-                'xl': '1260px',
-                '2xl': '1440px',
+                'xs': screens.xs.min,
+                'sm': screens.sm.min,
+                'md': screens.md.min,
+                'lg': screens.lg.min,
+                'xl': screens.xl.min,
+                '2xl': screens['2xl'].min,
             },
             lineHeight: {
                 normal: '1.4',
@@ -85,7 +100,11 @@ module.exports = {
                 18: '4.5rem', // 72px
                 22: '5.5rem', // 88px
 
+                50: '12.5', // 220px
+
                 78: '19.5em', // 312px
+
+                screen: '100vh',
 
                 boxSpace: 'var(--box-space)',
                 pageSpace: 'var(--page-space)',
@@ -93,6 +112,10 @@ module.exports = {
                 headerHeight: 'var(--header-height)',
 
                 inputHeight: 'var(--input-height)',
+
+                colGap: 'var(--col-gap)',
+
+                containerOffset: 'var(--container-offset)',
             },
         },
     },

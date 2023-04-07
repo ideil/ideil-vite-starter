@@ -1,30 +1,78 @@
 .c-accordion {
     width: 100%;
 
+    &__item {
+    }
+
     &__heading {
         display: flex;
-        position: relative;
+        gap: theme(spacing.5);
+        align-items: center;
         justify-content: space-between;
-        padding: 20px 0;
+        position: relative;
+        padding: theme(spacing.5) 0;
     }
 
     &__title {
-        font-size: theme(fontSize.md);
         font-weight: 700;
-        padding-right: theme(spacing.3);
+        line-height: 1.2;
+        font-size: theme(fontSize.md);
+    }
+
+    &__count {
+        margin-left: theme(spacing.5);
+        display: inline-block;
+        background-color: theme(colors.black / 20%);
+        font-weight: 700;
+        border-radius: 999px;
+        padding: theme(spacing[0.5]) theme(spacing.2);
+
+        @screen md-max {
+            font-size: theme(fontSize.sm);
+        }
+    }
+
+    &__icon {
+        width: var(--icon-size);
+        height: var(--icon-size);
+        position: relative;
+
+        &:before,
+        &:after {
+            content: '';
+            position: absolute;
+            height: theme(spacing[0.5]);
+            width: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: currentColor;
+            transform-origin: center;
+            transition-property: transform;
+            transform: translate(-50%, -50%) rotate(var(--rotation, 0));
+        }
+
+        &:after {
+            --rotation: 90deg;
+        }
+
+        .is-open & {
+
+            &:after {
+                --rotation: 0;
+            }
+        }
     }
 
     &__btn {
+        --icon-size: theme(spacing.4);
         width: theme(spacing.6);
         height: theme(spacing.6);
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-top: 3px;
 
         .i-icon {
-            width: theme(spacing.4);
-            height: theme(spacing.4);
             transition-property: transform;
         }
 

@@ -1,14 +1,18 @@
 .f-btn {
+    --icon-size: theme(spacing.6);
     appearance: none;
     height: theme(spacing.12);
     display: inline-flex;
+    gap: theme(spacing.2);
     vertical-align: middle;
     align-items: center;
     justify-content: center;
-    padding: 0 theme(spacing.8);
+    padding: 0 theme(spacing.5);
     font-size: theme(fontSize.md);
     line-height: theme(lineHeight.tight);
-    font-weight: 700;
+    font-weight: 400;
+    position: relative;
+    max-width: 100%;
     transition-property:
         background-color,
         color,
@@ -17,12 +21,8 @@
 
     &:disabled,
     &.is-disabled {
-        opacity: 0.6;
+        opacity: 0.5;
         pointer-events: none;
-    }
-
-    .i-icon {
-        margin-right: theme(spacing.2);
     }
 
     &--sm {
@@ -74,21 +74,15 @@
         width: 100%;
     }
 
-    &--disabled {
-        pointer-events: none;
-        opacity: 0.2;
+    &--arrow {
+        width: theme(spacing.16);
+        height: theme(spacing.16);
+        padding: theme(spacing[2.5]);
+        border-radius: 999px;
     }
 
-    &--arrow {
-        width: 64px;
-        height: 64px;
-        padding: 10px;
-        border-radius: 999px;
-
-        & .i-icon {
-            margin: 0;
-            width: 18px;
-            height: 18px;
-        }
+    &--disabled {
+        opacity: 0.5;
+        pointer-events: none;
     }
 }

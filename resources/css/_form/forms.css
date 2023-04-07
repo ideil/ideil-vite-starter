@@ -1,7 +1,7 @@
 .f-group {
     position: relative;
     width: 100%;
-    margin-bottom: theme(spacing.7);
+    margin-bottom: theme(spacing.6);
 }
 
 .f-input {
@@ -10,12 +10,11 @@
     appearance: none;
     width: 100%;
     padding: var(--input-spacing);
-    height: var(--input-height);
+    line-height: var(--input-line-height);
     color: var(--input-color);
     font-size: var(--input-font-size);
-    font-weight: 700;
+    font-weight: 400;
     background: transparent;
-    border: none;
     border: none;
     border-bottom: var(--input-border-width) solid var(--input-border-color);
     box-shadow: none;
@@ -37,6 +36,11 @@
         background-color: transparent;
         -webkit-text-fill-color: theme(colors.text);
         box-shadow: 0 0 0 60px theme(colors.gray.100) inset !important;
+
+        .u-invert & {
+            -webkit-text-fill-color: theme(colors.white);
+            box-shadow: 0 0 0 60px theme(colors.gray.900) inset !important;
+        }
     }
 
     &:focus,
@@ -62,6 +66,17 @@
     }
 }
 
+.f-icon {
+    --icon-size: theme(spacing.5);
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: var(--input-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .f-label {
     color: currentColor;
     opacity: .6;
@@ -81,13 +96,13 @@
     .f-input:not(:placeholder-shown).f-input:not(:focus) ~ &,
     .is-filled ~ &,
     .f-select.is-active ~ & {
-        font-size: theme(fontSize.xs);
-        height: theme(spacing.5);
+        font-size: theme(fontSize.2xs);
+        height: theme(spacing.3);
     }
 }
 
 .f-info {
-    font-size: theme(fontSize.xs);
+    font-size: theme(fontSize.2xs);
     display: block;
     line-height: theme(lineHeight.tight);
     margin-top: theme(spacing.1);
@@ -102,9 +117,17 @@
 }
 
 .f-submit {
-    margin-top: theme(spacing.15);
+    margin-top: theme(spacing.8);
 
-    & .f-info {
+    .f-info {
         margin: theme(spacing.5) 0;
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
     }
 }

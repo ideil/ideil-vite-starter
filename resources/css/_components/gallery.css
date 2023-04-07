@@ -1,0 +1,14 @@
+@import 'photoswipe/dist/photoswipe.css';
+
+.pswp {
+    --pswp-bg: theme(colors.black / 90%);
+    --pswp-placeholder-bg: #222;
+    --pswp-root-z-index: 100000;
+    --pswp-preloader-color: theme(colors.black / 40%);
+    --pswp-preloader-color-secondary: theme(colors.white / 40%);
+    /* --pswp-icon-color: currentColor; */
+    /* --pswp-icon-color-secondary: var(--pswp-icon-color); */
+    /* --pswp-icon-stroke-color: var(--pswp-icon-color); */
+    /* --pswp-icon-stroke-width: 2px; */
+    /* --pswp-error-text-color: var(--pswp-icon-color); */
+}

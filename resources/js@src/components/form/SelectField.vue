@@ -36,11 +36,9 @@ export default defineComponent({
     setup(props, { emit }) {
         const value = computed({
             get() {
-                console.log(props.modelValue);
                 return props.modelValue;
             },
             set(value) {
-                console.log(value);
                 emit('update:modelValue', value);
             },
         });

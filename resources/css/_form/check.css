@@ -1,21 +1,22 @@
 .f-check {
     display: block;
-    padding-left: theme(spacing.8);
+    padding-left: theme(spacing.6);
     min-height: theme(spacing.5);
     font-size: theme(fontSize.xs);
 
-    & + .f-check {
+    + .f-check {
         margin-top: theme(spacing.4);
     }
 
     &-input {
-        width: theme(spacing.5);
-        height: theme(spacing.5);
-        border: 1px solid var(--input-border-color);
+        width: theme(spacing.4);
+        height: theme(spacing.4);
+        border: 2px solid var(--input-border-color);
         background-color: transparent;
+        margin-top: theme(spacing.px);
         float: left;
         border-radius: theme(borderRadius.none);
-        margin-left: calc(theme(spacing.8) * -1);
+        margin-left: calc(theme(spacing.6) * -1);
         appearance: none;
         transition-property: border-color,
             background-color;
@@ -38,7 +39,7 @@
             border-radius: 50%;
 
             &:checked {
-                border-width: 5px;
+                border-width: theme(spacing[1.5]);
             }
         }
 
@@ -47,22 +48,22 @@
             &:checked {
                 background-color: var(--input-border-active-color);
                 background-image: url("data:image/svg+xml,%3Csvg width='13' height='10' viewBox='0 0 13 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M12.8536 1.35359L5.00004 9.20714L0.146484 4.35359L0.853591 3.64648L5.00004 7.79293L12.1465 0.646484L12.8536 1.35359Z' fill='white'/%3E%3C/svg%3E%0A");
-                background-size: 14px;
-                background-position: center bottom 4px;
+                background-size: theme(spacing[3.5]);
+                background-position: center bottom theme(spacing[0.5]);
                 background-repeat: no-repeat;
             }
         }
     }
 
     &-label {
-        padding-top: theme(spacing[0.5]);
-        line-height: theme(lineHeight.tight);
+        line-height: theme(lineHeight.normal);
+        font-size: theme(fontSize.xs);
         display: block;
-        max-width: 258px;
+        max-width: 16.5rem;
         cursor: pointer;
         transition-property: color;
 
-        & .f-check-input:disabled ~ & {
+        .f-check-input:disabled ~ & {
             opacity: .5;
             pointer-events: none;
             color: currentColor;

@@ -7,11 +7,13 @@
 }
 
 ::selection {
-    background-color: theme(colors.primary.DEFAULT / 50%);
+    /* background-color: theme(colors.primary.DEFAULT / 50%); */
 }
 
 * {
     scroll-margin: var(--header-height + theme(spacing.5));
+    word-break: keep-all;
+    word-wrap: break-word;
 }
 
 *,
@@ -38,6 +40,10 @@ body {
     -webkit-font-smoothing: antialiased;
     padding-top: var(--header-height, 0);
     text-rendering: optimizeLegibility !important;
+
+    .is-nospace & {
+        padding-top: 0;
+    }
 
     > main {
         flex-grow: 1;

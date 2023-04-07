@@ -2,101 +2,72 @@
     font-weight: 700;
     line-height: 1;
 
-    /* 100px -- hero */
-    /* 80px -- h1 */
-    /* 64px -- h2 */
-    /* 36px -- h3 */
-    /* 18px -- main font */
-
-    /* 120px -- card date */
-    /* 28px -- faq title */
-    /* 44px -- footer mail */
-    /* 52px -- lg card */
-
-    &--xl {
-        font-size: 64px;
-        line-height: .9;
-
-        @screen lg {
-            font-size: 80px;
-        }
-
-        @screen xl {
-            font-size: 96px;
-        }
-
-        @screen 2xl {
-            font-size: 120px;
-            line-height: .85;
-        }
-    }
-
-    &--hero {
-        font-size: 48px;
-
-        @screen lg {
-            font-size: 64px;
-            line-height: .9;
-        }
-
-        @screen xl {
-            font-size: 80px;
-        }
-
-        @screen 2xl {
-            font-size: 100px;
-            line-height: .85;
-        }
-    }
-
-    &--1 {
-        font-size: 48px;
-        line-height: .9;
+    &--h1 {
+        font-size: theme(fontSize.8);
+        line-height: 1.1;
 
         @screen md {
-            font-size: 56px;
-        }
-
-        @screen lg {
-            font-size: 64px;
-            line-height: .9;
+            font-size: theme(fontSize.10);
         }
 
         @screen xl {
-            font-size: 80px;
+            font-size: theme(fontSize.14);
         }
     }
 
-    &--2 {
-        font-size: 36px;
-        line-height: .9;
+    &--h2 {
+        font-size: theme(fontSize.7);
 
         @screen md {
-            font-size: 48px;
-        }
-
-        @screen lg {
-            font-size: 56px;
+            font-size: theme(fontSize.8);
         }
 
         @screen xl {
-            font-size: 64px;
+            font-size: theme(fontSize.10);
         }
     }
 
-    &--3 {
-        font-size: 26px;
-
-        @screen md {
-            font-size: 28px;
-        }
+    &--h3 {
+        font-size: theme(fontSize.6);
 
         @screen lg {
-            font-size: 32px;
+            font-size: theme(fontSize.7);
         }
 
         @screen xl {
-            font-size: 36px;
+            font-size: theme(fontSize.8);
+        }
+    }
+
+    &--h4 {
+        font-size: theme(fontSize.5);
+
+        @screen lg {
+            font-size: theme(fontSize.6);
+        }
+
+        @screen xl {
+            font-size: theme(fontSize.7);
+        }
+    }
+
+    &--h5 {
+        font-size: theme(fontSize.4);
+
+        @screen lg {
+            font-size: theme(fontSize.5);
+        }
+
+        @screen xl {
+            font-size: theme(fontSize.6);
+        }
+    }
+
+    &--lg {
+        font-size: theme(fontSize[4.5]);
+
+        @screen xl {
+            font-size: theme(fontSize[5.5]);
         }
     }
 }

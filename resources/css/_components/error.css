@@ -15,7 +15,7 @@
     .c-logo {
         margin: auto;
         margin-bottom: theme(spacing.10);
-        width: 200px;
+        width: theme(spacing.50);
 
         @screen md {
             margin-bottom: theme(spacing.16);
@@ -29,10 +29,10 @@
 
     &__code {
         line-height: theme(lineHeight.none);
-        font-size: 140px;
+        font-size: theme(fontSize.35);
 
         @screen sm {
-            font-size: 200px;
+            font-size: theme(fontSize.50);
         }
     }
 

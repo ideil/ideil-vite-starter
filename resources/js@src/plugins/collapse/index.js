@@ -1,25 +1,31 @@
-const collapse = el => {
-    const target = document.querySelector(el.dataset.collapseTarget);
-    const content = target.querySelector('[data-collapse-content]');
+const collapse = toggleEl => {
+    const targetEl = document.querySelector(toggleEl.dataset.collapseTarget);
+    const contentEl = targetEl.querySelector('[data-collapse-content]');
+    const itemEl = targetEl.closest('[data-collapse-item]');
+    const parentEl = targetEl.closest('[data-collapse-parent]');
     let isOpen = isOpenCollapse();
 
-    el.addEventListener('click', () => {
+    toggleEl.addEventListener('click', () => {
         isOpen = isOpenCollapse();
 
         if (!isOpen) {
-            target.style.height = content.offsetHeight + 'px';
+            targetEl.style.height = contentEl.offsetHeight + 'px';
         }
 
-        target.classList.add('is-collapsing');
-        target.classList.remove('c-collapse', 'is-shown');
+        targetEl.classList.add('is-collapsing');
+        targetEl.classList.remove('c-collapse', 'is-shown');
 
         if (isOpen) {
-            target.style.height = content.offsetHeight + 'px';
-            el.classList.add('is-open');
+            targetEl.style.height = contentEl.offsetHeight + 'px';
+
+            toggleEl.classList.add('is-open');
+            itemEl.classList.add('is-open');
         } else {
-            el.classList.remove('is-open');
+            toggleEl.classList.remove('is-open');
+            itemEl.classList.remove('is-open');
+
             setTimeout(() => {
-                target.style.height = '';
+                targetEl.style.height = '';
             });
         }
 
@@ -27,16 +33,16 @@ const collapse = el => {
     });
 
     function transitionEnd() {
-        target.classList.remove('is-collapsing');
-        target.classList.add('c-collapse');
+        targetEl.classList.remove('is-collapsing');
+        targetEl.classList.add('c-collapse');
 
         if (isOpen) {
-            target.classList.add('is-shown');
+            targetEl.classList.add('is-shown');
         }
     }
 
     function isOpenCollapse() {
-        return target.classList.contains('c-collapse') && !target.classList.contains('is-shown');
+        return targetEl.classList.contains('c-collapse') && !targetEl.classList.contains('is-shown');
     }
 };
 

@@ -1,0 +1,18 @@
+.c-nav {
+    font-weight: 700;
+    white-space: nowrap;
+
+    &__list {
+        display: inline-flex;
+        flex-wrap: wrap;
+        row-gap: theme(spacing.2);
+        column-gap: var(--col-gap);
+        margin: calc(theme(spacing[2.5]) * -1) 0;
+    }
+
+    &__link {
+        padding: theme(spacing[2.5]) 0 theme(spacing.2);
+        border-bottom: theme(spacing[0.5]) solid transparent;
+        display: inline-block;
+    }
+}

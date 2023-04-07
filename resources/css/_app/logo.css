@@ -6,7 +6,8 @@
         fill: currentColor;
     }
 
-    svg {
+    svg,
+    img {
         width: 100%;
         height: auto;
     }

@@ -1,5 +1,8 @@
 (async () => {
-    const toggleEls = document.querySelectorAll('[data-tooltip-target]');
+    const toggleEls = [
+        ...document.querySelectorAll('[data-tooltip-target]'),
+        ...document.querySelectorAll('[data-tooltip]'),
+    ];
 
     if (!toggleEls.length) {
         return;
@@ -9,22 +12,15 @@
 
     toggleEls.forEach(el => {
         const tooltipTarget = el.dataset.tooltipTarget;
+        const tooltipEl = document.querySelector(tooltipTarget);
         const placement = el.dataset.tooltipPlacement;
         const type = el.dataset.tooltipType;
-
-        if (!tooltipTarget) {
-            return;
-        }
-
-        const tooltipEl = document.querySelector(tooltipTarget);
-
-        if (!tooltipEl) {
-            return;
-        }
+        const content = el.dataset.tooltip;
 
         new Tooltip({
             targetEl: el,
             tooltipEl,
+            content,
             placement,
             type,
         });

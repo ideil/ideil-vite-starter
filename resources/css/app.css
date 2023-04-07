@@ -14,6 +14,7 @@
 
 /* Layouts */
 @import '_layouts/box.css';
+@import '_layouts/container.css';
 
 /* Form */
 @import '_form/buttons.css';
@@ -22,12 +23,12 @@
 @import '_form/select.css';
 
 /* Parts */
+@import '_app/ideil.css';
+@import '_app/logo.css';
+@import '_app/nav.css';
+@import '_app/socials.css';
 @import '_app/header.css';
 @import '_app/menu.css';
 @import '_app/footer.css';
 
 /* Components */
-@import '_components/ideil.css';
-@import '_components/logo.css';
-@import '_components/nav.css';
-@import '_components/socials.css';

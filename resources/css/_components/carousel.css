@@ -2,48 +2,44 @@
 
 .c-carousel {
     overflow: hidden;
+    --btn-size: theme(spacing.10);
+    --heading-space: theme(spacing.5);
+
+    @screen lg {
+        --heading-space: theme(spacing.10);
+    }
+
+    @screen xl {
+        --btn-size: theme(spacing.15);
+    }
 
     .splide {
 
         &__slide {
             width: 100%;
             display: flex;
-            margin-right: 20px;
+            margin-right: var(--col-gap);
         }
 
         &__arrows {
-            position: absolute;
-            top: 0;
-            right: 0;
-            transform: translateY(-100%);
             display: flex;
-            justify-content: flex-end;
-            margin-bottom: 16px;
+            gap: theme(spacing.5);
+            margin-bottom: calc(-1 * theme(spacing.2));
         }
 
         &__arrow {
-            width: 52px;
-            height: 52px;
+            width: var(--btn-size);
+            height: var(--btn-size);
             display: grid;
             place-items: center;
+            --icon-size: calc(var(--btn-size) * 0.5);
 
             @screen md-max {
                 display: none;
             }
 
-            @screen xl {
-                width: 64px;
-                height: 64px;
-            }
-
             &:disabled {
                 opacity: .3;
-            }
-
-            svg {
-                width: 24px;
-                height: 24px;
-                fill: currentColor;
             }
 
             &--prev {
@@ -53,10 +49,7 @@
 
         &__track {
             width: 100%;
-
-            @screen lg-max {
-                overflow: visible;
-            }
+            overflow: visible;
         }
 
         &__pagination {
@@ -81,19 +74,20 @@
         }
     }
 
-    &-inner {
+    &__inner {
+        position: relative;
 
-        @screen md {
+        /* @screen md {
             overflow: hidden;
-        }
+        } */
     }
 
-    &-title {
-        margin-bottom: 20px;
-
-        @screen lg {
-            margin-bottom: 28px;
-        }
+    &__heading {
+        margin-bottom: var(--heading-space);
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        justify-content: space-between;
     }
 
     &--4 {
@@ -102,15 +96,15 @@
             width: 95%;
 
             @screen sm {
-                width: calc(50% - 20px * 1 / 2);
+                width: calc(50% - var(--col-gap) * 1 / 2);
             }
 
             @screen lg {
-                width: calc(33.333% - 20px * 2 / 3);
+                width: calc(33.333% - var(--col-gap) * 2 / 3);
             }
 
             @screen xl {
-                width: calc(25% - 20px * 3 / 4);
+                width: calc(25% - var(--col-gap) * 3 / 4);
             }
         }
     }
@@ -121,11 +115,26 @@
             width: 95%;
 
             @screen md {
-                width: calc(50% - 20px * 1 / 2);
+                width: calc(50% - var(--col-gap) * 1 / 2);
             }
 
             @screen xl {
-                width: calc(33.333% - 20px * 2 / 3);
+                width: calc(33.333% - var(--col-gap) * 2 / 3);
+            }
+        }
+    }
+
+    &--2\.5 {
+
+        .splide__slide {
+            width: 90%;
+
+            @screen md {
+                width: calc(60% - var(--col-gap) * 1 / 2);
+            }
+
+            @screen lg {
+                width: calc(40% - var(--col-gap) * 1 / 2);
             }
         }
     }
@@ -136,7 +145,7 @@
             width: 95%;
 
             @screen md {
-                width: calc(50% - 20px * 1 / 2);
+                width: calc(50% - var(--col-gap) * 1 / 2);
             }
         }
     }

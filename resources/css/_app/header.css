@@ -9,36 +9,6 @@
     background-color: theme(colors.body);
     border-bottom: 1px solid theme(colors.gray.200);
 
-    .c-socials {
-        display: none;
-        --icon-size: 22px;
-
-        @screen lg {
-            display: block;
-            margin-left: auto;
-        }
-
-        @screen xl {
-
-            &__list {
-                margin-left: calc(-1 * theme(spacing.4));
-                margin-right: calc(-1 * theme(spacing.4));
-            }
-
-            &__link {
-                padding-left: theme(spacing.4);
-                padding-right: theme(spacing.4);
-            }
-        }
-    }
-
-    .c-nav {
-        display: none;
-
-        @screen lg {
-            display: block;
-        }
-    }
 
     &__inner {
         height: theme(spacing.headerHeight);
@@ -55,7 +25,6 @@
     }
 
     &__logo {
-        width: 75px;
         margin-right: theme(spacing.8);
         align-self: center;
         transition-property: width, padding;
@@ -81,17 +50,17 @@
 
         &-icon {
             display: block;
-            height: 18px;
-            width: 22px;
-            justify-content: space-between;
+            height: theme(spacing.4);
+            width: theme(spacing.6);
             position: relative;
 
             div {
-                height: 2px;
-                width: 22px;
+                height: theme(spacing[0.5]);
+                width: 100%;
                 position: absolute;
                 flex-shrink: 0;
                 left: 0;
+                transform-origin: center;
                 background-color: currentColor;
                 transition-property: width, inset, transform;
 
@@ -109,6 +78,40 @@
             }
         }
     }
+
+    &__nav {
+        display: none;
+
+        @screen lg {
+            display: block;
+        }
+    }
+
+    &__socials {
+        --icon-size: theme(spacing.6);
+        display: none;
+
+        @screen lg {
+            display: block;
+            margin-left: auto;
+        }
+
+        .c-socials {
+
+            @screen xl {
+
+                &__list {
+                    margin-left: calc(-1 * theme(spacing.4));
+                    margin-right: calc(-1 * theme(spacing.4));
+                }
+
+                &__link {
+                    padding-left: theme(spacing.4);
+                    padding-right: theme(spacing.4);
+                }
+            }
+        }
+    }
 }
 
 .is-menu-open {
@@ -122,8 +125,8 @@
                 div {
 
                     &:nth-child(1) {
-                        top: 8px;
-                        transform: rotate(-45deg);
+                        top: calc(50% - 1px);
+                        transform: rotate(45deg);
                     }
 
                     &:nth-child(2) {
@@ -132,8 +135,8 @@
                     }
 
                     &:nth-child(3) {
-                        bottom: 8px;
-                        transform: rotate(45deg);
+                        top: calc(50% - 1px);
+                        transform: rotate(-45deg);
                     }
                 }
             }

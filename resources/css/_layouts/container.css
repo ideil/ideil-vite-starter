@@ -1,5 +1,7 @@
-.l-box {
+.l-container {
     width: 100%;
     padding-left: var(--box-space, 20px);
     padding-right: var(--box-space, 20px);
+    margin: 0 auto;
+    max-width: var(--container-width);
 }

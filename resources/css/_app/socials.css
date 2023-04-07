@@ -1,9 +1,9 @@
 .c-socials {
     --icon-size: theme(spacing.6);
 
-    .i-icon {
-        width: var(--icon-size);
-        height: var(--icon-size);
+    &__title {
+        margin-bottom: theme(spacing.5);
+        font-size: theme(fontSize.xs);
     }
 
     &__list {

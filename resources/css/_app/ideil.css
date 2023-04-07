@@ -1,0 +1,44 @@
+.c-ideil {
+
+    svg,
+    svg > * {
+        fill: currentColor;
+    }
+
+    svg, img {
+        height: theme(spacing.5);
+        width: auto;
+    }
+
+    &__link {
+        position: relative;
+        display: inline-flex;
+        vertical-align: middle;
+        color: currentColor !important;
+
+        &:after {
+            --transition-timing-function: cubic-bezier(.15,.85,.45,1);
+            --transition-duration: .4s;
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background-color: currentColor;
+            transform-origin: right;
+            transform: scaleX(0);
+            transition-property: transform;
+        }
+
+        &:hover {
+
+            &:after {
+                --transition-timing-function: cubic-bezier(.77,0,.18,1);
+                --transition-duration: .6s;
+                transform-origin: left;
+                transform: scaleX(1);
+            }
+        }
+    }
+}

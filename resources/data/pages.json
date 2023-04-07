@@ -1,5 +1,12 @@
 [
     {
+        "html": "test.html",
+        "title": "Test",
+        "slug": "test",
+        "desktop": true,
+        "responsive": true
+    },
+    {
         "html": "home.html",
         "title": "Головна",
         "slug": "home",

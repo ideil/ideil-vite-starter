@@ -28,6 +28,8 @@
     --ms-tag-bg: theme(colors.primary.DEFAULT);
     --ms-tag-radius: theme(borderRadius.none);
 
+    --ms-caret-color: currentColor;
+
     min-height: 0;
     color: currentColor;
     border: none;
@@ -44,6 +46,14 @@
         left: 0;
         right: 0;
         box-shadow: theme(boxShadow.lg);
+        transition-property: transform, opacity, visibility;
+
+        &.is-hidden {
+            transform: translateY(calc(100% - theme(spacing.1)));
+            display: block;
+            opacity: 0;
+            visibility: hidden;
+        }
     }
 
     .multiselect-option {

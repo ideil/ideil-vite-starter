@@ -37,18 +37,37 @@ export default class Tooltip {
         }
     }
 
-    constructor({ targetEl, tooltipEl, placement, type }) {
+    create() {
+        const tooltipEl = document.createElement('div');
+        const tooltipInnerEl = document.createElement('div');
+        tooltipEl.classList.add('c-tooltip');
+        tooltipInnerEl.classList.add('c-tooltip__inner');
+
+        tooltipEl.innerHTML = this.content;
+
+        tooltipEl.appendChild(tooltipInnerEl);
+        document.body.appendChild(tooltipEl);
+
+        return tooltipEl;
+    }
+
+    constructor({ targetEl, tooltipEl, content, placement, type }) {
         this.targetEl = getElement(targetEl);
         this.tooltipEl = getElement(tooltipEl);
         this.placement = placement;
         this.type = type;
+        this.content = content;
 
         if (!this.targetEl) {
-            throw new Error(`Tooltip target element ${ targetEl } doesn't exist.`);
+            throw new Error('Tooltip target doesn\'t exist.');
+        }
+
+        if (!this.tooltipEl && this.content) {
+            this.tooltipEl = this.create();
         }
 
         if (!this.tooltipEl) {
-            throw new Error(`Tooltip element ${ tooltipEl } doesn't exist.`);
+            throw new Error('Tooltip element doesn\'t exist.');
         }
 
         this.onDocumentClick = e => {
