@@ -69,6 +69,7 @@
             <h2 class="mb-5 c-title c-title--h3">Модальне вікно</h2>
 
             <button class="f-btn f-btn--primary f-btn--rounded" data-modal-target="#exampleModal">Приклад</button>
+            <button class="f-btn f-btn--primary f-btn--rounded" data-modal-target="#successModal">Успішна відправка</button>
         </div>
 
         <div class="mb-16">
@@ -123,7 +124,31 @@
         <div class="mb-16">
             <h2 class="mb-5 c-title c-title--h3">Таби</h2>
 
-            {% include "./_components/tabs.twig" %}
+            <div data-tabs-parent>
+                {% set tabs = [
+                    {
+                        title: 'Таб 1',
+                        id: 'tabs1',
+                    },
+                    {
+                        title: 'Таб 2',
+                        id: 'tabs2',
+                    },
+                    {
+                        title: 'Таб 3',
+                        count: 10,
+                        id: 'tabs3',
+                    },
+                ] %}
+
+                {% include "./_components/tabs.twig" with { links: tabs, class: 'mb-5' } %}
+
+                {% for item in tabs %}
+                    <div class="c-tabs__pane {{ loop.first ? 'is-shown' }}" id="{{ item.id }}" data-tabs-pane>
+                        {{ item.title }}
+                    </div>
+                {% endfor %}
+            </div>
         </div>
 
         <div class="mb-16">

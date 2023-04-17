@@ -27,7 +27,7 @@
     }
 
     &__link {
-        background-color: theme(colors.white);
+        background-color: theme(colors.gray.100);
         color: theme(colors.black);
         display: flex;
         font-weight: 700;
@@ -42,7 +42,8 @@
             color: theme(colors.text);
         }
 
-        .c-tabs__item.is-active & {
+        &.is-active {
+            pointer-events: none;
             background-color: theme(colors.primary.DEFAULT);
             color: theme(colors.white);
         }
@@ -51,5 +52,12 @@
     &__count {
         opacity: .6;
         font-weight: 400;
+    }
+
+    &__pane {
+
+        &:not(.is-shown) {
+            display: none;
+        }
     }
 }

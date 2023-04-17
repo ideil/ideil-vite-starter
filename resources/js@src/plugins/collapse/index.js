@@ -1,48 +1,83 @@
 const collapse = toggleEl => {
-    const targetEl = document.querySelector(toggleEl.dataset.collapseTarget);
-    const contentEl = targetEl.querySelector('[data-collapse-content]');
-    const itemEl = targetEl.closest('[data-collapse-item]');
-    const parentEl = targetEl.closest('[data-collapse-parent]');
-    let isOpen = isOpenCollapse();
+    const target = toggleEl.dataset.collapseTarget;
+
+    if (!target) {
+        return;
+    }
+
+    const paneEl = document.querySelector(`[data-collapse-pane]${ target }`);
+    const contentEl = paneEl.querySelector('[data-collapse-content]');
+    const itemEl = paneEl.closest('[data-collapse-item]');
+    let isOpen = false;
+    let isCollapsing = false;
+    let transitionFunction = null;
 
     toggleEl.addEventListener('click', () => {
-        isOpen = isOpenCollapse();
-
-        if (!isOpen) {
-            targetEl.style.height = contentEl.offsetHeight + 'px';
-        }
-
-        targetEl.classList.add('is-collapsing');
-        targetEl.classList.remove('c-collapse', 'is-shown');
+        isOpen = isCollapseOpen();
 
         if (isOpen) {
-            targetEl.style.height = contentEl.offsetHeight + 'px';
-
-            toggleEl.classList.add('is-open');
-            itemEl.classList.add('is-open');
+            close();
         } else {
+            open();
+        }
+    });
+
+    function open() {
+        if (isCollapsing) {
+            return;
+        }
+
+        if (transitionFunction) {
+            paneEl.removeEventListener('transitionend', transitionFunction);
+        }
+
+        transitionFunction = () => {
+            paneEl.classList.remove('is-collapsing');
+            isCollapsing = false;
+            paneEl.removeEventListener('transitionend', transitionFunction);
+        };
+
+        isCollapsing = true;
+        paneEl.classList.add('is-collapsing');
+        paneEl.classList.add('is-shown');
+        toggleEl.classList.add('is-open');
+        itemEl.classList.add('is-open');
+        paneEl.style.height = contentEl.offsetHeight + 'px';
+
+        paneEl.addEventListener('transitionend', transitionFunction);
+    }
+
+    function close() {
+        if (isCollapsing) {
+            return;
+        }
+
+        if (transitionFunction) {
+            paneEl.removeEventListener('transitionend', transitionFunction);
+        }
+
+        transitionFunction = () => {
+            paneEl.classList.remove('is-shown');
+            paneEl.classList.remove('is-collapsing');
+            isCollapsing = false;
+            paneEl.removeEventListener('transitionend', transitionFunction);
+        };
+
+        isCollapsing = true;
+        paneEl.style.height = contentEl.offsetHeight + 'px';
+
+        setTimeout(() => {
+            paneEl.classList.add('is-collapsing');
+            paneEl.style.height = '';
             toggleEl.classList.remove('is-open');
             itemEl.classList.remove('is-open');
 
-            setTimeout(() => {
-                targetEl.style.height = '';
-            });
-        }
-
-        setTimeout(transitionEnd, 350);
-    });
-
-    function transitionEnd() {
-        targetEl.classList.remove('is-collapsing');
-        targetEl.classList.add('c-collapse');
-
-        if (isOpen) {
-            targetEl.classList.add('is-shown');
-        }
+            paneEl.addEventListener('transitionend', transitionFunction);
+        });
     }
 
-    function isOpenCollapse() {
-        return targetEl.classList.contains('c-collapse') && !targetEl.classList.contains('is-shown');
+    function isCollapseOpen() {
+        return toggleEl.classList.contains('is-open');
     }
 };
 

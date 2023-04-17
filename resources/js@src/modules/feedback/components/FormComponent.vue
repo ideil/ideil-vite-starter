@@ -4,6 +4,7 @@ import { defineComponent, ref, toRefs, reactive } from 'vue';
 import CheckboxField from '@src/components/form/CheckboxField.vue';
 import CheckField from '@src/components/form/CheckField.vue';
 import CounterField from '@src/components/form/CounterField.vue';
+import DateField from '@src/components/form/DateField.vue';
 import PhoneField from '@src/components/form/PhoneField.vue';
 import SelectField from '@src/components/form/SelectField.vue';
 import TextareaField from '@src/components/form/TextareaField.vue';
@@ -17,10 +18,11 @@ export default defineComponent({
         PhoneField,
         CounterField,
         TextareaField,
-        Icon,
+        DateField,
         CheckField,
         CheckboxField,
         SelectField,
+        Icon,
     },
     props: {
         url: {
@@ -40,6 +42,7 @@ export default defineComponent({
             type1: null,
             type2: null,
             type3: null,
+            date: null,
             counter: 1,
             delivery: false,
             agree: false,
@@ -259,6 +262,18 @@ export default defineComponent({
                 :required="true"
                 label="Тип запитання"
                 @change="delete errors['type3']"
+            />
+        </div>
+        <div class="f-group">
+            <DateField
+                id="feedbackDate"
+                v-model="date"
+                :disabled="isSending"
+                :error="errors.date"
+                name="date"
+                :required="true"
+                label="Дата"
+                @change="delete errors['date']"
             />
         </div>
         <div class="f-group">

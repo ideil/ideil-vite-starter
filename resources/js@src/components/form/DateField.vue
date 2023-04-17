@@ -1,6 +1,13 @@
 <script>
 // import { vMaska } from 'maska';
+import { setupCalendar, DatePicker } from 'v-calendar';
 import { defineComponent, computed, ref } from 'vue';
+
+// setupCalendar({
+//     masks: {
+//         weekdays: 'WW',
+//     },
+// });
 
 import IconComponent from '../IconComponent.vue';
 
@@ -8,6 +15,7 @@ export default defineComponent({
     name: 'DateField',
     components: {
         Icon: IconComponent,
+        VDatePicker: DatePicker,
     },
     // directives: { maska: vMaska },
     inheritAttrs: false,
@@ -88,8 +96,9 @@ export default defineComponent({
             value,
             popover,
             maskOptions,
-            customInputValue,
             locale,
+
+            customInputValue,
         };
     },
 });
@@ -97,7 +106,6 @@ export default defineComponent({
 
 <template>
     <VDatePicker
-        v-bind="$attrs"
         v-model="value"
         :popover="popover"
         :locale="locale"

@@ -10,7 +10,7 @@ export default defineComponent({
     inheritAttrs: false,
     props: {
         modelValue: {
-            type: [ String, Number, null ],
+            type: [ Array, String, Number, null ],
             required: true,
         },
         error: {
