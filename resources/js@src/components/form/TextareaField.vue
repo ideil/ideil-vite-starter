@@ -1,8 +1,9 @@
 <script>
-import { defineComponent, computed } from 'vue';
+import autosize from 'autosize';
+import { defineComponent, computed, ref, onMounted } from 'vue';
 
 export default defineComponent({
-    name: 'TextField',
+    name: 'TextareaField',
     inheritAttrs: false,
     props: {
         modelValue: {
@@ -30,6 +31,7 @@ export default defineComponent({
     },
     emits: [ 'update:modelValue' ],
     setup(props, { emit }) {
+        const textareaEl = ref(null);
         const value = computed({
             get() {
                 return props.modelValue;
@@ -39,7 +41,12 @@ export default defineComponent({
             },
         });
 
+        onMounted(() => {
+            autosize(textareaEl.value);
+        });
+
         return {
+            textareaEl,
             value,
         };
     },
@@ -47,24 +54,24 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="f-group">
-        <textarea
-            :id="id"
-            v-model="value"
-            v-bind="$attrs"
-            :placeholder="placeholder"
-            class="f-input"
-            :class="{'has-error': error}"
-        />
-        <label
-            :for="id"
-            class="f-label"
-        >{{ label }}</label>
-        <div
-            v-if="error"
-            class="f-info f-info--error"
-        >
-            {{ error[0] }}
-        </div>
+    <textarea
+        :id="id"
+        ref="textareaEl"
+        v-model="value"
+        v-bind="$attrs"
+        :placeholder="placeholder"
+        class="overflow-hidden f-input"
+        :class="{'has-error': error}"
+    />
+    <label
+        v-if="label"
+        :for="id"
+        class="f-label"
+    >{{ label }}</label>
+    <div
+        v-if="error"
+        class="f-info f-info--error"
+    >
+        {{ error[0] }}
     </div>
 </template>

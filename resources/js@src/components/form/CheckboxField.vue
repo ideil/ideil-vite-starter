@@ -2,13 +2,12 @@
 import { defineComponent, computed } from 'vue';
 
 export default defineComponent({
-    name: 'TextField',
+    name: 'CheckboxField',
     inheritAttrs: false,
     props: {
         modelValue: {
-            type: [ String, Number, null ],
-            required: false,
-            default: '',
+            type: [ Boolean, String ],
+            required: true,
         },
         error: {
             type: [ String, Array ],
@@ -18,6 +17,11 @@ export default defineComponent({
         id: {
             type: String,
             required: true,
+        },
+        type: {
+            type: String,
+            required: false,
+            default: 'checkbox',
         },
         label: {
             type: String,
@@ -40,32 +44,34 @@ export default defineComponent({
             },
         });
 
-        const hasError = computed(() => {
-            return props.error && props.error.length > 0;
-        });
-
         return {
             value,
-            hasError,
         };
     },
 });
 </script>
 
 <template>
-    <input
-        :id="id"
-        v-model="value"
-        v-bind="$attrs"
-        :placeholder="placeholder"
-        class="f-input"
-        :class="{ 'has-error': hasError }"
-    >
-    <label
-        v-if="label"
-        :for="id"
-        class="f-label"
-    >{{ label }}</label>
+    <div class="f-checkbox">
+        <input
+            :id="id"
+            v-model="value"
+            v-bind="$attrs"
+            :placeholder="placeholder"
+            :type="type"
+            class="f-checkbox-input"
+            :class="{ 'has-error': error }"
+        >
+        <label
+            :for="id"
+            class="f-checkbox-label"
+        >
+            <slot name="default">
+                {{ label }}
+            </slot>
+        </label>
+    </div>
+
     <div
         v-if="error"
         class="f-info f-info--error"

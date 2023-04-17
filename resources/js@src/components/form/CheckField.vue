@@ -6,7 +6,7 @@ export default defineComponent({
     inheritAttrs: false,
     props: {
         modelValue: {
-            type: [ String, Number, null ],
+            type: [ Boolean, String ],
             required: true,
         },
         error: {
@@ -17,6 +17,11 @@ export default defineComponent({
         id: {
             type: String,
             required: true,
+        },
+        type: {
+            type: String,
+            required: false,
+            default: 'checkbox',
         },
         label: {
             type: String,
@@ -47,28 +52,27 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="f-group">
-        <div class="f-check">
-            <input
-                :id="id"
-                v-model="value"
-                v-bind="$attrs"
-                :placeholder="placeholder"
-                type="checkbox"
-                class="f-check-input"
-                :class="{ 'has-error': error }"
-            >
-            <label
-                :for="id"
-                class="f-check-label"
-            >{{ label }}</label>
-        </div>
-
-        <div
-            v-if="error"
-            class="f-info f-info--error"
+    <div class="f-check">
+        <input
+            :id="id"
+            v-model="value"
+            v-bind="$attrs"
+            :type="type"
+            :placeholder="placeholder"
+            class="f-check-input"
+            :class="{ 'has-error': error }"
         >
-            {{ error[0] }}
-        </div>
+        <label
+            v-if="label"
+            :for="id"
+            class="f-check-label"
+        >{{ label }}</label>
+    </div>
+
+    <div
+        v-if="error"
+        class="f-info f-info--error"
+    >
+        {{ error[0] }}
     </div>
 </template>

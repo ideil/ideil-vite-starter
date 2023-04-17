@@ -11,7 +11,7 @@
 }
 
 * {
-    scroll-margin: var(--header-height + theme(spacing.5));
+    scroll-margin: calc(var(--header-height) + theme(spacing.5));
     word-break: keep-all;
     word-wrap: break-word;
 }

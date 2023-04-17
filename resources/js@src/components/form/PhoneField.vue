@@ -8,11 +8,11 @@ export default defineComponent({
     inheritAttrs: false,
     props: {
         modelValue: {
-            type: [ String, Number, null ],
+            type: [String, Number, null],
             required: true,
         },
         error: {
-            type: [ String, Array ],
+            type: [String, Array],
             required: false,
             default: '',
         },
@@ -30,52 +30,42 @@ export default defineComponent({
             default: '+380 00 000 00 00',
         },
     },
-    emits: [ 'update:modelValue' ],
-    setup(props, { emit }) {
+    emits: ['update:modelValue'],
+    setup (props, { emit }) {
         const value = computed({
-            get() {
+            get () {
                 return props.modelValue;
             },
-            set(value) {
+            set (value) {
                 emit('update:modelValue', value);
             },
         });
 
+        const hasError = computed(() => {
+            return props.error && props.error.length > 0;
+        })
+
         const maskOptions = reactive({
             mask: '+380 ## ### ## ##',
+            eager: true,
         });
 
         return {
             value,
             maskOptions,
+            hasError,
         };
     },
 });
 </script>
 
 <template>
-    <div class="f-group">
-        <input
-            :id="id"
-            v-model="value"
-            v-bind="$attrs"
-            v-maska:[maskOptions]
-            :placeholder="placeholder"
-            type="text"
-            class="f-input"
-            :class="{ 'has-error': error }"
-        >
-        <label
-            :for="id"
-            class="f-label"
-        >
-            {{ label }}
-        </label>
-        <span
-            v-if="error"
-            class="f-info f-info--error"
-        >
-            {{ error[0] }}
-        </span>
-    </div>
+    <input :id="id" v-model="value" v-bind="$attrs" v-maska:[maskOptions] :placeholder="placeholder" type="text"
+        class="f-input" :class="{ 'has-error': hasError }">
+    <label v-if="label" :for="id" class="f-label">
+        {{ label }}
+    </label>
+    <span v-if="error" class="f-info f-info--error">
+        {{ error[0] }}
+    </span>
 </template>
