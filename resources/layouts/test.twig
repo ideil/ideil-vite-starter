@@ -45,14 +45,21 @@
                     </div>
                 </div>
 
-                <div class="c-carousel__inner">
+                <div class="c-carousel__inner" data-gallery>
                     <div class="splide__track">
                         <ul class="splide__list">
                             {% for i in 1..3 %}
                                 <li class="splide__slide">
-                                    <picture class="grid w-full text-2xl text-black border place-content-center h-96 bg-gray">
-                                        <img src="../img/demo/test_1920x980.jpg" srcset="../img/demo/test_1920x980@2x.jpg 2x" alt="">
-                                    </picture>
+                                    <a
+                                        href="../img/demo/test_1920x980@2x.jpg"
+                                        data-gallery-link
+                                        data-pswp-width="1920"
+                                        data-pswp-height="980"
+                                    >
+                                        <picture class="grid w-full text-2xl text-black border place-content-center h-96 bg-gray">
+                                            <img src="../img/demo/test_1920x980.jpg" srcset="../img/demo/test_1920x980@2x.jpg 2x" alt="">
+                                        </picture>
+                                    </a>
                                 </li>
                             {% endfor %}
                         </ul>
