@@ -1,7 +1,9 @@
 <script>
 import { defineComponent, ref, toRefs, reactive } from 'vue';
 
+import CheckboxField from '@src/components/form/CheckboxField.vue';
 import CheckField from '@src/components/form/CheckField.vue';
+import CounterField from '@src/components/form/CounterField.vue';
 import PhoneField from '@src/components/form/PhoneField.vue';
 import SelectField from '@src/components/form/SelectField.vue';
 import TextareaField from '@src/components/form/TextareaField.vue';
@@ -13,9 +15,11 @@ export default defineComponent({
     components: {
         TextField,
         PhoneField,
+        CounterField,
         TextareaField,
         Icon,
         CheckField,
+        CheckboxField,
         SelectField,
     },
     props: {
@@ -36,6 +40,8 @@ export default defineComponent({
             type1: null,
             type2: null,
             type3: null,
+            counter: 1,
+            delivery: false,
             agree: false,
             comment: null,
         };
@@ -117,138 +123,198 @@ export default defineComponent({
 
 <template>
     <form @submit.prevent="submit">
-        <TextField
-            id="feedbackName"
-            v-model="name"
-            :disabled="isSending"
-            :error="errors.name"
-            name="name"
-            type="text"
-            :required="true"
-            label="Ім’я"
-            @change="delete errors['name']"
-        />
-        <TextField
-            id="feedbackSurname"
-            v-model="surname"
-            :disabled="isSending"
-            :error="errors.surname"
-            name="surname"
-            type="text"
-            :required="true"
-            label="Прізвище"
-            @change="delete errors['surname']"
-        />
-        <TextField
-            id="feedbackEmail"
-            v-model="email"
-            :disabled="isSending"
-            :error="errors.email"
-            name="email"
-            type="email"
-            :required="true"
-            label="Email"
-            @change="delete errors['email']"
-        />
-        <PhoneField
-            id="feedbackPhone"
-            v-model="phone"
-            :disabled="isSending"
-            :error="errors.phone"
-            name="phone"
-            :required="true"
-            label="Номер телефону"
-            @change="delete errors['phone']"
-        />
-        <TextareaField
-            id="contactsComment"
-            v-model="comment"
-            :disabled="isSending"
-            :error="errors.comment"
-            rows="3"
-            name="comment"
-            label="Ваше запитання"
-            @change="delete errors['comment']"
-        />
-        <SelectField
-            id="feedbackType1"
-            v-model="type1"
-            :disabled="isSending"
-            :error="errors.type1"
-            name="type1"
-            :can-clear="false"
-            :can-deselect="false"
-            :options="[
-                { value: '1', label: 'Опція 1' },
-                { value: '2', label: 'Опція 2' },
-                { value: '3', label: 'Опція 3' },
-                { value: '4', label: 'Опція 4' },
-                { value: '5', label: 'Опція 5' },
-                { value: '6', label: 'Опція 6' },
-                { value: '7', label: 'Опція 7' },
-                { value: '8', label: 'Опція 8' },
-                { value: '9', label: 'Опція 9' },
-            ]"
-            :required="true"
-            label="Тип запитання"
-            @change="delete errors['type1']"
-        />
-        <SelectField
-            id="feedbackType2"
-            v-model="type2"
-            :disabled="isSending"
-            :error="errors.type2"
-            name="type2"
-            mode="multiple"
-            :close-on-select="false"
-            :options="[
-                { value: '1', label: 'Опція 1' },
-                { value: '2', label: 'Опція 2' },
-                { value: '3', label: 'Опція 3' },
-                { value: '4', label: 'Опція 4' },
-                { value: '5', label: 'Опція 5' },
-                { value: '6', label: 'Опція 6' },
-                { value: '7', label: 'Опція 7' },
-                { value: '8', label: 'Опція 8' },
-                { value: '9', label: 'Опція 9' },
-            ]"
-            :required="true"
-            label="Тип запитання"
-            @change="delete errors['type2']"
-        />
-        <SelectField
-            id="feedbackType3"
-            v-model="type3"
-            :disabled="isSending"
-            :error="errors.type3"
-            name="type3"
-            mode="tags"
-            :close-on-select="false"
-            :options="[
-                { value: '1', label: 'Опція 1' },
-                { value: '2', label: 'Опція 2' },
-                { value: '3', label: 'Опція 3' },
-                { value: '4', label: 'Опція 4' },
-                { value: '5', label: 'Опція 5' },
-                { value: '6', label: 'Опція 6' },
-                { value: '7', label: 'Опція 7' },
-                { value: '8', label: 'Опція 8' },
-                { value: '9', label: 'Опція 9' },
-            ]"
-            :required="true"
-            label="Тип запитання"
-            @change="delete errors['type3']"
-        />
-        <CheckField
-            id="feedbackAgree"
-            v-model="agree"
-            :disabled="isSending"
-            :error="errors.agree"
-            name="agree"
-            :required="true"
-            label="Я погоджуюсь з умовами обробки персональних даних"
-            @change="delete errors['agree']"
-        />
+        <div class="f-group">
+            <TextField
+                id="feedbackName"
+                v-model="name"
+                :disabled="isSending"
+                :error="errors.name"
+                name="name"
+                type="text"
+                :required="true"
+                label="Ім’я"
+                @change="delete errors['name']"
+            />
+        </div>
+        <div class="f-group">
+            <TextField
+                id="feedbackSurname"
+                v-model="surname"
+                :disabled="isSending"
+                :error="errors.surname"
+                name="surname"
+                type="text"
+                :required="true"
+                label="Прізвище"
+                @change="delete errors['surname']"
+            />
+        </div>
+        <div class="f-group">
+            <TextField
+                id="feedbackEmail"
+                v-model="email"
+                :disabled="isSending"
+                :error="errors.email"
+                name="email"
+                type="email"
+                :required="true"
+                label="Email"
+                @change="delete errors['email']"
+            />
+        </div>
+        <div class="f-group">
+            <PhoneField
+                id="feedbackPhone"
+                v-model="phone"
+                :disabled="isSending"
+                :error="errors.phone"
+                name="phone"
+                :required="true"
+                label="Номер телефону"
+                @change="delete errors['phone']"
+            />
+        </div>
+        <div class="f-group">
+            <TextareaField
+                id="contactsComment"
+                v-model="comment"
+                :disabled="isSending"
+                :error="errors.comment"
+                rows="3"
+                name="comment"
+                label="Ваше запитання"
+                @change="delete errors['comment']"
+            />
+        </div>
+        <div class="f-group">
+            <SelectField
+                id="feedbackType1"
+                v-model="type1"
+                :disabled="isSending"
+                :error="errors.type1"
+                name="type1"
+                :can-clear="false"
+                :can-deselect="false"
+                :options="[
+                    { value: '1', label: 'Опція 1' },
+                    { value: '2', label: 'Опція 2' },
+                    { value: '3', label: 'Опція 3' },
+                    { value: '4', label: 'Опція 4' },
+                    { value: '5', label: 'Опція 5' },
+                    { value: '6', label: 'Опція 6' },
+                    { value: '7', label: 'Опція 7' },
+                    { value: '8', label: 'Опція 8' },
+                    { value: '9', label: 'Опція 9' },
+                ]"
+                :required="true"
+                label="Тип запитання"
+                @change="delete errors['type1']"
+            />
+        </div>
+        <div class="f-group">
+            <SelectField
+                id="feedbackType2"
+                v-model="type2"
+                :disabled="isSending"
+                :error="errors.type2"
+                name="type2"
+                mode="multiple"
+                :close-on-select="false"
+                :options="[
+                    { value: '1', label: 'Опція 1' },
+                    { value: '2', label: 'Опція 2' },
+                    { value: '3', label: 'Опція 3' },
+                    { value: '4', label: 'Опція 4' },
+                    { value: '5', label: 'Опція 5' },
+                    { value: '6', label: 'Опція 6' },
+                    { value: '7', label: 'Опція 7' },
+                    { value: '8', label: 'Опція 8' },
+                    { value: '9', label: 'Опція 9' },
+                ]"
+                :required="true"
+                label="Тип запитання"
+                @change="delete errors['type2']"
+            />
+        </div>
+        <div class="f-group">
+            <SelectField
+                id="feedbackType3"
+                v-model="type3"
+                :disabled="isSending"
+                :error="errors.type3"
+                name="type3"
+                mode="tags"
+                :close-on-select="false"
+                :options="[
+                    { value: '1', label: 'Опція 1' },
+                    { value: '2', label: 'Опція 2' },
+                    { value: '3', label: 'Опція 3' },
+                    { value: '4', label: 'Опція 4' },
+                    { value: '5', label: 'Опція 5' },
+                    { value: '6', label: 'Опція 6' },
+                    { value: '7', label: 'Опція 7' },
+                    { value: '8', label: 'Опція 8' },
+                    { value: '9', label: 'Опція 9' },
+                ]"
+                :required="true"
+                label="Тип запитання"
+                @change="delete errors['type3']"
+            />
+        </div>
+        <div class="f-group">
+            <CounterField
+                id="feedbackCounter"
+                v-model="counter"
+                :disabled="isSending"
+                :error="errors.counter"
+                label="Кількість"
+                name="counter"
+                @change="delete errors['counter']"
+            />
+        </div>
+        <div class="f-group">
+            <CheckboxField
+                id="feedbackDelivery1"
+                v-model="delivery"
+                :disabled="isSending"
+                :error="errors.delivery"
+                name="delivery"
+                type="radio"
+                value="nova_post"
+                label="Нова пошта"
+                @change="delete errors['delivery']"
+            />
+            <CheckboxField
+                id="feedbackDelivery2"
+                v-model="delivery"
+                :disabled="isSending"
+                :error="errors.delivery"
+                name="delivery"
+                type="radio"
+                value="ukr_post"
+                label="Укрпошта"
+                @change="delete errors['delivery']"
+            >
+                <template #default>
+                    <div>Укрпошта</div>
+                    <div class="f-info">
+                        Доставка від 2 до 5 днів
+                    </div>
+                </template>
+            </CheckboxField>
+        </div>
+        <div class="f-group">
+            <CheckField
+                id="feedbackAgree"
+                v-model="agree"
+                :disabled="isSending"
+                :error="errors.agree"
+                name="agree"
+                :required="true"
+                label="Я погоджуюсь з умовами обробки персональних даних"
+                @change="delete errors['agree']"
+            />
+        </div>
 
         <Icon
             id="facebook"

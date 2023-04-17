@@ -51,24 +51,22 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="f-group">
-        <Multiselect
-            :id="id"
-            v-model="value"
-            v-bind="$attrs"
-            :placeholder="placeholder"
-            class="f-select"
-            :class="{ 'has-error': error, 'is-filled': value && value.length }"
-        />
-        <label
-            :for="id"
-            class="f-label"
-        >{{ label }}</label>
-        <div
-            v-if="error"
-            class="f-info f-info--error"
-        >
-            {{ error[0] }}
-        </div>
+    <Multiselect
+        :id="id"
+        v-model="value"
+        v-bind="$attrs"
+        :placeholder="placeholder"
+        class="f-select"
+        :class="{ 'has-error': error, 'is-filled': value && value.length }"
+    />
+    <label
+        :for="id"
+        class="f-label"
+    >{{ label }}</label>
+    <div
+        v-if="error"
+        class="f-info f-info--error"
+    >
+        {{ error[0] }}
     </div>
 </template>

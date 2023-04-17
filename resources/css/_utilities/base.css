@@ -93,5 +93,5 @@
 
 /* Custom */
 .u-gradient {
-    @mixin border-gradient;
+    @mixin background-gradient;
 }

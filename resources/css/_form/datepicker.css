@@ -1,0 +1,314 @@
+@import 'v-calendar/src/styles/base.css';
+
+.vc-container,
+.vc-light,
+.vc-light.vc-attr,
+.vc-light .vc-attr {
+    --vc-gray-50: theme(colors.gray.50);
+    --vc-gray-100: theme(colors.gray.100);
+    --vc-gray-200: theme(colors.gray.200);
+    --vc-gray-300: theme(colors.gray.300);
+    --vc-gray-400: theme(colors.gray.400);
+    --vc-gray-500: theme(colors.gray.500);
+    --vc-gray-600: theme(colors.gray.600);
+    --vc-gray-700: theme(colors.gray.700);
+    --vc-gray-800: theme(colors.gray.800);
+    --vc-gray-900: theme(colors.gray.900);
+
+    --vc-rounded: 0;
+    --vc-rounded-md: 0;
+    --vc-rounded-lg: 0;
+
+    --vc-color: theme(colors.text);
+    --vc-font-family: theme(fontFamily.sans);
+
+    --vc-weekday-color: var(--vc-color);
+
+    --vc-focus-ring: 0 0 0 2px theme(colors.black / 10%);
+
+    --vc-nav-item-active-bg: theme(colors.black);
+
+    --vc-highlight-solid-bg: theme(colors.primary.DEFAULT);
+
+    --popover-vertical-content-offset: 0;
+
+    --vc-slide-translate: theme(spacing.1);
+    --vc-slide-duration: var(--transition-duration);
+    --vc-slide-timing: var(--transition-timing-function);
+}
+
+
+/* Main */
+.vc-bordered {
+    border: none;
+}
+.vc-container {
+    width: 100%;
+}
+
+
+/* Header */
+.vc-header {
+    padding: theme(spacing.1);
+    width: 100%;
+    grid-template-columns: [prev] 1fr [title] 5fr [next] 1fr !important;
+    justify-content: center;
+    min-height: theme(spacing.12);
+
+    .vc-title {
+        text-align: center;
+        font-weight: theme(fontWeight.normal);
+        text-transform: capitalize;
+        font-size: theme(fontSize.xs);
+        margin: 0;
+        white-space: initial;
+        line-height: 1.2;
+        padding: theme(space.2) 0;
+    }
+}
+.vc-base-icon {
+    stroke-width: 3;
+}
+.vc-arrow {
+    margin: auto;
+    border-radius: 50%;
+    width: theme(spacing.10);
+    height: theme(spacing.10);
+    color: var(--vc-color);
+
+    &:hover {
+        background-color: var(--vc-day-content-hover-bg);
+    }
+}
+.vc-prev .vc-base-icon {
+    margin-left: calc(theme(spacing[0.5]) * -1);
+}
+.vc-next .vc-base-icon {
+    margin-right: calc(theme(spacing[0.5]) * -1);
+}
+
+
+/* Weeks */
+.vc-weeks {
+    padding: 0;
+}
+.vc-weekdays {
+    padding: 0 theme(spacing.1);
+    background: theme(colors.gray.200);
+}
+.vc-weekday {
+    text-transform: capitalize;
+    padding: 0;
+    min-height: theme(spacing.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: theme(fontWeight.bold);
+    font-size: theme(fontSize.2xs);
+}
+.vc-week {
+    min-height: theme(spacing.12);
+    align-items: center;
+    padding: 0 theme(spacing.1);
+
+    &:not(:last-child) {
+        position: relative;
+
+        &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            bottom: calc(theme(spacing[0.5]) * -0.5);
+            left: 4%;
+            right: 4%;
+            height: theme(spacing[0.5]);
+            background-color: theme(colors.current);
+        }
+    }
+}
+.vc-day {
+    min-height: theme(spacing.10);
+}
+.vc-day-content {
+    font-size: theme(fontSize.2xs);
+    width: theme(spacing.10);
+    height: theme(spacing.10);
+    transition-property: background-color;
+}
+.vc-pane {
+    min-width: 0;
+}
+
+
+/* Dots */
+.vc-dots {
+    margin-bottom: theme(spacing[1]);
+}
+.vc-dot {
+    width: theme(spacing[1.5]);
+    height: theme(spacing[1.5]);
+    border-radius: 2px;
+
+    &:not(:last-child) {
+        margin-right: theme(spacing[0.5]);
+    }
+}
+
+
+/* Popover */
+.vc-popover-content {
+    border: none;
+}
+.vc-nav-arrow {
+    width: theme(spacing.8);
+}
+.vc-nav-item {
+    text-transform: capitalize;
+    font-weight: 400;
+
+    &:hover {
+        background-color: theme(colors.gray.200);
+    }
+
+    &.is-current {
+        font-weight: 700;
+        color: theme(colors.black);
+    }
+
+    &.is-active {
+        background-color: theme(colors.black);
+        color: theme(colors.white);
+    }
+}
+.vc-popover-caret {
+    box-shadow: 0 0 10px 0 theme(colors.black / 10%);
+}
+.vc-popover-caret {
+    display: none;
+}
+
+
+/* Hours */
+.vc-hours {
+    padding: theme(spacing.2) theme(spacing.3) theme(spacing.3);
+    /* padding: theme(spacing.5) theme(spacing.10) theme(spacing.10); */
+
+    &-list {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: theme(spacing.1);
+        /* gap: theme(spacing.5); */
+    }
+
+    &-btn {
+        width: 100%;
+        font-weight: 700;
+        min-height: theme(spacing.10);
+        font-size: theme(fontSize.2xs);
+        border: 2px solid theme(colors.gray.200);
+        /* font-size: theme(fontSize.sm); */
+        /* min-height: theme(spacing.15); */
+
+        &.is-hover {
+            background-color: theme(colors.black / 10%);
+            color: theme(colors.black);
+        }
+
+        &:hover {
+            border-color: theme(colors.black);
+        }
+
+        &.is-active {
+            background-color: theme(colors.black);
+            border-color: theme(colors.black);
+            color: theme(colors.white);
+
+            &:hover {
+                background-color: theme(colors.black / 50%);
+                color: theme(colors.white);
+            }
+        }
+
+        /* &.is-clearable {
+
+            &:hover {
+                background-color: theme(colors.red.500);
+                border-color: theme(colors.red.500);
+            }
+        } */
+
+        &:disabled {
+            pointer-events: none;
+            opacity: .3;
+            background: none;
+            border-color: theme(colors.gray.200);
+            color: theme(colors.black / 30%);
+        }
+    }
+}
+
+
+/* Expanded */
+.vc-expanded {
+
+    @screen lg {
+
+        .vc-header {
+            min-height: theme(spacing.15);
+
+            .vc-title {
+                font-size: theme(fontSize[5.5]);
+            }
+        }
+
+        .vc-weekday {
+            min-height: theme(spacing.15);
+            font-size: theme(fontSize.DEFAULT);
+        }
+
+        .vc-week {
+            min-height: theme(spacing.18);
+
+            &:not(:last-child) {
+
+                &:after {
+                    left: 5%;
+                    right: 5%;
+                }
+            }
+        }
+
+        .vc-day-content {
+            font-size: theme(fontSize.DEFAULT);
+        }
+
+        .vc-dots {
+            margin-bottom: calc(theme(spacing[1.5]) * -1);
+        }
+
+        .vc-dot {
+            width: theme(spacing[2.5]);
+            height: theme(spacing[2.5]);
+            border-radius: 3px;
+
+            &:not(:last-child) {
+                margin-right: theme(spacing.1);
+            }
+        }
+
+        .vc-hours {
+            padding: theme(spacing.5) theme(spacing.10) theme(spacing.10);
+
+            &-list {
+                gap: theme(spacing.5);
+            }
+
+            &-btn {
+                font-size: theme(fontSize.sm);
+                min-height: theme(spacing.15);
+            }
+        }
+    }
+}
+
+

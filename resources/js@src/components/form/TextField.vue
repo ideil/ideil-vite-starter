@@ -40,13 +40,8 @@ export default defineComponent({
             },
         });
 
-        const hasError = computed(() => {
-            return props.error && props.error.length > 0;
-        });
-
         return {
             value,
-            hasError,
         };
     },
 });
@@ -59,7 +54,7 @@ export default defineComponent({
         v-bind="$attrs"
         :placeholder="placeholder"
         class="f-input"
-        :class="{ 'has-error': hasError }"
+        :class="{ 'has-error': error }"
     >
     <label
         v-if="label"

@@ -4,10 +4,8 @@ module.exports = {
         require('postcss-import'),
         require('postcss-mixins')({
             mixins: {
-                'border-gradient': {
+                'background-gradient': {
                     backgroundImage: 'var(--granimate-bg)',
-                    backgroundSize: '150vw 150vh',
-                    animation: '15s infinite granimate',
                 },
             },
         }),
