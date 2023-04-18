@@ -65,14 +65,19 @@ export default function twigHtmlPlugin() {
 
                     const pathProps = path.parse(req.originalUrl);
 
-                    if (![ '.html' ].includes(pathProps.ext) || pathProps.dir !== `/${ config.layoutsDir }`) {
-                        return next();
+                    if (
+                        (pathProps.root === '/' && pathProps.name === config.layoutsDir) ||
+                        (![ '.html' ].includes(pathProps.ext) && pathProps.dir.includes(config.layoutsDir))
+                    ) {
+                        res.writeHead(301, { Location: 'index.html' });
+                        next();
                     }
 
-                    const indexTwigPath = path.resolve(`${ config.rootDir }/${ config.layoutsDir }/${ pathProps.name }.twig`);
+                    const twigName = `${ pathProps.name }.twig`;
+                    const indexTwigPath = path.resolve(`${ config.rootDir }/${ config.layoutsDir }/${ twigName }`);
 
                     if (fs.existsSync(indexTwigPath)) {
-                        const transformedHtml = await server.transformIndexHtml(req.url, getTwigHtml(`${ pathProps.name }.twig`), req.originalUrl);
+                        const transformedHtml = await server.transformIndexHtml(req.url, getTwigHtml(`${ twigName }`), req.originalUrl);
 
                         res.statusCode = 200;
                         res.write(transformedHtml);
