@@ -4,7 +4,7 @@
         height: theme(spacing.5);
         width: auto;
 
-        *:not([fill=#ED2024]) {
+        *:not([fill='#ED2024']) {
             fill: currentColor;
         }
     }
