@@ -56,8 +56,14 @@ import { debounce } from 'debounce';
         };
 
         if (pagesEl) {
-            carousel.on('move', newIndex => {
-                pagesEl.innerHTML = `${ newIndex + 1 }/${ carousel.length }`;
+            carousel.on('pagination:mounted', e => {
+                const activeIndex = e.items.findIndex(item => item.button.classList.contains('is-active'));
+                pagesEl.innerHTML = `${ activeIndex + 1 }/${ e.items.length }`;
+            });
+
+            carousel.on('pagination:updated', e => {
+                const activeIndex = e.items.findIndex(item => item.button.classList.contains('is-active'));
+                pagesEl.innerHTML = `${ activeIndex + 1 }/${ e.items.length }`;
             });
         }
 
