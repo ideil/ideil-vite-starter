@@ -9,6 +9,7 @@ pages:
   tags:
     - docker
   script:
+    - rm -rf ./public
     - yarn
     - yarn build
     - cp -r static/build public
