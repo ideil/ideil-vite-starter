@@ -1,18 +1,18 @@
 <script>
-import { defineComponent } from 'vue';
+    import { defineComponent } from 'vue';
 
-export default defineComponent({
-    props: {
-        id: {
-            type: String,
-            required: true,
-        },
-        folder: {
-            type: String,
-            default: null,
-        },
-    },
-});
+    export default defineComponent({
+        props: {
+            id: {
+                type: String,
+                required: true
+            },
+            folder: {
+                type: String,
+                default: null
+            }
+        }
+    });
 </script>
 
 <template>

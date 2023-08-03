@@ -6,37 +6,15 @@
     position: relative;
     z-index: 1;
 
-    @screen md {
-        padding: theme(spacing.8) 0;
-        margin-top: theme(spacing.20);
-    }
-
     &__top {
         display: grid;
         gap: theme(spacing.5);
         margin-bottom: theme(spacing.10);
-
-        @screen md {
-            margin-bottom: theme(spacing.5);
-            justify-content: space-between;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
-        @screen xl {
-            margin-bottom: theme(spacing.24);
-        }
     }
 
     &__bottom {
         display: grid;
         gap: theme(spacing.10);
-
-        @screen md {
-            gap: theme(spacing.5);
-            align-items: flex-end;
-            justify-content: space-between;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
 
         &-left {
             display: flex;
@@ -46,7 +24,6 @@
 
         &-right {
             display: flex;
-
             align-items: flex-end;
             justify-content: space-between;
         }
@@ -55,15 +32,6 @@
     &__privacy {
         width: 100%;
         margin-bottom: theme(spacing.7);
-
-        @screen sm {
-            width: auto;
-            margin-bottom: 0;
-        }
-
-        @screen md {
-            order: 1;
-        }
     }
 
     &__copy {
@@ -73,12 +41,6 @@
     &__contacts {
         line-height: 1;
 
-        @screen xl {
-            width: 100%;
-            max-width: 66.666%;
-            margin-left: auto;
-        }
-
         dd {
             margin-bottom: theme(spacing.4);
         }
@@ -86,35 +48,90 @@
         &-lg {
             font-size: theme(fontSize.6);
             font-weight: 700;
-
-            @screen sm {
-                font-size: theme(fontSize.8);
-            }
-
-            @screen lg {
-                font-size: theme(fontSize.9);
-            }
-
-            @screen 2xl {
-                font-size: theme(fontSize.11);
-            }
-        }
-    }
-
-    .c-logo {
-
-        @screen md {
-            max-width: 20rem;
         }
     }
 
     .c-ideil {
         flex-shrink: 0;
+    }
 
-        @screen xl {
+    @screen sm {
+
+        &__privacy {
+            width: auto;
+            margin-bottom: 0;
+        }
+
+        &__contacts {
+
+            &-lg {
+                font-size: theme(fontSize.8);
+            }
+        }
+    }
+
+    @screen md {
+        padding: theme(spacing.8) 0;
+        margin-top: theme(spacing.20);
+
+        &__top {
+            margin-bottom: theme(spacing.5);
+            justify-content: space-between;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        &__bottom {
+            gap: theme(spacing.5);
+            align-items: flex-end;
+            justify-content: space-between;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        &__logo {
+            max-width: 10rem;
+        }
+
+        &__privacy {
+            order: 1;
+        }
+    }
+
+    @screen lg {
+
+        &__contacts {
+
+            &-lg {
+                font-size: theme(fontSize.9);
+            }
+        }
+    }
+
+    @screen xl {
+
+        &__top {
+            margin-bottom: theme(spacing.24);
+        }
+
+        &__contacts {
             width: 100%;
             max-width: 66.666%;
             margin-left: auto;
+        }
+
+        .c-ideil {
+            width: 100%;
+            max-width: 66.666%;
+            margin-left: auto;
+        }
+    }
+
+    @screen 2xl {
+
+        &__contacts {
+
+            &-lg {
+                font-size: theme(fontSize.11);
+            }
         }
     }
 }

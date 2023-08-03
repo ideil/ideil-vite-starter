@@ -9,10 +9,10 @@ import { debounce } from 'debounce';
 
     const [
         { default: Splide },
-        { Intersection },
+        { Intersection }
     ] = await Promise.all([
         await import('@splidejs/splide'),
-        await import('@splidejs/splide-extension-intersection'),
+        await import('@splidejs/splide-extension-intersection')
     ]);
 
     const initCarousel = el => {
@@ -32,7 +32,7 @@ import { debounce } from 'debounce';
             focus: 0,
             pagination: paginationEl,
 
-            flickPower: 200,
+            flickPower: 200
         });
 
         const wheelListener = e => {
@@ -74,20 +74,24 @@ import { debounce } from 'debounce';
 
     const playAutoplay = carousel => {
         const { Autoplay } = carousel.Components;
-        if (!Autoplay) return;
+        if (!Autoplay) {
+            return;
+        }
         Autoplay.play();
     };
 
     const pauseAutoplay = carousel => {
         const { Autoplay } = carousel.Components;
-        if (!Autoplay) return;
+        if (!Autoplay) {
+            return;
+        }
         Autoplay.pause();
     };
 
     const setHeroCarousel = carousel => {
         const contentEls = [
             // ...carousel.root.querySelectorAll('.c-title'),
-            ...carousel.root.querySelectorAll('.f-btn'),
+            ...carousel.root.querySelectorAll('.f-btn')
         ];
         let oldProgress = 0;
 

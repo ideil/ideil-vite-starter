@@ -17,10 +17,6 @@
         margin-bottom: theme(spacing.10);
         width: theme(spacing.50);
 
-        @screen md {
-            margin-bottom: theme(spacing.16);
-        }
-
         img {
             width: 100%;
             height: auto;
@@ -30,10 +26,6 @@
     &__code {
         line-height: theme(lineHeight.none);
         font-size: theme(fontSize.35);
-
-        @screen sm {
-            font-size: theme(fontSize.50);
-        }
     }
 
     &__title {
@@ -42,8 +34,22 @@
 
     &__btns {
         margin-top: theme(spacing.7);
+    }
 
-        @screen md {
+    @screen sm {
+
+        &__code {
+            font-size: theme(fontSize.50);
+        }
+    }
+
+    @screen md {
+
+        .c-logo {
+            margin-bottom: theme(spacing.16);
+        }
+
+        &__btns {
             margin-top: theme(spacing.10);
         }
     }

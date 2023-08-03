@@ -1,0 +1,46 @@
+.c-badge {
+    --badge-size: theme(spacing.4);
+    --badge-font-size: theme(fontSize.2xs);
+    --badge-bg: theme(colors.gray.200);
+    --badge-color: theme(colors.text);
+    --badge-gap: theme(spacing.1);
+    --badge-px: theme(spacing.1);
+
+    min-width: var(--badge-size);
+    height: var(--badge-size);
+    line-height: var(--badge-size);
+    font-size: var(--badge-font-size);
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    flex-shrink: 0;
+    gap: var(--badge-gap);
+    padding: 0 var(--badge-px);
+    background-color: var(--badge-bg);
+    color: var(--badge-color);
+    border-radius: theme(borderRadius.full);
+
+    &--sm {
+        --badge-size: theme(spacing.3);
+        --badge-font-size: 10px;
+        --badge-px: theme(spacing[0.5]);
+    }
+
+    &--xl {
+        --badge-size: theme(spacing.7);
+        --badge-font-size: theme(fontSize.5);
+        --badge-px: theme(spacing.3);
+    }
+
+    &--primary {
+        --badge-bg: theme(colors.primary.DEFAULT);
+        --badge-color: theme(colors.white);
+    }
+
+    &--red {
+        --badge-bg: theme(colors.red.500);
+        --badge-color: theme(colors.white);
+    }
+}

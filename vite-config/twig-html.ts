@@ -3,7 +3,7 @@ import fs from 'fs-extra';
 import merge from 'merge';
 import path from 'path';
 import pretty from 'pretty';
-import type { ViteDevServer, UserConfig, HmrContext } from 'vite';
+import type { HmrContext, UserConfig, ViteDevServer } from 'vite';
 import twigPlugin from 'vite-plugin-twig';
 
 import config from './config';
@@ -19,9 +19,8 @@ function getData(): any {
         const foldersPath = (pathParse.dir + `/${ pathParse.name }`).replace(dataPath, '').replace(/^\//, '');
         const folders = foldersPath.split('/');
         const newData = folders.reverse().reduce((prev, current) => (
-            { [current]: { ...prev } }
+            { [ current ]: { ...prev } }
         ), JSON.parse(fs.readFileSync(filePath).toString()));
-
 
         data = merge.recursive(data, newData);
     });
@@ -42,10 +41,10 @@ function createPages(): Pages {
 
         fs.writeFileSync(
             htmlPath,
-            getTwigHtml(fileProps.base),
+            getTwigHtml(fileProps.base)
         );
 
-        pages[fileProps.name] = htmlPath;
+        pages[ fileProps.name ] = htmlPath;
     });
 
     return pages;
@@ -95,7 +94,7 @@ export default function twigHtmlPlugin() {
                     }
 
                     return content.replace('{}', JSON.stringify(getData()));
-                },
+                }
             },
             handleHotUpdate({ file, server }: HmrContext) {
                 if (/.(json)$/.test(file)) {
@@ -112,9 +111,9 @@ export default function twigHtmlPlugin() {
                             ...config.build?.rollupOptions,
                             input: {
                                 ...(config.build?.rollupOptions?.input as object),
-                                ...pages,
-                            },
-                        },
+                                ...pages
+                            }
+                        }
                     };
                 }
 
@@ -124,17 +123,17 @@ export default function twigHtmlPlugin() {
                 for (const [ name, filePath ] of Object.entries(pages)) {
                     if (fs.existsSync(filePath)) {
                         fs.rmSync(filePath, {
-                            recursive: true,
+                            recursive: true
                         });
                     }
                 }
-            },
+            }
         },
         twigPlugin({
             settings: {
                 'views': `${ config.rootDir }/${ config.layoutsDir }`,
-                'twig options': false,
-            },
+                'twig options': false
+            }
         }),
         {
             name: 'prettify-html',
@@ -143,10 +142,10 @@ export default function twigHtmlPlugin() {
                 enforce: 'post',
                 async transform(content: string) {
                     return pretty(content, {
-                        ocd: true,
+                        ocd: true
                     });
-                },
-            },
-        },
+                }
+            }
+        }
     ];
 }

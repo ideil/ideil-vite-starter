@@ -1,23 +1,17 @@
 <header class="c-header" data-header>
-    <nav class="c-header__inner l-container">
+    <nav class="c-header__inner l-container l-container--hd">
         <div class="c-header__logo">
-            {% include "./logo.twig" with { class: 'c-header__logo' } %}
+            {% include "_components/logo.twig" with { class: 'c-header__logo' } %}
         </div>
 
-        <div class="c-header__main">
-            {% include "./nav.twig" with { class: 'c-header__nav' } %}
-
-            {% include "./socials.twig" with { class: 'c-header__socials' } %}
-
-            <div class="c-header__hamburger">
-                <button class="c-header__hamburger-btn" data-menu-toggle>
-                    <i class="c-header__hamburger-icon">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </i>
-                </button>
-            </div>
+        <div class="c-header__hamburger">
+            <button class="c-header__hamburger-btn" data-menu-toggle>
+                <i class="c-header__hamburger-icon">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </i>
+            </button>
         </div>
     </nav>
 </header>

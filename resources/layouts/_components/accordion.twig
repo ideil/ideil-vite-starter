@@ -1,36 +1,32 @@
-<div class="c-accordion">
+<div class="divide-y divide-gray-200">
     {% for index in 1..3 %}
-        <div
-            class="c-accordion__item {{ index == 1 ? 'is-open' }}"
-            data-collapse-item
-        >
-            <div class="c-accordion__heading">
-                <div class="flex items-center">
-                    <h3 class="c-accordion__title">Питання {{ index }}</h3>
-                    <span class="c-accordion__count">3</span>
-                </div>
+        <div class="c-collapse">
+            <div class="c-collapse__toggle">
+                Питання {{ index }}
+
+                <span class="c-badge c-badge--primary">3</span>
 
                 <button
                     type="button"
                     aria-label="Відкрити відповідь"
-                    data-collapse-target="#accordionAnswer{{ index }}"
-                    class="c-accordion__btn f-btn--overlay {{ index == 1 ? 'is-open' }}"
+                    data-collapse-target="#collapseAnswer{{ index }}"
+                    class="ml-auto u-link-overlay {{ index == 1 ? 'is-active' }}"
                 >
                     {% if loop.index == 1 %}
-                        <i class="c-accordion__icon"></i>
+                        <i class="c-collapse__icon"></i>
                     {% else %}
-                        {% include "../_app/icon.twig" with { id: 'angle' } %}
+                        {% include "_app/icon.twig" with { name: 'angle', class: 'c-collapse__arrow i-icon--bottom' } only %}
                     {% endif %}
                 </button>
             </div>
 
             <div
-                class="c-accordion__collapse c-collapse {{ index == 1 ? 'is-open is-shown' }}"
-                id="accordionAnswer{{ index }}"
-                data-collapse-pane
+                class="c-collapse__panel {{ index == 1 ? 'is-active is-shown' }}"
+                id="collapseAnswer{{ index }}"
+                data-collapse-panel
             >
                 <div
-                    class="c-accordion__collapse-inner"
+                    class="pb-5"
                     data-collapse-content
                 >
                     <p>Далеко-далеко за&nbsp;словесними горами країни голосних і&nbsp;приголосних живуть рибні тексти. Рибними, лишилося? До, маленька буквоград? Погляд безорфографічний, міста рядок, він промовою знаках своє те, рукописи вони безпечні&nbsp;до! Країну, дороге!</p>

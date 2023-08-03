@@ -1,0 +1,18 @@
+{% set id = id ?? 'formTextarea' ~ random() %}
+
+{% if label %}
+    <label for="{{ id }}" class="f-label">{{ label }}</label>
+{% endif %}
+
+<textarea
+    id="{{ id }}"
+    name="{{ name ?? '' }}"
+    value="{{ value ?? '' }}"
+    class="f-field {{ error ? 'f-field--error' : '' }} {{ class }}"
+    placeholder="{{ placeholder }}"
+    {{ attrs }}
+></textarea>
+
+{% if error %}
+    <span class="f-info f-info--error">{{ error }}</span>
+{% endif %}

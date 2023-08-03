@@ -1,0 +1,17 @@
+.c-socials {
+    --socials-icon-size: theme(spacing.6);
+    --socials-padding: theme(spacing.4);
+    --socials-gap: 0;
+    --icon-size: var(--socials-icon-size);
+
+    &__list {
+        display: flex;
+        gap: var(--socials-gap);
+        margin: calc(var(--socials-padding) * -1);
+    }
+
+    &__link {
+        padding: var(--socials-padding);
+        display: block;
+    }
+}

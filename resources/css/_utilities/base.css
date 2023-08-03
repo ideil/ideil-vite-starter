@@ -91,7 +91,19 @@
     }
 }
 
-/* Custom */
-.u-gradient {
-    @mixin background-gradient;
+/* Typography */
+.u-link-overlay {
+
+    &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        inset: 0;
+    }
+}
+.u-link-opacity {
+    &:hover {
+        color: currentColor;
+        opacity: .7;
+    }
 }

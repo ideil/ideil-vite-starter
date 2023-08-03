@@ -1,7 +1,67 @@
 .c-collapse {
+    --collapse-toggle-gap: theme(spacing.2);
+    --collapse-toggle-py: theme(spacing.4);
+    --collapse-toggle-px: 0;
+    --collapse-angle-size: theme(spacing[2.5]);
 
-    &:not(.is-shown) {
-        display: none;
+    &__toggle {
+        display: flex;
+        align-items: center;
+        position: relative;
+        text-align: left;
+        gap: var(--collapse-toggle-gap);
+        padding: var(--collapse-toggle-py) var(--collapse-toggle-px);
+    }
+
+    &__icon {
+        --icon-size: var(--collapse-angle-size);
+        width: var(--icon-size);
+        height: var(--icon-size);
+        display: block;
+        flex-shrink: 0;
+        position: relative;
+
+        &:before,
+        &:after {
+            content: '';
+            position: absolute;
+            height: 2px;
+            width: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: currentColor;
+            transform-origin: center;
+            transition-property: transform;
+            transform: translate(-50%, -50%) rotate(var(--rotation, 0));
+        }
+
+        &:after {
+            --rotation: 90deg;
+        }
+
+        .is-active & {
+
+            &:after {
+                --rotation: 0;
+            }
+        }
+    }
+
+    &__arrow {
+        --icon-size: var(--collapse-angle-size);
+        transition-property: transform;
+
+        .is-active & {
+            transform: rotate(270deg);
+        }
+    }
+
+    &__panel {
+
+        &:not(.is-shown) {
+            display: none;
+        }
     }
 }
 

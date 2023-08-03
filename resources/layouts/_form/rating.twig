@@ -1,0 +1,15 @@
+{% set id = id ?? 'formRating' ~ random() %}
+{% set icon = icon ?? 'star' %}
+
+<div class="f-rating {{ class }}">
+    {% for i in 1..count ?? 1..5 %}
+        <input id="{{ id }}-{{ i }}" name="{{ id }}" value="{{ i }}" type="radio" class="f-rating__field">
+        <label for="{{ id }}-{{ i }}" class="f-rating__label">
+            {% include '_app/icon.twig' with { name: icon } only %}
+        </label>
+    {% endfor %}
+</div>
+
+{% if error %}
+    <div class="f-info f-info--error">{{ error }}</div>
+{% endif %}

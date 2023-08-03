@@ -1,9 +1,8 @@
 .c-pagination {
     text-align: center;
-    margin-top: theme(spacing.8);
 
     &__list {
-        display: inline-flex;
+        display: flex;
         flex-wrap: wrap;
         vertical-align: middle;
         align-items: center;
@@ -11,60 +10,29 @@
     }
 
     &__item {
-        padding-left: theme(spacing[1.5]);
-        padding-right: theme(spacing[1.5]);
-
-        &.is-disabled {
-            pointer-events: none;
-            opacity: .2;
-        }
-
-        &.is-active {
-            pointer-events: none;
-        }
 
         &.is-prev,
         &.is-next {
             display: none;
-
-            @screen lg {
-                display: block;
-            }
-
-            .i-icon {
-                width: theme(spacing.4);
-                height: theme(spacing.4);
-            }
         }
 
         &.is-prev {
-            padding-left: 0;
-            margin-right: theme(spacing.4);
+            margin-right: auto;
         }
 
         &.is-next {
-            padding-right: 0;
-            margin-left: theme(spacing.4);
+            margin-left: auto;
         }
     }
 
-    &__link {
-        font-weight: 700;
-        min-width: theme(spacing.7);
-        height: theme(spacing.7);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    @screen lg {
 
-        a&:hover{
-            background-color: theme(colors.gray.200);
-            color: theme(colors.text);
-        }
+        &__item {
 
-        .is-active & {
-            background-color: theme(colors.primary.DEFAULT);
-            color: theme(colors.white);
+            &.is-prev,
+            &.is-next {
+                display: block;
+            }
         }
     }
 }

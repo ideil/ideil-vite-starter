@@ -1,15 +1,13 @@
 .f-counter {
     display: inline-flex;
     align-items: center;
-    border: 2px solid currentColor;
+    border: var(--f-field-border-width) solid var(--f-field-border-color);
+    height: var(--input-height);
 
-    .f-input {
+    &__field {
         max-width: theme(spacing.12);
+        border: none;
         text-align: center;
-        border-bottom: 0;
-        height: var(--input-height);
-        padding-top: 0;
-        padding-bottom: 0;
 
         &::-webkit-inner-spin-button,
         &::-webkit-outer-spin-button {

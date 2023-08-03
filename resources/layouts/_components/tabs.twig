@@ -13,7 +13,7 @@
                     >
                         {{ item.title ?? item }}
                         {% if item.count or withCount %}
-                            <span class="c-tabs__count">{{ item.count ?? random(1..30) }}</span>
+                            <span class="c-badge">{{ item.count ?? random(1..30) }}</span>
                         {% endif %}
                     </a>
                 </li>

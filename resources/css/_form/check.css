@@ -1,22 +1,16 @@
 .f-check {
-    display: block;
-    padding-left: theme(spacing.6);
-    min-height: theme(spacing.5);
-    font-size: theme(fontSize.xs);
+    display: flex;
+    gap: var(--f-check-gap);
 
-    + .f-check {
-        margin-top: theme(spacing.4);
-    }
-
-    &-input {
-        width: theme(spacing.4);
-        height: theme(spacing.4);
-        border: 2px solid var(--input-border-color);
-        background-color: transparent;
+    &__field {
+        width: var(--f-check-size);
+        height: var(--f-check-size);
+        border: var(--f-check-border-width) solid var(--f-check-border-color);
+        background-color: var(--f-check-bg);
+        border-radius: var(--f-check-border-radius);
         margin-top: theme(spacing.px);
         float: left;
-        border-radius: theme(borderRadius.none);
-        margin-left: calc(theme(spacing.6) * -1);
+        cursor: pointer;
         appearance: none;
         transition-property: border-color,
             background-color;
@@ -24,49 +18,64 @@
         &:disabled {
             opacity: .5;
             pointer-events: none;
-            border-color: var(--input-border-active-color);
+            border-color: var(--f-active);
         }
 
         &:hover {
-            border-color: var(--input-border-active-color);
+            border-color: var(--f-active);
         }
 
         &:checked {
-            border-color: var(--input-border-active-color);
+            border-color: var(--f-active);
         }
 
         &[type=radio] {
             border-radius: 50%;
 
             &:checked {
-                border-width: theme(spacing[1.5]);
+                border-width: calc(var(--f-check-border-width) * 2);
             }
         }
 
         &[type=checkbox] {
 
             &:checked {
-                background-color: var(--input-border-active-color);
-                background-image: url("data:image/svg+xml,%3Csvg width='13' height='10' viewBox='0 0 13 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M12.8536 1.35359L5.00004 9.20714L0.146484 4.35359L0.853591 3.64648L5.00004 7.79293L12.1465 0.646484L12.8536 1.35359Z' fill='white'/%3E%3C/svg%3E%0A");
-                background-size: theme(spacing[3.5]);
+                background-color: var(--f-active);
+                background-image: url("data:image/svg+xml,%3Csvg width='9' height='7' viewBox='0 0 9 7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M8.25806 0L2.95161 5.48333L0.741935 3.2L0 3.96667L2.58065 6.63333L2.95161 7L3.32258 6.63333L9 0.766667L8.25806 0Z' fill='white'/%3E%3C/svg%3E%0A");
+                background-size: calc(var(--f-check-size) * .6);
                 background-position: center;
                 background-repeat: no-repeat;
             }
         }
+
+        &.f-field--light,
+        .f-field--light & {
+
+            &[type=checkbox] {
+
+                &:checked {
+                    background-image: url("data:image/svg+xml,%3Csvg width='9' height='7' viewBox='0 0 9 7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M8.25806 0L2.95161 5.48333L0.741935 3.2L0 3.96667L2.58065 6.63333L2.95161 7L3.32258 6.63333L9 0.766667L8.25806 0Z' fill='%238E0038'/%3E%3C/svg%3E%0A");
+                }
+            }
+        }
     }
 
-    &-label {
-        line-height: theme(lineHeight.normal);
-        font-size: theme(fontSize.xs);
+    &__label {
+        line-height: var(--f-check-line-height);
+        font-size: var(--f-check-font-size);
         display: block;
-        max-width: 16.5rem;
         cursor: pointer;
+        min-width: 0;
         transition-property: color;
 
-        .f-check-input:disabled ~ & {
+        .f-check__field:disabled ~ & {
             opacity: .5;
             pointer-events: none;
             color: currentColor;
         }
+    }
+
+    + .f-check {
+        margin-top: theme(spacing.4);
     }
 }

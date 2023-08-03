@@ -3,68 +3,99 @@
 }
 
 .m-modal {
-    --modal-zindex: theme(zIndex.40);
-
+    --modal-zindex: theme(zIndex.modal);
+    --modal-offset: theme(spacing.5);
+    --modal-bg: theme(colors.white);
+    --modal-color: theme(colors.text);
+    --modal-border-radius: theme(borderRadius.lg);
+    --modal-inner-px: theme(spacing.5);
+    --modal-inner-py: theme(spacing.10);
+    --modal-max-width: 32rem;
+    --modal-close-icon-size: theme(spacing.4);
     position: fixed;
     top: 0;
     left: 0;
-    z-index: var(--modal-zindex);
     display: none;
-    width: 100%;
-    height: 100%;
+    background-color: theme(colors.black / 30%);
+    z-index: var(--modal-zindex);
     overflow-x: hidden;
     overflow-y: auto;
     outline: 0;
     opacity: 0;
-    background-color: theme(colors.black / 30%);
+    padding: 0 var(--modal-offset);
+    width: 100%;
+    height: 100%;
     transition-property: opacity;
 
     &.is-shown {
         opacity: 1;
     }
+
+    &.m-modal--aside {
+        --modal-offset: 0;
+    }
+
+    &.m-modal--xs {
+        --modal-max-width: 18rem;
+        --modal-inner-px: theme(spacing.5);
+        --modal-inner-py: theme(spacing.5);
+    }
+
+    &.m-modal--sm {
+        --modal-max-width: 25rem;
+        --modal-inner-px: theme(spacing.5);
+        --modal-inner-py: theme(spacing.10);
+    }
+
+    @screen md {
+        --modal-border-radius: theme(borderRadius.xl);
+
+        &.m-modal--md {
+            --modal-max-width: 44rem;
+        }
+    }
+
+    @screen lg {
+
+        &.m-modal--lg {
+            --modal-max-width: 64rem;
+        }
+    }
+
+    @screen xl {
+        --modal-inner-px: theme(spacing.10);
+        --modal-inner-py: theme(spacing.20);
+
+        &.m-modal--sm {
+            --modal-inner-px: theme(spacing.10);
+            --modal-inner-py: theme(spacing.10);
+        }
+    }
 }
 
 .m-dialog {
-    --modal-margin: theme(spacing.5);
-
     position: relative;
     width: auto;
-    margin: var(--modal-margin);
+    margin: var(--modal-offset) auto;
     pointer-events: none;
     transform: translateY(-20px);
     transition-property: transform;
+    max-width: var(--modal-max-width);
 
-    @screen sm {
-        max-width: 28.75rem;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    &--md {
-
-        @screen lg {
-            max-width: 41.25rem;
-        }
-    }
-
-    &--lg {
-
-        @screen lg {
-            max-width: 50.75rem;
-        }
-    }
-
-    &--xl {
-
-        @screen lg {
-            max-width: 65rem;
-        }
-    }
-
-    &--centered {
+    .m-modal--centered & {
         display: flex;
         align-items: center;
-        min-height: calc(100% - var(--modal-margin) * 2);
+        min-height: calc(100% - var(--modal-offset) * 2);
+    }
+
+    .m-modal--stretch & {
+        height: calc(100% - var(--modal-offset) * 2);
+    }
+
+    .m-modal--aside & {
+        height: 100%;
+        margin-left: auto;
+        transform: translateX(20px);
     }
 
     .m-modal.is-shown & {
@@ -78,110 +109,80 @@
     flex-direction: column;
     width: 100%;
     pointer-events: auto;
-    color: theme(colors.black);
-    background-color: theme(colors.white);
+    color: var(--modal-color);
+    background-color: var(--modal-bg);
+    border-radius: var(--modal-border-radius);
     background-clip: padding-box;
+    overflow: hidden;
     outline: 0;
 
-    &--bg {
+    .m-modal--stretch & {
+        min-height: 100%;
+    }
 
-        @screen lg {
-            min-height: 600px;
-            padding-left: max(calc(100% - 574px), 0px);
-        }
+    .m-modal--aside & {
+        min-height: 100%;
+        border-radius: 0;
     }
 }
 
-.m-bg {
+.m-close {
+    --icon-size: var(--modal-close-icon-size);
+    display: grid;
+    place-content: center;
     position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: max(calc(100% - 574px), 0px);
-    padding: 20px;
-    display: none;
+    top: theme(spacing.5);
+    right: theme(spacing.5);
+    padding: theme(spacing.3);
+    margin: calc(theme(spacing.3) * -1);
+    flex-shrink: 0;
 
-    @screen lg {
-        display: block;
+    @screen xl {
+        top: theme(spacing.8);
+        right: theme(spacing.8);
     }
 
-    &__img {
-        position: absolute;
-        inset: 0;
-
-        img {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        &:after {
-            content: '';
-            display: block;
-            position: absolute;
-            inset: 0;
-            background-color: theme(colors.black / 20%);
-        }
+    .m-modal--sm & {
+        top: theme(spacing.5);
+        right: theme(spacing.5);
     }
 
-    &__logo {
-        position: relative;
+    .m-header & {
+        position: static;
+        margin-left: auto;
     }
 }
 
 .m-header {
-    margin: 0;
+    --modal-inner-py: theme(spacing.4);
     display: flex;
-    padding: theme(spacing.5) theme(spacing.5) 0;
-
-    .m-title {
-        margin-bottom: 0;
-    }
+    align-items: flex-start;
+    padding: var(--modal-inner-py) var(--modal-inner-px);
+    border-bottom: 1px solid theme(colors.gray.200);
 }
 
 .m-body {
-    padding: theme(spacing.5) theme(spacing.5) theme(spacing.10);
+    width: 100%;
+    padding: var(--modal-inner-py) var(--modal-inner-px);
 
-    .m-content--bg & {
+    .m-header + & {
+        --modal-inner-py: var(--modal-inner-px);
+    }
 
-        @screen md {
-            padding: theme(spacing.5) theme(spacing.10) theme(spacing.10);
-        }
+    .m-modal--stretch &,
+    .m-modal--aside & {
+        display: flex;
+        flex-direction: column;
+        height: auto;
     }
 }
 
-
-/* Components */
-
-.m-close {
-    align-self: flex-start;
-    width: theme(spacing.11);
-    height: theme(spacing.11);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: calc(theme(spacing[2.5]) * -1) calc(theme(spacing[2.5]) * -1) calc(theme(spacing[2.5]) * -1) auto;
-
-    .i-icon {
-        width: theme(spacing.6);
-        height: theme(spacing.6);
-    }
-}
-
-.m-title {
-    margin-bottom: theme(spacing.8);
-
-    &:last-child {
-        margin-bottom: 0;
-    }
+.m-footer {
+    --modal-inner-py: theme(spacing.3);
+    padding: var(--modal-inner-py) var(--modal-inner-px);
+    border-top: 1px solid theme(colors.gray.200);
 }
 
 .m-text {
     line-height: 1.2;
-
-    a:not(.f-btn) {
-        text-decoration: underline;
-    }
 }

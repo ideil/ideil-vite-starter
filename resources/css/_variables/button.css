@@ -1,0 +1,16 @@
+:root {
+    --f-button-height: theme(spacing.13);
+    --f-button-px: theme(spacing.7);
+    --f-button-font-size: theme(fontSize.DEFAULT);
+    --f-button-line-height: theme(lineHeight.6);
+    --f-button-font-weight: theme(fontWeight.bold);
+    --f-button-border-radius: theme(borderRadius.full);
+    --f-button-font-family: theme(fontFamily.sans);
+    --f-button-gap: theme(spacing.3);
+    --f-button-icon-size: theme(spacing.6);
+    --f-button-bg: transparent;
+    --f-button-color: currentColor;
+    --f-button-border-width: theme(borderWidth.DEFAULT);
+    --f-button-border-color: var(--f-button-bg);
+    --f-button-border-style: solid;
+}

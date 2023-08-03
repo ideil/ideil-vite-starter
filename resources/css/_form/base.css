@@ -1,0 +1,61 @@
+.f-group {
+    position: relative;
+    width: 100%;
+    margin-bottom: var(--f-group-space);
+}
+
+.f-label {
+    color: var(--f-label-color);
+    font-size: var(--f-label-font-size);
+    line-height: var(--f-label-line-height);
+    margin-bottom: var(--f-label-space);
+    display: flex;
+    align-items: center;
+
+    /* position: absolute;
+    left: 0;
+    top: 0;
+    height: var(--f-field-height);
+    pointer-events: none;
+    transition-property: height, font-size;
+
+    .f-field:focus ~ &,
+    .f-field:not(:placeholder-shown).f-field:not(:focus) ~ &,
+    .is-filled ~ &,
+    .f-select.is-active ~ & {
+        font-size: theme(fontSize.2xs);
+        height: theme(spacing.3);
+    } */
+}
+
+.f-info {
+    font-size: var(--f-info-font-size);
+    line-height: var(--f-info-line-height);
+    margin: var(--f-info-space) 0;
+    font-weight: 400;
+    display: block;
+
+    a {
+        text-decoration: underline;
+    }
+
+    &--error {
+        color: var(--f-error);
+    }
+}
+
+.f-submit {
+    margin-top: var(--f-submit-space);
+
+    .f-info {
+        margin: theme(spacing.5) 0;
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}

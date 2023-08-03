@@ -1,0 +1,126 @@
+{
+    "extends": [
+        "plugin:vue/base",
+        "plugin:vue/essential",
+        "plugin:vue/recommended"
+    ],
+    "plugins": [
+        "vue"
+    ],
+    "parser": "vue-eslint-parser",
+    "parserOptions": {
+        "parser": "@typescript-eslint/parser",
+        "ecmaFeatures": {
+            "modules": true
+        }
+    },
+    "rules": {
+        "vue/no-multiple-template-root": "off",
+        "vue/multi-word-component-names": "off",
+        "vue/html-indent": [
+            "error",
+            4
+        ],
+        "vue/script-indent": [
+            "error",
+            4,
+            {
+                "baseIndent": 1
+            }
+        ],
+        "vue/max-attributes-per-line": [
+            "error",
+            {
+                "singleline": {
+                    "max": 1
+                },
+                "multiline": {
+                    "max": 1
+                }
+            }
+        ],
+        "vue/html-closing-bracket-newline": [
+            2,
+            {
+                "multiline": "always"
+            }
+        ],
+        "vue/v-slot-style": [
+            "error",
+            {
+                "atComponent": "shorthand",
+                "default": "shorthand",
+                "named": "shorthand"
+            }
+        ],
+        "vue/order-in-components": [
+            "error",
+            {
+                "order": [
+                    "el",
+                    "name",
+                    "key",
+                    "parent",
+                    "functional",
+                    [
+                        "delimiters",
+                        "comments"
+                    ],
+                    [
+                        "components",
+                        "directives",
+                        "filters"
+                    ],
+                    "extends",
+                    "mixins",
+                    [
+                        "provide",
+                        "inject"
+                    ],
+                    "ROUTER_GUARDS",
+                    "layout",
+                    "middleware",
+                    "validate",
+                    "scrollToTop",
+                    "transition",
+                    "loading",
+                    "inheritAttrs",
+                    "model",
+                    [
+                        "props",
+                        "propsData"
+                    ],
+                    "emits",
+                    "setup",
+                    "asyncData",
+                    "breadcrumbs",
+                    "fillable",
+                    "data",
+                    "fetch",
+                    "head",
+                    "computed",
+                    "watch",
+                    "watchQuery",
+                    "LIFECYCLE_HOOKS",
+                    "methods",
+                    [
+                        "template",
+                        "render"
+                    ],
+                    "renderError"
+                ]
+            }
+        ],
+        "vue/no-lone-template": "off",
+        "vue/no-mutating-props": "off"
+    },
+    "overrides": [
+        {
+            "files": [ "*.vue"
+            ],
+            "rules": {
+                "@typescript-eslint/indent": 0
+            }
+        }
+    ]
+}

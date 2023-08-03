@@ -1,24 +1,26 @@
+const defaultColors = require('tailwindcss/colors');
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 const screens = require('./resources/data/config/screens.json');
 
 module.exports = {
     content: [
-        './resources/js/**/*.{js,ts,tsx,vue}',
+        './resources/js@src/**/*.{js,ts,tsx,vue}',
+        './resources/js@pub/**/*.{js,ts,tsx,vue}',
         './resources/views/**/*.blade.php',
-        './resources/layouts/**/*.twig',
+        './resources/layouts/**/*.twig'
     ],
     prefix: '',
     important: false,
     theme: {
         fontFamily: {
-            sans: [ 'RobotoI', ...defaultTheme.fontFamily.sans ],
+            sans: [ 'RobotoI', ...defaultTheme.fontFamily.sans ]
         },
         transitionTimingFunction: {
-            base: 'cubic-bezier(0.25, 0.1, 0.25, 1)',
+            base: 'cubic-bezier(0.25, 0.1, 0.25, 1)'
         },
         transitionDuration: {
-            base: '.3s',
+            base: '.3s'
         },
         screens: screens,
         fontSize: {
@@ -45,41 +47,34 @@ module.exports = {
             '10': '2.5rem', // 40px
             '11': '2.75rem', // 44px
             '12': '3rem', // 48px
+            '13': '3.25rem', // 52px
             '14': '3.5rem', // 56px
             '15': '3.75rem', // 60px
+            '16': '4rem', // 64px
+            '30': '7.5rem', // 120px
             '35': '8.75rem', // 140px
-            '50': '12.5rem', // 200px
-
-            '14px': '14px', // 14px
-            '16px': '16px', // 16px
-            '18px': '18px', // 18px
-            '22px': '22px', // 22px
-            '24px': '24px', // 24px
-            '28px': '28px', // 28px
+            '50': '12.5rem' // 200px
         },
         extend: {
             colors: {
                 gray: {
-                    DEFAULT: '#E3E3E3',
-                    // 50: '#F1F1F1',
-                    // 100: '#EDEFF4',
-                    // 200: '#E3E3E3',
-                    // 300: ,
-                    // 400: '#A1A1A1',
-                    // 500: '#787878',
-                    // 600: ,
-                    // 700: '#28272E',
-                    // 800: '#222222',
-                    // 900: '#19191B',
+                    ...defaultColors.stone,
+
+                    DEFAULT: defaultColors.stone[ 400 ],
+
+                    light: defaultColors.stone[ 300 ],
+                    dark: defaultColors.stone[ 500 ]
                 },
 
                 primary: {
                     DEFAULT: '#E74C3C',
-                    hover: '#D64535',
+                    hover: '#ff7668'
                 },
 
-                body: '#ffffff',
-                text: '#000000',
+                error: defaultColors.red[ '500' ],
+
+                body: defaultColors.stone[ '50' ],
+                text: defaultColors.stone[ '900' ]
             },
             maxWidth: {
                 'xs': screens.xs.min,
@@ -87,39 +82,47 @@ module.exports = {
                 'md': screens.md.min,
                 'lg': screens.lg.min,
                 'xl': screens.xl.min,
-                '2xl': screens['2xl'].min,
+                '2xl': screens[ '2xl' ].min,
+
+                'hd': '1920px'
             },
             lineHeight: {
                 normal: '1.4',
-                tight: '1.2',
+                tight: '1.2'
             },
             spacing: {
-                13: '3.25rem', // 52px
-                15: '3.75rem', // 60px
-                17: '4.25rem', // 68px
-                18: '4.5rem', // 72px
-                22: '5.5rem', // 88px
+                '13': '3.25rem', // 52px
+                '15': '3.75rem', // 60px
+                '17': '4.25rem', // 68px
+                '18': '4.5rem', // 72px
+                '22': '5.5rem', // 88px
+                '50': '12.5rem', // 200px
 
-                50: '12.5', // 220px
+                '1/2': '50%',
+                'full': '100%',
+                'screen': '100vh',
 
-                78: '19.5em', // 312px
+                'boxSpace': 'var(--box-space)',
+                'pageSpace': 'var(--page-space)',
 
-                screen: '100vh',
+                'headerHeight': 'var(--header-height)',
 
-                boxSpace: 'var(--box-space)',
-                pageSpace: 'var(--page-space)',
+                'inputHeight': 'var(--input-height)',
 
-                headerHeight: 'var(--header-height)',
+                'colGap': 'var(--col-gap)',
 
-                inputHeight: 'var(--input-height)',
-
-                colGap: 'var(--col-gap)',
-
-                containerOffset: 'var(--container-offset)',
+                'containerOffset': 'calc((min(var(--wrapper-width), 100vw) - var(--container-width) + (var(--box-space) * 2)) / 2)'
             },
-        },
+            zIndex: {
+                1: 1,
+                header: 100,
+                dropdown: 200,
+                modal: 300,
+                tooltip: 400
+            }
+        }
     },
     plugins: [
-        require('@tailwindcss/aspect-ratio'),
-    ],
+        require('@tailwindcss/aspect-ratio')
+    ]
 };

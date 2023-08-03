@@ -1,0 +1,15 @@
+<span class="c-label {{ class }}">
+    {% if link %}
+        <a href="{{ link }}" class="c-label__link">{{ text }}</a>
+    {% elseif button %}
+        <button type="button" class="c-label__link">{{ text }}</button>
+    {% else %}
+        <span class="c-label__link">{{ text }}</span>
+    {% endif %}
+
+    {% if close %}
+        <button type="button" class="c-label__close">
+            {% include '_app/icon.twig' with { name: 'close' } only %}
+        </button>
+    {% endif %}
+</span>

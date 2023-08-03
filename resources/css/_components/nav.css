@@ -1,0 +1,18 @@
+.c-nav {
+    --nav-padding: theme(spacing[2.5]);
+    --nav-gap: theme(spacing.2) var(--col-gap);
+    font-weight: 700;
+    white-space: nowrap;
+
+    &__list {
+        display: inline-flex;
+        flex-wrap: wrap;
+        gap: var(--nav-gap);
+        margin: calc(var(--nav-padding) * -1) 0;
+    }
+
+    &__link {
+        padding: var(--nav-padding);
+        display: inline-block;
+    }
+}

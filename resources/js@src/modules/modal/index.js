@@ -1,6 +1,6 @@
 import BModal from 'badger-modal';
 
-import { setSpaces, clearSpaces } from '@src/helpers/measure';
+import { clearSpaces, setSpaces } from '@src/helpers/measure';
 
 (() => {
     const modalEls = document.querySelectorAll('.m-modal');

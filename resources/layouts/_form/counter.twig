@@ -1,0 +1,37 @@
+{% set id = id ?? 'formCounter' ~ random() %}
+
+{% if label %}
+    <label for="{{ id }}" class="mb-2 f-label">{{ label }}</label>
+{% endif %}
+
+<div class="f-counter {{ error ? 'f-field--error' : '' }}">
+    <button
+        class="f-counter__btn f-btn f-btn--square"
+        type="button"
+        disabled
+        aria-label="Зменшити"
+    >
+        -
+    </button>
+    <input
+        id="{{ id }}"
+        value="1"
+        name="{{ name }}"
+        class="f-counter__field f-field {{ class }}"
+        type="number"
+        min="0"
+        max="999"
+        {{ attrs }}
+    >
+    <button
+        class="f-counter__btn f-btn f-btn--square"
+        type="button"
+        aria-label="Збільшити"
+    >
+        +
+    </button>
+</div>
+
+{% if error %}
+    <span class="f-info f-info--error">{{ error }}</span>
+{% endif %}

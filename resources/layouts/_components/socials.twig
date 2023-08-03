@@ -1,0 +1,13 @@
+
+<div class="c-socials {{ class }}">
+    <ul class="c-socials__list">
+        {% for item in socials %}
+            <li class="c-socials__item">
+                <a href="{{ item.link }}" target="_blank" class="c-socials__link">
+                    <span class="sr-only">{{ item.title }}</span>
+                    {% include "_app/icon.twig" with { type: 'socials', name: item.id } only %}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

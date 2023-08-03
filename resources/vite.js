@@ -3,10 +3,5 @@
 
 import.meta.glob([
     './img/**',
-    './fonts/**',
+    './fonts/**'
 ]);
-
-// Init svg sprite build
-import 'virtual:svg-icons-register';
-// import ids from 'virtual:svg-icons-names'
-// console.log(ids);

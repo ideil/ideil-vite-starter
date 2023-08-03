@@ -1,0 +1,15 @@
+{% set id = id ?? 'formCheck' ~ random() %}
+
+<div class="f-check {{ class }} {{ error ? 'f-field--error' : '' }}">
+    <input
+        id="{{ id }}"
+        type="{{ type ?? 'checkbox' }}"
+        class="f-check__field"
+        name="{{ name }}"
+        {{ attrs }}
+    >
+
+    {% if label %}
+        <label for="{{ id }}" class="f-check__label {{ labelClass }}">{{ label }}</label>
+    {% endif %}
+</div>

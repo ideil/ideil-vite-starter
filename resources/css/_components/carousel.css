@@ -1,101 +1,121 @@
 @import '@splidejs/splide/css/core';
 
-.c-carousel {
+.splide {
     overflow: hidden;
-    --btn-size: theme(spacing.10);
-    --heading-space: theme(spacing.5);
+    visibility: inherit;
+    transition-property: visibility;
 
-    @screen lg {
-        --heading-space: theme(spacing.10);
+    .is-initialized&,
+    .is-rendered& {
+        visibility: inherit;
     }
 
-    @screen xl {
-        --btn-size: theme(spacing.15);
+    &__slide {
+        width: 100%;
+        display: flex;
+        margin-right: var(--col-gap);
     }
 
-    .splide {
+    &__inner {
+        position: relative;
+    }
 
-        &__slide {
-            width: 100%;
+    &__arrows {
+        display: flex;
+        align-items: center;
+        gap: theme(spacing.5);
+        transition-property: opacity, visibility;
+    }
+
+    &__arrow {
+
+        &:disabled {
+            opacity: .5;
+        }
+
+        &--prev {
+        }
+
+        &--next {
+        }
+    }
+
+    &__pagination {
+        flex-grow: 1;
+        display: flex;
+        align-items: stretch;
+
+        .splide & {
             display: flex;
-            margin-right: var(--col-gap);
         }
 
-        &__arrows {
+        li {
             display: flex;
-            gap: theme(spacing.5);
-            margin-bottom: calc(-1 * theme(spacing.2));
+            flex-grow: 1;
         }
 
-        &__arrow {
-            width: var(--btn-size);
-            height: var(--btn-size);
-            display: grid;
-            place-items: center;
-            --icon-size: calc(var(--btn-size) * 0.5);
-
-            @screen md-max {
-                display: none;
-            }
-
-            &:disabled {
-                opacity: .3;
-            }
-
-            &--prev {
-                transform: rotate(180deg);
-            }
-        }
-
-        &__track {
+        &__page {
+            height: theme(spacing.1);
             width: 100%;
-            overflow: visible;
-        }
+            position: relative;
+            background-color: theme(colors.gray.200);
 
-        &__pagination {
-            width: 100%;
-            gap: theme(spacing.2);
-            margin-top: theme(spacing.4);
-
-            li {
-                line-height: 0;
+            &:before {
+                content: '';
+                display: block;
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 100%;
+                opacity: 0;
+                background-color: theme(colors.primary.DEFAULT);
+                width: var(--carousel-progress, 100%);
+                transition-property: opacity;
             }
 
-            &__page {
-                width: theme(spacing[2.5]);
-                height: theme(spacing[2.5]);
-                border-radius: 99px;
-                background-color: currentColor;
+            &:hover {
+                background-color: theme(colors.primary.hover);
+            }
 
-                &:not(.is-active) {
-                    opacity: .25;
+            &.is-active {
+                background-color: theme(colors.primary.hover);
+
+                &:before {
+                    opacity: 1;
                 }
             }
         }
     }
 
-    &__inner {
-        position: relative;
+    &--5 {
 
-        /* @screen md {
-            overflow: hidden;
-        } */
-    }
+        .splide__slide {
+            width: 90%;
 
-    &__heading {
-        margin-bottom: var(--heading-space);
-        display: flex;
-        flex-wrap: wrap;
-        align-items: flex-end;
-        justify-content: space-between;
+            @screen sm {
+                width: calc(50% - var(--col-gap) * 2 / 3);
+            }
+
+            @screen md {
+                width: calc(33.333% - var(--col-gap) * 2 / 3);
+            }
+
+            @screen lg {
+                width: calc(25% - var(--col-gap) * 2 / 3);
+            }
+
+            @screen xl {
+                width: calc(20% - var(--col-gap) * 3 / 4);
+            }
+        }
     }
 
     &--4 {
 
         .splide__slide {
-            width: 95%;
+            width: 90%;
 
-            @screen sm {
+            @screen md {
                 width: calc(50% - var(--col-gap) * 1 / 2);
             }
 
@@ -112,7 +132,7 @@
     &--3 {
 
         .splide__slide {
-            width: 95%;
+            width: 90%;
 
             @screen md {
                 width: calc(50% - var(--col-gap) * 1 / 2);
@@ -142,11 +162,27 @@
     &--2 {
 
         .splide__slide {
-            width: 95%;
+            width: 90%;
 
             @screen md {
                 width: calc(50% - var(--col-gap) * 1 / 2);
             }
         }
     }
+
+    @screen md-max {
+
+        &__track {
+            overflow: visible;
+        }
+
+        &__arrows {
+            display: none;
+        }
+
+        &__pagination {
+            margin-top: theme(spacing.5);
+        }
+    }
 }
+

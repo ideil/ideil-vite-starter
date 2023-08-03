@@ -1,0 +1,44 @@
+:root {
+    --f-group-space: theme(spacing.5);
+
+    --f-field-color: theme(colors.text);
+    --f-field-placeholder-color: theme(colors.gray.DEFAULT);
+    --f-field-border-color: theme(colors.gray.DEFAULT);
+    --f-field-color-light: theme(colors.white);
+    --f-field-bg: transparent;
+    --f-field-placeholder-color-light: theme(colors.white / 60%);
+    --f-field-border-color-light: theme(colors.white / 70%);
+    --f-field-border-width: 1px;
+    --f-field-py: theme(spacing[1.5]);
+    --f-field-px: 0;
+    --f-field-font-size: theme(fontSize.base);
+    --f-field-line-height: theme(lineHeight.6);
+    --f-field-height: calc(var(--f-field-py) * 2 + var(--f-field-line-height) + var(--f-field-border-width));
+
+    --f-label-icon-size: theme(spacing.5);
+    --f-label-icon-width: theme(spacing.7);
+
+    --f-label-color: currentColor;
+    --f-label-space: theme(spacing.2);
+    --f-label-font-size: var(--f-field-font-size);
+    --f-label-line-height: 1;
+
+    --f-info-font-size: theme(fontSize.xs);
+    --f-info-line-height: theme(lineHeight.tight);
+    --f-info-space: theme(spacing.1);
+
+    --f-check-size: theme(spacing.5);
+    --f-check-gap: theme(spacing.2);
+    --f-check-border-width: 2px;
+    --f-check-border-color: theme(colors.gray.DEFAULT);
+    --f-check-font-size: theme(fontSize.base);
+    --f-check-line-height: theme(lineHeight.5);
+
+    --f-rating-gap: theme(spacing.2);
+
+    --f-error: theme(colors.red.600);
+    --f-active: theme(colors.primary.hover);
+    --f-active-light: theme(colors.white);
+
+    --f-submit-space: theme(spacing.8);
+}

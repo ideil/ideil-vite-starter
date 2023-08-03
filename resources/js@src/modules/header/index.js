@@ -1,4 +1,4 @@
-import { setSpaces, clearSpaces } from '@src/helpers/measure';
+import { clearSpaces, setSpaces } from '@src/helpers/measure';
 
 (() => {
     const menuToggle = document.querySelector('[data-menu-toggle]');

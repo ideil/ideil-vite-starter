@@ -1,0 +1,93 @@
+.f-field {
+    vertical-align: middle;
+    text-align: left;
+    width: 100%;
+    padding: var(--f-field-py) var(--f-field-px);
+    color: var(--f-field-color);
+    font-size: var(--f-field-font-size);
+    line-height: var(--f-field-line-height);
+    background: var(--f-field-bg);
+    border: var(--f-field-border-width) solid var(--f-field-border-color);
+    box-shadow: var(--f-field-border-width);
+    border-radius: var(--f-field-border-radius);
+    min-height: var(--f-field-height);
+    outline: none;
+    appearance: none;
+    transition-property: border-color, outline;
+
+    &::placeholder,
+    &.f-field--placeholder {
+        color: var(--f-field-placeholder-color);
+    }
+
+    &:disabled {
+        opacity: .5;
+        pointer-events: none;
+    }
+
+    &:-webkit-autofill {
+        background-color: transparent;
+        -webkit-text-fill-color: theme(colors.text);
+        box-shadow: 0 0 0 60px theme(colors.gray.100) inset;
+    }
+
+    &:hover {
+        border-color: var(--f-active);
+    }
+
+    &:focus {
+        border-color: var(--f-active);
+    }
+
+    &:focus,
+    &:not(:placeholder-shown):not(:focus) {
+
+        &::placeholder {
+            color: currentColor;
+            opacity: .5;
+        }
+    }
+
+    &:has(+ .f-field-icon) {
+        padding-right: var(--f-label-icon-width);
+    }
+
+    .f-field-icon + & {
+        padding-left: var(--f-label-icon-width);
+    }
+
+    &.has-error {
+        border-color: theme(colors.red.500);
+    }
+
+    textarea& {
+        height: auto;
+    }
+
+    &__icon {
+        height: var(--f-field-height);
+        color: var(--f-field-icon-color);
+        display: flex;
+        align-items: center;
+        position: absolute;
+        left: var(--f-field-px);
+        top: 0;
+        --icon-size: var(--f-field-icon-size);
+
+        .f-field + & {
+            left: initial;
+            right: var(--f-field-px);
+        }
+    }
+
+    &--light {
+        --f-active: var(--f-active-light);
+        --f-field-color: var(--f-field-color-light);
+        --f-field-border-color: var(--f-field-border-color-light);
+        --f-field-placeholder-color: var(--f-field-placeholder-color-light);
+    }
+
+    &--error {
+        --f-field-border-color: var(--f-error);
+    }
+}

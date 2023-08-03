@@ -1,54 +1,54 @@
-<script>
-import { defineComponent, computed } from 'vue';
+<script lang="ts">
+    import { computed, defineComponent } from 'vue';
 
-export default defineComponent({
-    name: 'CheckField',
-    inheritAttrs: false,
-    props: {
-        modelValue: {
-            type: [ Boolean, String ],
-            required: true,
-        },
-        error: {
-            type: [ String, Array ],
-            required: false,
-            default: '',
-        },
-        id: {
-            type: String,
-            required: true,
-        },
-        type: {
-            type: String,
-            required: false,
-            default: 'checkbox',
-        },
-        label: {
-            type: String,
-            required: false,
-            default: '',
-        },
-        placeholder: {
-            type: String,
-            default: ' ',
-        },
-    },
-    emits: [ 'update:modelValue' ],
-    setup(props, { emit }) {
-        const value = computed({
-            get() {
-                return props.modelValue;
+    export default defineComponent({
+        name: 'CheckField',
+        inheritAttrs: false,
+        props: {
+            modelValue: {
+                type: [ Boolean, String ],
+                required: true
             },
-            set(value) {
-                emit('update:modelValue', value);
+            error: {
+                type: [ String, Array ],
+                required: false,
+                default: ''
             },
-        });
+            id: {
+                type: String,
+                required: true
+            },
+            type: {
+                type: String,
+                required: false,
+                default: 'checkbox'
+            },
+            label: {
+                type: String,
+                required: false,
+                default: ''
+            },
+            placeholder: {
+                type: String,
+                default: ' '
+            }
+        },
+        emits: [ 'update:modelValue' ],
+        setup(props, { emit }) {
+            const value = computed({
+                get() {
+                    return props.modelValue;
+                },
+                set(value) {
+                    emit('update:modelValue', value);
+                }
+            });
 
-        return {
-            value,
-        };
-    },
-});
+            return {
+                value
+            };
+        }
+    });
 </script>
 
 <template>
@@ -59,13 +59,13 @@ export default defineComponent({
             v-bind="$attrs"
             :type="type"
             :placeholder="placeholder"
-            class="f-check-input"
+            class="f-check__field"
             :class="{ 'has-error': error }"
         >
         <label
             v-if="label"
             :for="id"
-            class="f-check-label"
+            class="f-check__label"
         >{{ label }}</label>
     </div>
 

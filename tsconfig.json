@@ -1,31 +1,48 @@
 {
-    "extends": "./resources/presets/vue/tsconfig.json",
     "compilerOptions": {
-        "module": "commonjs",
-        "target": "ESNext",
-        "sourceMap": true,
-        "strict": true,
-        "esModuleInterop": true,
-        "noEmit": true,
+        "target": "ES2020",
+        "useDefineForClassFields": true,
+        "lib": [
+            "ES2020",
+            "DOM",
+            "DOM.Iterable"
+        ],
+        "module": "ESNext",
         "skipLibCheck": true,
-        "allowJs": true,
-        "baseUrl": "./",
+
+        /* Bundler mode */
+        "moduleResolution": "bundler",
+        "allowImportingTsExtensions": true,
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "noEmit": true,
+        "jsx": "react-jsx",
+
+        /* Linting */
+        "strict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noFallthroughCasesInSwitch": true,
+
+        "baseUrl": ".",
         "paths": {
-            "@src/*": [
-                "./resources/js@src/*"
-            ],
-            "@pub/*": [
-                "./resources/js@pub/*"
-            ],
-            "@data/*": [
-                "./resources/data/*"
-            ],
-            "@img/*": [
-                "./resources/img/*"
-            ],
-        }
+            "@src": [ "./resources/js@src" ],
+            "@src/*": [ "./resources/js@src/*" ],
+            "@pub": [ "./resources/js@pub" ],
+            "@pub/*": [ "./resources/js@pub/*" ],
+            "@img": [ "./resources/img" ],
+            "@img/*": [ "./resources/img/*" ],
+        },
+        "types": [
+            "vite/client"
+        ]
     },
-    "exclude": [
-        "node_modules"
-    ]
+    "include": [
+        "**/*"
+    ],
+    // "references": [
+    //     {
+    //         "path": "./tsconfig.node.json"
+    //     }
+    // ]
 }

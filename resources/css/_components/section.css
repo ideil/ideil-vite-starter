@@ -1,0 +1,7 @@
+.c-section {
+    margin-bottom: theme(spacing.15);
+
+    @screen xl {
+        margin-bottom: theme(spacing.28);
+    }
+}

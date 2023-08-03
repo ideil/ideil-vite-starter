@@ -10,7 +10,7 @@ galleryEls.forEach(galleryEl => {
         gallery: galleryEl,
         children: childrenEls,
         showHideAnimationType: 'fade',
-        pswpModule: PhotoSwipe,
+        pswpModule: PhotoSwipe
     });
     lightbox.init();
 });

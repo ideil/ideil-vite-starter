@@ -1,0 +1,43 @@
+.c-cookies {
+    --cookies-offset: theme(spacing.5);
+    --cookies-max-width: 586px;
+    --cookies-px: theme(spacing.8);
+    --cookies-py: theme(spacing.4);
+    --cookies-bg: theme(colors.primary.DEFAULT);
+    --cookies-color: theme(colors.white);
+    --cookies-gap: theme(spacing.3) theme(spacing.6);
+    --cookies-border-radius: theme(borderRadius.md);
+    --cookies-icon-size: theme(spacing.10);
+    position: fixed;
+    bottom: var(--cookies-offset);
+    left: var(--cookies-offset);
+    width: calc(100% - var(--cookies-offset) * 2);
+    max-width: var(--cookies-max-width);
+    padding: var(--cookies-py) var(--cookies-px);
+    background: var(--cookies-bg);
+    color: var(--cookies-color);
+    border-radius: var(--cookies-border-radius);
+    z-index: 9999;
+    display: flex;
+    gap: var(--cookies-gap);
+    align-items: center;
+    opacity: 0;
+    transform: translateY(100%);
+    visibility: hidden;
+    transition-property: opacity, transform, visibility;
+
+    .is-cookies-visible & {
+        opacity: 1;
+        transform: none;
+        visibility: visible;
+    }
+
+    .f-btn {
+        min-width: 96px;
+        margin-left: auto;
+    }
+
+    &__icon {
+        --icon-size: var(--cookies-icon-size);
+    }
+}

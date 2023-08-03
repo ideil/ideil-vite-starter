@@ -32,7 +32,7 @@
 
     --popover-vertical-content-offset: 0;
 
-    --vc-slide-translate: theme(spacing.1);
+    --vc-slide-translate: calc(theme(spacing.1) * -1);
     --vc-slide-duration: var(--transition-duration);
     --vc-slide-timing: var(--transition-timing-function);
 }

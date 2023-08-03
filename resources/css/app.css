@@ -1,37 +1,48 @@
+/* Set */
+@import '_set/variables.css';
+@import '_set/mixins.css';
+
 /* Tailwind */
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 
-/* Set */
-@import '_set/vars.css';
+/* Variables */
+@import '_variables/base.css';
+@import '_variables/button.css';
+@import '_variables/form.css';
 
 /* Base */
 @import '_app/fonts.css';
 @import '_app/reset.css';
-@import '_app/icons.css';
 @import '_app/measure.css';
 @import '_app/typography.css';
+@import '_app/icons.css';
 
 /* Layouts */
 @import '_layouts/box.css';
 @import '_layouts/container.css';
 
+/* Components */
+@import '_components/ideil.css';
+@import '_components/logo.css';
+@import '_components/nav.css';
+@import '_components/socials.css';
+@import '_components/section.css';
+
 /* Form */
+@import '_form/base.css';
 @import '_form/buttons.css';
-@import '_form/forms.css';
+@import '_form/field.css';
 @import '_form/check.css';
-@import '_form/checkbox.css';
 @import '_form/counter.css';
+@import '_form/rating.css';
 @import '_form/select.css';
 @import '_form/datepicker.css';
 
 /* Parts */
-@import '_app/ideil.css';
-@import '_app/logo.css';
-@import '_app/nav.css';
-@import '_app/socials.css';
 @import '_app/header.css';
 @import '_app/menu.css';
 @import '_app/footer.css';
 
 /* Components */
+@import '_components/cookies.css';

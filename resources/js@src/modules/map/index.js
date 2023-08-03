@@ -12,16 +12,16 @@ import 'intersection-observer';
     const startMap = async mapBlock => {
         const [
             { Loader },
-            { default: markUrl },
+            { default: markUrl }
         ] = await Promise.all([
             await import('@googlemaps/js-api-loader'),
-            await import('@img/svg/mark.svg?url'),
+            await import('@img/svg/mark.svg?url')
         ]);
 
         const loader = new Loader({
             apiKey: '', // apiKey
             version: 'weekly',
-            language: 'uk',
+            language: 'uk'
         });
 
         loader.load().then(() => {
@@ -33,133 +33,133 @@ import 'intersection-observer';
                     elementType: 'geometry',
                     stylers: [
                         {
-                            color: '#F7F7F7',
+                            color: '#F7F7F7'
                         },
                         {
-                            lightness: 17,
-                        },
-                    ],
+                            lightness: 17
+                        }
+                    ]
                 },
                 {
                     featureType: 'road.highway',
                     elementType: 'geometry.fill',
                     stylers: [
                         {
-                            color: '#ffffff',
+                            color: '#ffffff'
                         },
                         {
-                            lightness: 17,
-                        },
-                    ],
+                            lightness: 17
+                        }
+                    ]
                 },
                 {
                     featureType: 'road.highway',
                     elementType: 'geometry.stroke',
                     stylers: [
                         {
-                            color: '#ffffff',
+                            color: '#ffffff'
                         },
                         {
-                            lightness: 29,
+                            lightness: 29
                         },
                         {
-                            weight: 0.2,
-                        },
-                    ],
+                            weight: 0.2
+                        }
+                    ]
                 },
                 {
                     featureType: 'road.arterial',
                     elementType: 'geometry',
                     stylers: [
                         {
-                            color: '#ffffff',
+                            color: '#ffffff'
                         },
                         {
-                            lightness: 18,
-                        },
-                    ],
+                            lightness: 18
+                        }
+                    ]
                 },
                 {
                     featureType: 'road.local',
                     elementType: 'geometry',
                     stylers: [
                         {
-                            color: '#ffffff',
+                            color: '#ffffff'
                         },
                         {
-                            lightness: 16,
-                        },
-                    ],
+                            lightness: 16
+                        }
+                    ]
                 },
                 {
                     featureType: 'poi.park',
                     elementType: 'geometry',
                     stylers: [
                         {
-                            color: '#F7F7F7',
+                            color: '#F7F7F7'
                         },
                         {
-                            lightness: 21,
-                        },
-                    ],
+                            lightness: 21
+                        }
+                    ]
                 },
                 {
                     elementType: 'labels.text.stroke',
                     stylers: [
                         {
-                            visibility: 'on',
+                            visibility: 'on'
                         },
                         {
-                            color: '#ffffff',
+                            color: '#ffffff'
                         },
                         {
-                            lightness: 16,
-                        },
-                    ],
+                            lightness: 16
+                        }
+                    ]
                 },
                 {
                     elementType: 'labels.text.fill',
                     stylers: [
                         {
-                            saturation: 36,
+                            saturation: 36
                         },
                         {
-                            color: '#333333',
+                            color: '#333333'
                         },
                         {
-                            lightness: 40,
-                        },
-                    ],
+                            lightness: 40
+                        }
+                    ]
                 },
                 {
                     elementType: 'labels.icon',
                     stylers: [
                         {
-                            visibility: 'off',
-                        },
-                    ],
-                },
+                            visibility: 'off'
+                        }
+                    ]
+                }
             ];
 
             const mapMarker = {
                 url: markUrl,
                 size: new google.maps.Size(44, 44),
-                scaledSize: new google.maps.Size(44, 44),
+                scaledSize: new google.maps.Size(44, 44)
             };
 
             const target = {
                 lat: lat,
-                lng: lng,
+                lng: lng
             };
             const markerPosition = {
                 lat: lat - 0.00025,
-                lng: lng,
+                lng: lng
             };
 
             const map = new google.maps.Map(mapBlock, {
                 zoom: 17,
                 center: target,
-                styles: styles,
+                styles: styles
                 // scrollwheel: false,
                 // panControl: false,
                 // mapTypeControl: false,
@@ -171,14 +171,14 @@ import 'intersection-observer';
             new google.maps.Marker({
                 position: markerPosition,
                 map: map,
-                icon: mapMarker,
+                icon: mapMarker
             });
         });
     };
 
     const observer = new IntersectionObserver(
         (entries, observer) => {
-            entries.forEach(function(entry) {
+            entries.forEach(function (entry) {
                 if (entry.isIntersecting && mapBlock) {
                     observer.unobserve(mapBlock);
 
@@ -187,8 +187,8 @@ import 'intersection-observer';
             });
         },
         {
-            rootMargin: '100px',
-        },
+            rootMargin: '100px'
+        }
     );
 
     observer.observe(mapBlock);

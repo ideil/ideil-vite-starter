@@ -1,0 +1,23 @@
+<div
+    class="m-modal m-modal--centered"
+    id="testModal"
+    tabindex="-1"
+    aria-hidden="true"
+    aria-labelledby="testModalTitle"
+>
+    <div class="m-dialog">
+        <div class="m-content">
+            <button type="button" class="m-close" data-modal-dismiss="" aria-label="Закрити">
+                {% include "_app/icon.twig" with { name: 'close' } only %}
+            </button>
+
+            <div class="m-body">
+                <div class="mb-5 m-title c-title c-title--h3" id="testModalTitle">Приклад</div>
+                <div class="m-text">
+                    <p class="mb-4">Приклад</p>
+                    <button class="f-btn f-btn--primary" data-tooltip-type="clickable" data-tooltip="Текстовий тултіп" data-tooltip-placement="top">Клікабельний {% include '_app/icon.twig' with { name: 'arrow' } only %}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

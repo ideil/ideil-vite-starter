@@ -1,0 +1,34 @@
+:root {
+    --vw: 1vw;
+
+    --transition-duration: theme(transitionDuration.base);
+    --transition-timing-function: theme(transitionTimingFunction.base);
+    --transition-property: var(--transition-duration) var(--transition-function);
+
+    --header-height: theme(spacing.15);
+
+    --page-space: theme(spacing.7);
+    --box-space: theme(spacing.5);
+    --col-gap: theme(spacing.5);
+
+    --icon-size: theme(spacing.6);
+
+    --container-width: theme(maxWidth.sm);
+
+    @screen md {
+        --container-width: theme(maxWidth.md);
+    }
+
+    @screen lg {
+        --container-width: theme(maxWidth.lg);
+    }
+
+    @screen xl {
+        --box-space: theme(spacing.10);
+        --container-width: theme(maxWidth.xl);
+    }
+
+    @screen 2xl {
+        --container-width: theme(maxWidth.2xl);
+    }
+}

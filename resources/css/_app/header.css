@@ -3,23 +3,14 @@
     top: 0;
     left: 0;
     width: 100%;
-    z-index: theme(zIndex.20);
+    z-index: theme(zIndex.header);
     line-height: 1;
     color: theme(colors.text);
     background-color: theme(colors.body);
     border-bottom: 1px solid theme(colors.gray.200);
 
-
     &__inner {
         height: theme(spacing.headerHeight);
-        display: flex;
-        align-items: center;
-        /* padding-top: theme(spacing[2.5]); */
-        /* padding-bottom: theme(spacing[2.5]); */
-    }
-
-    &__main {
-        flex-grow: 1;
         display: flex;
         align-items: center;
     }
@@ -28,19 +19,11 @@
         margin-right: theme(spacing.8);
         align-self: center;
         transition-property: width, padding;
-
-        @screen xl {
-            margin-right: theme(spacing.15);
-        }
     }
 
     &__hamburger {
         margin-left: auto;
         line-height: 0;
-
-        @screen lg {
-            display: none;
-        }
 
         &-btn {
             display: block;
@@ -79,37 +62,10 @@
         }
     }
 
-    &__nav {
-        display: none;
+    @screen xl {
 
-        @screen lg {
-            display: block;
-        }
-    }
-
-    &__socials {
-        --icon-size: theme(spacing.6);
-        display: none;
-
-        @screen lg {
-            display: block;
-            margin-left: auto;
-        }
-
-        .c-socials {
-
-            @screen xl {
-
-                &__list {
-                    margin-left: calc(-1 * theme(spacing.4));
-                    margin-right: calc(-1 * theme(spacing.4));
-                }
-
-                &__link {
-                    padding-left: theme(spacing.4);
-                    padding-right: theme(spacing.4);
-                }
-            }
+        &__logo {
+            margin-right: theme(spacing.15);
         }
     }
 }

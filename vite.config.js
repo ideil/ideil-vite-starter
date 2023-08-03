@@ -1,20 +1,21 @@
-import vuePlugin from '@vitejs/plugin-vue';
-import { sync as globSync } from 'fast-glob';
-import laravel from 'laravel-vite-plugin';
-import path from 'path';
-import { defineConfig } from 'vite';
-import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
-// import imageminPlugin from 'vite-plugin-imagemin';
+const vuePlugin = require('@vitejs/plugin-vue');
+const { sync: globSync } = require('fast-glob');
+const { default: laravel } = require('laravel-vite-plugin');
+const path = require('node:path');
+const { default: ViteSvgSpriteWrapper } = require('vite-svg-sprite-wrapper');
 
-import config from './vite-config/config.js';
-import twigHtmlPlugin from './vite-config/twig-html.js';
+const { default: config } = require('./vite-config/config');
+const { default: twigHtmlPlugin } = require('./vite-config/twig-html');
 
-export default defineConfig({
+module.exports = {
     server: {
-        ...config.server,
+        ...config.server
     },
     root: path.resolve(config.rootDir),
     publicDir: path.resolve(config.publicDir),
+    css: {
+        devSourcemap: true
+    },
     build: {
         outDir: path.resolve(config.buildDir),
         emptyOutDir: true,
@@ -46,27 +47,26 @@ export default defineConfig({
                     return `${ folders }[name].[hash].[ext]`;
                 },
                 chunkFileNames: 'js/chunks/[name].[hash].js',
-                entryFileNames: 'js/[name].[hash].js',
+                entryFileNames: 'js/[name].[hash].js'
             },
             input: [
                 ...globSync(path.resolve(`${ config.rootDir }/css/*.css`)),
                 `${ config.rootDir }/js@src/app.js`,
-                `${ config.rootDir }/js@pub/app.js`,
-            ],
-        },
+                `${ config.rootDir }/js@pub/app.js`
+            ]
+        }
     },
     resolve: {
         alias: {
-            '@src': path.resolve(`${ config.rootDir }/js@src`),
-            '@pub': path.resolve(`${ config.rootDir }/js@pub`),
-            '@data': path.resolve(`${ config.rootDir }/data`),
-            '@img': path.resolve(`${ config.rootDir }/img`),
-        },
+            '@src': '/js@src',
+            '@pub': '/js@pub',
+            '@img': '/img'
+        }
     },
     plugins: [
         laravel({
             input: '',
-            publicDirectory: 'static',
+            publicDirectory: 'static'
         }),
         {
             name: 'laravel-fix',
@@ -74,17 +74,17 @@ export default defineConfig({
             config(userConfig) {
                 userConfig.base = config.base;
                 userConfig.server.origin = undefined;
-            },
+            }
         },
         twigHtmlPlugin(),
-        createSvgIconsPlugin({
-            iconDirs: [ path.resolve(`${ config.rootDir }/${ config.iconsDir }`) ],
+        ViteSvgSpriteWrapper({
+            icons: path.resolve(`${ config.rootDir }/${ config.iconsDir }/**/*.svg`),
+            outputDir: path.resolve(`${ config.rootDir }/${ config.imageDir }`)
         }),
         vuePlugin({
             template: {
-                transformAssetUrls: true,
-            },
-        }),
-        // imageminPlugin(config.imagemin),
-    ],
-});
+                transformAssetUrls: true
+            }
+        })
+    ]
+};

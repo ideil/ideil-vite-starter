@@ -1,55 +1,60 @@
-/* @import 'vue-next-select/dist/index.css'; */
 @import '@vueform/multiselect/themes/default.css';
 
 .f-select {
     --ms-radius: 0;
-    --ms-color: var(--input-color);
-    --ms-border-width: var(--input-border-width);
-    --ms-border-color: var(--input-border-color);
-    --ms-bg: transparent;
-    --ms-px: 0;
-    --ms-font-size: var(--input-font-size);
+    --ms-color: var(--f-field-color);
+    --ms-border-width: var(--f-field-border-width);
+    --ms-border-color: var(--f-field-border-color);
+    --ms-bg: var(--f-field-bg);
+    --ms-px: var(--f-field-px);
+    --ms-font-size: var(--f-field-font-size);
+    --ms-placeholder-color: var(--f-field-placeholder-color);
+    --ms-clear-color: var(--f-field-placeholder-color);
+    --ms-clear-color-hover: var(--f-active);
 
-    --ms-dropdown-radius: 0;
+    --ms-dropdown-radius: theme(borderRadius.md);
     --ms-dropdown-border-width: 0;
     --ms-dropdown-border-color: none;
     --ms-dropdown-bg: theme(colors.white);
 
-    --ms-option-bg-pointed: theme(colors.gray.100);
-    --ms-option-color-pointed: theme(colors.text);
+    --ms-option-bg-pointed: theme(colors.primary.hover);
+    --ms-option-color-pointed: theme(colors.white);
     --ms-option-px: theme(spacing.4);
 
     --ms-option-bg-selected: theme(colors.primary.DEFAULT);
     --ms-option-color-selected: theme(colors.white);
 
-    --ms-option-bg-selected-pointed: theme(colors.primary.DEFAULT);
+    --ms-option-bg-selected-pointed: theme(colors.primary.hover);
     --ms-option-color-selected-pointed: var(--ms-option-color-selected);
 
     --ms-tag-bg: theme(colors.primary.DEFAULT);
-    --ms-tag-radius: theme(borderRadius.none);
+    --ms-tag-radius: theme(borderRadius.full);
 
     --ms-caret-color: currentColor;
 
     min-height: 0;
     color: currentColor;
     border: none;
-    box-shadow: none !important;
+
+    &.is-active {
+        box-shadow: none;
+    }
 
     .multiselect-wrapper {
-        border-bottom: var(--ms-border-width) solid var(--ms-border-color);
-        min-height: var(--input-height);
+        border: var(--ms-border-width) solid var(--ms-border-color);
+        min-height: var(--f-field-height);
     }
 
     .multiselect-dropdown {
         margin: 0;
-        bottom: 0;
         left: 0;
         right: 0;
         box-shadow: theme(boxShadow.lg);
+        color: theme(colors.text);
         transition-property: transform, opacity, visibility;
 
         &.is-hidden {
-            transform: translateY(calc(100% - theme(spacing.1)));
+            transform: translateY(calc(100% + theme(spacing.1)));
             display: block;
             opacity: 0;
             visibility: hidden;
@@ -76,14 +81,14 @@
     .multiselect-single-label,
     .multiselect-multiple-label,
     .multiselect-tags {
-        padding: var(--input-spacing);
+        padding: var(--f-field-py) var(--f-field-px);
     }
 
     &.is-active {
         border: none;
 
         .multiselect-wrapper {
-            border-color: var(--input-border-active-color);
+            border-color: var(--f-active);
         }
     }
 }
