@@ -1,3 +1,7 @@
+/* Set */
+@import '_set/variables.css';
+@import '_set/mixins.css';
+
 /* Components */
 @import '_components/badge.css';
 @import '_components/label.css';

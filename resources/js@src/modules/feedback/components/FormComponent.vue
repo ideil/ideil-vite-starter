@@ -29,7 +29,7 @@
                 default: null
             }
         },
-        setup(props) {
+        setup() {
             // const { executeRecaptcha, recaptchaLoaded } = useReCaptcha()
             const successModalEl = document.querySelector('#successModal') as HTMLElement | null;
             let successModalInstance: BModalType | null = null;
@@ -137,12 +137,19 @@
                     :error="errors.name"
                     name="name"
                     type="text"
-                    :required="true"
+                    required
+                    is-float
                     placeholder="Ім'я"
                     class="f-field--light"
                     label="Ім’я"
                     @change="delete errors['name']"
-                />
+                >
+                    <template #fieldBefore>
+                        <div class="f-field__icon">
+                            <Icon name="star" />
+                        </div>
+                    </template>
+                </TextField>
             </div>
             <div class="f-group">
                 <TextField
@@ -206,6 +213,7 @@
                 <SelectField
                     id="feedbackVueType1"
                     v-model="form.type1"
+                    is-float
                     :disabled="isSending"
                     :error="errors.type1"
                     name="type1"
@@ -233,6 +241,7 @@
                 <SelectField
                     id="feedbackVueType2"
                     v-model="form.type2"
+                    is-float
                     :disabled="isSending"
                     :error="errors.type2"
                     name="type2"
@@ -260,6 +269,7 @@
                 <SelectField
                     id="feedbackVueType3"
                     v-model="form.type3"
+                    is-float
                     :disabled="isSending"
                     :error="errors.type3"
                     name="type3"
@@ -293,6 +303,7 @@
                     :required="true"
                     label="Дата"
                     class="f-field--light"
+                    is-float
                     @change="delete errors['date']"
                 />
             </div>
@@ -338,7 +349,7 @@
             </div>
 
             <Icon
-                id="facebook"
+                name="facebook"
                 folder="socials"
             />
 

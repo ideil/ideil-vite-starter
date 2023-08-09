@@ -39,6 +39,16 @@
             placeholder: {
                 type: String,
                 default: '01.02.2023'
+            },
+            wrapperClass: {
+                type: String,
+                required: false,
+                default: ''
+            },
+            isFloat: {
+                type: Boolean,
+                required: false,
+                default: false
             }
         },
         emits: [ 'update:modelValue' ],
@@ -103,28 +113,47 @@
 
 <template>
     <label
-        v-if="label"
+        v-if="label && !isFloat"
         :for="id"
         class="f-label"
     >{{ label }}</label>
-    <VDatePicker
-        v-model="value"
-        :popover="popover"
-        :locale="locale"
+
+    <div
+        class="relative"
+        :class="wrapperClass"
     >
-        <template #default="{ inputValue, inputEvents }">
-            <!-- v-maska:[maskOptions] -->
-            <input
-                :id="id"
-                :value="customInputValue(inputValue)"
-                :placeholder="placeholder"
-                v-bind="$attrs"
-                class="f-field"
-                :class="{ 'f-field--error': error }"
-                v-on="inputEvents"
-            >
-        </template>
-    </VDatePicker>
+        <slot name="fieldBefore" />
+
+        <VDatePicker
+            v-model="value"
+            :popover="popover"
+            :locale="locale"
+        >
+            <template #default="{ inputValue, inputEvents }">
+                <!-- v-maska:[maskOptions] -->
+                <input
+                    :id="id"
+                    :value="customInputValue(inputValue)"
+                    :placeholder="placeholder"
+                    v-bind="$attrs"
+                    class="f-field"
+                    :class="{
+                        'f-field--error': error,
+                        'f-field--float': isFloat
+                    }"
+                    v-on="inputEvents"
+                >
+            </template>
+        </VDatePicker>
+        <label
+            v-if="label && isFloat"
+            :for="id"
+            class="f-label"
+        >{{ label }}</label>
+
+        <slot name="fieldAfter" />
+    </div>
+
     <div
         v-if="error"
         class="f-info f-info--error"

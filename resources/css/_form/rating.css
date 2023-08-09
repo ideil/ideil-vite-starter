@@ -20,12 +20,12 @@
             color: var(--f-active);
         }
 
-        .f-rating:has(.f-rating__label:hover) & {
+        /* .f-rating:has(.f-rating__label:hover) & {
             color: var(--f-field-placeholder-color);
-        }
+        } */
 
         .f-rating:has(.f-rating__label:hover) .f-rating__field:hover ~ & {
-            color: var(--f-active);
+            color: var(--f-hover);
         }
     }
 }

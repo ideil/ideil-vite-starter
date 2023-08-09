@@ -1,7 +1,9 @@
 {% set id = id ?? 'formField' ~ random() %}
 
-{% if label %}
-    <label for="{{ id }}" class="f-label">{{ label }}</label>
+{% if not isFloat %}
+    {% if label %}
+        <label for="{{ id }}" class="f-label">{{ label }}</label>
+    {% endif %}
 {% endif %}
 
 <div class="relative {{ wrapperClass }}">
@@ -12,10 +14,21 @@
         id="{{ id }}"
         name="{{ name ?? '' }}"
         value="{{ value ?? '' }}"
-        class="f-field {{ error ? 'f-field--error' : '' }} {{ class }}"
-        placeholder="{{ placeholder }}"
+        class="
+            f-field
+            {{ error ? 'f-field--error' : '' }}
+            {{ isFloat ? 'f-field--float' : '' }}
+            {{ class }}
+        "
+        placeholder="{{ placeholder ?? ' ' }}"
         {{ attrs }}
     >
+
+    {% if isFloat %}
+        {% if label %}
+            <label for="{{ id }}" class="f-label">{{ label }}</label>
+        {% endif %}
+    {% endif %}
 
     {% block fieldAfter %}{% endblock %}
 </div>

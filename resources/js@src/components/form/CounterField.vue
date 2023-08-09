@@ -100,7 +100,7 @@
 <template>
     <div class="f-counter">
         <button
-            class="f-counter__btn f-btn f-btn--circle"
+            class="f-counter__btn f-btn f-btn--square"
             type="button"
             data-type="minus"
             :disabled="(model <= min) || disabled"
@@ -119,7 +119,7 @@
             :disabled="disabled"
         >
         <button
-            class="f-counter__btn f-btn f-btn--circle"
+            class="f-counter__btn f-btn f-btn--square"
             type="button"
             :disabled="(max && model >= max) || disabled"
             data-type="plus"

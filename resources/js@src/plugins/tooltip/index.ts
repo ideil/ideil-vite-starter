@@ -149,10 +149,8 @@ export default class Tooltip {
 
                 Object.assign(this.#arrowEl.style, {
                     left: arrowX ? `${ arrowX }px` : '',
-                    top: arrowY ? `${ arrowY }px` : '',
-                    right: '',
-                    bottom: '',
-                    [ staticSide ]: `${ this.#arrowEl.offsetHeight / -2 }px`
+                    transform: `rotate(${ staticSide === 'top' ? 45 : -135 }deg)`,
+                    [ staticSide ]: `${ this.#arrowEl.offsetHeight / -2 - 1 }px`
                 });
             }
         });

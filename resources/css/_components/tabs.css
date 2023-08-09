@@ -1,25 +1,41 @@
 .c-tabs {
+    --tabs-gap: theme(spacing.3);
+    --tabs-font-weight: theme(fontWeight.bold);
+    --tabs-line-height: theme(lineHeight.tight);
+    --tabs-px: theme(spacing.5);
+    --tabs-py: 0;
+    --tabs-height: theme(spacing.11);
+    --tabs-inner-gap: theme(spacing.2);
+    --tabs-background: theme(colors.gray.200);
+    --tabs-color: theme(colors.text);
+    --tabs-border-radius: theme(borderRadius.full);
+    --tabs-border-style: solid;
+    --tabs-border-width: 1px;
+    --tabs-border-color: var(--tabs-background);
+
+    --tabs-hover-color: theme(colors.text);
+    --tabs-hover-background: theme(colors.gray.300);
+    --tabs-hover-border-color: var(--tabs-hover-background);
+
+    --tabs-active-color: theme(colors.white);
+    --tabs-active-background: theme(colors.primary.DEFAULT);
+    --tabs-active-border-color: var(--tabs-active-background);
     position: relative;
     display: inline-flex;
     vertical-align: middle;
     min-width: 0;
     flex-shrink: 0;
     max-width: 100%;
-    line-height: theme(lineHeight.tight);
 
     &__list {
-        white-space: nowrap;
         flex-grow: 1;
         display: flex;
+        gap: var(--tabs-gap);
     }
 
     &__item {
         display: flex;
         align-items: center;
-
-        &:not(:last-child) {
-            margin-right: theme(spacing.3);
-        }
 
         &.is-active {
             pointer-events: none;
@@ -27,25 +43,31 @@
     }
 
     &__link {
-        background-color: theme(colors.gray.100);
-        color: theme(colors.black);
+        background: var(--tabs-background);
+        color: var(--tabs-color);
+        font-weight: var(--tabs-font-weight);
+        line-height: var(--tabs-line-hegiht);
+        height: var(--tabs-height);
+        padding: var(--tabs-py) var(--tabs-px);
+        border-radius: var(--tabs-border-radius);
+        border-style: var(--tabs-border-style);
+        border-width: var(--tabs-border-width);
+        border-color: var(--tabs-border-color);
+        gap: var(--tabs-inner-gap);
+        white-space: nowrap;
         display: flex;
-        font-weight: 700;
-        gap: theme(spacing.2);
-        height: theme(spacing.11);
-        padding: 0 theme(spacing.5);
         align-items: center;
-        border-radius: 99px;
 
         &:hover {
-            background-color: theme(colors.gray.200);
-            color: theme(colors.text);
+            color: var(--tabs-hover-color);
+            background: var(--tabs-hover-background);
+            border-color: var(--tabs-hover-border-color);
         }
 
         &.is-active {
-            pointer-events: none;
-            background-color: theme(colors.primary.DEFAULT);
-            color: theme(colors.white);
+            color: var(--tabs-active-color);
+            background: var(--tabs-active-background);
+            border-color: var(--tabs-active-border-color);
         }
     }
 

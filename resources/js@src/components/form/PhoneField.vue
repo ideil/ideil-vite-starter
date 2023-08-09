@@ -28,6 +28,16 @@
             placeholder: {
                 type: String,
                 default: '+380 00 000 00 00'
+            },
+            wrapperClass: {
+                type: String,
+                required: false,
+                default: ''
+            },
+            isFloat: {
+                type: Boolean,
+                required: false,
+                default: false
             }
         },
         emits: [ 'update:modelValue' ],
@@ -61,22 +71,39 @@
 
 <template>
     <label
-        v-if="label"
+        v-if="label && !isFloat"
         :for="id"
         class="f-label"
+    >{{ label }}</label>
+
+    <div
+        class="relative"
+        :class="wrapperClass"
     >
-        {{ label }}
-    </label>
-    <input
-        :id="id"
-        v-model="value"
-        v-bind="$attrs"
-        v-maska:[maskOptions]
-        :placeholder="placeholder"
-        type="text"
-        class="f-field"
-        :class="{ 'f-field--error': hasError }"
-    >
+        <slot name="fieldBefore" />
+
+        <input
+            :id="id"
+            v-model="value"
+            v-bind="$attrs"
+            v-maska:[maskOptions]
+            :placeholder="placeholder"
+            type="text"
+            class="f-field"
+            :class="{
+                'f-field--error': error,
+                'f-field--float': isFloat
+            }"
+        >
+        <label
+            v-if="label && isFloat"
+            :for="id"
+            class="f-label"
+        >{{ label }}</label>
+
+        <slot name="fieldAfter" />
+    </div>
+
     <span
         v-if="error"
         class="f-info f-info--error"

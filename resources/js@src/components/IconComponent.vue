@@ -3,7 +3,7 @@
 
     export default defineComponent({
         props: {
-            id: {
+            name: {
                 type: String,
                 required: true
             },
@@ -18,8 +18,8 @@
 <template>
     <svg
         class="i-icon"
-        :class="`i-${id}`"
+        :class="`i-${name}`"
     >
-        <use :xlink:href="`#icon-${folder ? folder + '-' : ''}${id}`" />
+        <use :xlink:href="`/img/sprite.svg#${folder ? folder + '--' : ''}${name}`" />
     </svg>
 </template>

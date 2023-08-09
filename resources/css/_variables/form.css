@@ -9,14 +9,15 @@
     --f-field-placeholder-color-light: theme(colors.white / 60%);
     --f-field-border-color-light: theme(colors.white / 70%);
     --f-field-border-width: 1px;
-    --f-field-py: theme(spacing[1.5]);
-    --f-field-px: 0;
+    --f-field-border-radius: theme(borderRadius.DEFAULT);
+    --f-field-py: theme(spacing[2.5]);
+    --f-field-px: theme(spacing.3);
     --f-field-font-size: theme(fontSize.base);
     --f-field-line-height: theme(lineHeight.6);
     --f-field-height: calc(var(--f-field-py) * 2 + var(--f-field-line-height) + var(--f-field-border-width));
 
     --f-label-icon-size: theme(spacing.5);
-    --f-label-icon-width: theme(spacing.7);
+    --f-label-icon-width: calc(var(--f-label-icon-size) + var(--f-field-px) * 2);
 
     --f-label-color: currentColor;
     --f-label-space: theme(spacing.2);
@@ -37,8 +38,10 @@
     --f-rating-gap: theme(spacing.2);
 
     --f-error: theme(colors.red.600);
-    --f-active: theme(colors.primary.hover);
+    --f-active: theme(colors.primary.DEFAULT);
+    --f-hover: theme(colors.primary.hover);
     --f-active-light: theme(colors.white);
+    --f-hover-light: theme(colors.white / 80%);
 
     --f-submit-space: theme(spacing.8);
 }

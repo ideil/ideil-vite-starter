@@ -1,12 +1,10 @@
 <div class="c-menu u-inverse" data-menu tabindex="-1">
-    <div class="c-menu__inner">
-        <div class="l-container">
-            {% include "_components/nav.twig" with {
-                class: 'c-menu__nav',
-            } %}
-            {% include "_components/socials.twig" with {
-                class: 'c-menu__socials',
-            } %}
-        </div>
+    <div class="c-menu__inner l-container">
+        {% include "_components/nav.twig" with {
+            class: 'c-menu__nav',
+        } %}
+        {% include "_components/socials.twig" with {
+            class: 'c-menu__socials',
+        } %}
     </div>
 </div>

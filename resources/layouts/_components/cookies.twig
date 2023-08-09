@@ -1,5 +1,12 @@
 <div class="c-cookies" data-cookies>
-    <div class="c-cookies-text">Переглядаючи сайт <b>LVIV.MEDIA</b> ви погоджуєтеся з нашою <a href="#" class="c-cookies-link">Політикою конфіденційності</a></div>
+    <div class="c-cookies__icon">
+        {% include '_app/icon.twig' with { name: 'cookies' } only %}
+    </div>
 
-    <button type="button" class="f-btn f-btn--gradient f-btn--sm" data-cookies-btn>Прийняти усі</button>
+    <div class="c-cookies-text">
+        <p>Наш сайт використовує кукі.</p>
+        <p><a href="#" class="underline u-link-opacity">Для чого це&nbsp;нам потрібно</a></p>
+    </div>
+
+    <button type="button" class="f-btn f-btn--white f-btn--rounded f-btn--sm" data-cookies-submit>Прийняти</button>
 </div>

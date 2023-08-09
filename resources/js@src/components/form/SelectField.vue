@@ -30,6 +30,16 @@
             placeholder: {
                 type: String,
                 default: ' '
+            },
+            wrapperClass: {
+                type: String,
+                required: false,
+                default: ''
+            },
+            isFloat: {
+                type: Boolean,
+                required: false,
+                default: false
             }
         },
         emits: [ 'update:modelValue' ],
@@ -52,17 +62,38 @@
 
 <template>
     <label
+        v-if="label && !isFloat"
         :for="id"
         class="f-label"
     >{{ label }}</label>
-    <Multiselect
-        :id="id"
-        v-model="value"
-        v-bind="$attrs"
-        :placeholder="placeholder"
-        class="f-select"
-        :class="{ 'f-field--error': error }"
-    />
+
+    <div
+        class="relative"
+        :class="wrapperClass"
+    >
+        <slot name="fieldBefore" />
+
+        <Multiselect
+            :id="id"
+            v-model="value"
+            v-bind="$attrs"
+            :placeholder="placeholder"
+            class="f-select"
+            :class="{
+                'f-field--error': error,
+                'f-field--float': isFloat,
+                'is-filled': value && (Array.isArray(value) ? value.length > 0 : true)
+            }"
+        />
+        <label
+            v-if="label && isFloat"
+            :for="id"
+            class="f-label"
+        >{{ label }}</label>
+
+        <slot name="fieldAfter" />
+    </div>
+
     <div
         v-if="error"
         class="f-info f-info--error"

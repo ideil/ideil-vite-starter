@@ -27,6 +27,16 @@
             placeholder: {
                 type: String,
                 default: ' '
+            },
+            wrapperClass: {
+                type: String,
+                required: false,
+                default: ''
+            },
+            isFloat: {
+                type: Boolean,
+                required: false,
+                default: false
             }
         },
         emits: [ 'update:modelValue' ],
@@ -49,18 +59,37 @@
 
 <template>
     <label
-        v-if="label"
+        v-if="label && !isFloat"
         :for="id"
         class="f-label"
     >{{ label }}</label>
-    <input
-        :id="id"
-        v-model="value"
-        v-bind="$attrs"
-        :placeholder="placeholder"
-        class="f-field"
-        :class="{ 'f-field--error': error }"
+
+    <div
+        class="relative"
+        :class="wrapperClass"
     >
+        <slot name="fieldBefore" />
+
+        <input
+            :id="id"
+            v-model="value"
+            v-bind="$attrs"
+            :placeholder="placeholder"
+            class="f-field"
+            :class="{
+                'f-field--error': error,
+                'f-field--float': isFloat
+            }"
+        >
+        <label
+            v-if="label && isFloat"
+            :for="id"
+            class="f-label"
+        >{{ label }}</label>
+
+        <slot name="fieldAfter" />
+    </div>
+
     <div
         v-if="error"
         class="f-info f-info--error"

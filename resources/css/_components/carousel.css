@@ -45,7 +45,7 @@
         display: flex;
         align-items: stretch;
 
-        .splide & {
+        .splide:not(.is-overflow) & {
             display: flex;
         }
 

@@ -1,23 +1,42 @@
 .c-tooltip {
+    --tooltip-zindex: theme(zIndex.tooltip);
+    --tooltip-max-width: theme(spacing.50);
+    --tooltip-py: theme(spacing.2);
+    --tooltip-px: theme(spacing.3);
+    --tooltip-font-size: theme(fontSize.xs);
+    --tooltip-font-weight: theme(fontWeight.normal);
+    --tooltip-line-height: theme(lineHeight.tight);
+    --tooltip-color: theme(colors.text);
+    --tooltip-box-shadow: 0 0 15px 0 theme(colors.black / 10%), 0 0 6px 0 theme(colors.black / 10%);
+    --tooltip-background: theme(colors.white);
+    --tooltip-border-radius: theme(borderRadius.md);
+    --tooltip-arrow-size: theme(spacing.2);
+    --tooltip-border-width: 1px;
+    --tooltip-border-style: solid;
+    --tooltip-border-color: theme(colors.black);
+
     position: fixed;
+    z-index: var(--tooltip-zindex);
     left: 0;
     top: 0;
-    margin: 0px;
+    margin: 0;
     width: max-content;
-    max-width: theme(spacing.50);
-    background-color: theme(colors.white);
-    box-shadow: theme(boxShadow.md);
-    color: theme(colors.black);
-    font-size: theme(fontSize.xs);
-    z-index: theme(zIndex.tooltip);
-    padding: theme(spacing.2) theme(spacing.3);
-    line-height: theme(lineHeight.tight);
-    border-radius: theme(borderRadius.sm);
+    max-width: var(--tooltip-max-width);
+    font-size: var(--tooltip-font-size);
+    line-height: var(--tooltip-line-height);
+    padding: var(--tooltip-py) var(--tooltip-px);
+    color: var(--tooltip-color);
+    box-shadow: var(--tooltip-box-shadow);
+    background: var(--tooltip-background);
+    border-width: var(--tooltip-border-width);
+    border-style: var(--tooltip-border-style);
+    border-color: var(--tooltip-border-color);
+    border-radius: var(--tooltip-border-radius);
+    opacity: 0;
+    visibility: hidden;
     will-change: transform, opacity, visibility;
     transition-property: opacity,
         visibility;
-    opacity: 0;
-    visibility: hidden;
 
     &[data-show] {
         visibility: visible;
@@ -26,9 +45,12 @@
 
     &__arrow {
         position: absolute;
-        width: theme(spacing.2);
-        height: theme(spacing.2);
-        transform: rotate(45deg);
+        z-index: 1;
+        width: var(--tooltip-arrow-size);
+        height: var(--tooltip-arrow-size);
+        border: inherit;
         background: inherit;
+        border-bottom-width: 0;
+        border-right-width: 0;
     }
 }

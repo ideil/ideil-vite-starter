@@ -13,4 +13,5 @@
     --f-button-border-width: theme(borderWidth.DEFAULT);
     --f-button-border-color: var(--f-button-bg);
     --f-button-border-style: solid;
+    --f-button-border-radius: theme(borderRadius.DEFAULT);
 }

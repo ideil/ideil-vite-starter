@@ -1,4 +1,4 @@
-{% set id = id ?? 'formTextarea' ~ random() %}
+{% set id = id ?? 'formField' ~ random() %}
 
 {% if not isFloat %}
     {% if label %}
@@ -9,19 +9,22 @@
 <div class="relative {{ wrapperClass }}">
     {% block fieldBefore %}{% endblock %}
 
-    <textarea
+    <select
+        type="{{ type ?? 'text' }}"
         id="{{ id }}"
         name="{{ name ?? '' }}"
-        value="{{ value ?? '' }}"
         class="
             f-field
             {{ error ? 'f-field--error' : '' }}
             {{ isFloat ? 'f-field--float' : '' }}
             {{ class }}
         "
-        placeholder="{{ placeholder ?? ' ' }}"
         {{ attrs }}
-    ></textarea>
+    >
+        <option value="" disabled selected>{{ placeholder }}</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+    </select>
 
     {% if isFloat %}
         {% if label %}

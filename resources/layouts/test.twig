@@ -116,17 +116,27 @@
 
         <form class="">
             <div class="f-group">
-                {% include '_form/field.twig' with {
-                    label: 'Ім\'я',
+                {% embed '_form/field.twig' with {
+                    label: 'Ім\'я (Float)',
                     placeholder: 'Ім\'я',
-                    error: 'Помилка',
+                    class: 'f-field--float',
+                    isFloat: true,
                     name: 'name',
                 } %}
+                    {% block fieldBefore %}
+                        <div class="f-field__icon">
+                            {% include '_app/icon.twig' with {
+                                name: 'star'
+                            } only %}
+                        </div>
+                    {% endblock %}
+                {% endembed %}
             </div>
             <div class="f-group">
                 {% include '_form/field.twig' with {
                     label: 'Прізвище',
                     placeholder: 'Прізвище',
+                    error: 'Помилка',
                     name: 'surname',
                 } %}
             </div>
@@ -140,13 +150,21 @@
                 } %}
             </div>
             <div class="f-group">
-                {% include '_form/field.twig' with {
+                {% embed '_form/field.twig' with {
                     label: 'Номер телефону',
                     placeholder: '+380 00 000 00 00',
                     name: 'phone',
                     type: 'tel',
                     attrs: 'required'
                 } %}
+                    {% block fieldBefore %}
+                        <div class="f-field__icon">
+                            {% include '_app/icon.twig' with {
+                                name: 'star'
+                            } only %}
+                        </div>
+                    {% endblock %}
+                {% endembed %}
             </div>
             <div class="f-group">
                 {% include '_form/textarea.twig' with {
@@ -196,12 +214,13 @@
         <h2 class="c-title c-title--h3 mb-7">Форма зворотнього зв'язку (VueJS)</h2>
 
         <div class="vue-feedback-form">
-            <form class="">
+            <form class="p-5 text-white pb-7 rounded-xl bg-text">
                 <div class="f-group">
                     {% include '_form/field.twig' with {
                         label: 'Ім\'я',
                         placeholder: 'Ім\'я',
                         error: 'Помилка',
+                        class: 'f-field--light',
                         name: 'name',
                     } %}
                 </div>
@@ -209,6 +228,7 @@
                     {% include '_form/field.twig' with {
                         label: 'Прізвище',
                         placeholder: 'Прізвище',
+                        class: 'f-field--light',
                         name: 'surname',
                     } %}
                 </div>
@@ -216,6 +236,7 @@
                     {% include '_form/field.twig' with {
                         label: 'Email',
                         placeholder: 'Email',
+                        class: 'f-field--light',
                         name: 'email',
                         type: 'email',
                         attrs: 'required'
@@ -226,6 +247,7 @@
                         label: 'Номер телефону',
                         placeholder: '+380 00 000 00 00',
                         name: 'phone',
+                        class: 'f-field--light',
                         type: 'tel',
                         attrs: 'required'
                     } %}
@@ -235,14 +257,56 @@
                         label: 'Ваше запитання',
                         placeholder: 'Ваше запитання',
                         name: 'comment',
-                        attrs: 'rows="2"'
+                        class: 'f-field--light',
+                        attrs: 'rows="3"'
+                    } %}
+                </div>
+                <div class="f-group">
+                    {% include '_form/select.twig' with {
+                        label: 'Тип запитання',
+                        placeholder: 'Тип запитання',
+                        name: 'type',
+                        class: 'f-field--light',
+                    } %}
+                </div>
+                <div class="f-group">
+                    {% include '_form/select.twig' with {
+                        label: 'Тип запитання 2',
+                        placeholder: 'Тип запитання 2',
+                        name: 'type2',
+                        class: 'f-field--light',
+                    } %}
+                </div>
+                <div class="f-group">
+                    {% include '_form/select.twig' with {
+                        label: 'Тип запитання 3',
+                        placeholder: 'Тип запитання 3',
+                        name: 'type3',
+                        class: 'f-field--light',
                     } %}
                 </div>
                 <div class="f-group">
                     {% include '_form/counter.twig' with {
                         label: 'Кількість',
                         name: 'count',
+                        class: 'f-field--light',
                         error: 'Помилка',
+                    } %}
+                </div>
+                <div class="f-group">
+                    {% include '_form/check.twig' with {
+                        label: 'Я погоджуюсь з умовами обробки персональних даних',
+                        type: 'checkbox',
+                        class: 'f-field--light',
+                        name: 'agree1',
+                    } %}
+                </div>
+                <div class="f-group">
+                    {% include '_form/check.twig' with {
+                        label: 'Я погоджуюсь з умовами обробки персональних даних',
+                        type: 'radio',
+                        class: 'f-field--light',
+                        name: 'agree2',
                     } %}
                 </div>
 

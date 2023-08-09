@@ -13,6 +13,7 @@
         /* Bundler mode */
         "moduleResolution": "bundler",
         "allowImportingTsExtensions": true,
+        "allowJs": true,
         "resolveJsonModule": true,
         "isolatedModules": true,
         "noEmit": true,
@@ -24,14 +25,14 @@
         "noUnusedParameters": true,
         "noFallthroughCasesInSwitch": true,
 
-        "baseUrl": ".",
+        "baseUrl": "./",
         "paths": {
-            "@src": [ "./resources/js@src" ],
-            "@src/*": [ "./resources/js@src/*" ],
-            "@pub": [ "./resources/js@pub" ],
-            "@pub/*": [ "./resources/js@pub/*" ],
-            "@img": [ "./resources/img" ],
-            "@img/*": [ "./resources/img/*" ],
+            "@src": [ "resources/js@src" ],
+            "@src/*": [ "resources/js@src/*" ],
+            "@pub": [ "resources/js@pub" ],
+            "@pub/*": [ "resources/js@pub/*" ],
+            "@img": [ "resources/img" ],
+            "@img/*": [ "resources/img/*" ],
         },
         "types": [
             "vite/client"
@@ -40,9 +41,4 @@
     "include": [
         "**/*"
     ],
-    // "references": [
-    //     {
-    //         "path": "./tsconfig.node.json"
-    //     }
-    // ]
 }

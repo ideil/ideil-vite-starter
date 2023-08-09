@@ -32,27 +32,18 @@
     }
 
     &:hover {
-        border-color: var(--f-active);
+        border-color: var(--f-hover);
     }
 
     &:focus {
         border-color: var(--f-active);
     }
 
-    &:focus,
-    &:not(:placeholder-shown):not(:focus) {
-
-        &::placeholder {
-            color: currentColor;
-            opacity: .5;
-        }
-    }
-
-    &:has(+ .f-field-icon) {
+    &:has(~ .f-field__icon) {
         padding-right: var(--f-label-icon-width);
     }
 
-    .f-field-icon + & {
+    .f-field__icon ~ & {
         padding-left: var(--f-label-icon-width);
     }
 
@@ -80,8 +71,27 @@
         }
     }
 
+    &--float {
+        padding-top: calc(var(--f-field-py) * 1.75);
+        padding-bottom: 0;
+
+        &::placeholder {
+            color: transparent;
+            transition-property: color;
+        }
+
+        &:focus,
+        &:not(:placeholder-shown):not(:focus) {
+
+            &::placeholder {
+                color: var(--f-field-placeholder-color);
+            }
+        }
+    }
+
     &--light {
         --f-active: var(--f-active-light);
+        --f-hover: var(--f-hover-light);
         --f-field-color: var(--f-field-color-light);
         --f-field-border-color: var(--f-field-border-color-light);
         --f-field-placeholder-color: var(--f-field-placeholder-color-light);

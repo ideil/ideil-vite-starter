@@ -6,6 +6,7 @@
     vertical-align: middle;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
     padding: 0 var(--f-button-px);
     gap: var(--f-button-gap);
     font-family: var(--f-button-font-family);
@@ -16,6 +17,7 @@
     border-color: var(--f-button-border-color);
     border-width: var(--f-button-border-width);
     border-style: var(--f-button-border-style);
+    border-radius: var(--f-button-border-radius);
     color: var(--f-button-color);
     max-width: 100%;
     transition-property:
@@ -80,6 +82,13 @@
         --f-button-active-bg: theme(colors.primary.DEFAULT);
         --f-button-active-border-color: theme(colors.primary.DEFAULT);
         --f-button-active-color: theme(colors.white);
+    }
+
+    &--white {
+        --f-button-bg: theme(colors.white);
+        --f-button-color: theme(colors.text);
+        --f-button-hover-bg: theme(colors.gray.100);
+        --f-button-hover-color: var(--f-button-color);
     }
 
     &--black-outline {

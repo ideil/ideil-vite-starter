@@ -47,10 +47,10 @@ export const clearHeaderSpace = () => {
 
 export const setSpaces = () => {
     setBodySpace();
-    // setHeaderSpace();
+    setHeaderSpace();
 };
 
 export const clearSpaces = () => {
     clearBodySpace();
-    // clearHeaderSpace();
+    clearHeaderSpace();
 };
