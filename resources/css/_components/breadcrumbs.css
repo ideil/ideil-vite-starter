@@ -1,13 +1,14 @@
 .c-breadcrumbs {
-    --breadcraumb-fz: theme(fontSize.xs);
-    --breadcraumb-pt: theme(spacing.5);
-    --breadcraumb-mb: var(--page-space);
+    --breadcrumbs-fz: theme(fontSize.xs);
+    --breadcrumbs-pt: theme(spacing.5);
+    --breadcrumbs-mb: var(--page-space);
+
     position: relative;
     display: flex;
     line-height: 1;
-    font-size: var(--breadcraumb-fz);
-    padding-top: var(--breadcraumb-pt);
-    margin-bottom: var(--breadcraumb-mb);
+    font-size: var(--breadcrumbs-fz);
+    padding-top: var(--breadcrumbs-pt);
+    margin-bottom: var(--breadcrumbs-mb);
 
     &__list {
         white-space: nowrap;

@@ -12,6 +12,7 @@
     --modal-inner-py: theme(spacing.10);
     --modal-max-width: 32rem;
     --modal-close-icon-size: theme(spacing.4);
+
     position: fixed;
     top: 0;
     left: 0;

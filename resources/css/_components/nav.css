@@ -1,6 +1,7 @@
 .c-nav {
     --nav-padding: theme(spacing[2.5]);
     --nav-gap: theme(spacing.2) var(--col-gap);
+
     font-weight: 700;
     white-space: nowrap;
 

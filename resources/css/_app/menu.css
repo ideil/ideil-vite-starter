@@ -11,8 +11,8 @@
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: theme(colors.body);
-    color: theme(colors.text);
+    background-color: theme(colors.text);
+    color: theme(colors.body);
     opacity: 0;
     visibility: hidden;
     transition-property: opacity,
@@ -47,7 +47,9 @@
 
     &__socials {
         padding-top: theme(spacing.15);
+        transform: translateY(20px);
         margin-top: auto;
+        transition-property: transform;
     }
 }
 
@@ -58,6 +60,10 @@
         visibility: visible;
 
         &__nav {
+            transform: none;
+        }
+
+        &__socials {
             transform: none;
         }
     }

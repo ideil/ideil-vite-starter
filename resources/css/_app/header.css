@@ -8,6 +8,7 @@
     color: theme(colors.text);
     background-color: theme(colors.body);
     border-bottom: 1px solid theme(colors.gray.200);
+    transition-property: background-color;
 
     &__inner {
         height: theme(spacing.headerHeight);
@@ -18,6 +19,7 @@
     &__logo {
         margin-right: theme(spacing.8);
         align-self: center;
+        width: theme(spacing.28);
         transition-property: width, padding;
     }
 
@@ -73,6 +75,8 @@
 .is-menu-open {
 
     .c-header {
+        color: theme(colors.body);
+        background-color: theme(colors.text);
 
         &__hamburger {
 

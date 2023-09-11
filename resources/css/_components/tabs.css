@@ -20,6 +20,7 @@
     --tabs-active-color: theme(colors.white);
     --tabs-active-background: theme(colors.primary.DEFAULT);
     --tabs-active-border-color: var(--tabs-active-background);
+
     position: relative;
     display: inline-flex;
     vertical-align: middle;

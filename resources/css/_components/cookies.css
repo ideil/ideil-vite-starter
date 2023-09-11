@@ -8,6 +8,7 @@
     --cookies-gap: theme(spacing.3) theme(spacing.6);
     --cookies-border-radius: theme(borderRadius.md);
     --cookies-icon-size: theme(spacing.10);
+
     position: fixed;
     bottom: var(--cookies-offset);
     left: var(--cookies-offset);

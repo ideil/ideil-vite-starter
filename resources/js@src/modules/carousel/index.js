@@ -1,5 +1,3 @@
-import { debounce } from 'debounce';
-
 (async () => {
     const carouselEls = document.querySelectorAll('[data-carousel]');
 

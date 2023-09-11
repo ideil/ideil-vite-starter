@@ -1,4 +1,4 @@
-import BModal from 'badger-modal';
+import Modal from '@src/plugins/modal';
 
 import { clearSpaces, setSpaces } from '@src/helpers/measure';
 
@@ -9,7 +9,7 @@ import { clearSpaces, setSpaces } from '@src/helpers/measure';
     let openedModal = undefined;
 
     modalEls.forEach(modalEl => {
-        const modal = BModal.getInstance(modalEl) || new BModal(modalEl);
+        const modal = Modal.getInstance(modalEl) || new Modal(modalEl);
 
         modal.onShow(() => {
             setSpaces();
@@ -39,7 +39,7 @@ import { clearSpaces, setSpaces } from '@src/helpers/measure';
             return;
         }
 
-        const modal = BModal.getInstance(modalEl);
+        const modal = Modal.getInstance(modalEl);
 
         if (!modal) {
             return;

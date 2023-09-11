@@ -7,8 +7,8 @@
     import SelectField from '@src/components/form/SelectField.vue';
     import TextField from '@src/components/form/TextField.vue';
     import TextareaField from '@src/components/form/TextareaField.vue';
-    import BModal from 'badger-modal';
-    import type { default as BModalType } from 'badger-modal';
+    import Modal from '@src/plugins/modal';
+    import type { default as ModalType } from '@src/plugins/modal';
     import { defineComponent, reactive, ref } from 'vue';
 
     export default defineComponent({
@@ -32,7 +32,7 @@
         setup() {
             // const { executeRecaptcha, recaptchaLoaded } = useReCaptcha()
             const successModalEl = document.querySelector('#successModal') as HTMLElement | null;
-            let successModalInstance: BModalType | null = null;
+            let successModalInstance: ModalType | null = null;
             const defaultForm = {
                 name: null,
                 surname: null,
@@ -70,7 +70,7 @@
             const openSuccess = () => {
                 if (!successModalInstance) {
                     if (successModalEl) {
-                        successModalInstance = BModal.getInstance(successModalEl) || new BModal(successModalEl);
+                        successModalInstance = Modal.getInstance(successModalEl) || new Modal(successModalEl);
                     } else {
                         return isSending.value = false;
                     }
