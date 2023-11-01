@@ -60,7 +60,9 @@ button {
         color,
         opacity;
 
-    &:hover {
-        color: var(--hover-color, theme(colors.primary.DEFAULT));
+    @media (hover: hover) {
+        &:hover {
+            color: var(--hover-color, theme(colors.primary.DEFAULT));
+        }
     }
 }
