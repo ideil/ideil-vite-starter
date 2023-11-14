@@ -17,7 +17,7 @@
     top: 0;
     left: 0;
     display: none;
-    background-color: theme(colors.black / 30%);
+    /* background-color: theme(colors.black / 30%); */
     z-index: var(--modal-zindex);
     overflow-x: hidden;
     overflow-y: auto;
@@ -27,6 +27,14 @@
     width: 100%;
     height: 100%;
     transition-property: opacity;
+
+    &:before {
+        content: '';
+        display: block;
+        position: fixed;
+        inset: 0;
+        background-color: theme(colors.black / 30%);
+    }
 
     &.is-shown {
         opacity: 1;
