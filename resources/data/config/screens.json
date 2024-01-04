@@ -2,34 +2,43 @@
     "xs": {
         "min": "480px"
     },
+    "xs-max": {
+        "max": "479.99px"
+    },
     "sm": {
         "min": "576px"
-    },
-    "md": {
-        "min": "768px"
-    },
-    "lg": {
-        "min": "992px"
-    },
-    "xl": {
-        "min": "1260px"
-    },
-    "2xl": {
-        "min": "1440px"
     },
     "sm-max": {
         "max": "575.99px"
     },
+    "md": {
+        "min": "768px"
+    },
     "md-max": {
         "max": "767.99px"
+    },
+    "lg": {
+        "min": "992px"
     },
     "lg-max": {
         "max": "991.99px"
     },
+    "xl": {
+        "min": "1260px"
+    },
     "xl-max": {
         "max": "1259.99px"
     },
+    "2xl": {
+        "min": "1440px"
+    },
     "2xl-max": {
         "max": "1439.99px"
+    },
+    "3xl": {
+        "min": "1600px"
+    },
+    "3xl-max": {
+        "max": "1599.99px"
     }
 }

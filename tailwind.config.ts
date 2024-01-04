@@ -1,9 +1,10 @@
-const defaultColors = require('tailwindcss/colors');
-const defaultTheme = require('tailwindcss/defaultTheme');
+import defaultColors from 'tailwindcss/colors';
+import defaultTheme from 'tailwindcss/defaultTheme';
 
-const screens = require('./resources/data/config/screens.json');
+import screens from './resources/data/config/screens.json';
 
-module.exports = {
+/** @type {import('tailwindcss').Config} */
+export default {
     content: [
         './resources/js@src/**/*.{js,ts,tsx,vue}',
         './resources/js@pub/**/*.{js,ts,tsx,vue}',
@@ -73,8 +74,8 @@ module.exports = {
 
                 error: defaultColors.red[ '500' ],
 
-                body: defaultColors.stone[ '50' ],
-                text: defaultColors.stone[ '900' ]
+                body: defaultColors.white,
+                text: defaultColors.black
             },
             maxWidth: {
                 'xs': screens.xs.min,
@@ -83,6 +84,7 @@ module.exports = {
                 'lg': screens.lg.min,
                 'xl': screens.xl.min,
                 '2xl': screens[ '2xl' ].min,
+                '3xl': screens[ '3xl' ].min,
 
                 'hd': '1920px'
             },
@@ -99,6 +101,10 @@ module.exports = {
                 '50': '12.5rem', // 200px
 
                 '1/2': '50%',
+                '1/3': '33.333333%',
+                '1/4': '25%',
+                '1/5': '20%',
+                '2/3': '66.666667%',
                 'full': '100%',
                 'screen': '100vh',
 

@@ -7,7 +7,6 @@ export default {
     rootDir: 'resources',
     publicDir: 'static',
     buildDir: 'static/build',
-
     layoutsDir: 'layouts',
     dataDir: 'data',
     iconsDir: 'icons',

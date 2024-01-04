@@ -1,6 +1,3 @@
-const headerEl = document.querySelector<HTMLElement>('[data-header]') ||
-    document.querySelector<HTMLElement>('.c-header');
-
 const getScrollBarWidth = () => {
     const scrollDiv = document.createElement('div');
     scrollDiv.className = 'scrollbar-measure';
@@ -13,44 +10,10 @@ const getScrollBarWidth = () => {
 
 export const scrollbarSpace = getScrollBarWidth();
 
-export const setSpace = (el: HTMLElement) => {
-    el.style.paddingRight = `${ scrollbarSpace }px`;
-};
-
-export const clearSpace = (el: HTMLElement) => {
-    el.style.paddingRight = '';
-};
-
-export const setBodySpace = () => {
-    setSpace(document.body);
-};
-
-export const clearBodySpace = () => {
-    clearSpace(document.body);
-};
-
-export const setHeaderSpace = () => {
-    if (!headerEl) {
-        return;
-    }
-
-    setSpace(headerEl);
-};
-
-export const clearHeaderSpace = () => {
-    if (!headerEl) {
-        return;
-    }
-
-    clearSpace(headerEl);
-};
-
 export const setSpaces = () => {
-    setBodySpace();
-    setHeaderSpace();
+    document.body.style.setProperty('--removed-body-scroll-bar-size', `${ scrollbarSpace }px`);
 };
 
 export const clearSpaces = () => {
-    clearBodySpace();
-    clearHeaderSpace();
+    document.body.style.setProperty('--removed-body-scroll-bar-size', '');
 };

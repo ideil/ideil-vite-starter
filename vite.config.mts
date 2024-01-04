@@ -1,13 +1,15 @@
-const vuePlugin = require('@vitejs/plugin-vue');
-const { sync: globSync } = require('fast-glob');
-const { default: laravel } = require('laravel-vite-plugin');
-const path = require('node:path');
-const { default: ViteSvgSpriteWrapper } = require('vite-svg-sprite-wrapper');
+import { PluginOption, defineConfig } from 'vite';
+import vuePlugin from '@vitejs/plugin-vue';
+import fastGlob from 'fast-glob';
+import laravel from 'laravel-vite-plugin';
+import path from 'path';
+import viteSvgSpriteWrapper from 'vite-svg-sprite-wrapper';
+import config from './vite-config/config';
+import twigHtmlPlugin from './vite-config/twig-html';
 
-const { default: config } = require('./vite-config/config');
-const { default: twigHtmlPlugin } = require('./vite-config/twig-html');
+const { globSync } = fastGlob;
 
-module.exports = {
+export default defineConfig({
     server: {
         ...config.server
     },
@@ -16,15 +18,17 @@ module.exports = {
     css: {
         devSourcemap: true
     },
+    // assetsInclude: [
+    //     'resources/gltf/**'
+    // ],
     build: {
         outDir: path.resolve(config.buildDir),
         emptyOutDir: true,
         copyPublicDir: false,
-        manifest: true,
         modulePreload: false,
         rollupOptions: {
             output: {
-                assetFileNames: assetInfo => {
+                assetFileNames: (assetInfo: any) => {
                     let folders = '';
                     const extType = assetInfo.name.split('.').at(1);
 
@@ -58,6 +62,7 @@ module.exports = {
     },
     resolve: {
         alias: {
+            '@': '/',
             '@src': '/js@src',
             '@pub': '/js@pub',
             '@img': '/img'
@@ -66,18 +71,25 @@ module.exports = {
     plugins: [
         laravel({
             input: '',
-            publicDirectory: 'static'
+            publicDirectory: 'static',
+            refresh: [ {
+                paths: [ 'resources/views/**' ],
+                config: { delay: 300 }
+            } ]
         }),
         {
             name: 'laravel-fix',
             enforce: 'post',
             config(userConfig) {
                 userConfig.base = config.base;
-                userConfig.server.origin = undefined;
+
+                if (userConfig.server) {
+                    userConfig.server.origin = undefined;
+                }
             }
-        },
+        } as PluginOption,
         twigHtmlPlugin(),
-        ViteSvgSpriteWrapper({
+        viteSvgSpriteWrapper({
             icons: path.resolve(`${ config.rootDir }/${ config.iconsDir }/**/*.svg`),
             outputDir: path.resolve(`${ config.rootDir }/${ config.imageDir }`)
         }),
@@ -87,4 +99,4 @@ module.exports = {
             }
         })
     ]
-};
+});

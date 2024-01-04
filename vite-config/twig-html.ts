@@ -1,10 +1,12 @@
-import { sync as globSync } from 'fast-glob';
+import fastGlob from 'fast-glob';
 import fs from 'fs-extra';
 import merge from 'merge';
 import path from 'path';
 import pretty from 'pretty';
-import type { HmrContext, UserConfig, ViteDevServer } from 'vite';
+import type { HmrContext, PluginOption, UserConfig, ViteDevServer } from 'vite';
 import twigPlugin from 'vite-plugin-twig';
+
+const { globSync } = fastGlob;
 
 import config from './config';
 
@@ -50,7 +52,7 @@ function createPages(): Pages {
     return pages;
 }
 
-export default function twigHtmlPlugin() {
+export default function twigHtmlPlugin(): PluginOption[] {
     let pages: Pages;
 
     return [
@@ -69,7 +71,7 @@ export default function twigHtmlPlugin() {
                         (![ '.html' ].includes(pathProps.ext) && pathProps.dir.includes(config.layoutsDir))
                     ) {
                         res.writeHead(301, { Location: 'index.html' });
-                        next();
+                        return next();
                     }
 
                     const twigName = `${ pathProps.name }.twig`;
@@ -80,15 +82,16 @@ export default function twigHtmlPlugin() {
 
                         res.statusCode = 200;
                         res.write(transformedHtml);
-                        res.end();
+
+                        return res.end();
                     }
 
-                    next();
+                    return next();
                 });
             },
             transformIndexHtml: {
-                enforce: 'pre',
-                async transform(content: string) {
+                order: 'pre',
+                async handler(content: string) {
                     if (!content.startsWith('<script type="application/json" data-template')) {
                         return content;
                     }
@@ -120,7 +123,7 @@ export default function twigHtmlPlugin() {
                 return null;
             },
             closeBundle() {
-                for (const [ name, filePath ] of Object.entries(pages)) {
+                for (const [ , filePath ] of Object.entries(pages)) {
                     if (fs.existsSync(filePath)) {
                         fs.rmSync(filePath, {
                             recursive: true
@@ -139,8 +142,8 @@ export default function twigHtmlPlugin() {
             name: 'prettify-html',
             apply: 'build',
             transformIndexHtml: {
-                enforce: 'post',
-                async transform(content: string) {
+                order: 'post',
+                async handler(content: string) {
                     return pretty(content, {
                         ocd: true
                     });
