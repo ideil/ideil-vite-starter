@@ -1,4 +1,4 @@
-@import 'v-calendar/dist/style.css';
+@import 'v-calendar/src/styles/base.css';
 
 .vc-container,
 .vc-light,
