@@ -793,13 +793,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/lodash@npm:^4.14.165":
-  version: 4.14.202
-  resolution: "@types/lodash@npm:4.14.202"
-  checksum: 6064d43c8f454170841bd67c8266cc9069d9e570a72ca63f06bceb484cb4a3ee60c9c1f305c1b9e3a87826049fd41124b8ef265c4dd08b00f6766609c7fe9973
-  languageName: node
-  linkType: hard
-
 "@types/node@npm:*":
   version: 20.10.5
   resolution: "@types/node@npm:20.10.5"
@@ -813,13 +806,6 @@ __metadata:
   version: 2.0.3
   resolution: "@types/pretty@npm:2.0.3"
   checksum: 2eef962dcf95b18dc67470ee1758e93ee829f49495eb9ebc74cfffe13502385d7a5b98eb661320466aa6d0ff5735c3f070fbcfc8b31b7f0a8b314373a8c6382e
-  languageName: node
-  linkType: hard
-
-"@types/resize-observer-browser@npm:^0.1.7":
-  version: 0.1.11
-  resolution: "@types/resize-observer-browser@npm:0.1.11"
-  checksum: 7bb6347b89464da9ba35e89add6764addc8cf31e90abb4b40970bc8332d418215af65da39acf88277c55631b6c5b0f480b2e4c84adb6d5c0b5c81886db20fc9b
   languageName: node
   linkType: hard
 
@@ -1791,6 +1777,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"core-js@npm:^3.15.2":
+  version: 3.35.0
+  resolution: "core-js@npm:3.35.0"
+  checksum: 1d545ff4406f2afa5e681f44b45ed5f7f119d158b380234d5aa7787ce7e47fc7a635b98b74c28c766ba8191e3db8c2316ad6ab4ff1ddecbc3fd618413a52c29c
+  languageName: node
+  linkType: hard
+
 "core-util-is@npm:~1.0.0":
   version: 1.0.3
   resolution: "core-util-is@npm:1.0.3"
@@ -1878,16 +1871,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"date-fns-tz@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "date-fns-tz@npm:2.0.0"
+"date-fns-tz@npm:^1.3.7":
+  version: 1.3.8
+  resolution: "date-fns-tz@npm:1.3.8"
   peerDependencies:
     date-fns: ">=2.0.0"
-  checksum: 31cacb83c675ef8c2cf31d21c298ab6d74c5e975412dd804664d031ac0f2f03ed5bfb2a950fa15a321bbbcb90b833c300823fbceba0133680065a71894cc1170
+  checksum: 4cb16aeae3ea4a72ac4ae9f7db2011e38797aff122a78be16217a0492dde3938e1e62d21dbf1469a36fb4426824196233cedc70807f0a3033bca132bf76d563e
   languageName: node
   linkType: hard
 
-"date-fns@npm:^2.16.1":
+"date-fns@npm:^2.22.1":
   version: 2.30.0
   resolution: "date-fns@npm:2.30.0"
   dependencies:
@@ -3569,7 +3562,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash@npm:^4.17.20, lodash@npm:^4.17.21":
+"lodash@npm:^4.17.21":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: d8cbea072bb08655bb4c989da418994b073a608dffa608b09ac04b43a791b12aeae7cd7ad919aa4c925f33b48490b5cfe6c1f71d827956071dae2e7bb3a6b74c
@@ -4316,6 +4309,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"postcss@npm:^8.4.33":
+  version: 8.4.33
+  resolution: "postcss@npm:8.4.33"
+  dependencies:
+    nanoid: "npm:^3.3.7"
+    picocolors: "npm:^1.0.0"
+    source-map-js: "npm:^1.0.2"
+  checksum: 16eda83458fcd8a91bece287b5920c7f57164c3ea293e6c80d0ea71ce7843007bcd8592260a5160b9a7f02693e6ac93e2495b02d8c7596d3f3f72c1447e3ba79
+  languageName: node
+  linkType: hard
+
 "prelude-ls@npm:^1.2.1":
   version: 1.2.1
   resolution: "prelude-ls@npm:1.2.1"
@@ -4646,14 +4650,14 @@ __metadata:
     merge: "npm:^2.1.1"
     path: "npm:^0.12.7"
     photoswipe: "npm:^5.4.3"
-    postcss: "npm:^8.4.32"
+    postcss: "npm:^8.4.33"
     postcss-advanced-variables: "npm:^3.0.1"
     postcss-load-config: "npm:^5.0.2"
     pretty: "npm:^2.0.0"
     tailwindcss: "npm:^3.4.0"
     typescript: "npm:^5.3.3"
-    v-calendar: "npm:^3.1.2"
-    vite: "npm:^5.0.10"
+    v-calendar: "npm:^2.4.2"
+    vite: "npm:^5.0.11"
     vite-plugin-twig: "npm:^2.1.1"
     vite-svg-sprite-wrapper: "npm:^1.3.0"
     vue: "npm:^3.4.5"
@@ -5407,20 +5411,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"v-calendar@npm:^3.1.2":
-  version: 3.1.2
-  resolution: "v-calendar@npm:3.1.2"
+"v-calendar@npm:^2.4.2":
+  version: 2.4.2
+  resolution: "v-calendar@npm:2.4.2"
   dependencies:
-    "@types/lodash": "npm:^4.14.165"
-    "@types/resize-observer-browser": "npm:^0.1.7"
-    date-fns: "npm:^2.16.1"
-    date-fns-tz: "npm:^2.0.0"
-    lodash: "npm:^4.17.20"
-    vue-screen-utils: "npm:^1.0.0-beta.13"
+    core-js: "npm:^3.15.2"
+    date-fns: "npm:^2.22.1"
+    date-fns-tz: "npm:^1.3.7"
+    lodash: "npm:^4.17.21"
   peerDependencies:
-    "@popperjs/core": ^2.0.0
-    vue: ^3.2.0
-  checksum: e80a76df78f6dba696e654a891d8744bead48992687f9dd72e784a8870869180e34eb1b36c73edd8f1ffe907f93f5fdfe77af24070abba3bd0ccba5606f33f24
+    "@popperjs/core": ^2.4.0
+    vue: ^2.5.18
+  checksum: 7da494550f04f66653b503141aa930590e04adb07dd405f36d5b21071b4a655a98ed01e81dbae890598e9e3e62381e49090da0e42489befd572ba706f56e5912
   languageName: node
   linkType: hard
 
@@ -5473,9 +5475,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^5.0.10":
-  version: 5.0.10
-  resolution: "vite@npm:5.0.10"
+"vite@npm:^5.0.11":
+  version: 5.0.11
+  resolution: "vite@npm:5.0.11"
   dependencies:
     esbuild: "npm:^0.19.3"
     fsevents: "npm:~2.3.3"
@@ -5509,7 +5511,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: d666b2760d2a7ea1d0d35f67c042053e562144f80554be4e4dc58e607fd5f62193cd203d73ab2e315df66830d8b9d9a2e3509d0208bdef1b2e92e0a5c364df84
+  checksum: 74a3ddc6d43cf19cb6f827a53d77c481a07517a72b7d82a178df082012ad81ab5231a287a6dcc5471c0b2a5c8dd7e6ea8e1d62d268803057d0315729f09c5e33
   languageName: node
   linkType: hard
 
@@ -5527,15 +5529,6 @@ __metadata:
   peerDependencies:
     eslint: ">=6.0.0"
   checksum: da0e0bcc603e7845253f1600e595f91de7f46ad1947827008aca5e545de405993f83dabfc01c57c9d0d95d22040a2d0f9d82cb640918e18e3d8dcff2c98513fc
-  languageName: node
-  linkType: hard
-
-"vue-screen-utils@npm:^1.0.0-beta.13":
-  version: 1.0.0-beta.13
-  resolution: "vue-screen-utils@npm:1.0.0-beta.13"
-  peerDependencies:
-    vue: ^3.2.0
-  checksum: 9279813c191df4c58d1084a45e62919bf274fa44b2cd46125605659360a6cf0e5144c6c3752d1f683ebafb4ad7e2c18ce6dcbad33311db201fe5fb7738c0724d
   languageName: node
   linkType: hard
 

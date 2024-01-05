@@ -11,9 +11,9 @@ const getScrollBarWidth = () => {
 export const scrollbarSpace = getScrollBarWidth();
 
 export const setSpaces = () => {
-    document.body.style.setProperty('--removed-body-scroll-bar-size', `${ scrollbarSpace }px`);
+    document.body.style.setProperty('--body-scroll-width', `${ scrollbarSpace }px`);
 };
 
 export const clearSpaces = () => {
-    document.body.style.setProperty('--removed-body-scroll-bar-size', '');
+    document.body.style.setProperty('--body-scroll-width', '');
 };

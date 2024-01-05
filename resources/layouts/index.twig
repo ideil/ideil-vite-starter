@@ -8,12 +8,12 @@
 {% block content %}
     <div class="l-container">
         <div class="text-black bg-gray-100 mt-pageSpace">
-            {% if pages is empty %}
+            {% if data.pages is empty %}
                 <div class="font-bold text-3xl text-gray-400 h-[250px] flex justify-center items-center">Сторінки
                     відсутні
                 </div>
             {% else %}
-                {% for page in pages %}
+                {% for page in data.pages %}
                     {% if page.slug != 'index' %}
                         <div class="relative md:flex md:items-center p-2 md:px-6 {% if not loop.first %}border-t border-gray-200{% endif %} hover:bg-black/5 transition-colors">
                             <div class="md:flex-grow">

@@ -27,7 +27,7 @@ function getData(): any {
         data = merge.recursive(data, newData);
     });
 
-    return data;
+    return { data };
 }
 
 function getTwigHtml(twigFilePath: string): string {

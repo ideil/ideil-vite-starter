@@ -39,7 +39,7 @@ body {
     line-height: theme(lineHeight.normal);
     -webkit-font-smoothing: antialiased;
     padding-top: var(--header-height, 0);
-    padding-right: var(--removed-body-scroll-bar-size);
+    padding-right: var(--body-scroll-width);
     text-rendering: optimizeLegibility !important;
 
     .is-nospace & {
