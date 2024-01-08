@@ -1,14 +1,20 @@
 import EventEmitter from 'eventemitter3';
 import getElement from '@src/helpers/getElement';
+import { clearSpaces, setSpaces } from '@src/helpers/measure';
+import anime from 'animejs';
+import getCSSTransition from '@src/helpers/getCSSTransition';
 
 class Modal {
     element: HTMLElement;
     #dismissEls: NodeListOf<HTMLElement>;
     #mouseDownElement: HTMLElement | null = null;
+    #animationDuration: number;
+    #animationEasing: string;
     #eventEmitter: EventEmitter;
 
     #showHandle = () => {
         this.#eventEmitter.emit('shown');
+
         this.element.removeEventListener('transitionend', this.#showHandle);
     };
     #hideHandle = () => {
@@ -19,6 +25,8 @@ class Modal {
         document.documentElement.classList.remove('is-modal-open');
 
         this.#eventEmitter.emit('hidden');
+
+        clearSpaces();
 
         this.element.removeEventListener('transitionend', this.#hideHandle);
         this.element.removeEventListener('mousedown', this.#modalMouseDown);
@@ -62,6 +70,7 @@ class Modal {
             throw new Error(`Modal element ${ element } doesn't exist.`);
         }
 
+        const { duration, easing } = getCSSTransition(this.element);
         this.#eventEmitter = new EventEmitter();
 
         Modal.instances.set(this.element, this);
@@ -69,10 +78,22 @@ class Modal {
         this.#dismissEls = this.element.querySelectorAll(
             '[data-modal-dismiss]'
         );
+        this.#animationDuration = duration * 1000 || 300;
+        this.#animationEasing = easing || 'ease';
     }
 
     show() {
         this.#eventEmitter.emit('show');
+
+        setSpaces();
+        anime({
+            value: [ 0, 1 ],
+            duration: this.#animationDuration,
+            easing: this.#animationEasing,
+            update: v => {
+                this.element.style.setProperty('--modal-transition-progress', (v.progress / 100).toString());
+            }
+        });
 
         document.documentElement.classList.add('is-modal-open');
 
@@ -81,7 +102,6 @@ class Modal {
         this.element.setAttribute('aria-modal', '');
         this.element.setAttribute('role', 'dialog');
         this.element.scrollTop = 0;
-
         this.element.classList.add('is-shown');
 
         this.#dismissEls.forEach(el => {
@@ -95,6 +115,15 @@ class Modal {
 
     hide() {
         this.#eventEmitter.emit('hide');
+
+        anime({
+            value: [ 0, 1 ],
+            duration: this.#animationDuration,
+            easing: this.#animationEasing,
+            update: v => {
+                this.element.style.setProperty('--modal-transition-progress', ((100 - v.progress) / 100).toString());
+            }
+        });
 
         this.element.classList.remove('is-shown');
         this.element.addEventListener('transitionend', this.#hideHandle, false);

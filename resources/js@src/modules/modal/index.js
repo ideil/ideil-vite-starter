@@ -1,30 +1,7 @@
 import Modal from '@src/plugins/modal';
 
-import { clearSpaces, setSpaces } from '@src/helpers/measure';
-
 (() => {
-    const modalEls = document.querySelectorAll('.m-modal');
     const toggleEls = document.querySelectorAll('[data-modal-target]');
-
-    let openedModal = undefined;
-
-    modalEls.forEach(modalEl => {
-        const modal = Modal.getInstance(modalEl) || new Modal(modalEl);
-
-        modal.onShow(() => {
-            setSpaces();
-            openedModal = modal;
-        });
-
-        modal.onHidden(() => {
-            if (openedModal !== modal) {
-                document.documentElement.classList.add('is-modal-open');
-            } else {
-                openedModal = undefined;
-                clearSpaces();
-            }
-        });
-    });
 
     toggleEls.forEach(el => {
         const modalTarget = el.dataset.modalTarget;
@@ -39,28 +16,16 @@ import { clearSpaces, setSpaces } from '@src/helpers/measure';
             return;
         }
 
-        const modal = Modal.getInstance(modalEl);
+        const modal = Modal.getInstance(modalEl) || new Modal(modalEl);
 
         if (!modal) {
             return;
         }
 
-        modal.onHidden(() => {
-            el.classList.remove('is-open');
-        });
-
         el.addEventListener('click', e => {
             e.preventDefault();
 
-            if (openedModal) {
-                openedModal.hide();
-            }
-
-            el.classList.toggle('is-open');
-
-            if (el.classList.contains('is-open')) {
-                modal.show();
-            }
+            modal.show();
         });
     });
 })();
