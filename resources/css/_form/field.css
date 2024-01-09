@@ -62,8 +62,8 @@
         align-items: center;
         position: absolute;
         left: var(--f-field-px);
+        font-size: var(--f-field-icon-size);
         top: 0;
-        --icon-size: var(--f-field-icon-size);
 
         .f-field + & {
             left: initial;

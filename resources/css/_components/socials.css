@@ -1,8 +1,9 @@
 .c-socials {
-    --socials-icon-size: theme(spacing.6);
+    --socials-fz: theme(spacing.6);
     --socials-padding: theme(spacing.4);
     --socials-gap: 0;
-    --icon-size: var(--socials-icon-size);
+
+    font-size: var(--socials-fz);
 
     &__list {
         display: flex;

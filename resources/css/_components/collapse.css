@@ -14,7 +14,7 @@
     }
 
     &__icon {
-        --icon-size: var(--collapse-angle-size);
+        font-size: var(--collapse-angle-size);
         width: var(--icon-size);
         height: var(--icon-size);
         display: block;
@@ -49,7 +49,7 @@
     }
 
     &__arrow {
-        --icon-size: var(--collapse-angle-size);
+        font-size: var(--collapse-angle-size);
         transition-property: transform;
 
         .is-active & {

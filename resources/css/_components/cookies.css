@@ -39,6 +39,6 @@
     }
 
     &__icon {
-        --icon-size: var(--cookies-icon-size);
+        font-size: var(--cookies-icon-size);
     }
 }

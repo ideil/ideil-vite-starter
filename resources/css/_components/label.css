@@ -36,7 +36,7 @@
     }
 
     &__close {
-        --icon-size: theme(spacing.3);
+        font-size: theme(spacing.3);
         min-width: theme(spacing.6);
         padding: var(--label-py);
         margin-left: calc(var(--label-px) * -1);

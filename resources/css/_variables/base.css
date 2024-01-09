@@ -11,7 +11,7 @@
     --box-space: theme(spacing.5);
     --col-gap: theme(spacing.5);
 
-    --icon-size: theme(spacing.6);
+    --icon-size: 1em;
 
     --container-width: theme(maxWidth.sm);
 

@@ -1,7 +1,7 @@
 .i-icon {
     pointer-events: none;
-    width: var(--icon-size, theme(spacing.6));
-    height: var(--icon-size, theme(spacing.6));
+    width: var(--icon-size);
+    height: var(--icon-size);
     flex-shrink: 0;
     display: inline-block;
     vertical-align: middle;

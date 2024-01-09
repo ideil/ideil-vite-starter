@@ -1,5 +1,4 @@
 .f-btn {
-    --icon-size: var(--f-button-icon-size);
     height: var(--f-button-height);
     appearance: none;
     display: inline-flex;
@@ -25,6 +24,10 @@
         color,
         border-color,
         box-shadow;
+
+    .i-icon {
+        font-size: var(--f-button-icon-size);
+    }
 
     a&:hover,
     button&:hover {
