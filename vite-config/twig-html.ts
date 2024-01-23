@@ -65,22 +65,34 @@ export default function twigHtmlPlugin(): PluginOption[] {
                     }
 
                     const pathProps = path.parse(req.originalUrl);
+                    const nameTwigPath = path.resolve(`${ config.rootDir }/${ config.layoutsDir }/${ pathProps.name }.twig`);
+                    const indexTwigPath = path.resolve(`${ config.rootDir }/${ config.layoutsDir }/index.twig`);
+                    const errorTwigPath = path.resolve(`${ config.rootDir }/${ config.layoutsDir }/404.twig`);
 
-                    if (
-                        (pathProps.root === '/' && pathProps.name === config.layoutsDir) ||
-                        (![ '.html' ].includes(pathProps.ext) && pathProps.dir.includes(config.layoutsDir))
-                    ) {
-                        res.writeHead(301, { Location: 'index.html' });
-                        return next();
-                    }
-
-                    const twigName = `${ pathProps.name }.twig`;
-                    const indexTwigPath = path.resolve(`${ config.rootDir }/${ config.layoutsDir }/${ twigName }`);
-
-                    if (fs.existsSync(indexTwigPath)) {
-                        const transformedHtml = await server.transformIndexHtml(req.url, getTwigHtml(`${ twigName }`), req.originalUrl);
+                    if (fs.existsSync(nameTwigPath)) {
+                        const transformedHtml = await server.transformIndexHtml(req.url, getTwigHtml(`${ pathProps.name }.twig`), req.originalUrl);
 
                         res.statusCode = 200;
+                        res.write(transformedHtml);
+
+                        return res.end();
+                    } else if (
+                        (
+                            (pathProps.dir === '/' && !pathProps.name) ||
+                            pathProps.name === config.layoutsDir ||
+                            pathProps.dir.includes(config.layoutsDir)
+                        ) && fs.existsSync(indexTwigPath)
+                    ) {
+                        const transformedHtml = await server.transformIndexHtml(req.url, getTwigHtml('index.twig'), req.originalUrl);
+
+                        res.statusCode = 301;
+                        res.write(transformedHtml);
+
+                        return res.end();
+                    } else if (fs.existsSync(errorTwigPath)) {
+                        const transformedHtml = await server.transformIndexHtml(req.url, getTwigHtml('404.twig'), req.originalUrl);
+
+                        res.statusCode = 404;
                         res.write(transformedHtml);
 
                         return res.end();

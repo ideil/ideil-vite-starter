@@ -117,7 +117,7 @@ export default {
 
                 'colGap': 'var(--col-gap)',
 
-                'containerOffset': 'calc((min(var(--wrapper-width), 100vw) - var(--container-width) + (var(--box-space) * 2)) / 2)'
+                'containerOffset': 'calc((min(var(--wrapper-width), calc(100 * var(--vw))) - var(--container-width) + (var(--box-space) * 2)) / 2)'
             },
             zIndex: {
                 1: 1,

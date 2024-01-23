@@ -13,7 +13,8 @@
 
     --icon-size: 1em;
 
-    --container-width: theme(maxWidth.sm);
+    --wrapper-width: 100vw;
+    --container-width: min(calc(100 * var(--vw)), theme(maxWidth.sm));
 
     @screen md {
         --container-width: theme(maxWidth.md);

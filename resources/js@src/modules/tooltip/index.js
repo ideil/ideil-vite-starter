@@ -12,20 +12,22 @@
 
     toggleEls.forEach(el => {
         const tooltipTarget = el.dataset.tooltipTarget;
+        let targetEl = undefined;
+
+        if (tooltipTarget) {
+            targetEl = document.querySelector(tooltipTarget);
+        }
+
         const placement = el.dataset.tooltipPlacement;
         const type = el.dataset.tooltipType;
         const content = el.dataset.tooltip;
 
-        try {
-            new Tooltip({
-                toggleEl: el,
-                targetEl: tooltipTarget,
-                content,
-                placement,
-                type
-            });
-        } catch (e) {
-            console.error(e);
-        }
+        new Tooltip({
+            toggleEl: el,
+            targetEl,
+            content,
+            placement,
+            type
+        });
     });
 })();

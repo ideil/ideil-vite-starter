@@ -11,14 +11,16 @@
 }
 
 * {
-    scroll-margin: calc(var(--header-height) + theme(spacing.5));
-    word-break: keep-all;
-    word-wrap: break-word;
 }
 
 *,
 *:before,
 *:after {
+    scroll-margin: calc(var(--header-height) + theme(spacing.5));
+    word-break: keep-all;
+    word-wrap: break-word;
+    min-width: 0;
+    min-height: 0;
     transition-duration: var(--transition-duration);
     transition-timing-function: var(--transition-timing-function);
     transition-property: none;
@@ -66,4 +68,8 @@ button {
             color: var(--hover-color, theme(colors.primary.DEFAULT));
         }
     }
+}
+
+img, svg, video, canvas, audio, iframe, embed, object {
+    display: inline-block;
 }

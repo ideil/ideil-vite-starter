@@ -23,7 +23,7 @@ export default class Tooltip {
 
     #isOpened = false;
 
-    #spacer = 10;
+    #spacer = 8;
 
     constructor({
         toggleEl,
@@ -67,8 +67,21 @@ export default class Tooltip {
             this.#toggleEl.addEventListener('mouseenter', () => {
                 this.show();
             }, false);
+
             this.#toggleEl.addEventListener('mouseleave', () => {
-                this.hide();
+                if (!this.#isOpened) {
+                    this.hide();
+                }
+            }, false);
+
+            this.#targetEl.addEventListener('mouseenter', () => {
+                this.show();
+            }, false);
+
+            this.#targetEl.addEventListener('mouseleave', () => {
+                if (!this.#isOpened) {
+                    this.hide();
+                }
             }, false);
         }
 
@@ -86,6 +99,7 @@ export default class Tooltip {
                 if (this.#isOpened) {
                     this.hide();
                 } else {
+                    this.#isOpened = true;
                     this.show();
                 }
             }, false);
@@ -157,7 +171,9 @@ export default class Tooltip {
     }
 
     #onDocumentClick = () => {
-        this.hide();
+        if (this.#isOpened) {
+            this.hide();
+        }
     };
 
     #onWindowScroll = () => {
@@ -169,14 +185,13 @@ export default class Tooltip {
     };
 
     show() {
-        if (this.#type === 'clickable') {
+        if (this.#type.includes('clickable') && this.#isOpened) {
             setTimeout(() => {
                 document.addEventListener('click', this.#onDocumentClick, false);
             });
         }
         window.addEventListener('scroll', this.#onWindowScroll, false);
         window.addEventListener('resize', this.#onWindowResize, false);
-        this.#isOpened = true;
         this.#targetEl.setAttribute('data-show', '');
         this.#updatePosition();
     }
