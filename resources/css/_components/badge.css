@@ -1,6 +1,6 @@
 .c-badge {
     --badge-size: theme(spacing.4);
-    --badge-font-size: theme(fontSize.2xs);
+    --badge-font-size: theme('fontSize.2xs');
     --badge-bg: theme(colors.gray.200);
     --badge-color: theme(colors.text);
     --badge-gap: theme(spacing.1);

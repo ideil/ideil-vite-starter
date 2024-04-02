@@ -73,7 +73,6 @@
     }
 
     &__panel {
-
         &:not(.is-shown) {
             display: none;
         }

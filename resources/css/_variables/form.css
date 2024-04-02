@@ -13,14 +13,19 @@
     --f-field-line-height: theme(lineHeight.6);
     --f-field-font-weight: theme(fontWeight.bold);
     --f-field-font-family: theme(fontFamily.sans);
-    --f-field-height: calc(var(--f-field-py) * 2 + var(--f-field-line-height) + var(--f-field-border-width));
+    --f-field-height: calc(
+        var(--f-field-py) * 2 + var(--f-field-line-height) +
+            var(--f-field-border-width)
+    );
 
     --f-field-color-light: theme(colors.white);
     --f-field-placeholder-color-light: theme(colors.white / 60%);
     --f-field-border-color-light: theme(colors.white / 70%);
 
     --f-label-icon-size: theme(spacing.5);
-    --f-label-icon-width: calc(var(--f-label-icon-size) + var(--f-field-px) * 2);
+    --f-label-icon-width: calc(
+        var(--f-label-icon-size) + var(--f-field-px) * 2
+    );
 
     --f-label-color: currentColor;
     --f-label-space: theme(spacing.2);

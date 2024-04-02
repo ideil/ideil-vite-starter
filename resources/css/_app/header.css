@@ -47,7 +47,7 @@
                 flex-shrink: 0;
                 left: 0;
                 transform-origin: center;
-                background-color: currentColor;
+                background-color: currentcolor;
                 transition-property: width, inset, transform;
 
                 &:nth-child(1) {
@@ -66,7 +66,6 @@
     }
 
     @screen xl {
-
         &__logo {
             margin-right: theme(spacing.15);
         }
@@ -74,17 +73,13 @@
 }
 
 .is-menu-open {
-
     .c-header {
         color: theme(colors.body);
         background-color: theme(colors.text);
 
         &__hamburger {
-
             &-icon {
-
                 div {
-
                     &:nth-child(1) {
                         top: calc(50% - 1px);
                         transform: rotate(45deg);

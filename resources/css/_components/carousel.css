@@ -28,9 +28,8 @@
     }
 
     &__arrow {
-
         &:disabled {
-            opacity: .5;
+            opacity: 0.5;
         }
 
         &--prev {
@@ -88,7 +87,6 @@
     }
 
     &--5 {
-
         .splide__slide {
             width: 90%;
 
@@ -111,7 +109,6 @@
     }
 
     &--4 {
-
         .splide__slide {
             width: 90%;
 
@@ -130,7 +127,6 @@
     }
 
     &--3 {
-
         .splide__slide {
             width: 90%;
 
@@ -145,7 +141,6 @@
     }
 
     &--2\.5 {
-
         .splide__slide {
             width: 90%;
 
@@ -160,7 +155,6 @@
     }
 
     &--2 {
-
         .splide__slide {
             width: 90%;
 
@@ -171,7 +165,6 @@
     }
 
     @screen md-max {
-
         &__track {
             overflow: visible;
         }
@@ -185,4 +178,3 @@
         }
     }
 }
-

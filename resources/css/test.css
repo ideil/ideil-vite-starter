@@ -1,16 +1,16 @@
 /* Set */
-@import '_set/variables.css';
-@import '_set/mixins.css';
+@import url('_set/variables.css');
+@import url('_set/mixins.css');
 
 /* Components */
-@import '_components/badge.css';
-@import '_components/label.css';
-@import '_components/tabs.css';
-@import '_components/breadcrumbs.css';
-@import '_components/carousel.css';
-@import '_components/collapse.css';
-@import '_components/pagination.css';
-@import '_components/map.css';
-@import '_components/tooltip.css';
-@import '_components/modal.css';
-@import '_components/gallery.css';
+@import url('_components/badge.css');
+@import url('_components/label.css');
+@import url('_components/tabs.css');
+@import url('_components/breadcrumbs.css');
+@import url('_components/carousel.css');
+@import url('_components/collapse.css');
+@import url('_components/pagination.css');
+@import url('_components/map.css');
+@import url('_components/tooltip.css');
+@import url('_components/modal.css');
+@import url('_components/gallery.css');

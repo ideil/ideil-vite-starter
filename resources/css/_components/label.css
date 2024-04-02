@@ -25,7 +25,8 @@
     }
 
     &__link {
-        padding: calc(var(--label-py) - 1px) var(--label-px) calc(var(--label-py) + 1px);
+        padding: calc(var(--label-py) - 1px) var(--label-px)
+            calc(var(--label-py) + 1px);
         color: currentColor;
         transition: none;
 

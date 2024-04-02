@@ -27,7 +27,6 @@
     }
 
     @screen lg {
-
         &::-webkit-scrollbar {
             display: block;
         }
@@ -46,7 +45,11 @@
         bottom: 0;
         height: 100%;
         width: theme(spacing[2.5]);
-        background-image: linear-gradient(to left, theme(colors.body / 0%), theme(colors.body));
+        background-image: linear-gradient(
+            to left,
+            theme(colors.body / 0%),
+            theme(colors.body)
+        );
 
         @screen sm {
             width: theme(spacing.5);
@@ -93,7 +96,6 @@
 
 /* Typography */
 .u-link-overlay {
-
     &:before {
         content: '';
         display: block;
@@ -104,6 +106,6 @@
 .u-link-opacity {
     &:hover {
         color: currentColor;
-        opacity: .7;
+        opacity: 0.7;
     }
 }

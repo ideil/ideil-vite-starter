@@ -19,11 +19,7 @@
     border-radius: var(--f-button-border-radius);
     color: var(--f-button-color);
     max-width: 100%;
-    transition-property:
-        background-color,
-        color,
-        border-color,
-        box-shadow;
+    transition-property: background-color, color, border-color, box-shadow;
 
     .i-icon {
         font-size: var(--f-button-icon-size);

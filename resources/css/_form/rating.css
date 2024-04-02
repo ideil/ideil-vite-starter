@@ -6,7 +6,7 @@
 
     &__field {
         position: absolute;
-        clip: rect(0,0,0,0);
+        clip: rect(0, 0, 0, 0);
         width: 0;
         pointer-events: none;
     }

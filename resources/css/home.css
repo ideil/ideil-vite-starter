@@ -1,6 +1,7 @@
 /* Set */
-@import '_set/variables.css';
-@import '_set/mixins.css';
+@import url('_set/variables.css');
+@import url('_set/mixins.css');
 
 /* Components */
-/* @import '_components/tabs.css'; */
+
+/* @import url('_components/tabs.css'); */

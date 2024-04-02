@@ -1,48 +1,48 @@
 /* Set */
-@import '_set/variables.css';
-@import '_set/mixins.css';
+@import url('_set/variables.css');
+@import url('_set/mixins.css');
 
 /* Tailwind */
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
+@import url('tailwindcss/base');
+@import url('tailwindcss/components');
 
 /* Variables */
-@import '_variables/base.css';
-@import '_variables/button.css';
-@import '_variables/form.css';
+@import url('_variables/base.css');
+@import url('_variables/button.css');
+@import url('_variables/form.css');
 
 /* Base */
-@import '_app/fonts.css';
-@import '_app/reset.css';
-@import '_app/measure.css';
-@import '_app/typography.css';
-@import '_app/icons.css';
+@import url('_app/fonts.css');
+@import url('_app/reset.css');
+@import url('_app/measure.css');
+@import url('_app/typography.css');
+@import url('_app/icons.css');
 
 /* Layouts */
-@import '_layouts/box.css';
-@import '_layouts/container.css';
+@import url('_layouts/box.css');
+@import url('_layouts/container.css');
 
 /* Components */
-@import '_components/ideil.css';
-@import '_components/logo.css';
-@import '_components/nav.css';
-@import '_components/socials.css';
-@import '_components/section.css';
+@import url('_components/ideil.css');
+@import url('_components/logo.css');
+@import url('_components/nav.css');
+@import url('_components/socials.css');
+@import url('_components/section.css');
 
 /* Form */
-@import '_form/base.css';
-@import '_form/buttons.css';
-@import '_form/field.css';
-@import '_form/check.css';
-@import '_form/counter.css';
-@import '_form/rating.css';
-@import '_form/select.css';
-@import '_form/datepicker.css';
+@import url('_form/base.css');
+@import url('_form/buttons.css');
+@import url('_form/field.css');
+@import url('_form/check.css');
+@import url('_form/counter.css');
+@import url('_form/rating.css');
+@import url('_form/select.css');
+@import url('_form/datepicker.css');
 
 /* Parts */
-@import '_app/header.css';
-@import '_app/menu.css';
-@import '_app/footer.css';
+@import url('_app/header.css');
+@import url('_app/menu.css');
+@import url('./_app/footer.css');
 
 /* Components */
-@import '_components/cookies.css';
+@import url('_components/cookies.css');

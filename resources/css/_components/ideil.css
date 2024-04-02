@@ -1,6 +1,6 @@
 .c-ideil {
-
-    svg, img {
+    svg,
+    img {
         height: theme(spacing.5);
         width: auto;
 
@@ -29,13 +29,12 @@
             background-color: currentColor;
             transform-origin: right;
             transform: scaleX(0);
-            transition: .4s transform cubic-bezier(.15,.85,.45,1);
+            transition: 0.4s transform cubic-bezier(0.15, 0.85, 0.45, 1);
         }
 
         &:hover {
-
             &:after {
-                transition: .6s transform cubic-bezier(.77,0,.18,1);
+                transition: 0.6s transform cubic-bezier(0.77, 0, 0.18, 1);
                 transform-origin: left;
                 transform: scaleX(1);
             }

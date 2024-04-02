@@ -21,7 +21,6 @@
         align-items: center;
 
         &:not(:last-child) {
-
             &:after {
                 content: '/';
                 margin: 0 theme(spacing.3);
@@ -29,7 +28,7 @@
         }
 
         &:last-child {
-            opacity: .5;
+            opacity: 0.5;
         }
     }
 }

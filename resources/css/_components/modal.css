@@ -49,14 +49,12 @@
     }
 
     @screen md {
-
         &.m-modal--md {
             --modal-max-width: 44rem;
         }
     }
 
     @screen lg {
-
         &.m-modal--lg {
             --modal-max-width: 64rem;
         }

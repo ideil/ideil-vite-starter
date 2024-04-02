@@ -11,10 +11,10 @@
     margin-bottom: var(--f-label-space);
     display: flex;
     align-items: center;
-    opacity: .9;
+    opacity: 0.9;
 
     .f-field--float ~ & {
-        opacity: .7;
+        opacity: 0.7;
         position: absolute;
         inset: 0 var(--f-field-px);
         top: 0;
@@ -39,7 +39,8 @@
     .f-field.f-field--float:not(:placeholder-shown):not(:focus) ~ &,
     .f-select.f-field--float.is-active ~ &,
     .f-select.f-field--float.is-filled ~ & {
-        transform: translateY(calc(var(--f-field-height) * -0.25)) scale3d(0.75, 0.75, 1);
+        transform: translateY(calc(var(--f-field-height) * -0.25))
+            scale3d(0.75, 0.75, 1);
     }
 }
 

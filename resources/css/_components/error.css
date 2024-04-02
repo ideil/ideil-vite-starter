@@ -37,14 +37,12 @@
     }
 
     @screen sm {
-
         &__code {
             font-size: theme(fontSize.50);
         }
     }
 
     @screen md {
-
         .c-logo {
             margin-bottom: theme(spacing.16);
         }

@@ -56,14 +56,12 @@
     }
 
     @screen sm {
-
         &__privacy {
             width: auto;
             margin-bottom: 0;
         }
 
         &__contacts {
-
             &-lg {
                 font-size: theme(fontSize.8);
             }
@@ -97,9 +95,7 @@
     }
 
     @screen lg {
-
         &__contacts {
-
             &-lg {
                 font-size: theme(fontSize.9);
             }
@@ -107,7 +103,6 @@
     }
 
     @screen xl {
-
         &__top {
             margin-bottom: theme(spacing.24);
         }
@@ -126,9 +121,7 @@
     }
 
     @screen 2xl {
-
         &__contacts {
-
             &-lg {
                 font-size: theme(fontSize.11);
             }

@@ -20,7 +20,6 @@
         font-weight: 700;
     }
 
-
     /* 64 */
     &--hero {
         font-size: theme(fontSize.9);
@@ -51,11 +50,10 @@
 
     /* 32 */
     &--h5 {
-        font-size: theme(fontSize.2lg);
+        font-size: theme('fontSize.2lg');
     }
 
     @screen md {
-
         &--hero {
             font-size: theme(fontSize.10);
         }
@@ -74,7 +72,6 @@
     }
 
     @screen lg {
-
         &--hero {
             font-size: theme(fontSize.12);
         }
@@ -101,7 +98,6 @@
     }
 
     @screen xl {
-
         &--hero {
             font-size: theme(fontSize.16);
         }

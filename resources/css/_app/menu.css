@@ -16,8 +16,7 @@
     color: theme(colors.body);
     opacity: 0;
     visibility: hidden;
-    transition-property: opacity,
-        visibility;
+    transition-property: opacity, visibility;
 
     &__inner {
         min-height: 100%;
@@ -38,7 +37,6 @@
         transition-property: transform;
 
         .c-nav {
-
             &__list {
                 flex-direction: column;
                 align-items: center;
@@ -55,7 +53,6 @@
 }
 
 .is-menu-open {
-
     .c-menu {
         opacity: 1;
         visibility: visible;

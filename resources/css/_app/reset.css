@@ -10,9 +10,6 @@
     /* background-color: theme(colors.primary.DEFAULT / 50%); */
 }
 
-* {
-}
-
 *,
 *:before,
 *:after {
@@ -57,11 +54,7 @@ a,
 button {
     color: currentColor;
     -webkit-tap-highlight-color: transparent;
-    transition-property:
-        border-color,
-        background-color,
-        color,
-        opacity;
+    transition-property: border-color, background-color, color, opacity;
 
     @media (hover: hover) {
         &:hover {
@@ -70,6 +63,13 @@ button {
     }
 }
 
-img, svg, video, canvas, audio, iframe, embed, object {
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
     display: inline-block;
 }

@@ -10,7 +10,6 @@
     }
 
     &__item {
-
         &.is-prev,
         &.is-next {
             display: none;
@@ -26,9 +25,7 @@
     }
 
     @screen lg {
-
         &__item {
-
             &.is-prev,
             &.is-next {
                 display: block;

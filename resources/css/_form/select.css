@@ -64,8 +64,7 @@
     }
 
     .multiselect-option {
-        transition-property: background-color,
-            color;
+        transition-property: background-color, color;
     }
 
     .multiselect-caret {
@@ -88,7 +87,6 @@
     }
 
     &.f-field--float {
-
         .multiselect-single-label,
         .multiselect-multiple-label,
         .multiselect-placeholder,
@@ -103,7 +101,6 @@
         }
 
         &.is-active {
-
             .multiselect-placeholder {
                 color: var(--ms-placeholder-color);
             }
