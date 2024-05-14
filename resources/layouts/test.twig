@@ -20,15 +20,6 @@
         {% include "_components/breadcrumbs.twig" %}
     </div>
 
-    {# Карусель #}
-    {% for carouselIndex in 1..2 %}
-        {% include '_carousels/test.twig' with {
-            class: 'c-section splide--' ~ (carouselIndex + 1),
-            pagination: carouselIndex == 1,
-            index: carouselIndex
-        } %}
-    {% endfor %}
-
     {# Модальне вікно #}
     <div class="text-center c-section l-container">
         <h2 class="c-title c-title--h3 mb-7">Модальне вікно</h2>
@@ -109,6 +100,15 @@
             <button class="f-btn f-btn--primary" data-tooltip-type="clickable" data-tooltip-target="#testTooltip" data-tooltip-placement="bottom">Клікабельний</button>
         </div>
     </div>
+
+    {# Карусель #}
+    {% for carouselIndex in 1..2 %}
+        {% include '_carousels/test.twig' with {
+            class: 'c-section splide--' ~ (carouselIndex + 1),
+            pagination: carouselIndex == 1,
+            index: carouselIndex
+        } %}
+    {% endfor %}
 
     {# Форма зворотнього зв'язку #}
     <div class="max-w-sm c-section l-container">

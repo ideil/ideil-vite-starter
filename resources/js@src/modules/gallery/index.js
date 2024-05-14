@@ -1,16 +1,13 @@
-import PhotoSwipe from 'photoswipe';
-import PhotoSwipeLightbox from 'photoswipe/lightbox';
+import initObserver from '@src/helpers/initObserver';
 
-const galleryEls = document.querySelectorAll('[data-gallery]');
+(() => {
+    const galleryEls = document.querySelectorAll('[data-gallery]');
 
-galleryEls.forEach(galleryEl => {
-    const childrenEls = galleryEl.querySelectorAll('[data-gallery-link]');
+    if (!galleryEls.length) {
+        return;
+    }
 
-    const lightbox = new PhotoSwipeLightbox({
-        gallery: galleryEl,
-        children: childrenEls,
-        showHideAnimationType: 'fade',
-        pswpModule: PhotoSwipe
-    });
-    lightbox.init();
-});
+    const observer = initObserver(() => import('./init'));
+
+    galleryEls.forEach(galleryEl => observer.observe(galleryEl));
+})();

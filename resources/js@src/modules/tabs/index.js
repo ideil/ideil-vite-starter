@@ -1,11 +1,13 @@
-(async () => {
+import initObserver from '@src/helpers/initObserver';
+
+(() => {
     const tabsEls = document.querySelectorAll('[data-tabs-target]');
 
     if (!tabsEls.length) {
         return;
     }
 
-    const { default: tabs } = await import('@src/plugins/tabs');
+    const observer = initObserver(() => import('./init'));
 
-    tabsEls.forEach(el => tabs(el));
+    tabsEls.forEach(galleryEl => observer.observe(galleryEl));
 })();

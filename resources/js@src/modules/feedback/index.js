@@ -1,12 +1,13 @@
-(async () => {
-    const formEl = document.querySelector('.vue-feedback-form');
+import initObserver from '@src/helpers/initObserver';
 
-    if (!formEl) {
+(() => {
+    const feedbackEl = document.querySelector('.vue-feedback-form');
+
+    if (!feedbackEl) {
         return;
     }
 
-    const { createApp, defineAsyncComponent } = await import('vue');
-    const FormComponent = defineAsyncComponent(() => import('./components/FormComponent.vue'));
-    const app = createApp(FormComponent);
-    app.mount(formEl);
+    const observer = initObserver(() => import('./init'));
+
+    observer.observe(feedbackEl);
 })();

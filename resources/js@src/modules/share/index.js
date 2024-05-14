@@ -1,23 +1,13 @@
-import Modal from '@src/plugins/modal';
+import initObserver from '@src/helpers/initObserver';
 
-const shareEls = document.querySelectorAll('[data-share]');
-const modalEl = document.querySelector('#shareModal');
+(() => {
+    const shareEls = document.querySelectorAll('[data-share]');
 
-shareEls.forEach(shareEl => {
+    if (!shareEls.length) {
+        return;
+    }
 
-    shareEl.addEventListener('click', async e => {
-        e.preventDefault();
+    const observer = initObserver(() => import('./init'));
 
-        const shareUrl = shareEl.getAttribute('data-share');
-
-        try {
-            await navigator.share({
-                url: shareUrl
-            });
-        } catch (err) {
-            const modal = Modal.getInstance(modalEl);
-
-            modal?.show();
-        }
-    });
-});
+    shareEls.forEach(galleryEl => observer.observe(galleryEl));
+})();

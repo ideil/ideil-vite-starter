@@ -160,10 +160,19 @@ export default class Tooltip {
                     bottom: 'top',
                     left: 'right'
                 }[ placement.split('-')[ 0 ] ]!;
+                const rotations = {
+                    top: 45,
+                    bottom: -135,
+                    left: -45,
+                    right: 135
+                } as Record<string, number>;
 
                 Object.assign(this.#arrowEl.style, {
+                    bottom: '',
+                    right: '',
                     left: arrowX ? `${ arrowX }px` : '',
-                    transform: `rotate(${ staticSide === 'top' ? 45 : -135 }deg)`,
+                    top: arrowY ? `${ arrowY }px` : '',
+                    transform: `rotate(${ rotations[ staticSide ] }deg)`,
                     [ staticSide ]: `${ this.#arrowEl.offsetHeight / -2 - 1 }px`
                 });
             }

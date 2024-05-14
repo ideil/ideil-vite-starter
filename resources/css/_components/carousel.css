@@ -3,6 +3,7 @@
 .splide {
     overflow: hidden;
     visibility: inherit;
+    contain: layout;
     transition-property: visibility;
 
     .is-initialized&,

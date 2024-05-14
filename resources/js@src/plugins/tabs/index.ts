@@ -1,4 +1,4 @@
-const tabs = (tabEl: HTMLElement) => {
+const initTabs = (tabEl: HTMLElement) => {
     const target = tabEl.dataset.tabsTarget ? tabEl.dataset.tabsTarget : tabEl.getAttribute('href');
 
     if (!target) {
@@ -43,4 +43,4 @@ const tabs = (tabEl: HTMLElement) => {
     });
 };
 
-export default tabs;
+export default initTabs;

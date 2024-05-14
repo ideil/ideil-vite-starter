@@ -1,31 +1,13 @@
-import Modal from '@src/plugins/modal';
+import initObserver from '@src/helpers/initObserver';
 
 (() => {
     const toggleEls = document.querySelectorAll('[data-modal-target]');
 
-    toggleEls.forEach(el => {
-        const modalTarget = el.dataset.modalTarget;
+    if (!toggleEls.length) {
+        return;
+    }
 
-        if (!modalTarget) {
-            return;
-        }
+    const observer = initObserver(() => import('./init'));
 
-        const modalEl = document.querySelector(modalTarget);
-
-        if (!modalEl) {
-            return;
-        }
-
-        const modal = Modal.getInstance(modalEl) || new Modal(modalEl);
-
-        if (!modal) {
-            return;
-        }
-
-        el.addEventListener('click', e => {
-            e.preventDefault();
-
-            modal.show();
-        });
-    });
+    toggleEls.forEach(galleryEl => observer.observe(galleryEl));
 })();

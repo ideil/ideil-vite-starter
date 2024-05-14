@@ -88,7 +88,6 @@
 
     const setHeroCarousel = carousel => {
         const contentEls = [
-            // ...carousel.root.querySelectorAll('.c-title'),
             ...carousel.root.querySelectorAll('.f-btn')
         ];
         let oldProgress = 0;
