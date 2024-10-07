@@ -1,20 +1,12 @@
 <script lang="ts">
-    // import { vMaska } from 'maska';
     import { DatePicker } from 'v-calendar';
     import { computed, defineComponent, ref } from 'vue';
-
-    // setupCalendar({
-    //     masks: {
-    //         weekdays: 'WW',
-    //     },
-    // });
 
     export default defineComponent({
         name: 'DateField',
         components: {
             VDatePicker: DatePicker
         },
-        // directives: { maska: vMaska },
         inheritAttrs: false,
         props: {
             modelValue: {
@@ -63,7 +55,6 @@
                     return value;
                 },
                 postProcess: (value: string) => {
-                    // if (!value) return '';
                     return value;
                 },
                 eager: true

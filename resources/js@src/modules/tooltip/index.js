@@ -1,16 +1,6 @@
-import initObserver from '@src/helpers/initObserver';
+import initIntersectionObserver from '@src/helpers/initIntersectionObserver';
 
-(() => {
-    const toggleEls = [
-        ...document.querySelectorAll('[data-tooltip-target]'),
-        ...document.querySelectorAll('[data-tooltip]')
-    ];
-
-    if (!toggleEls.length) {
-        return;
-    }
-
-    const observer = initObserver(() => import('./init'));
-
-    toggleEls.forEach(galleryEl => observer.observe(galleryEl));
-})();
+initIntersectionObserver([
+    ...document.querySelectorAll('[data-tooltip-target]'),
+    ...document.querySelectorAll('[data-tooltip]')
+], () => import('./init'));

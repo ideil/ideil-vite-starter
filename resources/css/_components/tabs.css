@@ -22,19 +22,16 @@
     --tabs-active-border-color: var(--tabs-active-background);
 
     position: relative;
-    display: inline-flex;
     vertical-align: middle;
     min-width: 0;
-    flex-shrink: 0;
-    max-width: 100%;
 
     &__list {
-        flex-grow: 1;
-        display: flex;
+        display: inline-flex;
         gap: var(--tabs-gap);
     }
 
     &__item {
+        flex-shrink: 0;
         display: flex;
         align-items: center;
 

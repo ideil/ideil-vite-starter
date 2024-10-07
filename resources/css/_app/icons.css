@@ -1,11 +1,6 @@
+@import url('/fonts/icons/icons.css');
+
 .i-icon {
-    pointer-events: none;
-    width: var(--icon-size);
-    height: var(--icon-size);
-    flex-shrink: 0;
-    display: inline-block;
-    vertical-align: middle;
-    fill: currentColor;
 }
 .i-icon--left {
     transform: rotate(180deg);

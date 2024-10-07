@@ -1,12 +1,12 @@
 import Modal from '@src/plugins/modal';
 
-export const init = shareEl => {
+export default el => {
     const modalEl = document.querySelector('#shareModal');
 
-    shareEl.addEventListener('click', async e => {
+    el.addEventListener('click', async e => {
         e.preventDefault();
 
-        const shareUrl = shareEl.getAttribute('data-share');
+        const shareUrl = el.getAttribute('data-share');
 
         try {
             await navigator.share({

@@ -1,24 +1,22 @@
-<div class="c-tabs u-scroll--shadow {{ class }}">
-    <div class="c-tabs__scroll u-scroll">
-        <ul class="c-tabs__list">
-            {% set links = links ?? ['Таб', 'Таб', 'Таб', 'Таб'] %}
+<div class="c-tabs u-scroll u-scroll--horizontal {{ class }}">
+    <ul class="c-tabs__list">
+        {% set links = links ?? ['Таб', 'Таб', 'Таб', 'Таб'] %}
 
-            {% for item in links %}
-                <li class="c-tabs__item">
-                    <a
-                        href="{{ item.link ?? ('#' ~ item.id) }}"
-                        class="c-tabs__link {{ loop.first and not noActive ? 'is-active' }} {{ item.class }}"
-                        {{ item.id ? 'data-tabs-target' }}
-                        {{ item.attributes }}
-                    >
-                        {{ item.title ?? item }}
+        {% for item in links %}
+            <li class="c-tabs__item">
+                <a
+                    href="{{ item.link ?? ('#' ~ item.id) }}"
+                    class="c-tabs__link {{ loop.first and not noActive ? 'is-active' }} {{ item.class }}"
+                    {{ item.id ? 'data-tabs-target' }}
+                    {{ item.attributes }}
+                >
+                    {{ item.title ?? item }}
 
-                        {% if item.count or withCount %}
-                            <span class="c-badge c-badge--primary">{{ item.count ?? random(1..30) }}</span>
-                        {% endif %}
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
-    </div>
+                    {% if item.count or withCount %}
+                        <span class="c-badge c-badge--primary">{{ item.count ?? random(1..30) }}</span>
+                    {% endif %}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
 </div>

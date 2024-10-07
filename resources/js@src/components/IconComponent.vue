@@ -16,10 +16,10 @@
 </script>
 
 <template>
-    <svg
+    <i
         class="i-icon"
-        :class="`i-${name}`"
-    >
-        <use :xlink:href="`/img/sprite.svg#${folder ? folder + '--' : ''}${name}`" />
-    </svg>
+        :class="[
+            `i-icon-${name}`
+        ]"
+    />
 </template>

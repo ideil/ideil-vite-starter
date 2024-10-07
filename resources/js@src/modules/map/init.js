@@ -117,9 +117,9 @@ const styles = [
     }
 ];
 
-export const init = async mapEl => {
-    const lat = Number(mapEl.dataset.lat);
-    const lng = Number(mapEl.dataset.lng);
+export default async el => {
+    const lat = Number(el.dataset.lat);
+    const lng = Number(el.dataset.lng);
     const target = {
         lat: lat,
         lng: lng
@@ -137,7 +137,7 @@ export const init = async mapEl => {
     ).documentElement;
 
     const loader = new Loader({
-        apiKey: 'AIzaSyAdLJAsgvHdX_TC_8e7Ui1u5RkTt8DpQfc', // apiKey
+        apiKey: 'AIzaSyA6omSCBTwOUhtzqxzDM_7Mv6ihoNe_nD8', // apiKey
         version: 'weekly',
         language: 'uk',
         libraries: [ 'places' ]
@@ -147,7 +147,7 @@ export const init = async mapEl => {
         loader.importLibrary('maps'),
         loader.importLibrary('marker')
     ]).then(() => {
-        map = new google.maps.Map(mapEl, {
+        map = new google.maps.Map(el, {
             zoom: 17,
             center: target,
             styles: styles,

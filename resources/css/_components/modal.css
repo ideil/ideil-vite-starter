@@ -25,7 +25,9 @@
     padding: 0 var(--modal-offset);
     width: 100%;
     height: 100%;
-    backdrop-filter: blur(calc(var(--modal-transition-progress) * 12px));
+    backdrop-filter: blur(
+        calc(var(--modal-transition-progress) * var(--blur-value))
+    );
     transition-property: opacity;
 
     &:before {
@@ -33,7 +35,7 @@
         display: block;
         position: fixed;
         inset: 0;
-        background-color: theme(colors.black / 50%);
+        background-color: var(--blur-bg);
     }
 
     &.is-shown {

@@ -1,13 +1,3 @@
-import initObserver from '@src/helpers/initObserver';
+import initIntersectionObserver from '@src/helpers/initIntersectionObserver';
 
-(() => {
-    const mapEls = document.querySelectorAll('[data-map]');
-
-    if (!mapEls.length) {
-        return;
-    }
-
-    const observer = initObserver(() => import('./init'));
-
-    mapEls.forEach(el => observer.observe(el));
-})();
+initIntersectionObserver(document.querySelectorAll('[data-map]'), () => import('./init'));

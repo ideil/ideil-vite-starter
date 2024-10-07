@@ -1,13 +1,3 @@
-import initObserver from '@src/helpers/initObserver';
+import initIntersectionObserver from '@src/helpers/initIntersectionObserver';
 
-(() => {
-    const shareEls = document.querySelectorAll('[data-share]');
-
-    if (!shareEls.length) {
-        return;
-    }
-
-    const observer = initObserver(() => import('./init'));
-
-    shareEls.forEach(galleryEl => observer.observe(galleryEl));
-})();
+initIntersectionObserver(document.querySelectorAll('[data-share]'), () => import('./init'));

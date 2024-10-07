@@ -1,0 +1,47 @@
+@font-face {
+	font-family: "icons";
+	font-display: block;
+	src: url("icons.woff2?0867f3c815b616069de3369b2231e7f6") format("woff2");
+}
+
+.i-icon {
+	line-height: 1;
+}
+
+.i-icon:before {
+	font-family: icons !important;
+	font-style: normal;
+	font-weight: normal !important;
+	vertical-align: top;
+}
+
+.i-icon-star:before {
+	content: "\f101";
+}
+.i-icon-plus:before {
+	content: "\f102";
+}
+.i-icon-mark:before {
+	content: "\f103";
+}
+.i-icon-fire:before {
+	content: "\f104";
+}
+.i-icon-cookies:before {
+	content: "\f105";
+}
+.i-icon-close:before {
+	content: "\f106";
+}
+.i-icon-arrow:before {
+	content: "\f107";
+}
+.i-icon-angle:before {
+	content: "\f108";
+}
+.i-icon-instagram:before {
+	content: "\f109";
+}
+.i-icon-facebook:before {
+	content: "\f10a";
+}

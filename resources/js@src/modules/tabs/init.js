@@ -1,5 +1,5 @@
 import initTabs from '@src/plugins/tabs';
 
-export const init = tabEl => {
-    initTabs(tabEl);
+export default el => {
+    initTabs(el);
 };

@@ -1,21 +1,21 @@
-export const init = copyEl => {
+export default el => {
     let timeout = null;
 
-    copyEl.addEventListener('click', e => {
+    el.addEventListener('click', e => {
         e.preventDefault();
 
-        const copyText = copyEl.getAttribute('data-copy');
+        const copyText = el.getAttribute('data-copy');
 
         navigator.clipboard.writeText(copyText)
             .then(() => {
-                copyEl.classList.add('is-copied');
+                el.classList.add('is-copied');
 
                 if (timeout) {
                     clearTimeout(timeout);
                 }
 
                 timeout = setTimeout(() => {
-                    copyEl.classList.remove('is-copied');
+                    el.classList.remove('is-copied');
                 }, 2000);
             });
     });

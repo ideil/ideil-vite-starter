@@ -1,13 +1,11 @@
 import { PluginOption, defineConfig } from 'vite';
 import vuePlugin from '@vitejs/plugin-vue';
-import fastGlob from 'fast-glob';
 import laravel from 'laravel-vite-plugin';
 import path from 'path';
-import viteSvgSpriteWrapper from 'vite-svg-sprite-wrapper';
 import config from './vite-config/config';
 import twigHtmlPlugin from './vite-config/twig-html';
-
-const { globSync } = fastGlob;
+import viteSvgToWebFont from 'vite-svg-2-webfont';
+// import viteSvgSpriteWrapper from 'vite-svg-sprite-wrapper';
 
 export default defineConfig({
     server: {
@@ -52,20 +50,21 @@ export default defineConfig({
                 },
                 chunkFileNames: 'js/chunks/[name].[hash].js',
                 entryFileNames: 'js/[name].[hash].js'
-            },
-            input: [
-                ...globSync(path.resolve(`${ config.rootDir }/css/*.css`)),
-                `${ config.rootDir }/js@src/app.js`,
-                `${ config.rootDir }/js@pub/app.js`
-            ]
+            }
+            // avoids files optimization and pages reload
+            // input: [
+            //     `${ config.rootDir }/js@src/app.js`,
+            //     `${ config.rootDir }/js@pub/app.js`
+            // ]
         }
     },
     resolve: {
         alias: {
-            '@': '/',
-            '@src': '/js@src',
-            '@pub': '/js@pub',
-            '@img': '/img'
+            '@': path.resolve(config.rootDir),
+            '@src': path.resolve(`${ config.rootDir }/js@src`),
+            '@pub': path.resolve(`${ config.rootDir }/js@pub`),
+            '@img': path.resolve(`${ config.rootDir }/img`),
+            '@icons': path.resolve(`${ config.rootDir }/icons`)
         }
     },
     plugins: [
@@ -89,10 +88,26 @@ export default defineConfig({
             }
         } as PluginOption,
         twigHtmlPlugin(),
-        viteSvgSpriteWrapper({
-            icons: path.resolve(`${ config.rootDir }/${ config.iconsDir }/**/*.svg`),
-            outputDir: path.resolve(`${ config.rootDir }/${ config.imageDir }`)
+        viteSvgToWebFont({
+            fontName: 'icons',
+            context: path.resolve(`${ config.rootDir }/icons`),
+            files: [ '**/*.svg' ],
+            classPrefix: 'i-icon-',
+            baseSelector: '.i-icon',
+            dest: path.resolve(`${ config.rootDir }/fonts/icons`),
+            cssDest: path.resolve(`${ config.rootDir }/fonts/icons`),
+            types: 'woff2',
+            centerHorizontally: true,
+            normalize: true,
+            allowWriteFilesInBuild: true,
+            generateFiles: true
+            // cssFontsUrl: '/fonts/icons',
         }),
+        // or icons via svg sprite
+        // viteSvgSpriteWrapper({
+        //     icons: path.resolve(`${ config.rootDir }/${ config.iconsDir }/**/*.svg`),
+        //     outputDir: path.resolve(`${ config.rootDir }/${ config.imageDir }`)
+        // }),
         vuePlugin({
             template: {
                 transformAssetUrls: true

@@ -1,76 +1,33 @@
 /* Scroll */
 .u-scroll {
-    overflow-x: auto;
-    overflow-y: hidden;
-    display: flex;
-    flex-grow: 1;
-    margin: 0 calc(theme(spacing[2.5]) * -1);
+    scroll-behavior: smooth;
 
-    @screen sm {
-        margin: 0 calc(theme(spacing.5) * -1);
-    }
-
-    &::-webkit-scrollbar {
-        display: none;
-    }
-
-    &:after,
-    &:before {
-        content: '';
-        display: block;
-        flex-shrink: 0;
-        width: theme(spacing[2.5]);
-
-        @screen sm {
-            width: theme(spacing.5);
-        }
-    }
-
-    @screen lg {
-        &::-webkit-scrollbar {
-            display: block;
-        }
-    }
-}
-.u-scroll--shadow {
-    position: relative;
-
-    &:after,
-    &:before {
-        content: '';
-        z-index: 2;
-        display: block;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        height: 100%;
-        width: theme(spacing[2.5]);
-        background-image: linear-gradient(
-            to left,
-            theme(colors.body / 0%),
-            theme(colors.body)
+    &--horizontal {
+        overflow-x: auto;
+        overflow-y: hidden;
+        margin-inline: calc(theme(spacing.boxSpace) * -1);
+        padding-inline: theme(spacing.boxSpace);
+        mask-image: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0) 0px,
+            rgba(0, 0, 0, 1) theme(spacing.boxSpace),
+            rgba(0, 0, 0, 1) calc(100% - theme(spacing.boxSpace)),
+            rgba(0, 0, 0, 0) 100%
         );
-
-        @screen sm {
-            width: theme(spacing.5);
-        }
     }
 
-    &:before {
-        left: calc(theme(spacing[2.5]) * -1);
-
-        @screen sm {
-            left: calc(theme(spacing.5) * -1);
-        }
-    }
-
-    &:after {
-        right: calc(theme(spacing[2.5]) * -1);
-        transform: rotate(180deg);
-
-        @screen sm {
-            right: calc(theme(spacing.5) * -1);
-        }
+    &--vertical {
+        overflow-x: hidden;
+        overflow-y: auto;
+        margin-block: calc(theme(spacing.boxSpace) * -1);
+        padding-block: theme(spacing.boxSpace);
+        mask-image: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0) 0px,
+            rgba(0, 0, 0, 1) theme(spacing.boxSpace),
+            rgba(0, 0, 0, 1) calc(100% - theme(spacing.boxSpace)),
+            rgba(0, 0, 0, 0) 100%
+        );
     }
 }
 
@@ -83,6 +40,7 @@
     &:before {
         content: '';
         display: block;
+        padding-bottom: 100%;
     }
 
     img {
@@ -91,6 +49,13 @@
         left: 0;
         width: 100%;
         height: 100%;
+        object-fit: cover;
+    }
+
+    &--16x9 {
+        &:before {
+            padding-bottom: 56.25%;
+        }
     }
 }
 
@@ -101,11 +66,5 @@
         display: block;
         position: absolute;
         inset: 0;
-    }
-}
-.u-link-opacity {
-    &:hover {
-        color: currentColor;
-        opacity: 0.7;
     }
 }

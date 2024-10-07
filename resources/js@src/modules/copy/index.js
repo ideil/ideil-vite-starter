@@ -1,13 +1,3 @@
-import initObserver from '@src/helpers/initObserver';
+import initIntersectionObserver from '@src/helpers/initIntersectionObserver';
 
-(() => {
-    const copyEls = document.querySelectorAll('[data-copy]');
-
-    if (!copyEls.length) {
-        return;
-    }
-
-    const observer = initObserver(() => import('./init'));
-
-    copyEls.forEach(galleryEl => observer.observe(galleryEl));
-})();
+initIntersectionObserver(document.querySelectorAll('[data-copy]'), () => import('./init'));

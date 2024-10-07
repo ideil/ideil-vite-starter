@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>icons</title>
+	<style>
+		body {
+			font-family: sans-serif;
+			margin: 0;
+			padding: 10px 20px;
+		}
+
+		.preview {
+			line-height: 2em;
+		}
+
+		.preview__icon {
+			display: inline-block;
+			width: 32px;
+			text-align: center;
+		}
+
+		.i-icon {
+			display: inline-block;
+			font-size: 16px;
+		}
+
+		@font-face {
+	font-family: "icons";
+	font-display: block;
+	src: url("icons.woff2?de78e968a95e49f2b00a799a68b393cd") format("woff2");
+}
+
+.i-icon {
+	line-height: 1;
+}
+
+.i-icon:before {
+	font-family: icons !important;
+	font-style: normal;
+	font-weight: normal !important;
+	vertical-align: top;
+}
+
+.i-icon-star:before {
+	content: "\f101";
+}
+.i-icon-plus:before {
+	content: "\f102";
+}
+.i-icon-mark:before {
+	content: "\f103";
+}
+.i-icon-fire:before {
+	content: "\f104";
+}
+.i-icon-cookies:before {
+	content: "\f105";
+}
+.i-icon-close:before {
+	content: "\f106";
+}
+.i-icon-arrow:before {
+	content: "\f107";
+}
+.i-icon-angle:before {
+	content: "\f108";
+}
+.i-icon-instagram:before {
+	content: "\f109";
+}
+.i-icon-facebook:before {
+	content: "\f10a";
+}
+
+	</style>
+</head>
+<body>
+	<h1>icons</h1>
+	<div class="preview">
+		<span class="preview__icon">
+			<span class="i-icon i-icon-star"></span>
+		</span>
+		<span>star</span>
+	</div>
+	<div class="preview">
+		<span class="preview__icon">
+			<span class="i-icon i-icon-plus"></span>
+		</span>
+		<span>plus</span>
+	</div>
+	<div class="preview">
+		<span class="preview__icon">
+			<span class="i-icon i-icon-mark"></span>
+		</span>
+		<span>mark</span>
+	</div>
+	<div class="preview">
+		<span class="preview__icon">
+			<span class="i-icon i-icon-fire"></span>
+		</span>
+		<span>fire</span>
+	</div>
+	<div class="preview">
+		<span class="preview__icon">
+			<span class="i-icon i-icon-cookies"></span>
+		</span>
+		<span>cookies</span>
+	</div>
+	<div class="preview">
+		<span class="preview__icon">
+			<span class="i-icon i-icon-close"></span>
+		</span>
+		<span>close</span>
+	</div>
+	<div class="preview">
+		<span class="preview__icon">
+			<span class="i-icon i-icon-arrow"></span>
+		</span>
+		<span>arrow</span>
+	</div>
+	<div class="preview">
+		<span class="preview__icon">
+			<span class="i-icon i-icon-angle"></span>
+		</span>
+		<span>angle</span>
+	</div>
+	<div class="preview">
+		<span class="preview__icon">
+			<span class="i-icon i-icon-instagram"></span>
+		</span>
+		<span>instagram</span>
+	</div>
+	<div class="preview">
+		<span class="preview__icon">
+			<span class="i-icon i-icon-facebook"></span>
+		</span>
+		<span>facebook</span>
+	</div>
+</body>
+</html>

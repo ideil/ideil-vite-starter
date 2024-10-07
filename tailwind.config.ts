@@ -89,8 +89,10 @@ export default {
                 'hd': '1920px'
             },
             lineHeight: {
-                normal: '1.4',
-                tight: '1.2'
+                1.1: 1.1,
+                1.2: 1.2,
+                1.3: 1.3,
+                1.4: 1.4
             },
             spacing: {
                 '13': '3.25rem', // 52px

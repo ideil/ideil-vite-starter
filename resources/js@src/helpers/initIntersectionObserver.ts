@@ -1,12 +1,16 @@
-export default (initPromise: () => Promise<any>) => {
+export default (els: Element[], initPromise: () => Promise<any>) => {
     let init: ((el: Element) => void) | null = null;
+
+    if (!els.length) {
+        return;
+    }
 
     const observer = new IntersectionObserver(entries => {
         entries.forEach(async entry => {
             if (entry.isIntersecting) {
                 if (!init) {
                     [
-                        { init }
+                        { default: init }
                     ] = await Promise.all([
                         initPromise()
                     ]);
@@ -14,13 +18,15 @@ export default (initPromise: () => Promise<any>) => {
 
                 if (init) {
                     init(entry.target);
+                    observer.unobserve(entry.target);
                 }
-                observer.unobserve(entry.target);
             }
         });
     }, {
         rootMargin: '0px 0px 25% 0px'
     });
+
+    els.forEach(el => observer.observe(el));
 
     return observer;
 };

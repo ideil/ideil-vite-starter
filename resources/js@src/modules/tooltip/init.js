@@ -1,19 +1,19 @@
 import Tooltip from '@src/plugins/tooltip';
 
-export const init = toggleEl => {
-    const tooltipTarget = toggleEl.dataset.tooltipTarget;
+export default el => {
+    const tooltipTarget = el.dataset.tooltipTarget;
     let targetEl = undefined;
 
     if (tooltipTarget) {
         targetEl = document.querySelector(tooltipTarget);
     }
 
-    const placement = toggleEl.dataset.tooltipPlacement;
-    const type = toggleEl.dataset.tooltipType;
-    const content = toggleEl.dataset.tooltip;
+    const placement = el.dataset.tooltipPlacement;
+    const type = el.dataset.tooltipType;
+    const content = el.dataset.tooltip;
 
     new Tooltip({
-        toggleEl,
+        toggleEl: el,
         targetEl,
         content,
         placement,

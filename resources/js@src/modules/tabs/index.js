@@ -1,13 +1,3 @@
-import initObserver from '@src/helpers/initObserver';
+import initIntersectionObserver from '@src/helpers/initIntersectionObserver';
 
-(() => {
-    const tabsEls = document.querySelectorAll('[data-tabs-target]');
-
-    if (!tabsEls.length) {
-        return;
-    }
-
-    const observer = initObserver(() => import('./init'));
-
-    tabsEls.forEach(galleryEl => observer.observe(galleryEl));
-})();
+initIntersectionObserver(document.querySelectorAll('[data-tabs]'), () => import('./init'));

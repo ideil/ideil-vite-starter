@@ -1,45 +1,44 @@
-const initTabs = (tabEl: HTMLElement) => {
-    const target = tabEl.dataset.tabsTarget ? tabEl.dataset.tabsTarget : tabEl.getAttribute('href');
+const initTabs = (tabsEl: HTMLElement) => {
+    const toggleEls = tabsEl.querySelectorAll<HTMLElement>('[data-tabs-target]');
+    const panelEls = [] as HTMLElement[];
 
-    if (!target) {
+    if (!toggleEls.length) {
         return;
     }
 
-    const panelEl = document.querySelector(`[data-tabs-panel]${ target }`);
-
-    if (!panelEl) {
-        return;
-    }
-
-    const parentEl = panelEl.closest('[data-tabs-parent]');
-
-    if (!parentEl) {
-        return;
-    }
-
-    const tabEls = parentEl.querySelectorAll('[data-tabs-target]');
-    const panelEls = parentEl.querySelectorAll('[data-tabs-panel]');
-
-    function openTab() {
+    function open(toggleEl: HTMLElement, panelEl: HTMLElement) {
+        toggleEls.forEach(el => {
+            el.classList.remove('is-active');
+            el.setAttribute('aria-selected', 'false');
+        });
         panelEls.forEach(el => {
-            if (panelEl !== el) {
-                el.classList.remove('is-shown');
-            }
-        });
-        tabEls.forEach(el => {
-            if (tabEl !== el) {
-                el.classList.remove('is-active');
-            }
+            el.classList.remove('is-shown');
         });
 
-        tabEl.classList.add('is-active');
-        panelEl?.classList.add('is-shown');
+        toggleEl.classList.add('is-active');
+        toggleEl.setAttribute('aria-selected', 'true');
+        panelEl.classList.add('is-shown');
     }
 
-    tabEl.addEventListener('click', (e: MouseEvent) => {
-        e.preventDefault();
+    toggleEls.forEach((toggleEl: HTMLElement) => {
+        const targetId = toggleEl.getAttribute('href');
 
-        openTab();
+        if (!targetId) {
+            return;
+        }
+
+        const panelEl = document.querySelector<HTMLElement>(targetId);
+
+        if (!panelEl) {
+            return;
+        }
+
+        panelEls.push(panelEl);
+
+        toggleEl.addEventListener('click', e => {
+            e.preventDefault();
+            open(toggleEl, panelEl);
+        });
     });
 };
 

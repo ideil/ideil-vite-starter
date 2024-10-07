@@ -1,14 +1,4 @@
 
-import initObserver from '@src/helpers/initObserver';
+import initIntersectionObserver from '@src/helpers/initIntersectionObserver';
 
-(() => {
-    const collapseEls = document.querySelectorAll('[data-collapse-target]');
-
-    if (!collapseEls.length) {
-        return;
-    }
-
-    const observer = initObserver(() => import('./init'));
-
-    collapseEls.forEach(el => observer.observe(el));
-})();
+initIntersectionObserver(document.querySelectorAll('[data-collapse-target]'), () => import('./init'));

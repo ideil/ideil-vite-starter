@@ -1,11 +1,11 @@
 import PhotoSwipe from 'photoswipe';
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
 
-export const init = galleryEl => {
-    const linkEls = galleryEl.querySelectorAll('[data-gallery-link]');
+export default el => {
+    const linkEls = el.querySelectorAll('[data-gallery-link]');
 
     const gallery = new PhotoSwipeLightbox({
-        gallery: galleryEl,
+        gallery: el,
         children: linkEls,
 
         showHideAnimationType: 'fade',

@@ -323,7 +323,7 @@
     <div class="text-center c-section l-container">
         <h2 class="c-title c-title--h3 mb-7">Таби</h2>
 
-        <div data-tabs-parent>
+        <div data-tabs>
             {% set tabs = [
                 {
                     title: 'Таб 1',
@@ -343,7 +343,7 @@
             {% include "_components/tabs.twig" with { links: tabs, class: 'mb-5' } %}
 
             {% for item in tabs %}
-                <div class="c-tabs__panel {{ loop.first ? 'is-shown' }}" id="{{ item.id }}" data-tabs-panel>
+                <div class="c-tabs__panel {{ loop.first ? 'is-shown' }}" id="{{ item.id }}">
                     {{ item.title }}
                 </div>
             {% endfor %}

@@ -1,13 +1,3 @@
-import initObserver from '@src/helpers/initObserver';
+import initIntersectionObserver from '@src/helpers/initIntersectionObserver';
 
-(() => {
-    const feedbackEl = document.querySelector('.vue-feedback-form');
-
-    if (!feedbackEl) {
-        return;
-    }
-
-    const observer = initObserver(() => import('./init'));
-
-    observer.observe(feedbackEl);
-})();
+initIntersectionObserver(document.querySelectorAll('.vue-feedback-form'), () => import('./init'));

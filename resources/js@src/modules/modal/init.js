@@ -1,7 +1,7 @@
 import Modal from '@src/plugins/modal';
 
-export const init = toggleEl => {
-    const modalTarget = toggleEl.dataset.modalTarget;
+export default el => {
+    const modalTarget = el.dataset.modalTarget;
 
     if (!modalTarget) {
         return;
@@ -19,7 +19,7 @@ export const init = toggleEl => {
         return;
     }
 
-    toggleEl.addEventListener('click', e => {
+    el.addEventListener('click', e => {
         e.preventDefault();
 
         modal.show();
