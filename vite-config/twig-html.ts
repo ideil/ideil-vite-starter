@@ -161,6 +161,20 @@ export default function twigHtmlPlugin(): PluginOption[] {
                     });
                 }
             }
+        },
+        {
+            name: 'copy-index-html',
+            apply: 'build',
+            closeBundle() {
+                const indexHtml = '<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; URL=./layouts" /></head></html>';
+
+                if (indexHtml) {
+                    fs.writeFileSync(
+                        `${ config.buildDir }/index.html`,
+                        indexHtml
+                    );
+                }
+            }
         }
     ];
 }
