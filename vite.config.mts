@@ -5,9 +5,11 @@ import path from 'path';
 import config from './vite-config/config';
 import twigHtmlPlugin from './vite-config/twig-html';
 import viteSvgToWebFont from 'vite-svg-2-webfont';
-import { sync as globSync } from 'fast-glob';
+import fastGlob from 'fast-glob';
 // import { visualizer } from 'rollup-plugin-visualizer';
 // import viteSvgSpriteWrapper from 'vite-svg-sprite-wrapper';
+
+const { globSync } = fastGlob;
 
 export default defineConfig({
     server: {
