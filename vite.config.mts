@@ -5,6 +5,8 @@ import path from 'path';
 import config from './vite-config/config';
 import twigHtmlPlugin from './vite-config/twig-html';
 import viteSvgToWebFont from 'vite-svg-2-webfont';
+import { sync as globSync } from 'fast-glob';
+// import { visualizer } from 'rollup-plugin-visualizer';
 // import viteSvgSpriteWrapper from 'vite-svg-sprite-wrapper';
 
 export default defineConfig({
@@ -20,6 +22,13 @@ export default defineConfig({
     //     'resources/gltf/**'
     // ],
     build: {
+        // visualizer({
+        //     template: 'treemap',
+        //     open: true,
+        //     gzipSize: true,
+        //     brotliSize: true,
+        //     filename: 'analyse.html',
+        // }),
         outDir: path.resolve(config.buildDir),
         emptyOutDir: true,
         copyPublicDir: false,
@@ -50,12 +59,27 @@ export default defineConfig({
                 },
                 chunkFileNames: 'js/chunks/[name].[hash].js',
                 entryFileNames: 'js/[name].[hash].js'
-            }
+                // For smaller chunks
+                // manualChunks(id) {
+                //     if (id.includes('@sentry')) {
+                //         return '@open-ish';
+                //     }
+
+                //     if (id.includes('gsap')) {
+                //         return 'gsap';
+                //     }
+
+                //     if (id.includes('inputmask')) {
+                //         return 'inputmask';
+                //     }
+                // },
+            },
             // avoids files optimization and pages reload
-            // input: [
-            //     `${ config.rootDir }/js@src/app.js`,
-            //     `${ config.rootDir }/js@pub/app.js`
-            // ]
+            input: [
+                ...globSync(path.resolve(`${ config.rootDir }/css/*.css`)),
+                `${ config.rootDir }/js@src/app.js`,
+                `${ config.rootDir }/js@pub/app.js`
+            ]
         }
     },
     resolve: {

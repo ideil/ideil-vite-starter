@@ -1,10 +1,37 @@
 {
-    "plugins": ["stylelint-prettier"],
+    "extends": [
+        "stylelint-config-standard",
+        "stylelint-config-clean-order",
+        "stylelint-config-tailwindcss"
+    ],
+    "plugins": [
+        "stylelint-prettier"
+    ],
     "rules": {
         "prettier/prettier": [
             true,
             {
                 "singleQuote": true
+            }
+        ],
+        "declaration-block-no-redundant-longhand-properties": null,
+        "selector-class-pattern": null,
+        "value-keyword-case": [
+            "lower",
+            {
+                "ignoreFunctions": ["theme"]
+            }
+        ],
+        "at-rule-no-unknown": [
+            true,
+            {
+                "ignoreAtRules": ["mixin", "include", "screen"]
+            }
+        ],
+        "unit-no-unknown": [
+            true,
+            {
+                "ignoreFunctions": ["theme"]
             }
         ]
     }
