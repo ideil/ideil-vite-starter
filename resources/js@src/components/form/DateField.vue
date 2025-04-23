@@ -1,123 +1,116 @@
 <script lang="ts">
-    import { DatePicker } from 'v-calendar';
-    import { computed, defineComponent, ref } from 'vue';
+import { DatePicker } from "v-calendar";
+import { computed, defineComponent, ref } from "vue";
 
-    export default defineComponent({
-        name: 'DateField',
-        components: {
-            VDatePicker: DatePicker
+export default defineComponent({
+    name: "DateField",
+    components: {
+        VDatePicker: DatePicker,
+    },
+    inheritAttrs: false,
+    props: {
+        modelValue: {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            type: [String, Number, null, Date] as any,
+            required: false,
+            default: null,
         },
-        inheritAttrs: false,
-        props: {
-            modelValue: {
-                type: [ String, Number, null, Date ] as any,
-                required: false,
-                default: null
+        error: {
+            type: [String, Array],
+            required: false,
+            default: "",
+        },
+        id: {
+            type: String,
+            required: true,
+        },
+        label: {
+            type: String,
+            required: false,
+            default: "",
+        },
+        placeholder: {
+            type: String,
+            default: "01.02.2023",
+        },
+        wrapperClass: {
+            type: String,
+            required: false,
+            default: "",
+        },
+        isFloat: {
+            type: Boolean,
+            required: false,
+            default: false,
+        },
+    },
+    emits: ["update:modelValue"],
+    setup(props, { emit }) {
+        const maskOptions = ref({
+            mask: "##.##.####",
+            preProcess: (value: string) => {
+                if (value === "NaN.NaN.0NaN") {
+                    emit("update:modelValue", null);
+                    return (value = "");
+                }
+                return value;
             },
-            error: {
-                type: [ String, Array ],
-                required: false,
-                default: ''
+            postProcess: (value: string) => {
+                return value;
             },
-            id: {
-                type: String,
-                required: true
+            eager: true,
+        });
+
+        const value = computed({
+            get() {
+                return props.modelValue;
             },
-            label: {
-                type: String,
-                required: false,
-                default: ''
+            set(value) {
+                if (isNaN(value)) {
+                    emit("update:modelValue", null);
+                    return;
+                }
+
+                emit("update:modelValue", value);
             },
-            placeholder: {
-                type: String,
-                default: '01.02.2023'
-            },
-            wrapperClass: {
-                type: String,
-                required: false,
-                default: ''
-            },
-            isFloat: {
-                type: Boolean,
-                required: false,
-                default: false
+        });
+
+        const customInputValue = (inputValue: string) => {
+            if (inputValue === "NaN.NaN.0NaN") {
+                return "";
             }
-        },
-        emits: [ 'update:modelValue' ],
-        setup(props, { emit }) {
-            const maskOptions = ref({
-                mask: '##.##.####',
-                preProcess: (value: string) => {
-                    if (value === 'NaN.NaN.0NaN') {
-                        emit('update:modelValue', null);
-                        return value = '';
-                    }
-                    return value;
-                },
-                postProcess: (value: string) => {
-                    return value;
-                },
-                eager: true
-            });
 
-            const value = computed({
-                get() {
-                    return props.modelValue;
-                },
-                set(value) {
-                    if (isNaN(value)) {
-                        emit('update:modelValue', null);
-                        return;
-                    }
+            return inputValue;
+        };
 
-                    emit('update:modelValue', value);
-                }
-            });
+        const locale = computed(() => {
+            return window?.App?.currentLanguage ?? "uk";
+        });
 
-            const popover = ref({
-                visibility: 'click'
-            });
+        return {
+            value,
+            maskOptions,
+            locale,
 
-            const customInputValue = (inputValue: string) => {
-                if (inputValue === 'NaN.NaN.0NaN') {
-                    return '';
-                }
-
-                return inputValue;
-            };
-
-            const locale = computed(() => {
-                return window?.App?.currentLanguage ?? 'uk';
-            });
-
-            return {
-                value,
-                popover,
-                maskOptions,
-                locale,
-
-                customInputValue
-            };
-        }
-    });
+            customInputValue,
+        };
+    },
+});
 </script>
 
 <template>
-    <label
-        v-if="label && !isFloat"
-        :for="id"
-        class="f-label"
-    >{{ label }}</label>
+    <label v-if="label && !isFloat" :for="id" class="f-label">{{
+        label
+    }}</label>
 
-    <div
-        class="relative"
-        :class="wrapperClass"
-    >
+    <div class="relative" :class="wrapperClass">
         <slot name="fieldBefore" />
 
         <VDatePicker
             v-model="value"
-            :popover="popover"
+            :popover="{
+                visibility: 'click',
+            }"
             :locale="locale"
         >
             <template #default="{ inputValue, inputEvents }">
@@ -130,25 +123,20 @@
                     class="f-field"
                     :class="{
                         'f-field--error': error,
-                        'f-field--float': isFloat
+                        'f-field--float': isFloat,
                     }"
                     v-on="inputEvents"
-                >
+                />
             </template>
         </VDatePicker>
-        <label
-            v-if="label && isFloat"
-            :for="id"
-            class="f-label"
-        >{{ label }}</label>
+        <label v-if="label && isFloat" :for="id" class="f-label">{{
+            label
+        }}</label>
 
         <slot name="fieldAfter" />
     </div>
 
-    <div
-        v-if="error"
-        class="f-info f-info--error"
-    >
+    <div v-if="error" class="f-info f-info--error">
         {{ error[0] }}
     </div>
 </template>

@@ -1,4 +1,1 @@
-import.meta.glob([
-    './img/**/*',
-    './fonts/**/*'
-]);
+import.meta.glob(["./img/**/*", "./fonts/**/*"]);

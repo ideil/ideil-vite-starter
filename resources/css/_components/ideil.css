@@ -1,42 +1,46 @@
 .c-ideil {
     svg,
     img {
-        height: theme(spacing.5);
         width: auto;
+        height: theme(spacing.5);
 
         *:not([fill='#ED2024']) {
-            fill: currentColor;
+            fill: currentcolor;
         }
     }
 
     &__link {
         position: relative;
         display: inline-flex;
+        color: currentcolor;
         vertical-align: middle;
-        color: currentColor;
 
-        a& {
-            color: currentColor;
-        }
-
-        &:after {
+        &::after {
             content: '';
+
             position: absolute;
+            right: 0;
             bottom: 0;
             left: 0;
-            right: 0;
-            height: 1px;
-            background-color: currentColor;
             transform-origin: right;
             transform: scaleX(0);
+
+            height: 1px;
+
+            background-color: currentcolor;
+
             transition: 0.4s transform cubic-bezier(0.15, 0.85, 0.45, 1);
         }
 
+        a& {
+            color: currentcolor;
+        }
+
         &:hover {
-            &:after {
-                transition: 0.6s transform cubic-bezier(0.77, 0, 0.18, 1);
+            &::after {
                 transform-origin: left;
                 transform: scaleX(1);
+                transition: 0.6s transform cubic-bezier(0.77, 0, 0.18, 1);
             }
         }
     }

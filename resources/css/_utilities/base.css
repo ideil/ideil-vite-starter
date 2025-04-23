@@ -1,43 +1,49 @@
 /* Scroll */
 .u-scroll {
+    @include scrollbar-sm;
+
     scroll-behavior: smooth;
 
     &--horizontal {
         overflow-x: auto;
         overflow-y: hidden;
+
         margin-inline: calc(theme(spacing.boxSpace) * -1);
         padding-inline: theme(spacing.boxSpace);
+
         mask-image: linear-gradient(
             to right,
-            rgba(0, 0, 0, 0) 0px,
-            rgba(0, 0, 0, 1) theme(spacing.boxSpace),
-            rgba(0, 0, 0, 1) calc(100% - theme(spacing.boxSpace)),
-            rgba(0, 0, 0, 0) 100%
+            rgb(0 0 0 / 0%) 0,
+            rgb(0 0 0 / 100%) theme(spacing.boxSpace),
+            rgb(0 0 0 / 100%) calc(100% - theme(spacing.boxSpace)),
+            rgb(0 0 0 / 0%) 100%
         );
     }
 
     &--vertical {
         overflow-x: hidden;
         overflow-y: auto;
+
         margin-block: calc(theme(spacing.boxSpace) * -1);
         padding-block: theme(spacing.boxSpace);
+
         mask-image: linear-gradient(
             to bottom,
-            rgba(0, 0, 0, 0) 0px,
-            rgba(0, 0, 0, 1) theme(spacing.boxSpace),
-            rgba(0, 0, 0, 1) calc(100% - theme(spacing.boxSpace)),
-            rgba(0, 0, 0, 0) 100%
+            rgb(0 0 0 / 0%) 0,
+            rgb(0 0 0 / 100%) theme(spacing.boxSpace),
+            rgb(0 0 0 / 100%) calc(100% - theme(spacing.boxSpace)),
+            rgb(0 0 0 / 0%) 100%
         );
     }
 }
 
 /* Cover */
 .u-cover {
-    display: block;
     position: relative;
     overflow: hidden;
+    display: block;
 
-    &:before {
+    &::before {
         content: '';
         display: block;
         padding-bottom: 100%;
@@ -47,13 +53,15 @@
         position: absolute;
         top: 0;
         left: 0;
+
         width: 100%;
         height: 100%;
+
         object-fit: cover;
     }
 
     &--16x9 {
-        &:before {
+        &::before {
             padding-bottom: 56.25%;
         }
     }
@@ -61,10 +69,10 @@
 
 /* Typography */
 .u-link-overlay {
-    &:before {
+    &::before {
         content: '';
-        display: block;
         position: absolute;
         inset: 0;
+        display: block;
     }
 }

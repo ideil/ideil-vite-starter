@@ -1,18 +1,18 @@
 .c-title {
+    display: block;
     font-weight: 700;
     line-height: 1.15;
-    display: block;
 
     sup,
     sub {
+        font-size: theme(fontSize.sm);
         font-weight: 400;
         white-space: nowrap;
-        font-size: theme(fontSize.sm);
     }
 
     sup {
-        vertical-align: super;
         top: initial;
+        vertical-align: super;
     }
 
     small {

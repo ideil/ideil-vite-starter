@@ -7,7 +7,8 @@
     --tooltip-font-weight: theme(fontWeight.normal);
     --tooltip-line-height: theme(lineHeight.tight);
     --tooltip-color: theme(colors.text);
-    --tooltip-box-shadow: 0 0 15px 0 theme(colors.black / 10%),
+    --tooltip-box-shadow:
+        0 0 15px 0 theme(colors.black / 10%),
         0 0 6px 0 theme(colors.black / 10%);
     --tooltip-background: theme(colors.white);
     --tooltip-border-radius: theme(borderRadius.md);
@@ -16,26 +17,31 @@
     --tooltip-border-style: solid;
     --tooltip-border-color: theme(colors.black);
 
+    will-change: transform, opacity, visibility;
+
     position: fixed;
     z-index: var(--tooltip-zindex);
-    left: 0;
     top: 0;
-    margin: 0;
+    left: 0;
+
     width: max-content;
     max-width: var(--tooltip-max-width);
+    margin: 0;
+    padding: var(--tooltip-py) var(--tooltip-px);
+    border-color: var(--tooltip-border-color);
+    border-style: var(--tooltip-border-style);
+    border-width: var(--tooltip-border-width);
+    border-radius: var(--tooltip-border-radius);
+
     font-size: var(--tooltip-font-size);
     line-height: var(--tooltip-line-height);
-    padding: var(--tooltip-py) var(--tooltip-px);
     color: var(--tooltip-color);
-    box-shadow: var(--tooltip-box-shadow);
-    background: var(--tooltip-background);
-    border-width: var(--tooltip-border-width);
-    border-style: var(--tooltip-border-style);
-    border-color: var(--tooltip-border-color);
-    border-radius: var(--tooltip-border-radius);
-    opacity: 0;
+
     visibility: hidden;
-    will-change: transform, opacity, visibility;
+    opacity: 0;
+    background: var(--tooltip-background);
+    box-shadow: var(--tooltip-box-shadow);
+
     transition-property: opacity, visibility;
 
     &[data-show] {
@@ -46,11 +52,13 @@
     &__arrow {
         position: absolute;
         z-index: 1;
+
         width: var(--tooltip-arrow-size);
         height: var(--tooltip-arrow-size);
         border: inherit;
-        background: inherit;
-        border-bottom-width: 0;
         border-right-width: 0;
+        border-bottom-width: 0;
+
+        background: inherit;
     }
 }

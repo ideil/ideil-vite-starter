@@ -1,5 +1,6 @@
 const initTabs = (tabsEl: HTMLElement) => {
-    const toggleEls = tabsEl.querySelectorAll<HTMLElement>('[data-tabs-target]');
+    const toggleEls =
+        tabsEl.querySelectorAll<HTMLElement>("[data-tabs-target]");
     const panelEls = [] as HTMLElement[];
 
     if (!toggleEls.length) {
@@ -7,21 +8,21 @@ const initTabs = (tabsEl: HTMLElement) => {
     }
 
     function open(toggleEl: HTMLElement, panelEl: HTMLElement) {
-        toggleEls.forEach(el => {
-            el.classList.remove('is-active');
-            el.setAttribute('aria-selected', 'false');
+        toggleEls.forEach((el) => {
+            el.classList.remove("is-active");
+            el.setAttribute("aria-selected", "false");
         });
-        panelEls.forEach(el => {
-            el.classList.remove('is-shown');
+        panelEls.forEach((el) => {
+            el.classList.remove("is-shown");
         });
 
-        toggleEl.classList.add('is-active');
-        toggleEl.setAttribute('aria-selected', 'true');
-        panelEl.classList.add('is-shown');
+        toggleEl.classList.add("is-active");
+        toggleEl.setAttribute("aria-selected", "true");
+        panelEl.classList.add("is-shown");
     }
 
     toggleEls.forEach((toggleEl: HTMLElement) => {
-        const targetId = toggleEl.getAttribute('href');
+        const targetId = toggleEl.getAttribute("href");
 
         if (!targetId) {
             return;
@@ -35,7 +36,7 @@ const initTabs = (tabsEl: HTMLElement) => {
 
         panelEls.push(panelEl);
 
-        toggleEl.addEventListener('click', e => {
+        toggleEl.addEventListener("click", (e) => {
             e.preventDefault();
             open(toggleEl, panelEl);
         });

@@ -1,26 +1,30 @@
 .c-header {
     position: fixed;
+    z-index: theme(zIndex.header);
     top: 0;
     left: 0;
+
     width: 100%;
-    z-index: theme(zIndex.header);
-    line-height: 1;
-    color: theme(colors.text);
-    background-color: theme(colors.body);
     padding-right: var(--body-scroll-width);
     border-bottom: 1px solid theme(colors.gray.200);
+
+    line-height: 1;
+    color: theme(colors.text);
+
+    background-color: theme(colors.body);
+
     transition-property: background-color;
 
     &__inner {
-        height: theme(spacing.headerHeight);
         display: flex;
         align-items: center;
+        height: theme(spacing.headerHeight);
     }
 
     &__logo {
-        margin-right: theme(spacing.8);
         align-self: center;
         width: theme(spacing.28);
+        margin-right: theme(spacing.8);
         transition-property: width, padding;
     }
 
@@ -35,19 +39,23 @@
         }
 
         &-icon {
-            display: block;
-            height: theme(spacing.4);
-            width: theme(spacing.6);
             position: relative;
+            display: block;
+            width: theme(spacing.6);
+            height: theme(spacing.4);
 
             div {
-                height: theme(spacing[0.5]);
-                width: 100%;
                 position: absolute;
-                flex-shrink: 0;
                 left: 0;
                 transform-origin: center;
+
+                flex-shrink: 0;
+
+                width: 100%;
+                height: theme(spacing[0.5]);
+
                 background-color: currentcolor;
+
                 transition-property: width, inset, transform;
 
                 &:nth-child(1) {
@@ -86,8 +94,8 @@
                     }
 
                     &:nth-child(2) {
-                        width: 0;
                         left: 50%;
+                        width: 0;
                     }
 
                     &:nth-child(3) {

@@ -1,5 +1,5 @@
 .l-box {
     width: 100%;
-    padding-left: var(--box-space, 20px);
     padding-right: var(--box-space, 20px);
+    padding-left: var(--box-space, 20px);
 }

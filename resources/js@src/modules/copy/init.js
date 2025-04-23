@@ -1,22 +1,21 @@
-export default el => {
+export default (el) => {
     let timeout = null;
 
-    el.addEventListener('click', e => {
+    el.addEventListener("click", (e) => {
         e.preventDefault();
 
-        const copyText = el.getAttribute('data-copy');
+        const copyText = el.getAttribute("data-copy");
 
-        navigator.clipboard.writeText(copyText)
-            .then(() => {
-                el.classList.add('is-copied');
+        navigator.clipboard.writeText(copyText).then(() => {
+            el.classList.add("is-copied");
 
-                if (timeout) {
-                    clearTimeout(timeout);
-                }
+            if (timeout) {
+                clearTimeout(timeout);
+            }
 
-                timeout = setTimeout(() => {
-                    el.classList.remove('is-copied');
-                }, 2000);
-            });
+            timeout = setTimeout(() => {
+                el.classList.remove("is-copied");
+            }, 2000);
+        });
     });
 };

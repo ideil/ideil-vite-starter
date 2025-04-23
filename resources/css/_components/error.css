@@ -1,7 +1,7 @@
 .c-error {
+    z-index: 1;
     display: flex;
     align-items: center;
-    z-index: 1;
 
     .l-box {
         margin: auto;
@@ -13,9 +13,9 @@
     }
 
     .c-logo {
+        width: theme(spacing.50);
         margin: auto;
         margin-bottom: theme(spacing.10);
-        width: theme(spacing.50);
 
         img {
             width: 100%;
@@ -24,8 +24,8 @@
     }
 
     &__code {
-        line-height: theme(lineHeight.none);
         font-size: theme(fontSize.35);
+        line-height: theme(lineHeight.none);
     }
 
     &__title {

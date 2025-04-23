@@ -1,5 +1,5 @@
-import initTabs from '@src/plugins/tabs';
+import initTabs from "@src/plugins/tabs";
 
-export default el => {
+export default (el) => {
     initTabs(el);
 };

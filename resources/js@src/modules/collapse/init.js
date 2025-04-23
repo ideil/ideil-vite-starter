@@ -1,5 +1,5 @@
-import collapse from '@src/plugins/collapse';
+import collapse from "@src/plugins/collapse";
 
-export default el => {
+export default (el) => {
     collapse(el);
 };

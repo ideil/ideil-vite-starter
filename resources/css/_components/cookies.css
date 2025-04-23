@@ -10,27 +10,32 @@
     --cookies-icon-size: theme(spacing.10);
 
     position: fixed;
+    z-index: 9999;
     bottom: var(--cookies-offset);
     left: var(--cookies-offset);
-    width: calc(100% - var(--cookies-offset) * 2);
-    max-width: var(--cookies-max-width);
-    padding: var(--cookies-py) var(--cookies-px);
-    background: var(--cookies-bg);
-    color: var(--cookies-color);
-    border-radius: var(--cookies-border-radius);
-    z-index: 9999;
+    transform: translateY(100%);
+
     display: flex;
     gap: var(--cookies-gap);
     align-items: center;
-    opacity: 0;
-    transform: translateY(100%);
+
+    width: calc(100% - var(--cookies-offset) * 2);
+    max-width: var(--cookies-max-width);
+    padding: var(--cookies-py) var(--cookies-px);
+    border-radius: var(--cookies-border-radius);
+
+    color: var(--cookies-color);
+
     visibility: hidden;
+    opacity: 0;
+    background: var(--cookies-bg);
+
     transition-property: opacity, transform, visibility;
 
     .is-cookies-visible & {
-        opacity: 1;
         transform: none;
         visibility: visible;
+        opacity: 1;
     }
 
     .f-btn {

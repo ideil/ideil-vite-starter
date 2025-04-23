@@ -1,9 +1,11 @@
 .f-counter {
     --f-button-height: var(--f-field-height);
+
     display: inline-flex;
     align-items: center;
-    border: var(--f-field-border-width) solid var(--f-field-border-color);
+
     height: var(--f-field-height);
+    border: var(--f-field-border-width) solid var(--f-field-border-color);
     border-radius: var(--f-field-border-radius);
 
     &__field {
@@ -13,8 +15,8 @@
 
         &::-webkit-inner-spin-button,
         &::-webkit-outer-spin-button {
-            -webkit-appearance: none;
             margin: 0;
+            appearance: none;
         }
     }
 }

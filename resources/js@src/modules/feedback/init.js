@@ -1,7 +1,8 @@
-import { createApp } from 'vue';
-import FormComponent from './components/FormComponent.vue';
+import { createApp } from "vue";
 
-export default el => {
+import FormComponent from "./components/FormComponent.vue";
+
+export default (el) => {
     const app = createApp(FormComponent);
 
     app.mount(el);

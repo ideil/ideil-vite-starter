@@ -5,24 +5,20 @@
     line-height: 0;
 
     &__field {
-        position: absolute;
-        clip: rect(0, 0, 0, 0);
-        width: 0;
         pointer-events: none;
+        position: absolute;
+        width: 0;
+        clip: rect(0, 0, 0, 0);
     }
 
     &__label {
+        cursor: pointer;
         color: var(--f-field-placeholder-color);
         transition-property: color;
-        cursor: pointer;
 
         .f-rating__field:checked ~ & {
             color: var(--f-active);
         }
-
-        /* .f-rating:has(.f-rating__label:hover) & {
-            color: var(--f-field-placeholder-color);
-        } */
 
         .f-rating:has(.f-rating__label:hover) .f-rating__field:hover ~ & {
             color: var(--f-hover);

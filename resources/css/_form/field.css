@@ -1,18 +1,21 @@
 .f-field {
-    vertical-align: middle;
-    text-align: left;
     width: 100%;
+    min-height: var(--f-field-height);
     padding: var(--f-field-py) var(--f-field-px);
-    color: var(--f-field-color);
+    border: var(--f-field-border-width) solid var(--f-field-border-color);
+    border-radius: var(--f-field-border-radius);
+
     font-size: var(--f-field-font-size);
     line-height: var(--f-field-line-height);
-    background: var(--f-field-bg);
-    border: var(--f-field-border-width) solid var(--f-field-border-color);
-    box-shadow: var(--f-field-border-width);
-    border-radius: var(--f-field-border-radius);
-    min-height: var(--f-field-height);
-    outline: none;
+    color: var(--f-field-color);
+    text-align: left;
+    vertical-align: middle;
+
     appearance: none;
+    background: var(--f-field-bg);
+    outline: none;
+    box-shadow: var(--f-field-border-width);
+
     transition-property: border-color, outline;
 
     &::placeholder,
@@ -21,14 +24,15 @@
     }
 
     &:disabled {
-        opacity: 0.5;
         pointer-events: none;
+        opacity: 0.5;
     }
 
     &:-webkit-autofill {
         background-color: transparent;
-        -webkit-text-fill-color: theme(colors.text);
         box-shadow: 0 0 0 60px theme(colors.gray.100) inset;
+
+        -webkit-text-fill-color: theme(colors.text);
     }
 
     &:hover {
@@ -56,18 +60,21 @@
     }
 
     &__icon {
-        height: var(--f-field-height);
-        color: var(--f-field-icon-color);
+        position: absolute;
+        top: 0;
+        left: var(--f-field-px);
+
         display: flex;
         align-items: center;
-        position: absolute;
-        left: var(--f-field-px);
+
+        height: var(--f-field-height);
+
         font-size: var(--f-field-icon-size);
-        top: 0;
+        color: var(--f-field-icon-color);
 
         .f-field + & {
-            left: initial;
             right: var(--f-field-px);
+            left: initial;
         }
     }
 
@@ -81,7 +88,7 @@
         }
 
         &:focus,
-        &:not(:placeholder-shown):not(:focus) {
+        &:not(:placeholder-shown, :focus) {
             &::placeholder {
                 color: var(--f-field-placeholder-color);
             }

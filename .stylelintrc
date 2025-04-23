@@ -25,7 +25,7 @@
         "at-rule-no-unknown": [
             true,
             {
-                "ignoreAtRules": ["mixin", "include", "screen"]
+                "ignoreAtRules": ["mixin", "include", "screen", "tailwind", "import"]
             }
         ],
         "unit-no-unknown": [
@@ -33,6 +33,22 @@
             {
                 "ignoreFunctions": ["theme"]
             }
-        ]
+        ],
+        "function-no-unknown": [
+            true,
+            {
+                "ignoreFunctions": ["theme"]
+            }
+        ],
+        "declaration-property-value-no-unknown": [
+            true,
+            {
+                "ignoreProperties": {
+                    "/^.*/": ["/theme(.*)/"]
+                }
+            }
+        ],
+        "no-invalid-position-at-import-rule": null,
+        "import-notation": null
     }
 }

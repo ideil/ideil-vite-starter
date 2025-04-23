@@ -4,9 +4,10 @@
     &__list {
         display: flex;
         flex-wrap: wrap;
-        vertical-align: middle;
         align-items: center;
         justify-content: center;
+
+        vertical-align: middle;
     }
 
     &__item {

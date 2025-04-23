@@ -8,17 +8,15 @@
     --f-button-gap: theme(spacing.3);
     --f-button-icon-size: theme(spacing.6);
     --f-button-bg: transparent;
-    --f-button-color: currentColor;
+    --f-button-color: currentcolor;
     --f-button-border-width: theme(borderWidth.DEFAULT);
     --f-button-border-color: var(--f-button-bg);
     --f-button-border-style: solid;
     --f-button-border-radius: 0;
-
     --f-button-hover-bg: theme(colors.white / 15%);
-    --f-button-hover-color: currentColor;
+    --f-button-hover-color: currentcolor;
     --f-button-hover-border-color: var(--f-button-hover-bg);
-
     --f-button-active-bg: theme(colors.white / 15%);
-    --f-button-active-color: currentColor;
+    --f-button-active-color: currentcolor;
     --f-button-active-border-color: var(--f-button-hover-bg);
 }

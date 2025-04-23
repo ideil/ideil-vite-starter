@@ -12,7 +12,7 @@
     }
 
     &__link {
-        padding: var(--socials-padding);
         display: block;
+        padding: var(--socials-padding);
     }
 }

@@ -11,55 +11,49 @@
     --ms-placeholder-color: var(--f-field-placeholder-color);
     --ms-clear-color: var(--f-field-placeholder-color);
     --ms-clear-color-hover: var(--f-hover);
-
     --ms-dropdown-radius: var(--f-field-border-radius);
     --ms-dropdown-border-width: 0;
     --ms-dropdown-border-color: none;
     --ms-dropdown-bg: theme(colors.white);
-
     --ms-option-bg-pointed: theme(colors.primary.hover);
     --ms-option-color-pointed: theme(colors.white);
     --ms-option-px: theme(spacing.4);
-
     --ms-option-bg-selected: theme(colors.primary.DEFAULT);
     --ms-option-color-selected: theme(colors.white);
-
     --ms-option-bg-selected-pointed: theme(colors.primary.hover);
     --ms-option-color-selected-pointed: var(--ms-option-color-selected);
-
     --ms-tag-bg: theme(colors.primary.DEFAULT);
     --ms-tag-radius: theme(borderRadius.full);
+    --ms-caret-color: currentcolor;
 
-    --ms-caret-color: currentColor;
-
-    padding: 0;
     min-height: 0;
-    color: currentColor;
+    padding: 0;
     border: none;
-
-    &.is-active {
-        box-shadow: none;
-    }
+    color: currentcolor;
 
     .multiselect-wrapper {
+        min-height: var(--f-field-height);
         border: var(--ms-border-width) solid var(--ms-border-color);
         border-radius: var(--ms-radius);
-        min-height: var(--f-field-height);
     }
 
     .multiselect-dropdown {
-        margin: 0;
-        left: 0;
         right: 0;
-        box-shadow: theme(boxShadow.lg);
+        left: 0;
+
+        margin: 0;
+
         color: theme(colors.text);
+
+        box-shadow: theme(boxShadow.lg);
+
         transition-property: transform, opacity, visibility;
 
         &.is-hidden {
             transform: translateY(calc(100% + theme(spacing.1)));
             display: block;
-            opacity: 0;
             visibility: hidden;
+            opacity: 0;
         }
     }
 
@@ -68,10 +62,12 @@
     }
 
     .multiselect-caret {
-        height: theme(space.4);
-        width: theme(space.4);
-        margin-left: theme(space.3);
         transform: rotate(90deg);
+
+        width: theme(space.4);
+        height: theme(space.4);
+        margin-left: theme(space.3);
+
         mask-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='8' height='13' viewBox='0 0 8 13' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill-rule='evenodd' clip-rule='evenodd' d='M4.4654 6.493L0.274414 10.8624L1.74575 12.2742L7.27441 6.49298L1.74575 0.726562L0.274414 2.13845L4.4654 6.493Z' /%3e%3c/svg%3e");
 
         &.is-open {
@@ -84,6 +80,15 @@
     .multiselect-placeholder,
     .multiselect-tags {
         padding: var(--f-field-py) var(--f-field-px);
+    }
+
+    &.is-active {
+        border: none;
+        box-shadow: none;
+
+        .multiselect-wrapper {
+            border-color: var(--f-active);
+        }
     }
 
     &.f-field--float {
@@ -104,14 +109,6 @@
             .multiselect-placeholder {
                 color: var(--ms-placeholder-color);
             }
-        }
-    }
-
-    &.is-active {
-        border: none;
-
-        .multiselect-wrapper {
-            border-color: var(--f-active);
         }
     }
 }

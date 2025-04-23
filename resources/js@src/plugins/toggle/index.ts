@@ -20,23 +20,23 @@ const toggle = (toggleEl: HTMLElement) => {
 
     function open() {
         isOpen = true;
-        toggleEl.classList.add('is-active');
-        targetEl.classList.add('is-active');
+        toggleEl.classList.add("is-active");
+        targetEl.classList.add("is-active");
 
         setTimeout(() => {
-            window.addEventListener('click', windowClickHandler);
+            window.addEventListener("click", windowClickHandler);
         });
     }
 
     function close() {
         isOpen = false;
-        toggleEl.classList.remove('is-active');
-        targetEl.classList.remove('is-active');
+        toggleEl.classList.remove("is-active");
+        targetEl.classList.remove("is-active");
 
-        window.removeEventListener('click', windowClickHandler);
+        window.removeEventListener("click", windowClickHandler);
     }
 
-    toggleEl.addEventListener('click', e => {
+    toggleEl.addEventListener("click", (e) => {
         e.preventDefault();
 
         if (isOpen) {
@@ -45,7 +45,7 @@ const toggle = (toggleEl: HTMLElement) => {
             open();
         }
     });
-    targetEl.addEventListener('click', e => {
+    targetEl.addEventListener("click", (e) => {
         e.stopPropagation();
     });
 };

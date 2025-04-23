@@ -4,10 +4,12 @@
     --breadcrumbs-mb: var(--page-space);
 
     position: relative;
-    line-height: 1;
-    font-size: var(--breadcrumbs-fz);
-    padding-top: var(--breadcrumbs-pt);
+
     margin-bottom: var(--breadcrumbs-mb);
+    padding-top: var(--breadcrumbs-pt);
+
+    font-size: var(--breadcrumbs-fz);
+    line-height: 1;
 
     &__list {
         display: flex;
@@ -15,12 +17,12 @@
     }
 
     &__item {
-        flex-shrink: 0;
         display: flex;
+        flex-shrink: 0;
         align-items: center;
 
         &:not(:last-child) {
-            &:after {
+            &::after {
                 content: '/';
                 margin: 0 theme(spacing.3);
             }

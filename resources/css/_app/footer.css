@@ -1,10 +1,13 @@
 .c-footer {
-    margin-top: theme(spacing.15);
-    background-color: theme(colors.text);
-    color: theme(colors.body);
-    padding: theme(spacing.5) 0;
     position: relative;
     z-index: 1;
+
+    margin-top: theme(spacing.15);
+    padding: theme(spacing.5) 0;
+
+    color: theme(colors.body);
+
+    background-color: theme(colors.text);
 
     &__top {
         display: grid;
@@ -18,8 +21,8 @@
 
         &-left {
             display: flex;
-            justify-content: space-between;
             flex-wrap: wrap;
+            justify-content: space-between;
         }
 
         &-right {
@@ -69,20 +72,20 @@
     }
 
     @screen md {
-        padding: theme(spacing.8) 0;
         margin-top: theme(spacing.20);
+        padding: theme(spacing.8) 0;
 
         &__top {
-            margin-bottom: theme(spacing.5);
-            justify-content: space-between;
             grid-template-columns: repeat(2, minmax(0, 1fr));
+            justify-content: space-between;
+            margin-bottom: theme(spacing.5);
         }
 
         &__bottom {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: theme(spacing.5);
             align-items: flex-end;
             justify-content: space-between;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
         &__logo {

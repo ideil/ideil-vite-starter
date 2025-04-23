@@ -5,25 +5,33 @@
 }
 
 .f-label {
-    color: var(--f-label-color);
-    font-size: var(--f-label-font-size);
-    line-height: var(--f-label-line-height);
-    margin-bottom: var(--f-label-space);
     display: flex;
     align-items: center;
+
+    margin-bottom: var(--f-label-space);
+
+    font-size: var(--f-label-font-size);
+    line-height: var(--f-label-line-height);
+    color: var(--f-label-color);
+
     opacity: 0.9;
 
     .f-field--float ~ & {
-        opacity: 0.7;
-        position: absolute;
-        inset: 0 var(--f-field-px);
-        top: 0;
         pointer-events: none;
-        margin: 0;
-        height: var(--f-field-height);
-        white-space: nowrap;
-        text-overflow: ellipsis;
+
+        position: absolute;
+        top: 0;
+        inset-inline: var(--f-field-px);
         transform-origin: 0;
+
+        height: var(--f-field-height);
+        margin: 0;
+
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        opacity: 0.7;
+
         transition-property: opacity, transform;
 
         &:has(~ .f-field__icon) {
@@ -36,7 +44,7 @@
     }
 
     .f-field.f-field--float:focus ~ &,
-    .f-field.f-field--float:not(:placeholder-shown):not(:focus) ~ &,
+    .f-field.f-field--float:not(:placeholder-shown, :focus) ~ &,
     .f-select.f-field--float.is-active ~ &,
     .f-select.f-field--float.is-filled ~ & {
         transform: translateY(calc(var(--f-field-height) * -0.25))
@@ -45,11 +53,13 @@
 }
 
 .f-info {
-    font-size: var(--f-info-font-size);
-    line-height: var(--f-info-line-height);
-    margin: var(--f-info-space) 0;
-    font-weight: 400;
     display: block;
+
+    margin: var(--f-info-space) 0;
+
+    font-size: var(--f-info-font-size);
+    font-weight: 400;
+    line-height: var(--f-info-line-height);
 
     a {
         text-decoration: underline;

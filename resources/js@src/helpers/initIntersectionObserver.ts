@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default (els: Element[], initPromise: () => Promise<any>) => {
     let init: ((el: Element) => void) | null = null;
 
@@ -5,28 +6,29 @@ export default (els: Element[], initPromise: () => Promise<any>) => {
         return;
     }
 
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(async entry => {
-            if (entry.isIntersecting) {
-                if (!init) {
-                    [
-                        { default: init }
-                    ] = await Promise.all([
-                        initPromise()
-                    ]);
-                }
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(async (entry) => {
+                if (entry.isIntersecting) {
+                    if (!init) {
+                        [{ default: init }] = await Promise.all([
+                            initPromise(),
+                        ]);
+                    }
 
-                if (init) {
-                    init(entry.target);
-                    observer.unobserve(entry.target);
+                    if (init) {
+                        init(entry.target);
+                        observer.unobserve(entry.target);
+                    }
                 }
-            }
-        });
-    }, {
-        rootMargin: '0px 0px 25% 0px'
-    });
+            });
+        },
+        {
+            rootMargin: "0px 0px 25% 0px",
+        },
+    );
 
-    els.forEach(el => observer.observe(el));
+    els.forEach((el) => observer.observe(el));
 
     return observer;
 };

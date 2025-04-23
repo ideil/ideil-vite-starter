@@ -11,18 +11,18 @@
 
 @font-face {
     font-family: RobotoI;
+    font-weight: 400;
     font-display: swap;
     src:
         local(''),
         url('../../fonts/Roboto-Regular.woff2') format('woff2');
-    font-weight: 400;
 }
 
 @font-face {
     font-family: RobotoI;
+    font-weight: 700;
     font-display: swap;
     src:
         local(''),
         url('../../fonts/Roboto-Bold.woff2') format('woff2');
-    font-weight: 700;
 }

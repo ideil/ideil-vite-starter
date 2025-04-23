@@ -12,18 +12,16 @@
     --tabs-border-style: solid;
     --tabs-border-width: 1px;
     --tabs-border-color: var(--tabs-background);
-
     --tabs-hover-color: theme(colors.text);
     --tabs-hover-background: theme(colors.gray.300);
     --tabs-hover-border-color: var(--tabs-hover-background);
-
     --tabs-active-color: theme(colors.white);
     --tabs-active-background: theme(colors.primary.DEFAULT);
     --tabs-active-border-color: var(--tabs-active-background);
 
     position: relative;
-    vertical-align: middle;
     min-width: 0;
+    vertical-align: middle;
 
     &__list {
         display: inline-flex;
@@ -31,8 +29,8 @@
     }
 
     &__item {
-        flex-shrink: 0;
         display: flex;
+        flex-shrink: 0;
         align-items: center;
 
         &.is-active {
@@ -41,31 +39,34 @@
     }
 
     &__link {
-        background: var(--tabs-background);
-        color: var(--tabs-color);
-        font-weight: var(--tabs-font-weight);
-        line-height: var(--tabs-line-hegiht);
-        height: var(--tabs-height);
-        padding: var(--tabs-py) var(--tabs-px);
-        border-radius: var(--tabs-border-radius);
-        border-style: var(--tabs-border-style);
-        border-width: var(--tabs-border-width);
-        border-color: var(--tabs-border-color);
-        gap: var(--tabs-inner-gap);
-        white-space: nowrap;
         display: flex;
+        gap: var(--tabs-inner-gap);
         align-items: center;
 
+        height: var(--tabs-height);
+        padding: var(--tabs-py) var(--tabs-px);
+        border-color: var(--tabs-border-color);
+        border-style: var(--tabs-border-style);
+        border-width: var(--tabs-border-width);
+        border-radius: var(--tabs-border-radius);
+
+        font-weight: var(--tabs-font-weight);
+        line-height: var(--tabs-line-hegiht);
+        color: var(--tabs-color);
+        white-space: nowrap;
+
+        background: var(--tabs-background);
+
         &:hover {
+            border-color: var(--tabs-hover-border-color);
             color: var(--tabs-hover-color);
             background: var(--tabs-hover-background);
-            border-color: var(--tabs-hover-border-color);
         }
 
         &.is-active {
+            border-color: var(--tabs-active-border-color);
             color: var(--tabs-active-color);
             background: var(--tabs-active-background);
-            border-color: var(--tabs-active-border-color);
         }
     }
 

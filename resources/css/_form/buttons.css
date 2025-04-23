@@ -1,24 +1,28 @@
 .f-btn {
-    height: var(--f-button-height);
-    appearance: none;
     display: inline-flex;
-    vertical-align: middle;
+    flex-shrink: 0;
+    gap: var(--f-button-gap);
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
+
+    max-width: 100%;
+    height: var(--f-button-height);
     padding: 0 var(--f-button-px);
-    gap: var(--f-button-gap);
+    border-color: var(--f-button-border-color);
+    border-style: var(--f-button-border-style);
+    border-width: var(--f-button-border-width);
+    border-radius: var(--f-button-border-radius);
+
     font-family: var(--f-button-font-family);
     font-size: var(--f-button-font-size);
-    line-height: var(--f-button-line-height);
     font-weight: var(--f-button-font-weight);
-    background-color: var(--f-button-bg);
-    border-color: var(--f-button-border-color);
-    border-width: var(--f-button-border-width);
-    border-style: var(--f-button-border-style);
-    border-radius: var(--f-button-border-radius);
+    line-height: var(--f-button-line-height);
     color: var(--f-button-color);
-    max-width: 100%;
+    vertical-align: middle;
+
+    appearance: none;
+    background-color: var(--f-button-bg);
+
     transition-property: background-color, color, border-color, box-shadow;
 
     .i-icon {
@@ -27,29 +31,29 @@
 
     a&:hover,
     button&:hover {
-        background-color: var(--f-button-hover-bg);
         border-color: var(--f-button-hover-border-color);
         color: var(--f-button-hover-color);
+        background-color: var(--f-button-hover-bg);
     }
 
     &.is-active,
     a&.is-active,
     button&.is-active {
-        background-color: var(--f-button-active-bg);
         border-color: var(--f-button-active-border-color);
         color: var(--f-button-active-color);
+        background-color: var(--f-button-active-bg);
     }
 
     &:disabled,
     &.is-disabled,
     &--disabled {
-        opacity: 0.5;
         pointer-events: none;
+        opacity: 0.5;
     }
 
     img {
-        height: var(--f-button-icon-size);
         width: auto;
+        height: var(--f-button-icon-size);
         margin: calc(theme(spacing.2) * -1) calc(theme(spacing.1) * -1);
     }
 
@@ -104,8 +108,8 @@
 
     &--square {
         min-width: var(--f-button-height);
-        padding-left: theme(spacing.2);
         padding-right: theme(spacing.2);
+        padding-left: theme(spacing.2);
     }
 
     &--rounded {

@@ -1,6 +1,6 @@
-import Modal from '@src/plugins/modal';
+import Modal from "@src/plugins/modal";
 
-export default el => {
+export default (el) => {
     const modalTarget = el.dataset.modalTarget;
 
     if (!modalTarget) {
@@ -19,7 +19,7 @@ export default el => {
         return;
     }
 
-    el.addEventListener('click', e => {
+    el.addEventListener("click", (e) => {
         e.preventDefault();
 
         modal.show();

@@ -1,6 +1,6 @@
-import Tooltip from '@src/plugins/tooltip';
+import Tooltip from "@src/plugins/tooltip";
 
-export default el => {
+export default (el) => {
     const tooltipTarget = el.dataset.tooltipTarget;
     let targetEl = undefined;
 
@@ -17,6 +17,6 @@ export default el => {
         targetEl,
         content,
         placement,
-        type
+        type,
     });
 };

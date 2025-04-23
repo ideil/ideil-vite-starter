@@ -1,9 +1,9 @@
 .l-container {
     width: 100%;
-    padding-left: var(--box-space, 20px);
-    padding-right: var(--box-space, 20px);
     max-width: var(--container-width);
     margin: 0 auto;
+    padding-right: var(--box-space, 20px);
+    padding-left: var(--box-space, 20px);
 
     &--hd {
         --container-width: theme(maxWidth.hd);

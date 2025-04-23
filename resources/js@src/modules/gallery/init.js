@@ -1,14 +1,14 @@
-import PhotoSwipe from 'photoswipe';
-import PhotoSwipeLightbox from 'photoswipe/lightbox';
+import PhotoSwipe from "photoswipe";
+import PhotoSwipeLightbox from "photoswipe/lightbox";
 
-export default el => {
-    const linkEls = el.querySelectorAll('[data-gallery-link]');
+export default (el) => {
+    const linkEls = el.querySelectorAll("[data-gallery-link]");
 
     const gallery = new PhotoSwipeLightbox({
         gallery: el,
         children: linkEls,
 
-        showHideAnimationType: 'fade',
+        showHideAnimationType: "fade",
         wheelToZoom: true,
 
         // closeSVG: closeIcon,
@@ -16,7 +16,7 @@ export default el => {
         // arrowNextSVG: arrowIcon,
         // zoomSVG: zoomIcon,
 
-        pswpModule: PhotoSwipe
+        pswpModule: PhotoSwipe,
     });
 
     gallery.init();

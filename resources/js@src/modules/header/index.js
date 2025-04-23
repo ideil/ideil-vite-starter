@@ -1,16 +1,16 @@
-import { clearSpaces, setSpaces } from '@src/helpers/measure';
+import { clearSpaces, setSpaces } from "@src/helpers/measure";
 
 (() => {
-    const menuToggle = document.querySelector('[data-menu-toggle]');
+    const menuToggle = document.querySelector("[data-menu-toggle]");
 
     if (!menuToggle) {
         return;
     }
 
-    menuToggle.addEventListener('click', () => {
-        document.documentElement.classList.toggle('is-menu-open');
+    menuToggle.addEventListener("click", () => {
+        document.documentElement.classList.toggle("is-menu-open");
 
-        if (document.documentElement.classList.contains('is-menu-open')) {
+        if (document.documentElement.classList.contains("is-menu-open")) {
             setSpaces();
         } else {
             clearSpaces();
@@ -19,15 +19,15 @@ import { clearSpaces, setSpaces } from '@src/helpers/measure';
 
     const checkScroll = () => {
         if (document.documentElement.scrollTop >= 10) {
-            document.documentElement.classList.add('is-header-sticky');
+            document.documentElement.classList.add("is-header-sticky");
         } else {
-            document.documentElement.classList.remove('is-header-sticky');
+            document.documentElement.classList.remove("is-header-sticky");
         }
     };
 
     checkScroll();
 
-    document.addEventListener('scroll', () => {
+    document.addEventListener("scroll", () => {
         checkScroll();
     });
 })();

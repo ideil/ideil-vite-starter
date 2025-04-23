@@ -1,98 +1,101 @@
 <script lang="ts">
-    import Icon from '@src/components/IconComponent.vue';
-    import CheckField from '@src/components/form/CheckField.vue';
-    import CounterField from '@src/components/form/CounterField.vue';
-    import DateField from '@src/components/form/DateField.vue';
-    import PhoneField from '@src/components/form/PhoneField.vue';
-    import SelectField from '@src/components/form/SelectField.vue';
-    import TextField from '@src/components/form/TextField.vue';
-    import TextareaField from '@src/components/form/TextareaField.vue';
-    import Modal from '@src/plugins/modal';
-    import type { default as ModalType } from '@src/plugins/modal';
-    import { defineComponent, reactive, ref } from 'vue';
+import CheckField from "@src/components/form/CheckField.vue";
+import CounterField from "@src/components/form/CounterField.vue";
+import DateField from "@src/components/form/DateField.vue";
+import PhoneField from "@src/components/form/PhoneField.vue";
+import SelectField from "@src/components/form/SelectField.vue";
+import TextareaField from "@src/components/form/TextareaField.vue";
+import TextField from "@src/components/form/TextField.vue";
+import Icon from "@src/components/IconComponent.vue";
+import Modal from "@src/plugins/modal";
+import type { default as ModalType } from "@src/plugins/modal";
+import { defineComponent, reactive, ref } from "vue";
 
-    export default defineComponent({
-        name: 'FeedbackForm',
-        components: {
-            TextField,
-            PhoneField,
-            TextareaField,
-            CounterField,
-            DateField,
-            CheckField,
-            SelectField,
-            Icon
+export default defineComponent({
+    name: "FeedbackForm",
+    components: {
+        TextField,
+        PhoneField,
+        TextareaField,
+        CounterField,
+        DateField,
+        CheckField,
+        SelectField,
+        Icon,
+    },
+    props: {
+        url: {
+            type: String,
+            default: null,
         },
-        props: {
-            url: {
-                type: String,
-                default: null
+    },
+    setup() {
+        // const { executeRecaptcha, recaptchaLoaded } = useReCaptcha()
+        const successModalEl = document.querySelector(
+            "#successModal",
+        ) as HTMLElement | null;
+        let successModalInstance: ModalType | null = null;
+        const defaultForm = {
+            name: null,
+            surname: null,
+            email: null,
+            phone: null,
+            type1: null,
+            type2: null,
+            type3: null,
+            date: null,
+            counter: 1,
+            delivery: false,
+            agree: false,
+            comment: null,
+        };
+        const isSending = ref(false);
+        const form = reactive<{
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            [key: string]: any;
+        }>({
+            ...defaultForm,
+        });
+        const errors: {
+            [key: string]: string[];
+        } = reactive({
+            email: ["Без електронної пошти ми не зможемо виконати реєстрацію"],
+        });
+
+        const clearForm = () => {
+            for (const [key, value] of Object.entries(defaultForm)) {
+                form[key] = value;
             }
-        },
-        setup() {
-            // const { executeRecaptcha, recaptchaLoaded } = useReCaptcha()
-            const successModalEl = document.querySelector('#successModal') as HTMLElement | null;
-            let successModalInstance: ModalType | null = null;
-            const defaultForm = {
-                name: null,
-                surname: null,
-                email: null,
-                phone: null,
-                type1: null,
-                type2: null,
-                type3: null,
-                date: null,
-                counter: 1,
-                delivery: false,
-                agree: false,
-                comment: null
-            };
-            const isSending = ref(false);
-            const form = reactive<{
-                [key: string]: any
-            }>({
-                ...defaultForm
-            });
-            const errors: {
-                [key: string]: string[]
-            } = reactive({
-                email: [
-                    'Без електронної пошти ми не зможемо виконати реєстрацію'
-                ]
-            });
+        };
 
-            const clearForm = () => {
-                for (const [ key, value ] of Object.entries(defaultForm)) {
-                    form[ key ] = value;
+        const openSuccess = () => {
+            if (!successModalInstance) {
+                if (successModalEl) {
+                    successModalInstance =
+                        Modal.getInstance(successModalEl) ||
+                        new Modal(successModalEl);
+                } else {
+                    return (isSending.value = false);
                 }
-            };
+            }
 
-            const openSuccess = () => {
-                if (!successModalInstance) {
-                    if (successModalEl) {
-                        successModalInstance = Modal.getInstance(successModalEl) || new Modal(successModalEl);
-                    } else {
-                        return isSending.value = false;
-                    }
-                }
+            successModalInstance.show();
+            isSending.value = false;
+        };
 
-                successModalInstance.show();
-                isSending.value = false;
-            };
+        const submit = () => {
+            // const tokenEl = document.head.querySelector('meta[name="csrf-token"]')
+            // const params = {
+            //     headers: {
+            //         'X-CSRF-TOKEN': tokenEl ? tokenEl.getAttribute('content') : '',
+            //         'X-Requested-With': 'XMLHttpRequest'
+            //     }
+            // }
 
-            const submit = () => {
-                // const tokenEl = document.head.querySelector('meta[name="csrf-token"]')
-                // const params = {
-                //     headers: {
-                //         'X-CSRF-TOKEN': tokenEl ? tokenEl.getAttribute('content') : '',
-                //         'X-Requested-With': 'XMLHttpRequest'
-                //     }
-                // }
+            isSending.value = true;
 
-                isSending.value = true;
-
-                openSuccess();
-                clearForm();
+            openSuccess();
+            clearForm();
 
             // await recaptchaLoaded()
 
@@ -113,17 +116,16 @@
             //         isSending.value = false
             //     })
             // })
+        };
 
-            };
-
-            return {
-                isSending,
-                errors,
-                form,
-                submit
-            };
-        }
-    });
+        return {
+            isSending,
+            errors,
+            form,
+            submit,
+        };
+    },
+});
 </script>
 
 <template>
@@ -348,15 +350,13 @@
                 />
             </div>
 
-            <Icon
-                name="facebook"
-                folder="socials"
-            />
+            <Icon name="facebook" folder="socials" />
 
             <div class="f-submit">
                 <div class="f-info c-text">
-                    Використовуючи сайт, ви&nbsp;приймаєте та&nbsp;погоджуєтеся з&nbsp;цими <a href="#">правилами
-                        та&nbsp;умовами використання</a> сайту
+                    Використовуючи сайт, ви&nbsp;приймаєте та&nbsp;погоджуєтеся
+                    з&nbsp;цими
+                    <a href="#">правилами та&nbsp;умовами використання</a> сайту
                 </div>
 
                 <button

@@ -1,14 +1,13 @@
-import { arrow, computePosition, flip, offset, shift } from '@floating-ui/dom';
-import type { Placement } from '@floating-ui/dom';
-
-import getElement from '@src/helpers/getElement';
+import { arrow, computePosition, flip, offset, shift } from "@floating-ui/dom";
+import type { Placement } from "@floating-ui/dom";
+import getElement from "@src/helpers/getElement";
 
 type Options = {
-    toggleEl: HTMLElement | string,
-    targetEl?: HTMLElement | string,
-    content?: string,
-    placement?: string,
-    type?: string
+    toggleEl: HTMLElement | string;
+    targetEl?: HTMLElement | string;
+    content?: string;
+    placement?: string;
+    type?: string;
 };
 
 export default class Tooltip {
@@ -29,8 +28,8 @@ export default class Tooltip {
         toggleEl,
         targetEl,
         content,
-        placement = 'top',
-        type = 'hover focus'
+        placement = "top",
+        type = "hover focus",
     }: Options) {
         this.#toggleEl = getElement(toggleEl);
         this.#targetEl = getElement(targetEl);
@@ -39,7 +38,7 @@ export default class Tooltip {
         this.#content = content;
 
         if (!this.#toggleEl) {
-            throw new Error('Tooltip toggle element doesn\'t exist.');
+            throw new Error("Tooltip toggle element doesn't exist.");
         }
 
         if (!this.#targetEl && this.#content) {
@@ -47,73 +46,115 @@ export default class Tooltip {
         }
 
         if (!this.#targetEl) {
-            throw new Error('Tooltip target element (' + targetEl + ') doesn\'t exist.');
+            throw new Error(
+                "Tooltip target element (" + targetEl + ") doesn't exist.",
+            );
         }
 
-        this.#dismissEls = this.#targetEl.querySelectorAll('[data-tooltip-dismiss]');
-        this.#arrowEl = this.#targetEl.querySelector<HTMLElement>('.c-tooltip__arrow') || undefined;
+        this.#dismissEls = this.#targetEl.querySelectorAll(
+            "[data-tooltip-dismiss]",
+        );
+        this.#arrowEl =
+            this.#targetEl.querySelector<HTMLElement>(".c-tooltip__arrow") ||
+            undefined;
 
         this.#init();
     }
 
     #init() {
-        this.#dismissEls.forEach(dismissEl => {
-            dismissEl.addEventListener('click', () => {
-                this.hide();
-            }, false);
+        this.#dismissEls.forEach((dismissEl) => {
+            dismissEl.addEventListener(
+                "click",
+                () => {
+                    this.hide();
+                },
+                false,
+            );
         });
 
-        if (this.#type.includes('hover')) {
-            this.#toggleEl.addEventListener('mouseenter', () => {
-                this.show();
-            }, false);
-
-            this.#toggleEl.addEventListener('mouseleave', () => {
-                if (!this.#isOpened) {
-                    this.hide();
-                }
-            }, false);
-
-            this.#targetEl.addEventListener('mouseenter', () => {
-                this.show();
-            }, false);
-
-            this.#targetEl.addEventListener('mouseleave', () => {
-                if (!this.#isOpened) {
-                    this.hide();
-                }
-            }, false);
-        }
-
-        if (this.#type.includes('focus')) {
-            this.#toggleEl.addEventListener('focus', () => {
-                this.show();
-            }, false);
-            this.#toggleEl.addEventListener('blur', () => {
-                this.hide();
-            }, false);
-        }
-
-        if (this.#type.includes('clickable')) {
-            this.#toggleEl.addEventListener('click', () => {
-                if (this.#isOpened) {
-                    this.hide();
-                } else {
-                    this.#isOpened = true;
+        if (this.#type.includes("hover")) {
+            this.#toggleEl.addEventListener(
+                "mouseenter",
+                () => {
                     this.show();
-                }
-            }, false);
-            this.#targetEl.addEventListener('click', e => e.stopPropagation(), false);
+                },
+                false,
+            );
+
+            this.#toggleEl.addEventListener(
+                "mouseleave",
+                () => {
+                    if (!this.#isOpened) {
+                        this.hide();
+                    }
+                },
+                false,
+            );
+
+            this.#targetEl.addEventListener(
+                "mouseenter",
+                () => {
+                    this.show();
+                },
+                false,
+            );
+
+            this.#targetEl.addEventListener(
+                "mouseleave",
+                () => {
+                    if (!this.#isOpened) {
+                        this.hide();
+                    }
+                },
+                false,
+            );
+        }
+
+        if (this.#type.includes("focus")) {
+            this.#toggleEl.addEventListener(
+                "focus",
+                () => {
+                    this.show();
+                },
+                false,
+            );
+            this.#toggleEl.addEventListener(
+                "blur",
+                () => {
+                    this.hide();
+                },
+                false,
+            );
+        }
+
+        if (this.#type.includes("clickable")) {
+            this.#toggleEl.addEventListener(
+                "click",
+                () => {
+                    if (this.#isOpened) {
+                        this.hide();
+                    } else {
+                        this.#isOpened = true;
+                        this.show();
+                    }
+                },
+                false,
+            );
+            this.#targetEl.addEventListener(
+                "click",
+                (e) => e.stopPropagation(),
+                false,
+            );
         }
     }
 
     #create = () => {
-        const targetEl = document.createElement('div');
-        const tooltipInnerEl = document.createElement('div');
-        const tooltipArrowEl = document.createElement('div');
-        targetEl.classList.add('c-tooltip');
-        tooltipInnerEl.classList.add('c-tooltip__inner');
-        tooltipArrowEl.classList.add('c-tooltip__arrow');
+        const targetEl = document.createElement("div");
+        const tooltipInnerEl = document.createElement("div");
+        const tooltipArrowEl = document.createElement("div");
+        targetEl.classList.add("c-tooltip");
+        tooltipInnerEl.classList.add("c-tooltip__inner");
+        tooltipArrowEl.classList.add("c-tooltip__arrow");
 
         if (this.#content) {
             targetEl.innerHTML = this.#content;
@@ -131,8 +172,8 @@ export default class Tooltip {
             offset(this.#spacer),
             flip(),
             shift({
-                padding: this.#spacer
-            })
+                padding: this.#spacer,
+            }),
         ];
 
         if (this.#arrowEl) {
@@ -141,39 +182,36 @@ export default class Tooltip {
 
         computePosition(this.#toggleEl, this.#targetEl, {
             placement: this.#placement,
-            strategy: 'fixed',
-            middleware
+            strategy: "fixed",
+            middleware,
         }).then(({ x: tooltipX, y: tooltipY, placement, middlewareData }) => {
             Object.assign(this.#targetEl.style, {
-                left: `${ tooltipX }px`,
-                top: `${ tooltipY }px`
+                left: `${tooltipX}px`,
+                top: `${tooltipY}px`,
             });
 
             if (this.#arrowEl) {
-                const {
-                    x: arrowX,
-                    y: arrowY
-                } = middlewareData.arrow!;
+                const { x: arrowX, y: arrowY } = middlewareData.arrow!;
                 const staticSide = {
-                    top: 'bottom',
-                    right: 'left',
-                    bottom: 'top',
-                    left: 'right'
-                }[ placement.split('-')[ 0 ] ]!;
+                    top: "bottom",
+                    right: "left",
+                    bottom: "top",
+                    left: "right",
+                }[placement.split("-")[0]]!;
                 const rotations = {
                     top: 45,
                     bottom: -135,
                     left: -45,
-                    right: 135
+                    right: 135,
                 } as Record<string, number>;
 
                 Object.assign(this.#arrowEl.style, {
-                    bottom: '',
-                    right: '',
-                    left: arrowX ? `${ arrowX }px` : '',
-                    top: arrowY ? `${ arrowY }px` : '',
-                    transform: `rotate(${ rotations[ staticSide ] }deg)`,
-                    [ staticSide ]: `${ this.#arrowEl.offsetHeight / -2 - 1 }px`
+                    bottom: "",
+                    right: "",
+                    left: arrowX ? `${arrowX}px` : "",
+                    top: arrowY ? `${arrowY}px` : "",
+                    transform: `rotate(${rotations[staticSide]}deg)`,
+                    [staticSide]: `${this.#arrowEl.offsetHeight / -2 - 1}px`,
                 });
             }
         });
@@ -194,23 +232,27 @@ export default class Tooltip {
     };
 
     show() {
-        if (this.#type.includes('clickable') && this.#isOpened) {
+        if (this.#type.includes("clickable") && this.#isOpened) {
             setTimeout(() => {
-                document.addEventListener('click', this.#onDocumentClick, false);
+                document.addEventListener(
+                    "click",
+                    this.#onDocumentClick,
+                    false,
+                );
             });
         }
-        window.addEventListener('scroll', this.#onWindowScroll, false);
-        window.addEventListener('resize', this.#onWindowResize, false);
-        this.#targetEl.setAttribute('data-show', '');
+        window.addEventListener("scroll", this.#onWindowScroll, false);
+        window.addEventListener("resize", this.#onWindowResize, false);
+        this.#targetEl.setAttribute("data-show", "");
         this.#updatePosition();
     }
 
     hide() {
-        this.#targetEl.removeAttribute('data-show');
+        this.#targetEl.removeAttribute("data-show");
         this.#isOpened = false;
 
-        document.removeEventListener('click', this.#onDocumentClick);
-        window.removeEventListener('scroll', this.#onWindowScroll);
-        window.removeEventListener('resize', this.#onWindowResize);
+        document.removeEventListener("click", this.#onDocumentClick);
+        window.removeEventListener("scroll", this.#onWindowScroll);
+        window.removeEventListener("resize", this.#onWindowResize);
     }
 }

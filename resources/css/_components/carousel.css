@@ -1,9 +1,9 @@
 @import '@splidejs/splide/css/core';
 
 .splide {
+    contain: layout;
     overflow: hidden;
     visibility: inherit;
-    contain: layout;
     transition-property: visibility;
 
     .is-initialized&,
@@ -12,8 +12,8 @@
     }
 
     &__slide {
-        width: 100%;
         display: flex;
+        width: 100%;
         margin-right: var(--col-gap);
     }
 
@@ -23,8 +23,8 @@
 
     &__arrows {
         display: flex;
-        align-items: center;
         gap: theme(spacing.5);
+        align-items: center;
         transition-property: opacity, visibility;
     }
 
@@ -32,17 +32,11 @@
         &:disabled {
             opacity: 0.5;
         }
-
-        &--prev {
-        }
-
-        &--next {
-        }
     }
 
     &__pagination {
-        flex-grow: 1;
         display: flex;
+        flex-grow: 1;
         align-items: stretch;
 
         .splide:not(.is-overflow) & {
@@ -55,21 +49,26 @@
         }
 
         &__page {
-            height: theme(spacing.1);
-            width: 100%;
             position: relative;
+            width: 100%;
+            height: theme(spacing.1);
             background-color: theme(colors.gray.200);
 
-            &:before {
+            &::before {
                 content: '';
-                display: block;
+
                 position: absolute;
-                left: 0;
                 top: 0;
+                left: 0;
+
+                display: block;
+
+                width: var(--carousel-progress, 100%);
                 height: 100%;
+
                 opacity: 0;
                 background-color: theme(colors.primary.DEFAULT);
-                width: var(--carousel-progress, 100%);
+
                 transition-property: opacity;
             }
 
@@ -80,7 +79,7 @@
             &.is-active {
                 background-color: theme(colors.primary.hover);
 
-                &:before {
+                &::before {
                     opacity: 1;
                 }
             }

@@ -1,21 +1,15 @@
 :root {
     --vw: 1vw;
-
     --transition-duration: theme(transitionDuration.base);
     --transition-timing-function: theme(transitionTimingFunction.base);
     --transition-property: var(--transition-duration) var(--transition-function);
-
     --header-height: theme(spacing.15);
-
     --page-space: theme(spacing.7);
     --box-space: theme(spacing.5);
     --col-gap: theme(spacing.5);
-
     --icon-size: 1em;
-
     --blur-value: 12px;
     --blur-bg: theme(colors.black / 50%);
-
     --wrapper-width: 100vw;
     --container-width: min(calc(100 * var(--vw)), theme(maxWidth.sm));
 

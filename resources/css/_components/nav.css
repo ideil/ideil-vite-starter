@@ -13,7 +13,7 @@
     }
 
     &__link {
-        padding: var(--nav-padding);
         display: inline-block;
+        padding: var(--nav-padding);
     }
 }

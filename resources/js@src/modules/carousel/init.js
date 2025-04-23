@@ -1,6 +1,6 @@
-import initCarousel from '@src/plugins/carousel';
+import initCarousel from "@src/plugins/carousel";
 
-export default el => {
+export default (el) => {
     const carousel = initCarousel(el);
 
     carousel.mount();

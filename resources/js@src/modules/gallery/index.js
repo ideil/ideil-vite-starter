@@ -1,3 +1,6 @@
-import initIntersectionObserver from '@src/helpers/initIntersectionObserver';
+import initIntersectionObserver from "@src/helpers/initIntersectionObserver";
 
-initIntersectionObserver(document.querySelectorAll('[data-gallery]'), () => import('./init'));
+initIntersectionObserver(
+    document.querySelectorAll("[data-gallery]"),
+    () => import("./init"),
+);

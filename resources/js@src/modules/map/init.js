@@ -1,162 +1,162 @@
-import { Loader } from '@googlemaps/js-api-loader';
-import markRaw from '@img/svg/mark.svg?raw';
+import { Loader } from "@googlemaps/js-api-loader";
+import markRaw from "@img/svg/mark.svg?raw";
 
 /*global google*/
 
 const styles = [
     {
-        featureType: 'water',
-        elementType: 'geometry',
+        featureType: "water",
+        elementType: "geometry",
         stylers: [
             {
-                color: '#F7F7F7'
+                color: "#F7F7F7",
             },
             {
-                lightness: 17
-            }
-        ]
+                lightness: 17,
+            },
+        ],
     },
     {
-        featureType: 'road.highway',
-        elementType: 'geometry.fill',
+        featureType: "road.highway",
+        elementType: "geometry.fill",
         stylers: [
             {
-                color: '#ffffff'
+                color: "#ffffff",
             },
             {
-                lightness: 17
-            }
-        ]
+                lightness: 17,
+            },
+        ],
     },
     {
-        featureType: 'road.highway',
-        elementType: 'geometry.stroke',
+        featureType: "road.highway",
+        elementType: "geometry.stroke",
         stylers: [
             {
-                color: '#ffffff'
+                color: "#ffffff",
             },
             {
-                lightness: 29
+                lightness: 29,
             },
             {
-                weight: 0.2
-            }
-        ]
+                weight: 0.2,
+            },
+        ],
     },
     {
-        featureType: 'road.arterial',
-        elementType: 'geometry',
+        featureType: "road.arterial",
+        elementType: "geometry",
         stylers: [
             {
-                color: '#ffffff'
+                color: "#ffffff",
             },
             {
-                lightness: 18
-            }
-        ]
+                lightness: 18,
+            },
+        ],
     },
     {
-        featureType: 'road.local',
-        elementType: 'geometry',
+        featureType: "road.local",
+        elementType: "geometry",
         stylers: [
             {
-                color: '#ffffff'
+                color: "#ffffff",
             },
             {
-                lightness: 16
-            }
-        ]
+                lightness: 16,
+            },
+        ],
     },
     {
-        featureType: 'poi.park',
-        elementType: 'geometry',
+        featureType: "poi.park",
+        elementType: "geometry",
         stylers: [
             {
-                color: '#F7F7F7'
+                color: "#F7F7F7",
             },
             {
-                lightness: 21
-            }
-        ]
+                lightness: 21,
+            },
+        ],
     },
     {
-        elementType: 'labels.text.stroke',
+        elementType: "labels.text.stroke",
         stylers: [
             {
-                visibility: 'on'
+                visibility: "on",
             },
             {
-                color: '#ffffff'
+                color: "#ffffff",
             },
             {
-                lightness: 16
-            }
-        ]
+                lightness: 16,
+            },
+        ],
     },
     {
-        elementType: 'labels.text.fill',
+        elementType: "labels.text.fill",
         stylers: [
             {
-                saturation: 36
+                saturation: 36,
             },
             {
-                color: '#333333'
+                color: "#333333",
             },
             {
-                lightness: 40
-            }
-        ]
+                lightness: 40,
+            },
+        ],
     },
     {
-        elementType: 'labels.icon',
+        elementType: "labels.icon",
         stylers: [
             {
-                visibility: 'off'
-            }
-        ]
-    }
+                visibility: "off",
+            },
+        ],
+    },
 ];
 
-export default async el => {
+export default async (el) => {
     const lat = Number(el.dataset.lat);
     const lng = Number(el.dataset.lng);
     const target = {
         lat: lat,
-        lng: lng
+        lng: lng,
     };
     const markerPosition = {
         lat: lat - 0.00025,
-        lng: lng
+        lng: lng,
     };
     let map = null;
 
     const parser = new DOMParser();
     const markSvg = parser.parseFromString(
         markRaw,
-        'image/svg+xml'
+        "image/svg+xml",
     ).documentElement;
 
     const loader = new Loader({
-        apiKey: 'AIzaSyA6omSCBTwOUhtzqxzDM_7Mv6ihoNe_nD8', // apiKey
-        version: 'weekly',
-        language: 'uk',
-        libraries: [ 'places' ]
+        apiKey: "AIzaSyA6omSCBTwOUhtzqxzDM_7Mv6ihoNe_nD8", // apiKey
+        version: "weekly",
+        language: "uk",
+        libraries: ["places"],
     });
 
     await Promise.all([
-        loader.importLibrary('maps'),
-        loader.importLibrary('marker')
+        loader.importLibrary("maps"),
+        loader.importLibrary("marker"),
     ]).then(() => {
         map = new google.maps.Map(el, {
             zoom: 17,
             center: target,
             styles: styles,
-            mapId: '71e97c65db99e6d8'
+            mapId: "71e97c65db99e6d8",
         });
         new google.maps.marker.AdvancedMarkerElement({
             position: markerPosition,
             map: map,
-            content: markSvg
+            content: markSvg,
         });
     });
 };
