@@ -1,101 +1,32 @@
-<script lang="ts">
+<script lang="ts" setup>
 import { DatePicker } from "v-calendar";
-import { computed, defineComponent, ref } from "vue";
+import { computed } from "vue";
 
-export default defineComponent({
-    name: "DateField",
-    components: {
-        VDatePicker: DatePicker,
-    },
-    inheritAttrs: false,
-    props: {
-        modelValue: {
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            type: [String, Number, null, Date] as any,
-            required: false,
-            default: null,
-        },
-        error: {
-            type: [String, Array],
-            required: false,
-            default: "",
-        },
-        id: {
-            type: String,
-            required: true,
-        },
-        label: {
-            type: String,
-            required: false,
-            default: "",
-        },
-        placeholder: {
-            type: String,
-            default: "01.02.2023",
-        },
-        wrapperClass: {
-            type: String,
-            required: false,
-            default: "",
-        },
-        isFloat: {
-            type: Boolean,
-            required: false,
-            default: false,
-        },
-    },
-    emits: ["update:modelValue"],
-    setup(props, { emit }) {
-        const maskOptions = ref({
-            mask: "##.##.####",
-            preProcess: (value: string) => {
-                if (value === "NaN.NaN.0NaN") {
-                    emit("update:modelValue", null);
-                    return (value = "");
-                }
-                return value;
-            },
-            postProcess: (value: string) => {
-                return value;
-            },
-            eager: true,
-        });
-
-        const value = computed({
-            get() {
-                return props.modelValue;
-            },
-            set(value) {
-                if (isNaN(value)) {
-                    emit("update:modelValue", null);
-                    return;
-                }
-
-                emit("update:modelValue", value);
-            },
-        });
-
-        const customInputValue = (inputValue: string) => {
-            if (inputValue === "NaN.NaN.0NaN") {
-                return "";
-            }
-
-            return inputValue;
-        };
-
-        const locale = computed(() => {
-            return window?.App?.currentLanguage ?? "uk";
-        });
-
-        return {
-            value,
-            maskOptions,
-            locale,
-
-            customInputValue,
-        };
-    },
+const model = defineModel<string | Date | number>();
+const locale = computed(() => {
+    return window?.App?.currentLanguage ?? "uk";
 });
+const customInputValue = (inputValue: string) => {
+    if (inputValue === "NaN.NaN.0NaN") {
+        return "";
+    }
+
+    return inputValue;
+};
+
+defineOptions({
+    name: "DateField",
+    inheritAttrs: false,
+});
+
+defineProps<{
+    error?: string | Array<string>;
+    id: string;
+    label?: string;
+    placeholder?: string;
+    wrapperClass?: string;
+    isFloat?: boolean;
+}>();
 </script>
 
 <template>
@@ -106,20 +37,24 @@ export default defineComponent({
     <div class="relative" :class="wrapperClass">
         <slot name="fieldBefore" />
 
-        <VDatePicker
-            v-model="value"
+        <DatePicker
+            v-model="model"
             :popover="{
                 visibility: 'click',
             }"
             :locale="locale"
+            @dayclick="
+                (_, event) => {
+                    event.target.blur();
+                }
+            "
         >
             <template #default="{ inputValue, inputEvents }">
-                <!-- v-maska:[maskOptions] -->
                 <input
+                    v-bind="$attrs"
                     :id="id"
                     :value="customInputValue(inputValue)"
-                    :placeholder="placeholder"
-                    v-bind="$attrs"
+                    :placeholder="placeholder ?? '01.02.2025'"
                     class="f-field"
                     :class="{
                         'f-field--error': error,
@@ -128,7 +63,7 @@ export default defineComponent({
                     v-on="inputEvents"
                 />
             </template>
-        </VDatePicker>
+        </DatePicker>
         <label v-if="label && isFloat" :for="id" class="f-label">{{
             label
         }}</label>

@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="ts" setup>
 import CheckField from "@src/components/form/CheckField.vue";
 import CounterField from "@src/components/form/CounterField.vue";
 import DateField from "@src/components/form/DateField.vue";
@@ -9,123 +9,105 @@ import TextField from "@src/components/form/TextField.vue";
 import Icon from "@src/components/IconComponent.vue";
 import Modal from "@src/plugins/modal";
 import type { default as ModalType } from "@src/plugins/modal";
-import { defineComponent, reactive, ref } from "vue";
+import { reactive, ref } from "vue";
 
-export default defineComponent({
+defineOptions({
     name: "FeedbackForm",
-    components: {
-        TextField,
-        PhoneField,
-        TextareaField,
-        CounterField,
-        DateField,
-        CheckField,
-        SelectField,
-        Icon,
-    },
-    props: {
-        url: {
-            type: String,
-            default: null,
-        },
-    },
-    setup() {
-        // const { executeRecaptcha, recaptchaLoaded } = useReCaptcha()
-        const successModalEl = document.querySelector(
-            "#successModal",
-        ) as HTMLElement | null;
-        let successModalInstance: ModalType | null = null;
-        const defaultForm = {
-            name: null,
-            surname: null,
-            email: null,
-            phone: null,
-            type1: null,
-            type2: null,
-            type3: null,
-            date: null,
-            counter: 1,
-            delivery: false,
-            agree: false,
-            comment: null,
-        };
-        const isSending = ref(false);
-        const form = reactive<{
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            [key: string]: any;
-        }>({
-            ...defaultForm,
-        });
-        const errors: {
-            [key: string]: string[];
-        } = reactive({
-            email: ["Без електронної пошти ми не зможемо виконати реєстрацію"],
-        });
-
-        const clearForm = () => {
-            for (const [key, value] of Object.entries(defaultForm)) {
-                form[key] = value;
-            }
-        };
-
-        const openSuccess = () => {
-            if (!successModalInstance) {
-                if (successModalEl) {
-                    successModalInstance =
-                        Modal.getInstance(successModalEl) ||
-                        new Modal(successModalEl);
-                } else {
-                    return (isSending.value = false);
-                }
-            }
-
-            successModalInstance.show();
-            isSending.value = false;
-        };
-
-        const submit = () => {
-            // const tokenEl = document.head.querySelector('meta[name="csrf-token"]')
-            // const params = {
-            //     headers: {
-            //         'X-CSRF-TOKEN': tokenEl ? tokenEl.getAttribute('content') : '',
-            //         'X-Requested-With': 'XMLHttpRequest'
-            //     }
-            // }
-
-            isSending.value = true;
-
-            openSuccess();
-            clearForm();
-
-            // await recaptchaLoaded()
-
-            // await executeRecaptcha('submit').then(token => {
-            //     const data = {
-            //         'g-recaptcha-response': token,
-            //         ...form
-            //     }
-
-            //     axios.post(props.url, data, params).then(response => {
-            //         openSuccess()
-            //         clearForm()
-            //     }).catch(error => {
-            //         if (error.response.data && error.response.data.errors) {
-            //             errors = Object.assign(errors, error.response.data.errors)
-            //         }
-            //         console.error(error)
-            //         isSending.value = false
-            //     })
-            // })
-        };
-
-        return {
-            isSending,
-            errors,
-            form,
-            submit,
-        };
-    },
 });
+
+defineProps<{
+    url?: string;
+}>();
+
+// const { executeRecaptcha, recaptchaLoaded } = useReCaptcha()
+const successModalEl = document.querySelector(
+    "#successModal",
+) as HTMLElement | null;
+let successModalInstance: ModalType | null = null;
+const defaultForm = {
+    name: null,
+    surname: null,
+    email: null,
+    phone: null,
+    type1: null,
+    type2: null,
+    type3: null,
+    date: null,
+    counter: 1,
+    delivery: false,
+    agree: false,
+    comment: null,
+};
+const isSending = ref(false);
+
+const form = reactive<{
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    [key: string]: any;
+}>({
+    ...defaultForm,
+});
+const errors: {
+    [key: string]: string[];
+} = reactive({
+    email: ["Без електронної пошти ми не зможемо виконати реєстрацію"],
+});
+
+const clearForm = () => {
+    for (const [key, value] of Object.entries(defaultForm)) {
+        form[key] = value;
+    }
+};
+
+const openSuccess = () => {
+    if (!successModalInstance) {
+        if (successModalEl) {
+            successModalInstance =
+                Modal.getInstance(successModalEl) || new Modal(successModalEl);
+        } else {
+            return (isSending.value = false);
+        }
+    }
+
+    successModalInstance.show();
+    isSending.value = false;
+};
+
+const submit = () => {
+    // const tokenEl = document.head.querySelector('meta[name="csrf-token"]')
+    // const params = {
+    //     headers: {
+    //         'X-CSRF-TOKEN': tokenEl ? tokenEl.getAttribute('content') : '',
+    //         'X-Requested-With': 'XMLHttpRequest'
+    //     }
+    // }
+
+    console.log(JSON.stringify(form));
+
+    isSending.value = true;
+
+    openSuccess();
+    clearForm();
+
+    // await recaptchaLoaded()
+
+    // await executeRecaptcha('submit').then(token => {
+    //     const data = {
+    //         'g-recaptcha-response': token,
+    //         ...form
+    //     }
+
+    //     axios.post(props.url, data, params).then(response => {
+    //         openSuccess()
+    //         clearForm()
+    //     }).catch(error => {
+    //         if (error.response.data && error.response.data.errors) {
+    //             errors = Object.assign(errors, error.response.data.errors)
+    //         }
+    //         console.error(error)
+    //         isSending.value = false
+    //     })
+    // })
+};
 </script>
 
 <template>
@@ -328,7 +310,6 @@ export default defineComponent({
                     :disabled="isSending"
                     :error="errors.agree"
                     name="agree1"
-                    :required="true"
                     class="f-field--light"
                     label="Я погоджуюсь з умовами обробки персональних даних"
                     @change="delete errors['agree']"
@@ -343,7 +324,6 @@ export default defineComponent({
                     :error="errors.agree"
                     type="radio"
                     name="agree2"
-                    :required="true"
                     class="f-field--light"
                     label="Я погоджуюсь з умовами обробки персональних даних"
                     @change="delete errors['agree']"

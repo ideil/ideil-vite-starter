@@ -4618,10 +4618,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"maska@npm:^2.1.11":
-  version: 2.1.11
-  resolution: "maska@npm:2.1.11"
-  checksum: 10c0/12fa5d0e05dca477b5bc6d60be9fd68fcf128d7b3ebaa94e420b4395b8e2d1064f375952870075794f094054c7035dbdc0fb9f64be43df2903d8640327399ff3
+"maska@npm:^3.1.1":
+  version: 3.1.1
+  resolution: "maska@npm:3.1.1"
+  checksum: 10c0/505a142dd7e576e0121c59c816c6a61d680db232a2a722948332a233639664c2eba575e11eb033f12e622acc5cd5d57f311acc79d14fc21ebdd965c914460b1f
   languageName: node
   linkType: hard
 
@@ -6010,7 +6010,7 @@ __metadata:
     intersection-observer: "npm:^0.12.2"
     jiti: "npm:^2.4.2"
     laravel-vite-plugin: "npm:^1.2.0"
-    maska: "npm:^2.1.11"
+    maska: "npm:^3.1.1"
     merge: "npm:^2.1.1"
     path: "npm:^0.12.7"
     photoswipe: "npm:^5.4.4"

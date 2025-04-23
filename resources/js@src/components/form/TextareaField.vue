@@ -1,69 +1,27 @@
-<script lang="ts">
+<script lang="ts" setup>
 import autosize from "autosize";
-import { type PropType, computed, defineComponent, onMounted, ref } from "vue";
+import { onMounted, useTemplateRef } from "vue";
 
-export default defineComponent({
+const model = defineModel<string | string[] | number | null>();
+const textareaRef = useTemplateRef<HTMLTextAreaElement>("textareaRef");
+
+defineOptions({
     name: "TextareaField",
-    inheritAttrs: false,
-    props: {
-        modelValue: {
-            type: [String, Array, Number, null] as PropType<
-                string | string[] | number | null
-            >,
-            required: true,
-        },
-        error: {
-            type: [String, Array],
-            required: false,
-            default: "",
-        },
-        id: {
-            type: String,
-            required: true,
-        },
-        label: {
-            type: String,
-            required: false,
-            default: "",
-        },
-        placeholder: {
-            type: String,
-            default: " ",
-        },
-        wrapperClass: {
-            type: String,
-            required: false,
-            default: "",
-        },
-        isFloat: {
-            type: Boolean,
-            required: false,
-            default: false,
-        },
-    },
-    emits: ["update:modelValue"],
-    setup(props, { emit }) {
-        const textareaEl = ref<HTMLElement>();
-        const value = computed({
-            get() {
-                return props.modelValue || undefined;
-            },
-            set(value) {
-                emit("update:modelValue", value);
-            },
-        });
+});
 
-        onMounted(() => {
-            if (textareaEl.value) {
-                autosize(textareaEl.value);
-            }
-        });
+defineProps<{
+    error?: string | Array<string>;
+    id: string;
+    label?: string;
+    placeholder?: string;
+    wrapperClass?: string;
+    isFloat?: boolean;
+}>();
 
-        return {
-            textareaEl,
-            value,
-        };
-    },
+onMounted(() => {
+    if (textareaRef.value) {
+        autosize(textareaRef.value);
+    }
 });
 </script>
 
@@ -76,11 +34,11 @@ export default defineComponent({
         <slot name="fieldBefore" />
 
         <textarea
-            :id="id"
-            ref="textareaEl"
-            v-model="value"
+            v-model="model"
             v-bind="$attrs"
-            :placeholder="placeholder"
+            :id="id"
+            ref="textareaRef"
+            :placeholder="placeholder ?? ' '"
             class="f-field"
             :class="{
                 'f-field--error': error,

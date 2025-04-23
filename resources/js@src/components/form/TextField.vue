@@ -1,62 +1,17 @@
-<script lang="ts">
-import { type PropType, computed, defineComponent } from "vue";
-
-export default defineComponent({
+<script lang="ts" setup>
+defineOptions({
     name: "TextField",
-    inheritAttrs: false,
-    props: {
-        modelValue: {
-            type: [String, Number, undefined] as PropType<
-                string | number | undefined
-            >,
-            required: false,
-            default: "",
-        },
-        error: {
-            type: [String, Array],
-            required: false,
-            default: "",
-        },
-        id: {
-            type: String,
-            required: true,
-        },
-        label: {
-            type: String,
-            required: false,
-            default: "",
-        },
-        placeholder: {
-            type: String,
-            default: " ",
-        },
-        wrapperClass: {
-            type: String,
-            required: false,
-            default: "",
-        },
-        isFloat: {
-            type: Boolean,
-            required: false,
-            default: false,
-        },
-    },
-    emits: ["update:modelValue"],
-    setup(props, { emit }) {
-        const value = computed({
-            get() {
-                return props.modelValue;
-            },
-            set(value) {
-                emit("update:modelValue", value);
-            },
-        });
-
-        return {
-            value,
-        };
-    },
 });
+
+const { wrapperClass, label, isFloat, error } = defineProps<{
+    error?: string | Array<string>;
+    id: string;
+    label?: string;
+    placeholder?: string;
+    wrapperClass?: string;
+    isFloat?: boolean;
+}>();
+const model = defineModel<string | number | undefined>();
 </script>
 
 <template>
@@ -68,10 +23,10 @@ export default defineComponent({
         <slot name="fieldBefore" />
 
         <input
-            :id="id"
-            v-model="value"
             v-bind="$attrs"
-            :placeholder="placeholder"
+            v-model="model"
+            :id="id"
+            :placeholder="placeholder ?? ' '"
             class="f-field"
             :class="{
                 'f-field--error': error,

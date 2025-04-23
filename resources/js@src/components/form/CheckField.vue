@@ -1,64 +1,29 @@
-<script lang="ts">
-import { computed, defineComponent } from "vue";
+<script lang="ts" setup>
+import {} from "vue";
 
-export default defineComponent({
+defineOptions({
     name: "CheckField",
-    inheritAttrs: false,
-    props: {
-        modelValue: {
-            type: [Boolean, String],
-            required: true,
-        },
-        error: {
-            type: [String, Array],
-            required: false,
-            default: "",
-        },
-        id: {
-            type: String,
-            required: true,
-        },
-        type: {
-            type: String,
-            required: false,
-            default: "checkbox",
-        },
-        label: {
-            type: String,
-            required: false,
-            default: "",
-        },
-        placeholder: {
-            type: String,
-            default: " ",
-        },
-    },
-    emits: ["update:modelValue"],
-    setup(props, { emit }) {
-        const value = computed({
-            get() {
-                return props.modelValue;
-            },
-            set(value) {
-                emit("update:modelValue", value);
-            },
-        });
-
-        return {
-            value,
-        };
-    },
 });
+
+const model = defineModel<boolean | string>();
+
+defineProps<{
+    error?: string | Array<string>;
+    id: string;
+    type?: string;
+    label?: string;
+    placeholder?: string;
+}>();
 </script>
 
 <template>
     <div class="f-check">
         <input
-            :id="id"
-            v-model="value"
+            v-model="model"
             v-bind="$attrs"
-            :type="type"
-            :placeholder="placeholder"
+            :id="id"
+            :type="type ?? 'checkbox'"
+            :placeholder="placeholder ?? ' '"
             class="f-check__field"
             :class="{ 'has-error': error }"
         />

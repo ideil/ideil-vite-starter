@@ -1,97 +1,68 @@
-<script lang="ts">
-import { type PropType, defineComponent, onMounted, ref, watch } from "vue";
+<script lang="ts" setup>
+import { onMounted, ref, watch } from "vue";
 
-export default defineComponent({
+defineOptions({
     name: "CounterField",
-    inheritAttrs: false,
-    props: {
-        modelValue: {
-            type: [Number, String, null] as PropType<number | string | null>,
-            required: false,
-            default: 1,
-        },
-        error: {
-            type: [String, Array],
-            required: false,
-            default: "",
-        },
-        id: {
-            type: String,
-            required: true,
-        },
-        disabled: {
-            type: Boolean,
-            required: false,
-            default: false,
-        },
-        label: {
-            type: String,
-            required: false,
-            default: "",
-        },
-        placeholder: {
-            type: String,
-            default: " ",
-        },
-        min: {
-            type: Number,
-            default: 1,
-        },
-        max: {
-            type: Number,
-            default: null,
-        },
+});
+
+const value = ref(1);
+const model = defineModel<number>({
+    default: 1,
+});
+
+const props = withDefaults(
+    defineProps<{
+        error?: string | Array<string>;
+        id: string;
+        disabled?: boolean;
+        label?: string;
+        placeholder?: string;
+        min?: number;
+        max?: number;
+    }>(),
+    {
+        min: 1,
     },
-    emits: ["update:modelValue"],
-    setup(props, { emit }) {
-        const model = ref<number>(1);
+);
 
-        const setNumber = (value: number | string | null) => {
-            return value
-                ? typeof value !== "number"
-                    ? parseFloat(value)
-                    : value
-                : 1;
-        };
+const handleChange = (event: Event) => {
+    const target = event.target as HTMLInputElement;
+    let newValue = target.value
+        ? typeof target.value !== "number"
+            ? parseFloat(target.value)
+            : target.value
+        : 1;
 
-        onMounted(() => {
-            model.value = setNumber(props.modelValue);
-        });
+    if (!isNaN(newValue)) {
+        if (newValue <= props.min) {
+            newValue = props.min;
+        }
 
-        watch(
-            () => props.modelValue,
-            (value) => {
-                model.value = setNumber(value);
-            },
-        );
+        if (props.max && newValue >= props.max) {
+            newValue = props.max;
+        }
+    } else {
+        newValue = 1;
+    }
 
-        watch(model, (value) => {
-            let newValue =
-                typeof value !== "number" ? parseFloat(value) : value;
+    value.value = newValue;
+};
 
-            if (!isNaN(newValue)) {
-                if (newValue <= props.min) {
-                    newValue = props.min;
-                }
+watch(value, (newValue) => {
+    if (
+        typeof newValue === "number" &&
+        !isNaN(newValue) &&
+        newValue >= props.min &&
+        (!props.max || newValue <= props.max)
+    ) {
+        model.value = newValue;
+    }
+});
 
-                if (props.max && newValue >= props.max) {
-                    newValue = props.max;
-                }
-            } else {
-                newValue = 1;
-            }
-
-            model.value = newValue;
-
-            if (newValue !== props.modelValue) {
-                emit("update:modelValue", newValue);
-            }
-        });
-
-        return {
-            model,
-        };
-    },
+onMounted(() => {
+    if (model.value) {
+        value.value = model.value;
+    }
 });
 </script>
 
@@ -102,17 +73,19 @@ export default defineComponent({
             type="button"
             data-type="minus"
             :disabled="model <= min || disabled"
-            @click.prevent="model--"
+            @click.prevent="value--"
         >
             -
         </button>
         <input
-            :id="id"
-            v-model.lazy="model"
-            class="f-counter__field f-field"
-            type="number"
-            :class="{ 'f-field--error': error }"
+            v-model="value"
             v-bind="$attrs"
+            @input="handleChange"
+            @change="handleChange"
+            class="f-counter__field f-field"
+            :class="{ 'f-field--error': error }"
+            type="number"
+            :id="id"
             :aria-label="label"
             :disabled="disabled"
         />
@@ -121,7 +94,7 @@ export default defineComponent({
             type="button"
             :disabled="(max && model >= max) || disabled"
             data-type="plus"
-            @click.prevent="model++"
+            @click.prevent="value++"
         >
             +
         </button>

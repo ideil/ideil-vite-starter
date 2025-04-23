@@ -1,72 +1,25 @@
-<script lang="ts">
-import { vMaska } from "maska";
-import { type PropType, computed, defineComponent, reactive } from "vue";
+<script lang="ts" setup>
+import { vMaska } from "maska/vue";
+import { reactive } from "vue";
 
-export default defineComponent({
-    name: "PhoneField",
-    directives: { maska: vMaska },
-    inheritAttrs: false,
-    props: {
-        modelValue: {
-            type: [String, null] as PropType<string | null>,
-            required: true,
-        },
-        error: {
-            type: [String, Array],
-            required: false,
-            default: "",
-        },
-        id: {
-            type: String,
-            required: true,
-        },
-        label: {
-            type: String,
-            required: false,
-            default: "",
-        },
-        placeholder: {
-            type: String,
-            default: "+380 00 000 00 00",
-        },
-        wrapperClass: {
-            type: String,
-            required: false,
-            default: "",
-        },
-        isFloat: {
-            type: Boolean,
-            required: false,
-            default: false,
-        },
-    },
-    emits: ["update:modelValue"],
-    setup(props, { emit }) {
-        const value = computed({
-            get() {
-                return props.modelValue;
-            },
-            set(value) {
-                emit("update:modelValue", value);
-            },
-        });
-
-        const hasError = computed(() => {
-            return props.error && props.error.length > 0;
-        });
-
-        const maskOptions = reactive({
-            mask: "+380 ## ### ## ##",
-            eager: true,
-        });
-
-        return {
-            value,
-            maskOptions,
-            hasError,
-        };
-    },
+const model = defineModel<string>();
+const maskOptions = reactive({
+    mask: "+380 ## ### ## ##",
+    eager: true,
 });
+
+defineOptions({
+    name: "PhoneField",
+});
+
+defineProps<{
+    error?: string | Array<string>;
+    id: string;
+    label?: string;
+    placeholder?: string;
+    wrapperClass?: string;
+    isFloat?: boolean;
+}>();
 </script>
 
 <template>
@@ -79,10 +32,10 @@ export default defineComponent({
 
         <input
             :id="id"
-            v-model="value"
+            v-model="model"
             v-bind="$attrs"
-            v-maska:[maskOptions]
-            :placeholder="placeholder"
+            v-maska="maskOptions"
+            :placeholder="placeholder ?? '+380 00 000 00 00'"
             type="text"
             class="f-field"
             :class="{

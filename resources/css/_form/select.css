@@ -57,7 +57,12 @@
         }
     }
 
+    .multiselect-options {
+        flex-shrink: 0;
+    }
+
     .multiselect-option {
+        flex-shrink: 0;
         transition-property: background-color, color;
     }
 

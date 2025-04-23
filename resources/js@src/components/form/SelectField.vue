@@ -1,65 +1,21 @@
-<script lang="ts">
+<script lang="ts" setup>
 import Multiselect from "@vueform/multiselect";
-import { type PropType, computed, defineComponent } from "vue";
 
-export default defineComponent({
+defineOptions({
     name: "SelectField",
-    components: {
-        Multiselect,
-    },
     inheritAttrs: false,
-    props: {
-        modelValue: {
-            type: [Array, String, Number, null] as PropType<
-                string | string[] | number | null
-            >,
-            required: true,
-        },
-        error: {
-            type: [String, Array],
-            required: false,
-            default: "",
-        },
-        id: {
-            type: String,
-            required: true,
-        },
-        label: {
-            type: String,
-            required: false,
-            default: "",
-        },
-        placeholder: {
-            type: String,
-            default: " ",
-        },
-        wrapperClass: {
-            type: String,
-            required: false,
-            default: "",
-        },
-        isFloat: {
-            type: Boolean,
-            required: false,
-            default: false,
-        },
-    },
-    emits: ["update:modelValue"],
-    setup(props, { emit }) {
-        const value = computed({
-            get() {
-                return props.modelValue;
-            },
-            set(value) {
-                emit("update:modelValue", value);
-            },
-        });
-
-        return {
-            value,
-        };
-    },
 });
+
+const model = defineModel<string | string[] | number | null>();
+
+defineProps<{
+    error?: string | Array<string>;
+    id: string;
+    label?: string;
+    placeholder?: string;
+    wrapperClass?: string;
+    isFloat?: boolean;
+}>();
 </script>
 
 <template>
@@ -72,7 +28,7 @@ export default defineComponent({
 
         <Multiselect
             :id="id"
-            v-model="value"
+            v-model="model"
             v-bind="$attrs"
             :placeholder="placeholder"
             class="f-select"
@@ -80,7 +36,7 @@ export default defineComponent({
                 'f-field--error': error,
                 'f-field--float': isFloat,
                 'is-filled':
-                    value && (Array.isArray(value) ? value.length > 0 : true),
+                    model && (Array.isArray(model) ? model.length > 0 : true),
             }"
         />
         <label v-if="label && isFloat" :for="id" class="f-label">{{
