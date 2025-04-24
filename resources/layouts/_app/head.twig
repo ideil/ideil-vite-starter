@@ -18,8 +18,8 @@
 
     <!-- Styles -->
     {% for link in ['app'] | merge(styleLinks ?? []) | merge(['utilities']) %}
-        <link rel="preload" as="style" href="/css/{{ link }}.css">
         <link rel="stylesheet" href="/css/{{ link }}.css">
+        <link rel="preload" as="style" href="/css/{{ link }}.css">
     {% endfor %}
 
     <script>
