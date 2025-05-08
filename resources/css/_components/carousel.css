@@ -11,10 +11,14 @@
         visibility: inherit;
     }
 
+    &__track {
+        overflow: visible;
+    }
+
     &__slide {
         display: flex;
         width: 100%;
-        margin-right: var(--col-gap);
+        margin-right: theme(spacing.col);
     }
 
     &__inner {
@@ -22,7 +26,7 @@
     }
 
     &__arrows {
-        display: flex;
+        display: none;
         gap: theme(spacing.5);
         align-items: center;
         transition-property: opacity, visibility;
@@ -38,6 +42,7 @@
         display: flex;
         flex-grow: 1;
         align-items: stretch;
+        margin-top: theme(spacing.5);
 
         .splide:not(.is-overflow) & {
             display: flex;
@@ -91,19 +96,19 @@
             width: 90%;
 
             @screen sm {
-                width: calc(50% - var(--col-gap) * 2 / 3);
+                width: calc(50% - theme(spacing.col) * 2 / 3);
             }
 
             @screen md {
-                width: calc(33.333% - var(--col-gap) * 2 / 3);
+                width: calc(33.333% - theme(spacing.col) * 2 / 3);
             }
 
             @screen lg {
-                width: calc(25% - var(--col-gap) * 2 / 3);
+                width: calc(25% - theme(spacing.col) * 2 / 3);
             }
 
             @screen xl {
-                width: calc(20% - var(--col-gap) * 3 / 4);
+                width: calc(20% - theme(spacing.col) * 3 / 4);
             }
         }
     }
@@ -113,15 +118,15 @@
             width: 90%;
 
             @screen md {
-                width: calc(50% - var(--col-gap) * 1 / 2);
+                width: calc(50% - theme(spacing.col) * 1 / 2);
             }
 
             @screen lg {
-                width: calc(33.333% - var(--col-gap) * 2 / 3);
+                width: calc(33.333% - theme(spacing.col) * 2 / 3);
             }
 
             @screen xl {
-                width: calc(25% - var(--col-gap) * 3 / 4);
+                width: calc(25% - theme(spacing.col) * 3 / 4);
             }
         }
     }
@@ -131,11 +136,11 @@
             width: 90%;
 
             @screen md {
-                width: calc(50% - var(--col-gap) * 1 / 2);
+                width: calc(50% - theme(spacing.col) * 1 / 2);
             }
 
             @screen xl {
-                width: calc(33.333% - var(--col-gap) * 2 / 3);
+                width: calc(33.333% - theme(spacing.col) * 2 / 3);
             }
         }
     }
@@ -145,11 +150,11 @@
             width: 90%;
 
             @screen md {
-                width: calc(60% - var(--col-gap) * 1 / 2);
+                width: calc(60% - theme(spacing.col) * 1 / 2);
             }
 
             @screen lg {
-                width: calc(40% - var(--col-gap) * 1 / 2);
+                width: calc(40% - theme(spacing.col) * 1 / 2);
             }
         }
     }
@@ -159,22 +164,22 @@
             width: 90%;
 
             @screen md {
-                width: calc(50% - var(--col-gap) * 1 / 2);
+                width: calc(50% - theme(spacing.col) * 1 / 2);
             }
         }
     }
 
-    @screen md-max {
+    @screen md {
         &__track {
-            overflow: visible;
+            overflow: hidden;
         }
 
         &__arrows {
-            display: none;
+            display: flex;
         }
 
         &__pagination {
-            margin-top: theme(spacing.5);
+            margin-top: 0;
         }
     }
 }

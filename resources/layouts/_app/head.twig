@@ -12,15 +12,15 @@
 
     <meta name="theme-color" content="#ffffff">
 
-    <!-- Fonts -->
-    <link rel="preload" crossorigin as="font" href="/fonts/Roboto-Regular.woff2">
-    <link rel="preload" crossorigin as="font" href="/fonts/Roboto-Bold.woff2">
-
     <!-- Styles -->
     {% for link in ['app'] | merge(styleLinks ?? []) | merge(['utilities']) %}
         <link rel="stylesheet" href="/css/{{ link }}.css">
         <link rel="preload" as="style" href="/css/{{ link }}.css">
     {% endfor %}
+
+    <!-- Fonts -->
+    <link rel="preload" crossorigin as="font" href="/fonts/Roboto-Regular.woff2">
+    <link rel="preload" crossorigin as="font" href="/fonts/Roboto-Bold.woff2">
 
     <script>
         window.App = {

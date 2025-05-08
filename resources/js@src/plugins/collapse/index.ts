@@ -1,3 +1,7 @@
+import { animate } from "animejs";
+
+import getCSSTransition from "@/js@src/helpers/getCSSTransition";
+
 const collapse = (toggleEl: HTMLElement) => {
     const target = toggleEl.dataset.collapseTarget;
 
@@ -13,79 +17,64 @@ const collapse = (toggleEl: HTMLElement) => {
         return;
     }
 
-    const contentEl = panelEl.querySelector(
-        "[data-collapse-content]",
-    ) as HTMLElement;
-    let isOpen = false;
+    const { duration, easing } = getCSSTransition(toggleEl);
+    let isOpen = toggleEl.ariaExpanded === "true";
     let isCollapsing = false;
-    let transitionFunction: null | (() => void) = null;
+
+    const open = () => {
+        if (isCollapsing) {
+            return;
+        }
+
+        isCollapsing = true;
+
+        panelEl.style.height = "0px";
+        panelEl.style.display = "block";
+        toggleEl.ariaExpanded = "true";
+        panelEl.ariaExpanded = "true";
+
+        animate(panelEl, {
+            duration,
+            easing,
+            height: panelEl.scrollHeight,
+            onComplete: () => {
+                isCollapsing = false;
+                isOpen = true;
+                panelEl.style.height = "";
+            },
+        });
+    };
+
+    const close = () => {
+        if (isCollapsing) {
+            return;
+        }
+
+        isCollapsing = true;
+
+        panelEl.style.height = panelEl.scrollHeight + "px";
+        toggleEl.ariaExpanded = "false";
+        panelEl.ariaExpanded = "false";
+
+        animate(panelEl, {
+            duration,
+            easing,
+            height: 0,
+            onComplete: () => {
+                isCollapsing = false;
+                panelEl.style.display = "none";
+                isOpen = false;
+            },
+        });
+    };
 
     toggleEl.addEventListener("click", () => {
-        isOpen = isCollapseOpen();
-
         if (isOpen) {
             close();
         } else {
             open();
         }
     });
-
-    function open() {
-        if (isCollapsing) {
-            return;
-        }
-
-        if (transitionFunction) {
-            panelEl.removeEventListener("transitionend", transitionFunction);
-        }
-
-        transitionFunction = () => {
-            panelEl.classList.remove("is-collapsing");
-            isCollapsing = false;
-            panelEl.style.height = "";
-            panelEl.removeEventListener("transitionend", transitionFunction!);
-        };
-
-        isCollapsing = true;
-        panelEl.classList.add("is-collapsing");
-        panelEl.classList.add("is-shown");
-        toggleEl.classList.add("is-active");
-        panelEl.style.height = contentEl.offsetHeight + "px";
-
-        panelEl.addEventListener("transitionend", transitionFunction);
-    }
-
-    function close() {
-        if (isCollapsing) {
-            return;
-        }
-
-        if (transitionFunction) {
-            panelEl.removeEventListener("transitionend", transitionFunction);
-        }
-
-        transitionFunction = () => {
-            panelEl.classList.remove("is-shown");
-            panelEl.classList.remove("is-collapsing");
-            isCollapsing = false;
-            panelEl.removeEventListener("transitionend", transitionFunction!);
-        };
-
-        isCollapsing = true;
-        panelEl.style.height = contentEl.offsetHeight + "px";
-
-        setTimeout(() => {
-            panelEl.classList.add("is-collapsing");
-            panelEl.style.height = "";
-            toggleEl.classList.remove("is-active");
-
-            panelEl.addEventListener("transitionend", transitionFunction!);
-        });
-    }
-
-    function isCollapseOpen() {
-        return toggleEl.classList.contains("is-active");
-    }
 };
 
 export default collapse;

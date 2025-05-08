@@ -1,7 +1,7 @@
 .f-rating {
     display: inline-flex;
     flex-direction: row-reverse;
-    gap: var(--f-rating-gap);
+    gap: theme(spacing.1);
     line-height: 0;
 
     &__field {
@@ -13,15 +13,15 @@
 
     &__label {
         cursor: pointer;
-        color: var(--f-field-placeholder-color);
+        color: theme(colors.placeholder);
         transition-property: color;
 
         .f-rating__field:checked ~ & {
-            color: var(--f-active);
+            color: currentcolor;
         }
 
         .f-rating:has(.f-rating__label:hover) .f-rating__field:hover ~ & {
-            color: var(--f-hover);
+            color: currentcolor;
         }
     }
 }

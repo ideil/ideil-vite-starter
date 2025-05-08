@@ -1,125 +1,17 @@
 .c-title {
     display: block;
     font-weight: 700;
-    line-height: 1.15;
+    line-height: 1.2;
 
-    sup,
-    sub {
-        font-size: theme(fontSize.sm);
-        font-weight: 400;
-        white-space: nowrap;
-    }
-
-    sup {
-        top: initial;
-        vertical-align: super;
-    }
-
-    small {
-        font-size: theme(fontSize.md);
-        font-weight: 700;
-    }
-
-    /* 64 */
-    &--hero {
-        font-size: theme(fontSize.9);
-        line-height: 1;
-    }
-
-    /* 52 */
     &--h1 {
-        font-size: theme(fontSize.9);
-        line-height: 1;
+        font-size: theme(fontSize.4xl);
     }
 
-    /* 48 */
     &--h2 {
-        font-size: theme(fontSize.8);
-        line-height: 1;
+        font-size: theme(fontSize.3xl);
     }
 
-    /* 40 */
     &--h3 {
-        font-size: theme(fontSize.7);
-    }
-
-    /* 32 */
-    &--h4 {
-        font-size: theme(fontSize.6);
-    }
-
-    /* 32 */
-    &--h5 {
-        font-size: theme('fontSize.2lg');
-    }
-
-    @screen md {
-        &--hero {
-            font-size: theme(fontSize.10);
-        }
-
-        &--h1 {
-            font-size: theme(fontSize.10);
-        }
-
-        &--h2 {
-            font-size: theme(fontSize.9);
-        }
-
-        &--h3 {
-            font-size: theme(fontSize.8);
-        }
-    }
-
-    @screen lg {
-        &--hero {
-            font-size: theme(fontSize.12);
-        }
-
-        &--h1 {
-            font-size: theme(fontSize.11);
-        }
-
-        &--h2 {
-            font-size: theme(fontSize.10);
-        }
-
-        &--h3 {
-            font-size: theme(fontSize.9);
-        }
-
-        &--h4 {
-            font-size: theme(fontSize.7);
-        }
-
-        &--h5 {
-            font-size: theme(fontSize.6);
-        }
-    }
-
-    @screen xl {
-        &--hero {
-            font-size: theme(fontSize.16);
-        }
-
-        &--h1 {
-            font-size: theme(fontSize.13);
-        }
-
-        &--h2 {
-            font-size: theme(fontSize.12);
-        }
-
-        &--h3 {
-            font-size: theme(fontSize.10);
-        }
-
-        &--h4 {
-            font-size: theme(fontSize.8);
-        }
-
-        &--h5 {
-            font-size: theme(fontSize.7);
-        }
+        font-size: theme(fontSize.2xl);
     }
 }

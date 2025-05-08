@@ -1,20 +1,20 @@
 <div
-    class="text-center m-modal m-modal--centered"
+    class="c-modal text-center"
+    role="dialog"
     id="successModal"
     tabindex="-1"
-    aria-hidden="true"
     aria-labelledby="successModalTitle"
 >
-    <div class="m-dialog">
-        <div class="m-content">
-            <button type="button" class="m-close" data-modal-dismiss="" aria-label="Закрити">
+    <div class="c-modal__dialog">
+        <div class="c-modal__content">
+            <div class="c-modal__body">
+                <div class="c-title c-title--h2 mb-5" id="successModalTitle">Дякуємо!</div>
+                <div class="text-gray-dark">Ми&nbsp;зв&rsquo;яжемось з&nbsp;вами найближчим часом</div>
+            </div>
+
+            <button type="button" class="f-btn f-btn--icon c-modal__close" data-modal-dismiss aria-label="Закрити">
                 {% include "_app/icon.twig" with { name: 'close' } only %}
             </button>
-
-            <div class="m-body">
-                <div class="mb-5 m-title c-title c-title--h2" id="successModalTitle">Дякуємо!</div>
-                <div class="m-text text-gray-dark">Ми&nbsp;зв&rsquo;яжемось з&nbsp;вами найближчим часом</div>
-            </div>
         </div>
     </div>
 </div>

@@ -1,6 +1,6 @@
 .f-check {
     display: flex;
-    gap: var(--f-check-gap);
+    gap: theme(spacing.2);
 
     &__field {
         cursor: pointer;
@@ -8,53 +8,38 @@
         float: left;
         flex-shrink: 0;
 
-        width: var(--f-check-size);
-        height: var(--f-check-size);
-        border: var(--f-check-border-width) solid var(--f-check-border-color);
-        border-radius: var(--f-check-border-radius);
+        width: theme(spacing.5);
+        height: theme(spacing.5);
+        border: 1px solid theme(colors.field);
 
         appearance: none;
-        background-color: var(--f-check-bg);
 
         transition-property: border-color, background-color;
+
+        &:checked {
+            border-color: currentcolor;
+        }
 
         &:disabled {
             pointer-events: none;
             opacity: 0.5;
         }
 
-        &:hover {
-            border-color: var(--f-hover);
-        }
-
-        &:checked {
-            border-color: var(--f-active);
-        }
-
         &[type='radio'] {
             border-radius: 50%;
 
             &:checked {
-                border-width: calc(var(--f-check-border-width) * 2);
+                border-width: 4px;
             }
         }
 
         &[type='checkbox'] {
             &:checked {
-                background-color: var(--f-active);
+                background-color: currentcolor;
                 background-image: url("data:image/svg+xml,%3Csvg width='9' height='7' viewBox='0 0 9 7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M8.25806 0L2.95161 5.48333L0.741935 3.2L0 3.96667L2.58065 6.63333L2.95161 7L3.32258 6.63333L9 0.766667L8.25806 0Z' fill='white'/%3E%3C/svg%3E%0A");
                 background-repeat: no-repeat;
                 background-position: center;
-                background-size: calc(var(--f-check-size) * 0.6);
-            }
-        }
-
-        &.f-field--light,
-        .f-field--light & {
-            &[type='checkbox'] {
-                &:checked {
-                    background-image: url("data:image/svg+xml,%3Csvg width='9' height='7' viewBox='0 0 9 7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M8.25806 0L2.95161 5.48333L0.741935 3.2L0 3.96667L2.58065 6.63333L2.95161 7L3.32258 6.63333L9 0.766667L8.25806 0Z' fill='black'/%3E%3C/svg%3E%0A");
-                }
+                background-size: 75%;
             }
         }
     }
@@ -66,14 +51,11 @@
 
         min-width: 0;
 
-        font-size: var(--f-check-font-size);
-        line-height: var(--f-check-line-height);
-
-        transition-property: color;
+        font-size: theme(fontSize.base);
+        line-height: 1.3;
 
         .f-check__field:disabled ~ & {
             pointer-events: none;
-            color: currentcolor;
             opacity: 0.5;
         }
     }

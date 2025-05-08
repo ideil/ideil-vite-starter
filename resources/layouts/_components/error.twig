@@ -1,13 +1,13 @@
-<div class="c-error__inner">
+<div class="text-center py-20 m-auto">
     {% if isLogo %}
-        {% include "_components/logo.twig" %}
+        {% include "_components/logo.twig" with {class: 'w-40 mb-10 mx-auto'} %}
     {% endif %}
 
-    <div class="c-error__code c-title">{{ code }}</div>
+    <div class="c-title mb-10 leading-none text-[clamp(5rem,10vw,10rem)]">{{ code }}</div>
 
-    <div class="c-error__title c-title c-title--h3">{{ title }}</div>
+    <div class="c-title text-2xl md:text-4xl">{{ title }}</div>
 
-    <div class="c-error__btns">
-        <a href="home.html" class="f-btn f-btn--primary f-btn--rounded">На головну</a>
+    <div class="mt-10">
+        <a href="home.html" class="f-btn f-btn--primary">На головну</a>
     </div>
 </div>

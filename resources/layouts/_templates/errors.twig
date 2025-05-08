@@ -4,7 +4,9 @@
 {% include '_app/head.twig' %}
 
 <body class="{{ bodyClass }}">
-    {% block content %}{% endblock %}
+    <main class="flex items-center">
+        {% block content %}{% endblock %}
+    </main>
 
     <script type="module" defer="defer" src="/js@src/app.js"></script>
 </body>

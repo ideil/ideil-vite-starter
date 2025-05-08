@@ -22,6 +22,10 @@ export default (el) => {
     el.addEventListener("click", (e) => {
         e.preventDefault();
 
-        modal.show();
+        if (modal.isOpen) {
+            modal.hide();
+        } else {
+            modal.show();
+        }
     });
 };

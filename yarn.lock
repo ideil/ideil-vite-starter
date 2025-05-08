@@ -1354,13 +1354,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vueform/multiselect@npm:^2.6.11":
-  version: 2.6.11
-  resolution: "@vueform/multiselect@npm:2.6.11"
-  checksum: 10c0/e263e94916f7fa76dcaad205824ec51ab21eafd634bf2b264191675a1782a08cedac43f7f41e9986c84b026765a0af88edb26719db02d8def9b7e13ad7d3d4f8
-  languageName: node
-  linkType: hard
-
 "@vusion/webfonts-generator@npm:^0.8.0":
   version: 0.8.0
   resolution: "@vusion/webfonts-generator@npm:0.8.0"
@@ -3278,6 +3271,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"focus-trap@npm:^7.6.4":
+  version: 7.6.4
+  resolution: "focus-trap@npm:7.6.4"
+  dependencies:
+    tabbable: "npm:^6.2.0"
+  checksum: 10c0/ed810d47fd904a5e0269e822d98e634c6cbdd7222046c712ef299bdd26a422db754e3cec04e6517065b12be4b47f65c21f6244e0c07a308b1060985463d518cb
+  languageName: node
+  linkType: hard
+
 "for-each@npm:^0.3.3, for-each@npm:^0.3.5":
   version: 0.3.5
   resolution: "for-each@npm:0.3.5"
@@ -4477,6 +4479,13 @@ __metadata:
     prelude-ls: "npm:^1.2.1"
     type-check: "npm:~0.4.0"
   checksum: 10c0/effb03cad7c89dfa5bd4f6989364bfc79994c2042ec5966cb9b95990e2edee5cd8969ddf42616a0373ac49fac1403437deaf6e9050fbbaa3546093a59b9ac94e
+  languageName: node
+  linkType: hard
+
+"libphonenumber-js@npm:^1.12.8":
+  version: 1.12.8
+  resolution: "libphonenumber-js@npm:1.12.8"
+  checksum: 10c0/9c60d0f7b7b1c5bd85973fb80b8f7d7bbaf57fab2ca89b4f3712ad2e65ac7df8a3f52746a94104fffb618da4109f26fee07fc3225ac65dd17058b0d5d178cb47
   languageName: node
   linkType: hard
 
@@ -5994,7 +6003,6 @@ __metadata:
     "@vheemstra/vite-plugin-imagemin": "npm:^2.0.0"
     "@vitejs/plugin-vue": "npm:^5.2.3"
     "@vue/eslint-config-typescript": "npm:^14.5.0"
-    "@vueform/multiselect": "npm:^2.6.11"
     animejs: "npm:^4.0.2"
     autoprefixer: "npm:^10.4.21"
     autosize: "npm:^6.0.1"
@@ -6006,10 +6014,12 @@ __metadata:
     eslint-plugin-vue: "npm:^10.0.0"
     eventemitter3: "npm:^5.0.1"
     fast-glob: "npm:^3.3.3"
+    focus-trap: "npm:^7.6.4"
     fs-extra: "npm:^11.3.0"
     intersection-observer: "npm:^0.12.2"
     jiti: "npm:^2.4.2"
     laravel-vite-plugin: "npm:^1.2.0"
+    libphonenumber-js: "npm:^1.12.8"
     maska: "npm:^3.1.1"
     merge: "npm:^2.1.1"
     path: "npm:^0.12.7"
@@ -6025,6 +6035,7 @@ __metadata:
     stylelint-config-standard: "npm:^38.0.0"
     stylelint-config-tailwindcss: "npm:^1.0.0"
     stylelint-prettier: "npm:^5.0.3"
+    tabbable: "npm:^6.2.0"
     tailwindcss: "npm:^3.4.17"
     typescript: "npm:^5.8.3"
     typescript-eslint: "npm:^8.31.0"
@@ -6777,6 +6788,13 @@ __metadata:
     "@pkgr/core": "npm:^0.2.3"
     tslib: "npm:^2.8.1"
   checksum: 10c0/dd2965a37c93c0b652bf07b1fd8d1639a803b65cf34c0cb1b827b8403044fc3b09ec87f681d922a324825127ee95b2e0394e7caccb502f407892d63e903c5276
+  languageName: node
+  linkType: hard
+
+"tabbable@npm:^6.2.0":
+  version: 6.2.0
+  resolution: "tabbable@npm:6.2.0"
+  checksum: 10c0/ced8b38f05f2de62cd46836d77c2646c42b8c9713f5bd265daf0e78ff5ac73d3ba48a7ca45f348bafeef29b23da7187c72250742d37627883ef89cbd7fa76898
   languageName: node
   linkType: hard
 

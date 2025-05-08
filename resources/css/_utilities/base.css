@@ -8,14 +8,14 @@
         overflow-x: auto;
         overflow-y: hidden;
 
-        margin-inline: calc(theme(spacing.boxSpace) * -1);
-        padding-inline: theme(spacing.boxSpace);
+        margin-inline: calc(theme(spacing.box) * -1);
+        padding-inline: theme(spacing.box);
 
         mask-image: linear-gradient(
             to right,
             rgb(0 0 0 / 0%) 0,
-            rgb(0 0 0 / 100%) theme(spacing.boxSpace),
-            rgb(0 0 0 / 100%) calc(100% - theme(spacing.boxSpace)),
+            rgb(0 0 0 / 100%) theme(spacing.box),
+            rgb(0 0 0 / 100%) calc(100% - theme(spacing.box)),
             rgb(0 0 0 / 0%) 100%
         );
     }
@@ -24,14 +24,14 @@
         overflow-x: hidden;
         overflow-y: auto;
 
-        margin-block: calc(theme(spacing.boxSpace) * -1);
-        padding-block: theme(spacing.boxSpace);
+        margin-block: calc(theme(spacing.box) * -1);
+        padding-block: theme(spacing.box);
 
         mask-image: linear-gradient(
             to bottom,
             rgb(0 0 0 / 0%) 0,
-            rgb(0 0 0 / 100%) theme(spacing.boxSpace),
-            rgb(0 0 0 / 100%) calc(100% - theme(spacing.boxSpace)),
+            rgb(0 0 0 / 100%) theme(spacing.box),
+            rgb(0 0 0 / 100%) calc(100% - theme(spacing.box)),
             rgb(0 0 0 / 0%) 100%
         );
     }

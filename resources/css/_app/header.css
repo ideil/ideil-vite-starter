@@ -8,35 +8,23 @@
     padding-right: var(--body-scroll-width);
     border-bottom: 1px solid theme(colors.gray.200);
 
-    line-height: 1;
     color: theme(colors.text);
 
     background-color: theme(colors.body);
 
-    transition-property: background-color;
-
     &__inner {
         display: flex;
         align-items: center;
-        height: theme(spacing.headerHeight);
+        height: theme(spacing.header);
     }
 
     &__logo {
-        align-self: center;
         width: theme(spacing.28);
         margin-right: theme(spacing.8);
-        transition-property: width, padding;
     }
 
     &__hamburger {
         margin-left: auto;
-        line-height: 0;
-
-        &-btn {
-            display: block;
-            margin: calc(theme(spacing.5) * -1);
-            padding: theme(spacing.5);
-        }
 
         &-icon {
             position: relative;
@@ -71,22 +59,9 @@
                 }
             }
         }
-    }
 
-    @screen xl {
-        &__logo {
-            margin-right: theme(spacing.15);
-        }
-    }
-}
-
-.is-menu-open {
-    .c-header {
-        color: theme(colors.body);
-        background-color: theme(colors.text);
-
-        &__hamburger {
-            &-icon {
+        &[aria-expanded='true'] {
+            .c-header__hamburger-icon {
                 div {
                     &:nth-child(1) {
                         top: calc(50% - 1px);

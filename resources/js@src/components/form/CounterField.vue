@@ -69,7 +69,7 @@ onMounted(() => {
 <template>
     <div class="f-counter">
         <button
-            class="f-counter__btn f-btn f-btn--square"
+            class="f-counter__btn f-btn f-btn--icon"
             type="button"
             data-type="minus"
             :disabled="model <= min || disabled"
@@ -90,7 +90,7 @@ onMounted(() => {
             :disabled="disabled"
         />
         <button
-            class="f-counter__btn f-btn f-btn--square"
+            class="f-counter__btn f-btn f-btn--icon"
             type="button"
             :disabled="(max && model >= max) || disabled"
             data-type="plus"

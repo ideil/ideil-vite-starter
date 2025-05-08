@@ -1,6 +1,11 @@
 import { arrow, computePosition, flip, offset, shift } from "@floating-ui/dom";
 import type { Placement } from "@floating-ui/dom";
 import getElement from "@src/helpers/getElement";
+import { animate } from "animejs";
+import { type FocusTrap, createFocusTrap } from "focus-trap";
+import { type FocusableElement, tabbable } from "tabbable";
+
+import getCSSTransition from "@/js@src/helpers/getCSSTransition";
 
 type Options = {
     toggleEl: HTMLElement | string;
@@ -16,11 +21,17 @@ export default class Tooltip {
     #dismissEls: NodeListOf<HTMLElement>;
     #arrowEl: HTMLElement | undefined;
 
+    #animationDuration: number;
+    #animationEasing: string;
     #placement: Placement | undefined;
     #type: string;
     #content: string | undefined;
 
+    #focusTrap: FocusTrap | undefined;
+    #tabbableEls: FocusableElement[] = [];
+
     #isOpened = false;
+    #isClicked = false;
 
     #spacer = 8;
 
@@ -51,6 +62,10 @@ export default class Tooltip {
             );
         }
 
+        const { duration, easing } = getCSSTransition(this.#targetEl);
+        this.#animationDuration = duration;
+        this.#animationEasing = easing;
+
         this.#dismissEls = this.#targetEl.querySelectorAll(
             "[data-tooltip-dismiss]",
         );
@@ -58,94 +73,37 @@ export default class Tooltip {
             this.#targetEl.querySelector<HTMLElement>(".c-tooltip__arrow") ||
             undefined;
 
-        this.#init();
-    }
-
-    #init() {
-        this.#dismissEls.forEach((dismissEl) => {
-            dismissEl.addEventListener(
-                "click",
-                () => {
-                    this.hide();
-                },
-                false,
-            );
-        });
-
-        if (this.#type.includes("hover")) {
-            this.#toggleEl.addEventListener(
-                "mouseenter",
-                () => {
-                    this.show();
-                },
-                false,
-            );
-
-            this.#toggleEl.addEventListener(
-                "mouseleave",
-                () => {
-                    if (!this.#isOpened) {
-                        this.hide();
-                    }
-                },
-                false,
-            );
-
-            this.#targetEl.addEventListener(
-                "mouseenter",
-                () => {
-                    this.show();
-                },
-                false,
-            );
-
-            this.#targetEl.addEventListener(
-                "mouseleave",
-                () => {
-                    if (!this.#isOpened) {
-                        this.hide();
-                    }
-                },
-                false,
-            );
-        }
-
-        if (this.#type.includes("focus")) {
-            this.#toggleEl.addEventListener(
-                "focus",
-                () => {
-                    this.show();
-                },
-                false,
-            );
-            this.#toggleEl.addEventListener(
-                "blur",
-                () => {
-                    this.hide();
-                },
-                false,
-            );
-        }
-
+        // Focus trap
         if (this.#type.includes("clickable")) {
-            this.#toggleEl.addEventListener(
-                "click",
-                () => {
-                    if (this.#isOpened) {
-                        this.hide();
-                    } else {
-                        this.#isOpened = true;
-                        this.show();
-                    }
-                },
-                false,
-            );
-            this.#targetEl.addEventListener(
-                "click",
-                (e) => e.stopPropagation(),
-                false,
-            );
+            this.#tabbableEls = tabbable(this.#targetEl, {
+                displayCheck: "none",
+            });
+
+            if (this.#tabbableEls.length > 0) {
+                this.#focusTrap = createFocusTrap(this.#targetEl, {
+                    allowOutsideClick: true,
+                    tabbableOptions: {
+                        displayCheck: "none",
+                    },
+                });
+            }
         }
+
+        // Events
+        this.#toggleEl.addEventListener(
+            "mouseenter",
+            this.#onToggleMouseEnter,
+            false,
+        );
+        this.#toggleEl.addEventListener(
+            "mouseleave",
+            this.#onToggleMouseLeave,
+            false,
+        );
+        this.#toggleEl.addEventListener("focus", this.#onToggleFocus, false);
+        this.#toggleEl.addEventListener("blur", this.#onToggleBlur, false);
+        this.#toggleEl.addEventListener("click", this.#onToggleClick, false);
+        this.#targetEl.addEventListener("click", this.#onTargetClick, false);
     }
 
     #create = () => {
@@ -217,22 +175,79 @@ export default class Tooltip {
         });
     }
 
+    #onDismissClick = () => {
+        if (this.#isOpened) {
+            this.hide();
+        }
+        this.#isClicked = false;
+    };
+
     #onDocumentClick = () => {
         if (this.#isOpened) {
             this.hide();
         }
+        this.#isClicked = false;
     };
 
     #onWindowScroll = () => {
         this.#updatePosition();
     };
-
     #onWindowResize = () => {
         this.#updatePosition();
     };
 
+    #onToggleClick = () => {
+        if (this.#type.includes("clickable")) {
+            if (this.#isClicked) {
+                this.#isClicked = false;
+
+                if (this.#isOpened) {
+                    this.hide();
+                }
+            } else {
+                this.#isClicked = true;
+                this.show();
+            }
+        }
+    };
+    #onToggleMouseEnter = () => {
+        if (this.#type.includes("hover") && !this.#isOpened) {
+            this.show();
+        }
+    };
+    #onToggleMouseLeave = () => {
+        if (
+            this.#type.includes("hover") &&
+            !this.#isClicked &&
+            this.#isOpened
+        ) {
+            this.hide();
+        }
+    };
+    #onToggleFocus = () => {
+        if (this.#type.includes("focus") && !this.#isOpened) {
+            this.show();
+        }
+    };
+    #onToggleBlur = () => {
+        if (this.#type.includes("focus") && this.#isOpened) {
+            this.hide();
+        }
+    };
+
+    #onTargetClick = (e: MouseEvent) => e.stopPropagation();
+
+    #onKeyUp = (e: KeyboardEvent) => {
+        if (e.key === "Escape" && this.#isOpened) {
+            this.#isClicked = false;
+            this.hide();
+        }
+    };
+
     show() {
-        if (this.#type.includes("clickable") && this.#isOpened) {
+        this.#isOpened = true;
+
+        if (this.#type.includes("clickable") && this.#isClicked) {
             setTimeout(() => {
                 document.addEventListener(
                     "click",
@@ -240,19 +255,53 @@ export default class Tooltip {
                     false,
                 );
             });
+
+            this.#toggleEl.setAttribute("aria-expanded", "true");
+            this.#focusTrap?.activate();
         }
+
+        animate(this.#targetEl, {
+            duration: this.#animationDuration,
+            easing: this.#animationEasing,
+            "--tooltip-transition-progress": 1,
+            onBegin: () => {
+                this.#targetEl.style.display = "block";
+                this.#updatePosition();
+            },
+        });
+
         window.addEventListener("scroll", this.#onWindowScroll, false);
         window.addEventListener("resize", this.#onWindowResize, false);
-        this.#targetEl.setAttribute("data-show", "");
-        this.#updatePosition();
+        window.addEventListener("keyup", this.#onKeyUp, false);
+        this.#dismissEls.forEach((dismissEl) => {
+            dismissEl.addEventListener("click", this.#onDismissClick, false);
+        });
     }
 
     hide() {
-        this.#targetEl.removeAttribute("data-show");
         this.#isOpened = false;
+
+        if (this.#type.includes("clickable")) {
+            this.#toggleEl.setAttribute("aria-expanded", "false");
+        }
+
+        animate(this.#targetEl, {
+            duration: this.#animationDuration,
+            easing: this.#animationEasing,
+            "--tooltip-transition-progress": 0,
+            onComplete: () => {
+                this.#targetEl.style.display = "none";
+
+                this.#focusTrap?.deactivate();
+            },
+        });
 
         document.removeEventListener("click", this.#onDocumentClick);
         window.removeEventListener("scroll", this.#onWindowScroll);
         window.removeEventListener("resize", this.#onWindowResize);
+        window.removeEventListener("keyup", this.#onKeyUp);
+        this.#dismissEls.forEach((dismissEl) => {
+            dismissEl.removeEventListener("click", this.#onDismissClick);
+        });
     }
 }

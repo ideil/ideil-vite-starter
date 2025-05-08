@@ -3,23 +3,28 @@ import getElement from "@src/helpers/getElement";
 import { clearSpaces, setSpaces } from "@src/helpers/measure";
 import { animate } from "animejs";
 import EventEmitter from "eventemitter3";
+import { type FocusTrap, createFocusTrap } from "focus-trap";
+import { type FocusableElement, tabbable } from "tabbable";
 
 class Modal {
     element: HTMLElement;
     #dismissEls: NodeListOf<HTMLElement>;
+    #toggleEls: NodeListOf<HTMLElement>;
     #mouseDownElement: HTMLElement | null = null;
     #animationDuration: number;
     #animationEasing: string;
     #eventEmitter: EventEmitter;
+    isOpen = false;
+
+    #focusTrap: FocusTrap | undefined;
+    #tabbableEls: FocusableElement[] = [];
 
     #showHandle = () => {
+        this.isOpen = true;
         this.#eventEmitter.emit("shown");
-
-        this.element.removeEventListener("transitionend", this.#showHandle);
     };
     #hideHandle = () => {
-        this.element.style.display = "none";
-        this.element.setAttribute("aria-hidden", "");
+        this.isOpen = false;
         this.element.removeAttribute("aria-modal");
         this.element.removeAttribute("role");
         document.documentElement.classList.remove("is-modal-open");
@@ -28,13 +33,12 @@ class Modal {
 
         clearSpaces();
 
-        this.element.removeEventListener("transitionend", this.#hideHandle);
         this.element.removeEventListener("mousedown", this.#modalMouseDown);
         this.element.removeEventListener("click", this.#modalClick);
-        document.removeEventListener("keyup", this.#escClick);
         this.#dismissEls.forEach((el) => {
             el.removeEventListener("click", this.#dismissHandle);
         });
+        document.removeEventListener("keyup", this.#escClick);
     };
     #dismissHandle = (e: Event) => {
         e.preventDefault();
@@ -70,7 +74,13 @@ class Modal {
             throw new Error(`Modal element ${element} doesn't exist.`);
         }
 
+        this.#toggleEls = document.documentElement.querySelectorAll(
+            `[data-modal-target="#${this.element.id}"]`,
+        );
+
         const { duration, easing } = getCSSTransition(this.element);
+        this.#animationDuration = duration;
+        this.#animationEasing = easing;
         this.#eventEmitter = new EventEmitter();
 
         Modal.instances.set(this.element, this);
@@ -78,32 +88,51 @@ class Modal {
         this.#dismissEls = this.element.querySelectorAll(
             "[data-modal-dismiss]",
         );
-        this.#animationDuration = duration * 1000 || 300;
-        this.#animationEasing = easing || "ease";
+
+        this.#tabbableEls = tabbable(this.element, {
+            displayCheck: "none",
+        });
+
+        if (this.#tabbableEls.length > 0) {
+            this.#focusTrap = createFocusTrap(this.element, {
+                allowOutsideClick: true,
+                tabbableOptions: {
+                    displayCheck: "none",
+                },
+            });
+        }
     }
 
     show() {
+        if (this.isOpen) {
+            return;
+        }
+
+        if (this.#toggleEls.length > 0) {
+            this.#toggleEls.forEach((el) => {
+                el.setAttribute("aria-expanded", "true");
+            });
+        }
+
         this.#eventEmitter.emit("show");
+        this.#focusTrap?.activate();
 
         setSpaces();
         animate(this.element, {
             "--modal-transition-progress": [0, 1],
             duration: this.#animationDuration,
             easing: this.#animationEasing,
-            // value: [ 0, 1 ],
-            // update: v => {
-            //     this.element.style.setProperty('--modal-transition-progress', (v.progress / 100).toString());
-            // }
+            onBegin: () => {
+                this.element.style.display = "block";
+                this.#showHandle();
+            },
         });
 
         document.documentElement.classList.add("is-modal-open");
 
-        this.element.style.display = "block";
-        this.element.removeAttribute("aria-hidden");
         this.element.setAttribute("aria-modal", "");
         this.element.setAttribute("role", "dialog");
         this.element.scrollTop = 0;
-        this.element.classList.add("is-shown");
 
         this.#dismissEls.forEach((el) => {
             el.addEventListener("click", this.#dismissHandle, false);
@@ -111,24 +140,31 @@ class Modal {
         this.element.addEventListener("mousedown", this.#modalMouseDown, false);
         this.element.addEventListener("click", this.#modalClick, false);
         document.addEventListener("keyup", this.#escClick, false);
-        this.element.addEventListener("transitionend", this.#showHandle, false);
     }
 
     hide() {
+        if (!this.isOpen) {
+            return;
+        }
+
+        if (this.#toggleEls.length > 0) {
+            this.#toggleEls.forEach((el) => {
+                el.setAttribute("aria-expanded", "false");
+            });
+        }
+
         this.#eventEmitter.emit("hide");
 
         animate(this.element, {
             duration: this.#animationDuration,
             easing: this.#animationEasing,
             "--modal-transition-progress": [1, 0],
-            // value: [ 0, 1 ],
-            // update: v => {
-            //     this.element.style.setProperty('--modal-transition-progress', ((100 - v.progress) / 100).toString());
-            // }
+            onComplete: () => {
+                this.element.style.display = "none";
+                this.#hideHandle();
+                this.#focusTrap?.deactivate();
+            },
         });
-
-        this.element.classList.remove("is-shown");
-        this.element.addEventListener("transitionend", this.#hideHandle, false);
     }
 
     onShow(callback: () => void) {

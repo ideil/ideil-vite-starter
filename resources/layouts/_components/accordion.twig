@@ -1,34 +1,36 @@
 <div class="divide-y divide-gray-200 {{ class }}">
     {% for index in 1..3 %}
-        <div class="c-collapse">
-            <div class="c-collapse__toggle">
+        <div>
+            <button
+                type="button"
+                aria-label="Відкрити відповідь"
+                class="f-btn w-full c-collapse__toggle"
+                aria-expanded="{{ index == 1 ? 'true' : 'false' }}"
+                aria-controls="collapseAnswer{{ index }}"
+                data-collapse-target="#collapseAnswer{{ index }}"
+            >
                 Питання {{ index }}
 
                 <span class="c-badge c-badge--primary">3</span>
 
-                <button
-                    type="button"
-                    aria-label="Відкрити відповідь"
-                    data-collapse-target="#collapseAnswer{{ index }}"
-                    class="ml-auto u-link-overlay {{ index == 1 ? 'is-active' }}"
-                >
-                    {% if loop.index == 1 %}
-                        <i class="c-collapse__icon"></i>
-                    {% else %}
-                        {% include "_app/icon.twig" with { name: 'angle', class: 'c-collapse__arrow i-icon--bottom' } only %}
-                    {% endif %}
-                </button>
-            </div>
+                {% if loop.index == 1 %}
+                    <i class="c-collapse__icon ml-auto"></i>
+                {% else %}
+                    <div class="ml-auto c-collapse__arrow">
+                        {% include "_app/icon.twig" with { name: 'angle', class: 'block rotate-90' } only %}
+                    </div>
+                {% endif %}
+            </button>
 
             <div
-                class="c-collapse__panel {{ index == 1 ? 'is-active is-shown' }}"
+                class="c-collapse__panel"
                 id="collapseAnswer{{ index }}"
+                aria-expanded="{{ index == 1 ? 'true' : 'false' }}"
+                style="{{ index == 1 ? 'display: block;' : '' }}"
+                role="region"
                 data-collapse-panel
             >
-                <div
-                    class="pb-5"
-                    data-collapse-content
-                >
+                <div class="pb-5">
                     <p>Далеко-далеко за&nbsp;словесними горами країни голосних і&nbsp;приголосних живуть рибні тексти. Рибними, лишилося? До, маленька буквоград? Погляд безорфографічний, міста рядок, він промовою знаках своє те, рукописи вони безпечні&nbsp;до! Країну, дороге!</p>
                 </div>
             </div>

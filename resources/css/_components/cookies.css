@@ -1,34 +1,23 @@
 .c-cookies {
-    --cookies-offset: theme(spacing.5);
-    --cookies-max-width: 586px;
-    --cookies-px: theme(spacing.8);
-    --cookies-py: theme(spacing.4);
-    --cookies-bg: theme(colors.primary.DEFAULT);
-    --cookies-color: theme(colors.white);
-    --cookies-gap: theme(spacing.3) theme(spacing.6);
-    --cookies-border-radius: theme(borderRadius.md);
-    --cookies-icon-size: theme(spacing.10);
-
     position: fixed;
     z-index: 9999;
-    bottom: var(--cookies-offset);
-    left: var(--cookies-offset);
-    transform: translateY(100%);
+    bottom: theme(spacing.box);
+    left: theme(spacing.box);
+    transform: translateY(10px);
 
     display: flex;
-    gap: var(--cookies-gap);
-    align-items: center;
+    flex-direction: column;
+    gap: theme(spacing.3) theme(spacing.6);
 
-    width: calc(100% - var(--cookies-offset) * 2);
-    max-width: var(--cookies-max-width);
-    padding: var(--cookies-py) var(--cookies-px);
-    border-radius: var(--cookies-border-radius);
+    width: calc(100% - theme(spacing.box) * 2);
+    max-width: 37rem;
+    padding: theme(spacing.box);
 
-    color: var(--cookies-color);
+    color: theme(colors.white);
 
     visibility: hidden;
     opacity: 0;
-    background: var(--cookies-bg);
+    background: theme(colors.primary.DEFAULT);
 
     transition-property: opacity, transform, visibility;
 
@@ -39,11 +28,22 @@
     }
 
     .f-btn {
-        min-width: 96px;
-        margin-left: auto;
+        width: 100%;
     }
 
     &__icon {
-        font-size: var(--cookies-icon-size);
+        font-size: theme(fontSize.3xl);
+    }
+}
+
+@screen sm {
+    .c-cookies {
+        flex-direction: row;
+        align-items: center;
+
+        .f-btn {
+            width: auto;
+            margin-left: auto;
+        }
     }
 }

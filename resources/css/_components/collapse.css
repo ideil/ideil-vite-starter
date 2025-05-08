@@ -1,31 +1,12 @@
 .c-collapse {
-    --collapse-toggle-gap: theme(spacing.2);
-    --collapse-toggle-py: theme(spacing.4);
-    --collapse-toggle-px: 0;
-    --collapse-angle-size: theme(spacing[2.5]);
-
-    &__toggle {
-        position: relative;
-
-        display: flex;
-        gap: var(--collapse-toggle-gap);
-        align-items: center;
-
-        padding: var(--collapse-toggle-py) var(--collapse-toggle-px);
-
-        text-align: left;
-    }
-
     &__icon {
         position: relative;
 
         display: block;
         flex-shrink: 0;
 
-        width: var(--icon-size);
-        height: var(--icon-size);
-
-        font-size: var(--collapse-angle-size);
+        width: theme(spacing.5);
+        height: theme(spacing.5);
 
         &::before,
         &::after {
@@ -50,7 +31,7 @@
             --rotation: 90deg;
         }
 
-        .is-active & {
+        .c-collapse__toggle[aria-expanded='true'] & {
             &::after {
                 --rotation: 0;
             }
@@ -58,23 +39,15 @@
     }
 
     &__arrow {
-        font-size: var(--collapse-angle-size);
         transition-property: transform;
 
-        .is-active & {
-            transform: rotate(270deg);
+        .c-collapse__toggle[aria-expanded='true'] & {
+            transform: rotate(180deg);
         }
     }
 
     &__panel {
-        &:not(.is-shown) {
-            display: none;
-        }
+        overflow: hidden;
+        display: none;
     }
-}
-
-.is-collapsing {
-    overflow: hidden;
-    height: 0;
-    transition-property: height;
 }

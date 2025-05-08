@@ -10,8 +10,6 @@
 
 /* Variables */
 @import url('_variables/base.css');
-@import url('_variables/button.css');
-@import url('_variables/form.css');
 
 /* Base */
 @import url('_app/fonts.css');
@@ -20,31 +18,18 @@
 @import url('_app/typography.css');
 @import url('_app/icons.css');
 
-/* Layouts */
-@import url('_layouts/box.css');
-@import url('_layouts/container.css');
-
 /* Components */
 @import url('_components/ideil.css');
 @import url('_components/logo.css');
-@import url('_components/nav.css');
-@import url('_components/socials.css');
 @import url('_components/section.css');
+@import url('_components/modal.css');
+@import url('_components/tooltip.css');
 
 /* Form */
-@import url('_form/base.css');
 @import url('_form/buttons.css');
-@import url('_form/field.css');
-@import url('_form/check.css');
-@import url('_form/counter.css');
-@import url('_form/rating.css');
-@import url('_form/select.css');
-@import url('_form/datepicker.css');
 
 /* Parts */
 @import url('_app/header.css');
-@import url('_app/menu.css');
-@import url('./_app/footer.css');
 
 /* Components */
 @import url('_components/cookies.css');

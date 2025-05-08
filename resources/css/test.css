@@ -2,15 +2,17 @@
 @import url('_set/variables.css');
 @import url('_set/mixins.css');
 
+/* Form */
+@import url('_form/base.css');
+@import url('_form/check.css');
+@import url('_form/counter.css');
+@import url('_form/rating.css');
+@import url('_form/datepicker.css');
+
 /* Components */
 @import url('_components/badge.css');
-@import url('_components/label.css');
-@import url('_components/tabs.css');
 @import url('_components/breadcrumbs.css');
 @import url('_components/carousel.css');
 @import url('_components/collapse.css');
 @import url('_components/pagination.css');
-@import url('_components/map.css');
-@import url('_components/tooltip.css');
-@import url('_components/modal.css');
 @import url('_components/gallery.css');

@@ -1,87 +1,153 @@
-.f-group {
-    position: relative;
+.f-field {
     width: 100%;
-    margin-bottom: var(--f-group-space);
+    min-height: theme(spacing.field);
+    padding: theme(spacing[2]) theme(spacing.4);
+    border: 1px solid theme(colors.field);
+
+    font-size: theme(fontSize.base);
+    line-height: 1.4;
+    color: currentcolor;
+    text-align: left;
+    vertical-align: middle;
+
+    appearance: none;
+    background: none;
+    box-shadow: none;
+
+    transition-property: border-color;
+
+    &::placeholder,
+    &.f-field--placeholder {
+        color: theme(colors.placeholder);
+    }
+
+    &:-webkit-autofill {
+        background-color: transparent;
+        box-shadow: 0 0 0 60px theme(colors.gray.100) inset;
+
+        -webkit-text-fill-color: theme(colors.text);
+    }
+
+    &:has(~ .f-icon) {
+        padding-right: theme(spacing.field);
+    }
+
+    .f-icon ~ & {
+        padding-left: theme(spacing.field);
+    }
+
+    &:disabled {
+        pointer-events: none;
+        opacity: 0.5;
+    }
+
+    textarea& {
+        height: auto;
+    }
+
+    &--error {
+        border-color: theme(colors.red.500);
+    }
+
+    &--float {
+        padding-top: theme(spacing.4);
+        padding-bottom: 0;
+
+        &::placeholder {
+            color: transparent;
+            transition-property: color;
+        }
+
+        &:focus,
+        &:not(:placeholder-shown, :focus) {
+            &::placeholder {
+                color: theme(colors.placeholder);
+            }
+        }
+    }
+}
+
+.f-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: theme(spacing.field);
+    height: theme(spacing.field);
+
+    .f-field + & {
+        right: 0;
+        left: initial;
+    }
 }
 
 .f-label {
-    display: flex;
-    align-items: center;
-
-    margin-bottom: var(--f-label-space);
-
-    font-size: var(--f-label-font-size);
-    line-height: var(--f-label-line-height);
-    color: var(--f-label-color);
-
-    opacity: 0.9;
+    display: block;
+    margin-bottom: theme(spacing.1);
+    font-size: theme(fontSize.base);
+    text-align: left;
 
     .f-field--float ~ & {
         pointer-events: none;
 
         position: absolute;
         top: 0;
-        inset-inline: var(--f-field-px);
-        transform-origin: 0;
+        inset-inline: theme(spacing.4);
+        transform-origin: top left;
 
-        height: var(--f-field-height);
+        display: flex;
+        align-items: center;
+
+        height: theme(spacing.field);
         margin: 0;
 
+        color: theme(colors.placeholder);
         text-overflow: ellipsis;
         white-space: nowrap;
 
-        opacity: 0.7;
+        transition-property: transform;
 
-        transition-property: opacity, transform;
-
-        &:has(~ .f-field__icon) {
-            right: var(--f-label-icon-width);
+        &:has(~ .f-icon) {
+            right: theme(spacing.field);
         }
 
-        .f-field__icon ~ & {
-            left: var(--f-label-icon-width);
+        .f-icon ~ & {
+            left: theme(spacing.field);
         }
     }
 
-    .f-field.f-field--float:focus ~ &,
-    .f-field.f-field--float:not(:placeholder-shown, :focus) ~ &,
-    .f-select.f-field--float.is-active ~ &,
-    .f-select.f-field--float.is-filled ~ & {
-        transform: translateY(calc(var(--f-field-height) * -0.25))
+    .f-field.f-field--float.is-filled ~ &,
+    input.f-field.f-field--float:not(:placeholder-shown, :focus) ~ &,
+    input.f-field.f-field--float:focus ~ & {
+        transform: translateY(calc(theme(spacing.field) * -0.15))
             scale3d(0.75, 0.75, 1);
     }
 }
 
+.f-group {
+    position: relative;
+    width: 100%;
+    margin-bottom: theme(spacing.5);
+}
+
 .f-info {
     display: block;
-
-    margin: var(--f-info-space) 0;
-
-    font-size: var(--f-info-font-size);
-    font-weight: 400;
-    line-height: var(--f-info-line-height);
+    margin: theme(spacing.1) 0;
+    font-size: theme(fontSize.xs);
 
     a {
         text-decoration: underline;
     }
 
     &--error {
-        color: var(--f-error);
+        color: theme(colors.error);
     }
 }
 
 .f-submit {
-    margin-top: var(--f-submit-space);
-
-    .f-info {
-        margin: theme(spacing.5) 0;
-
-        &:first-child {
-            margin-top: 0;
-        }
-
-        &:last-child {
-            margin-bottom: 0;
-        }
-    }
+    margin-top: theme(spacing.6);
 }

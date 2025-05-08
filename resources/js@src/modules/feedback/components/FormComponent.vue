@@ -3,7 +3,6 @@ import CheckField from "@src/components/form/CheckField.vue";
 import CounterField from "@src/components/form/CounterField.vue";
 import DateField from "@src/components/form/DateField.vue";
 import PhoneField from "@src/components/form/PhoneField.vue";
-import SelectField from "@src/components/form/SelectField.vue";
 import TextareaField from "@src/components/form/TextareaField.vue";
 import TextField from "@src/components/form/TextField.vue";
 import Icon from "@src/components/IconComponent.vue";
@@ -112,241 +111,146 @@ const submit = () => {
 
 <template>
     <form @submit.prevent="submit">
-        <div class="p-5 text-white pb-7 rounded-xl bg-text">
-            <div class="f-group">
-                <TextField
-                    id="feedbackVueName"
-                    v-model="form.name"
-                    :disabled="isSending"
-                    :error="errors.name"
-                    name="name"
-                    type="text"
-                    required
-                    is-float
-                    placeholder="Ім'я"
-                    class="f-field--light"
-                    label="Ім’я"
-                    @change="delete errors['name']"
-                >
-                    <template #fieldBefore>
-                        <div class="f-field__icon">
-                            <Icon name="star" />
-                        </div>
-                    </template>
-                </TextField>
-            </div>
-            <div class="f-group">
-                <TextField
-                    id="feedbackVueSurname"
-                    v-model="form.surname"
-                    :disabled="isSending"
-                    :error="errors.surname"
-                    name="surname"
-                    type="text"
-                    :required="true"
-                    placeholder="Прізвище"
-                    label="Прізвище"
-                    class="f-field--light"
-                    @change="delete errors['surname']"
-                />
-            </div>
-            <div class="f-group">
-                <TextField
-                    id="feedbackVueEmail"
-                    v-model="form.email"
-                    :disabled="isSending"
-                    :error="errors.email"
-                    name="email"
-                    type="email"
-                    :required="true"
-                    placeholder="Email"
-                    label="Email"
-                    class="f-field--light"
-                    @change="delete errors['email']"
-                />
-            </div>
-            <div class="f-group">
-                <PhoneField
-                    id="feedbackVuePhone"
-                    v-model="form.phone"
-                    :disabled="isSending"
-                    :error="errors.phone"
-                    name="phone"
-                    :required="true"
-                    placeholder="+380 00 000 00 00"
-                    label="Номер телефону"
-                    class="f-field--light"
-                    @change="delete errors['phone']"
-                />
-            </div>
-            <div class="f-group">
-                <TextareaField
-                    id="feedbackVueComment"
-                    v-model="form.comment"
-                    :disabled="isSending"
-                    :error="errors.comment"
-                    rows="3"
-                    name="comment"
-                    placeholder="Ваше запитання"
-                    label="Ваше запитання"
-                    class="f-field--light"
-                    @change="delete errors['comment']"
-                />
-            </div>
-            <div class="f-group">
-                <SelectField
-                    id="feedbackVueType1"
-                    v-model="form.type1"
-                    is-float
-                    :disabled="isSending"
-                    :error="errors.type1"
-                    name="type1"
-                    :can-clear="false"
-                    :can-deselect="false"
-                    class="f-field--light"
-                    :options="[
-                        { value: '1', label: 'Опція 1' },
-                        { value: '2', label: 'Опція 2' },
-                        { value: '3', label: 'Опція 3' },
-                        { value: '4', label: 'Опція 4' },
-                        { value: '5', label: 'Опція 5' },
-                        { value: '6', label: 'Опція 6' },
-                        { value: '7', label: 'Опція 7' },
-                        { value: '8', label: 'Опція 8' },
-                        { value: '9', label: 'Опція 9' },
-                    ]"
-                    :required="true"
-                    label="Тип запитання"
-                    placeholder="Тип запитання"
-                    @change="delete errors['type1']"
-                />
-            </div>
-            <div class="f-group">
-                <SelectField
-                    id="feedbackVueType2"
-                    v-model="form.type2"
-                    is-float
-                    :disabled="isSending"
-                    :error="errors.type2"
-                    name="type2"
-                    mode="multiple"
-                    :close-on-select="false"
-                    :options="[
-                        { value: '1', label: 'Опція 1' },
-                        { value: '2', label: 'Опція 2' },
-                        { value: '3', label: 'Опція 3' },
-                        { value: '4', label: 'Опція 4' },
-                        { value: '5', label: 'Опція 5' },
-                        { value: '6', label: 'Опція 6' },
-                        { value: '7', label: 'Опція 7' },
-                        { value: '8', label: 'Опція 8' },
-                        { value: '9', label: 'Опція 9' },
-                    ]"
-                    :required="true"
-                    label="Тип запитання 2"
-                    placeholder="Тип запитання 2"
-                    class="f-field--light"
-                    @change="delete errors['type2']"
-                />
-            </div>
-            <div class="f-group">
-                <SelectField
-                    id="feedbackVueType3"
-                    v-model="form.type3"
-                    is-float
-                    :disabled="isSending"
-                    :error="errors.type3"
-                    name="type3"
-                    mode="tags"
-                    :close-on-select="false"
-                    :options="[
-                        { value: '1', label: 'Опція 1' },
-                        { value: '2', label: 'Опція 2' },
-                        { value: '3', label: 'Опція 3' },
-                        { value: '4', label: 'Опція 4' },
-                        { value: '5', label: 'Опція 5' },
-                        { value: '6', label: 'Опція 6' },
-                        { value: '7', label: 'Опція 7' },
-                        { value: '8', label: 'Опція 8' },
-                        { value: '9', label: 'Опція 9' },
-                    ]"
-                    :required="true"
-                    label="Тип запитання 3"
-                    class="f-field--light"
-                    placeholder="Тип запитання 3"
-                    @change="delete errors['type3']"
-                />
-            </div>
-            <div class="f-group">
-                <DateField
-                    id="feedbackVueDate"
-                    v-model="form.date"
-                    :disabled="isSending"
-                    :error="errors.date"
-                    name="date"
-                    :required="true"
-                    label="Дата"
-                    class="f-field--light"
-                    is-float
-                    @change="delete errors['date']"
-                />
-            </div>
-            <div class="f-group">
-                <CounterField
-                    id="feedbackVueCounter"
-                    v-model="form.counter"
-                    :disabled="isSending"
-                    :error="errors.counter"
-                    label="Кількість"
-                    name="counter"
-                    class="f-field--light"
-                    @change="delete errors['counter']"
-                />
-            </div>
-            <div class="f-group">
-                <CheckField
-                    id="feedbackVueAgree1"
-                    v-model="form.agree"
-                    :disabled="isSending"
-                    :error="errors.agree"
-                    name="agree1"
-                    class="f-field--light"
-                    label="Я погоджуюсь з умовами обробки персональних даних"
-                    @change="delete errors['agree']"
-                />
-            </div>
-            <div class="f-group">
-                <CheckField
-                    id="feedbackVueAgree2"
-                    v-model="form.agree"
-                    checked
-                    :disabled="isSending"
-                    :error="errors.agree"
-                    type="radio"
-                    name="agree2"
-                    class="f-field--light"
-                    label="Я погоджуюсь з умовами обробки персональних даних"
-                    @change="delete errors['agree']"
-                />
+        <div class="f-group">
+            <TextField
+                id="feedbackVueName"
+                v-model="form.name"
+                :disabled="isSending"
+                :error="errors.name"
+                name="name"
+                type="text"
+                required
+                is-float
+                placeholder="Ім'я"
+                label="Ім’я"
+                @change="delete errors['name']"
+            >
+                <template #fieldBefore>
+                    <div class="f-icon">
+                        <Icon name="star" />
+                    </div>
+                </template>
+            </TextField>
+        </div>
+        <div class="f-group">
+            <TextField
+                id="feedbackVueSurname"
+                v-model="form.surname"
+                :disabled="isSending"
+                :error="errors.surname"
+                name="surname"
+                type="text"
+                :required="true"
+                placeholder="Прізвище"
+                label="Прізвище"
+                @change="delete errors['surname']"
+            />
+        </div>
+        <div class="f-group">
+            <TextField
+                id="feedbackVueEmail"
+                v-model="form.email"
+                :disabled="isSending"
+                :error="errors.email"
+                name="email"
+                type="email"
+                :required="true"
+                placeholder="Email"
+                label="Email"
+                @change="delete errors['email']"
+            />
+        </div>
+        <div class="f-group">
+            <PhoneField
+                id="feedbackVuePhone"
+                v-model="form.phone"
+                :disabled="isSending"
+                :error="errors.phone"
+                name="phone"
+                :required="true"
+                placeholder="+380 00 000 00 00"
+                label="Номер телефону"
+                @change="delete errors['phone']"
+            />
+        </div>
+        <div class="f-group">
+            <TextareaField
+                id="feedbackVueComment"
+                v-model="form.comment"
+                :disabled="isSending"
+                :error="errors.comment"
+                rows="3"
+                name="comment"
+                placeholder="Ваше запитання"
+                label="Ваше запитання"
+                @change="delete errors['comment']"
+            />
+        </div>
+        <div class="f-group">
+            <DateField
+                id="feedbackVueDate"
+                v-model="form.date"
+                :disabled="isSending"
+                :error="errors.date"
+                name="date"
+                :required="true"
+                label="Дата"
+                is-float
+                @change="delete errors['date']"
+            />
+        </div>
+        <div class="f-group">
+            <CounterField
+                id="feedbackVueCounter"
+                v-model="form.counter"
+                :disabled="isSending"
+                :error="errors.counter"
+                label="Кількість"
+                name="counter"
+                @change="delete errors['counter']"
+            />
+        </div>
+        <div class="f-group">
+            <CheckField
+                id="feedbackVueAgree1"
+                v-model="form.agree"
+                :disabled="isSending"
+                :error="errors.agree"
+                name="agree1"
+                label="Я погоджуюсь з умовами обробки персональних даних"
+                @change="delete errors['agree']"
+            />
+        </div>
+        <div class="f-group">
+            <CheckField
+                id="feedbackVueAgree2"
+                v-model="form.agree"
+                checked
+                :disabled="isSending"
+                :error="errors.agree"
+                type="radio"
+                name="agree2"
+                label="Я погоджуюсь з умовами обробки персональних даних"
+                @change="delete errors['agree']"
+            />
+        </div>
+
+        <Icon name="facebook" folder="socials" />
+
+        <div class="f-submit">
+            <div class="f-info mb-2">
+                Використовуючи сайт, ви&nbsp;приймаєте та&nbsp;погоджуєтеся
+                з&nbsp;цими
+                <a href="#">правилами та&nbsp;умовами використання</a> сайту
             </div>
 
-            <Icon name="facebook" folder="socials" />
-
-            <div class="f-submit">
-                <div class="f-info c-text">
-                    Використовуючи сайт, ви&nbsp;приймаєте та&nbsp;погоджуєтеся
-                    з&nbsp;цими
-                    <a href="#">правилами та&nbsp;умовами використання</a> сайту
-                </div>
-
-                <button
-                    type="submit"
-                    :disabled="isSending"
-                    class="f-btn f-btn--gray f-btn--block f-btn--rounded"
-                >
-                    Відправити
-                </button>
-            </div>
+            <button
+                type="submit"
+                :disabled="isSending"
+                class="f-btn f-btn--primary w-full rounded-full"
+            >
+                Відправити
+            </button>
         </div>
     </form>
 </template>

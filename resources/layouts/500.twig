@@ -2,13 +2,13 @@
 
 {% set pageTitle = '500' %}
 {% set pageId = '500' %}
-{% set bodyClass = 'c-error' %}
-{% set styleLinks = ['error'] %}
 {% set htmlClass = 'is-nospace' %}
+{# {% set bodyClass = 'c-error' %} #}
+{# {% set styleLinks = ['error'] %} #}
 {# {% set scriptLinks = ['accordion'] %} #}
 
 {% block content %}
-    <div class="l-container">
+    <div class="container">
         {% include "_components/error.twig" with {
             isLogo: true,
             code: 500,

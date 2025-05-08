@@ -1,19 +1,17 @@
 :root {
-    /* color-scheme: dark; */
+    color-scheme: light;
 }
 
 :focus-visible {
-    outline-color: theme(colors.gray.DEFAULT);
-}
-
-::selection {
-    /* background-color: theme(colors.primary.DEFAULT / 50%); */
+    outline-color: theme(colors.black);
+    outline-width: 2px;
+    outline-offset: 4px;
 }
 
 *,
 *::before,
 *::after {
-    scroll-margin: calc(var(--header-height) + theme(spacing.5));
+    scroll-margin: calc(theme(spacing.header) + theme(spacing.page));
 
     min-width: 0;
     min-height: 0;
@@ -36,7 +34,7 @@ body {
     flex-direction: column;
 
     min-height: 100vh;
-    padding-top: var(--header-height, 0);
+    padding-top: calc(theme(spacing.header) + theme(spacing.page));
     padding-right: var(--body-scroll-width);
 
     font-size: theme(fontSize.base);
@@ -65,7 +63,7 @@ button {
 
     @media (hover: hover) {
         &:hover {
-            color: var(--hover-color, theme(colors.primary.DEFAULT));
+            text-decoration: underline;
         }
     }
 }

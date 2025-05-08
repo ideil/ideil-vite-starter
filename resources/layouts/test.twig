@@ -16,20 +16,20 @@
 
 {% block content %}
     {# Хлібні крихти #}
-    <div class="l-container">
+    <div class="container">
         {% include "_components/breadcrumbs.twig" %}
     </div>
 
     {# Модальне вікно #}
-    <div class="text-center c-section l-container">
+    <div class="text-center c-section container">
         <h2 class="c-title c-title--h3 mb-7">Модальне вікно</h2>
 
-        <button class="f-btn f-btn--primary" data-modal-target="#testModal">Приклад</button>
-        <button class="f-btn f-btn--primary" data-modal-target="#successModal">Успішна відправка</button>
+        <button class="f-btn f-btn--primary" aria-haspopup="dialog" aria-expanded="false" aria-controls="testModal" data-modal-target="#testModal">Приклад</button>
+        <button class="f-btn f-btn--primary" aria-haspopup="dialog" aria-expanded="false" aria-controls="successModal" data-modal-target="#successModal">Успішна відправка</button>
     </div>
 
     {# Кнопки #}
-    <div class="text-center c-section l-container">
+    <div class="text-center c-section container">
         <h2 class="c-title c-title--h3 mb-7">Кнопки</h2>
 
         <div class="mb-3">
@@ -40,7 +40,7 @@
             <button class="f-btn">Приклад</button>
         </div>
         <div class="mb-3">
-            <button class="f-btn f-btn--primary f-btn--rounded" disabled>
+            <button class="f-btn f-btn--primary rounded-full" disabled>
                 {% include '_app/icon.twig' with { name: 'mark' } only %}
                 Приклад
             </button>
@@ -51,53 +51,36 @@
                 {% include '_app/icon.twig' with { name: 'mark' } only %}
                 Приклад
             </button>
-            <button class="f-btn f-btn--primary-outline f-btn--rounded">Приклад</button>
+            <button class="f-btn f-btn--primary-outline rounded-full">Приклад</button>
         </div>
         <div class="mb-3">
-            <button class="f-btn f-btn--gray f-btn--rounded" disabled>
-                {% include '_app/icon.twig' with { name: 'mark' } only %}
-                Приклад
-            </button>
-            <button class="f-btn f-btn--gray">Приклад</button>
-        </div>
-        <div class="mb-3">
-            <button class="f-btn f-btn--black-outline" disabled>
-                {% include '_app/icon.twig' with { name: 'mark' } only %}
-                Приклад
-            </button>
-            <button class="f-btn f-btn--black-outline f-btn--rounded">Приклад</button>
-        </div>
-        <div class="mb-3">
-            <button class="f-btn f-btn--square">
+            <button class="f-btn f-btn--icon">
                 {% include '_app/icon.twig' with { name: 'mark' } only %}
             </button>
-            <button class="f-btn f-btn--primary f-btn--square f-btn--rounded">
+            <button class="f-btn f-btn--primary f-btn--icon rounded-full">
                 {% include '_app/icon.twig' with { name: 'mark' } only %}
             </button>
-            <button class="f-btn f-btn--primary-outline f-btn--square">
-                {% include '_app/icon.twig' with { name: 'mark' } only %}
-            </button>
-            <button class="f-btn f-btn--gray f-btn--square f-btn--rounded">
-                {% include '_app/icon.twig' with { name: 'mark' } only %}
-            </button>
-            <button class="f-btn f-btn--black-outline f-btn--square">
+            <button class="f-btn f-btn--primary-outline f-btn--icon">
                 {% include '_app/icon.twig' with { name: 'mark' } only %}
             </button>
         </div>
     </div>
 
     {# Тултіп #}
-    <div class="text-center c-section l-container">
+    <div class="text-center c-section container">
         <h2 class="c-title c-title--h3 mb-7">Тултіп</h2>
 
         <div class="mb-3">
-            <button class="f-btn f-btn--primary" data-modal-target="#testModal" data-tooltip="Текст для прикладу">Приклад</button>
+            <button class="f-btn f-btn--primary" aria-controls="testModal" data-tooltip="Текст для прикладу">Hover Focus (default)</button>
         </div>
         <div class="mb-3">
-            <button class="f-btn f-btn--primary" data-modal-target="#testModal" data-tooltip-target="#testTooltip" data-tooltip-placement="bottom">Приклад ↓</button>
+            <button class="f-btn f-btn--primary" aria-controls="testModal" data-tooltip-target="#testTooltip" data-tooltip-placement="bottom">Hover Focus (↓)</button>
         </div>
         <div class="mb-3">
-            <button class="f-btn f-btn--primary" data-tooltip-type="clickable" data-tooltip-target="#testTooltip" data-tooltip-placement="bottom">Клікабельний</button>
+            <button class="f-btn f-btn--primary" aria-haspopup="dialog" aria-expanded="false" aria-controls="testModal" data-tooltip-type="hover clickable" data-tooltip-target="#testTooltip">Hover Clickable</button>
+        </div>
+        <div class="mb-3">
+            <button class="f-btn f-btn--primary" aria-haspopup="dialog" aria-expanded="false" aria-controls="testModal" data-tooltip-type="clickable" data-tooltip-target="#testTooltip" data-tooltip-placement="bottom">Clickable</button>
         </div>
     </div>
 
@@ -111,7 +94,7 @@
     {% endfor %}
 
     {# Форма зворотнього зв'язку #}
-    <div class="max-w-sm c-section l-container">
+    <div class="max-w-lg c-section container">
         <h2 class="c-title c-title--h3 mb-7">Форма зворотнього зв'язку</h2>
 
         <form class="">
@@ -119,12 +102,11 @@
                 {% embed '_form/field.twig' with {
                     label: 'Ім\'я (Float)',
                     placeholder: 'Ім\'я',
-                    class: 'f-field--float',
                     isFloat: true,
                     name: 'name',
                 } %}
                     {% block fieldBefore %}
-                        <div class="f-field__icon">
+                        <div class="f-icon">
                             {% include '_app/icon.twig' with {
                                 name: 'star'
                             } only %}
@@ -158,7 +140,7 @@
                     attrs: 'required'
                 } %}
                     {% block fieldBefore %}
-                        <div class="f-field__icon">
+                        <div class="f-icon">
                             {% include '_app/icon.twig' with {
                                 name: 'star'
                             } only %}
@@ -192,7 +174,6 @@
                     error: 'Помилка',
                     icon: 'fire',
                     count: 3,
-                    class: 'f-field--light',
                     theme: 'secondary',
                 } %}
             </div>
@@ -204,182 +185,105 @@
             </div>
 
             <div class="f-submit">
-                <div class="f-info">Використовуючи сайт, ви&nbsp;приймаєте та&nbsp;погоджуєтеся з&nbsp;цими <a href="#">правилами та&nbsp;умовами використання</a> сайту</div>
+                <div class="f-info mb-2">Використовуючи сайт, ви&nbsp;приймаєте та&nbsp;погоджуєтеся з&nbsp;цими <a href="#">правилами та&nbsp;умовами використання</a> сайту</div>
 
-                <button type="submit" class="f-btn f-btn--primary f-btn--block f-btn--rounded">Відправити</button>
+                <button type="submit" class="f-btn f-btn--primary w-full rounded-full">Відправити</button>
             </div>
         </form>
     </div>
-    <div class="max-w-sm c-section l-container">
+    <div class="max-w-lg c-section container">
         <h2 class="c-title c-title--h3 mb-7">Форма зворотнього зв'язку (VueJS)</h2>
 
         <div class="vue-feedback-form">
-            <form class="p-5 text-white pb-7 rounded-xl bg-text">
-                <div class="f-group">
-                    {% include '_form/field.twig' with {
-                        label: 'Ім\'я',
-                        placeholder: 'Ім\'я',
-                        error: 'Помилка',
-                        class: 'f-field--light',
-                        name: 'name',
-                    } %}
-                </div>
-                <div class="f-group">
-                    {% include '_form/field.twig' with {
-                        label: 'Прізвище',
-                        placeholder: 'Прізвище',
-                        class: 'f-field--light',
-                        name: 'surname',
-                    } %}
-                </div>
-                <div class="f-group">
-                    {% include '_form/field.twig' with {
-                        label: 'Email',
-                        placeholder: 'Email',
-                        class: 'f-field--light',
-                        name: 'email',
-                        type: 'email',
-                        attrs: 'required'
-                    } %}
-                </div>
-                <div class="f-group">
-                    {% include '_form/field.twig' with {
-                        label: 'Номер телефону',
-                        placeholder: '+380 00 000 00 00',
-                        name: 'phone',
-                        class: 'f-field--light',
-                        type: 'tel',
-                        attrs: 'required'
-                    } %}
-                </div>
-                <div class="f-group">
-                    {% include '_form/textarea.twig' with {
-                        label: 'Ваше запитання',
-                        placeholder: 'Ваше запитання',
-                        name: 'comment',
-                        class: 'f-field--light',
-                        attrs: 'rows="3"'
-                    } %}
-                </div>
-                <div class="f-group">
-                    {% include '_form/select.twig' with {
-                        label: 'Тип запитання',
-                        placeholder: 'Тип запитання',
-                        name: 'type',
-                        class: 'f-field--light',
-                    } %}
-                </div>
-                <div class="f-group">
-                    {% include '_form/select.twig' with {
-                        label: 'Тип запитання 2',
-                        placeholder: 'Тип запитання 2',
-                        name: 'type2',
-                        class: 'f-field--light',
-                    } %}
-                </div>
-                <div class="f-group">
-                    {% include '_form/select.twig' with {
-                        label: 'Тип запитання 3',
-                        placeholder: 'Тип запитання 3',
-                        name: 'type3',
-                        class: 'f-field--light',
-                    } %}
-                </div>
-                <div class="f-group">
-                    {% include '_form/counter.twig' with {
-                        label: 'Кількість',
-                        name: 'count',
-                        class: 'f-field--light',
-                        error: 'Помилка',
-                    } %}
-                </div>
-                <div class="f-group">
-                    {% include '_form/check.twig' with {
-                        label: 'Я погоджуюсь з умовами обробки персональних даних',
-                        type: 'checkbox',
-                        class: 'f-field--light',
-                        name: 'agree1',
-                    } %}
-                </div>
-                <div class="f-group">
-                    {% include '_form/check.twig' with {
-                        label: 'Я погоджуюсь з умовами обробки персональних даних',
-                        type: 'radio',
-                        class: 'f-field--light',
-                        name: 'agree2',
-                    } %}
-                </div>
+            <div class="f-group">
+                {% embed '_form/field.twig' with {
+                    label: 'Ім\'я',
+                    placeholder: 'Ім\'я',
+                    isFloat: true,
+                    name: 'name',
+                } %}
+                    {% block fieldBefore %}
+                        <div class="f-icon">
+                            {% include '_app/icon.twig' with {
+                                name: 'star'
+                            } only %}
+                        </div>
+                    {% endblock %}
+                {% endembed %}
+            </div>
+            <div class="f-group">
+                {% include '_form/field.twig' with {
+                    label: 'Прізвище',
+                    placeholder: 'Прізвище',
+                    name: 'surname',
+                } %}
+            </div>
+            <div class="f-group">
+                {% include '_form/field.twig' with {
+                    label: 'Email',
+                    placeholder: 'Email',
+                    error: 'Без електронної пошти ми не зможемо виконати реєстрацію',
+                    name: 'email',
+                    type: 'email',
+                    attrs: 'required'
+                } %}
+            </div>
+            <div class="f-group">
+                {% include '_form/field.twig' with {
+                    label: 'Номер телефону',
+                    placeholder: '+380 00 000 00 00',
+                    name: 'phone',
+                    type: 'tel',
+                    attrs: 'required'
+                } %}
+            </div>
+            <div class="f-group">
+                {% include '_form/textarea.twig' with {
+                    label: 'Ваше запитання',
+                    placeholder: 'Ваше запитання',
+                    name: 'comment',
+                    attrs: 'rows="3"'
+                } %}
+            </div>
+            <div class="f-group">
+                {% include '_form/counter.twig' with {
+                    label: 'Кількість',
+                    name: 'count',
+                    error: 'Помилка',
+                } %}
+            </div>
+            <div class="f-group">
+                {% include '_form/check.twig' with {
+                    label: 'Я погоджуюсь з умовами обробки персональних даних',
+                    type: 'checkbox',
+                    name: 'agree1',
+                } %}
+            </div>
+            <div class="f-group">
+                {% include '_form/check.twig' with {
+                    label: 'Я погоджуюсь з умовами обробки персональних даних',
+                    type: 'radio',
+                    name: 'agree2',
+                } %}
+            </div>
 
-                <div class="f-submit">
-                    <div class="f-info c-text">Використовуючи сайт, ви&nbsp;приймаєте та&nbsp;погоджуєтеся з&nbsp;цими <a href="#">правилами та&nbsp;умовами використання</a> сайту</div>
+            <div class="f-submit">
+                <div class="f-info mb-2">Використовуючи сайт, ви&nbsp;приймаєте та&nbsp;погоджуєтеся з&nbsp;цими <a href="#">правилами та&nbsp;умовами використання</a> сайту</div>
 
-                    <button type="submit" class="f-btn f-btn--primary f-btn--block f-btn--rounded" disabled>Відправити</button>
-                </div>
-            </form>
+                <button type="submit" class="f-btn f-btn--primary w-full rounded-full" disabled>Відправити</button>
+            </div>
         </div>
-    </div>
-
-    {# Таби #}
-    <div class="text-center c-section l-container">
-        <h2 class="c-title c-title--h3 mb-7">Таби</h2>
-
-        <div data-tabs>
-            {% set tabs = [
-                {
-                    title: 'Таб 1',
-                    id: 'tabs1',
-                },
-                {
-                    title: 'Таб 2',
-                    id: 'tabs2',
-                },
-                {
-                    title: 'Таб 3',
-                    count: 10,
-                    id: 'tabs3',
-                },
-            ] %}
-
-            {% include "_components/tabs.twig" with { links: tabs, class: 'mb-5' } %}
-
-            {% for item in tabs %}
-                <div class="c-tabs__panel {{ loop.first ? 'is-shown' }}" id="{{ item.id }}">
-                    {{ item.title }}
-                </div>
-            {% endfor %}
-        </div>
-    </div>
-
-    {# Лейбли #}
-    <div class="text-center c-section l-container">
-        <h2 class="c-title c-title--h3 mb-7">Лейбли</h2>
-
-        {% for text in [ 'Супи', 'Кето' ] %}
-            {% include '_components/label.twig' with {
-                text: text,
-                link: true,
-                close: true
-            } only %}
-        {% endfor %}
-        {% for text in [ 'Супи', 'Кето' ] %}
-            {% include '_components/label.twig' with {
-                text: text,
-                class: 'c-label--primary',
-                link: true,
-                close: true
-            } only %}
-        {% endfor %}
     </div>
 
     {# Акордеон #}
-    <div class="c-section l-container">
+    <div class="c-section container">
         <h2 class="c-title c-title--h3 mb-7">Акордеон</h2>
 
         {% include "_components/accordion.twig" %}
     </div>
 
     {# Карта #}
-    <div class="c-section l-container">
+    <div class="c-section container">
         <h2 class="c-title c-title--h3 mb-7">Карта</h2>
 
         {% include "_components/map.twig" %}

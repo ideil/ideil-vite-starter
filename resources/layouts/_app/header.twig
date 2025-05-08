@@ -1,15 +1,13 @@
 <header class="c-header" data-header>
-    <nav class="c-header__inner l-container l-container--hd">
+    <nav class="c-header__inner container max-w-hd">
         {% include "_components/logo.twig" with { class: 'c-header__logo' } %}
 
-        <div class="c-header__hamburger">
-            <button class="c-header__hamburger-btn" data-menu-toggle>
-                <i class="c-header__hamburger-icon">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </i>
-            </button>
-        </div>
+        <button class="f-btn f-btn--icon c-header__hamburger" aria-haspopup="dialog" aria-expanded="false" aria-controls="mainMenu" data-modal-target="#mainMenu">
+            <i class="c-header__hamburger-icon">
+                <div></div>
+                <div></div>
+                <div></div>
+            </i>
+        </button>
     </nav>
 </header>

@@ -1,60 +1,28 @@
 .c-tooltip {
-    --tooltip-zindex: theme(zIndex.tooltip);
-    --tooltip-max-width: theme(spacing.50);
-    --tooltip-py: theme(spacing.2);
-    --tooltip-px: theme(spacing.3);
-    --tooltip-font-size: theme(fontSize.xs);
-    --tooltip-font-weight: theme(fontWeight.normal);
-    --tooltip-line-height: theme(lineHeight.tight);
-    --tooltip-color: theme(colors.text);
-    --tooltip-box-shadow:
-        0 0 15px 0 theme(colors.black / 10%),
-        0 0 6px 0 theme(colors.black / 10%);
-    --tooltip-background: theme(colors.white);
-    --tooltip-border-radius: theme(borderRadius.md);
-    --tooltip-arrow-size: theme(spacing.2);
-    --tooltip-border-width: 1px;
-    --tooltip-border-style: solid;
-    --tooltip-border-color: theme(colors.black);
-
-    will-change: transform, opacity, visibility;
-
     position: fixed;
-    z-index: var(--tooltip-zindex);
+    z-index: theme(zIndex.tooltip);
     top: 0;
     left: 0;
 
+    display: none;
+
     width: max-content;
-    max-width: var(--tooltip-max-width);
     margin: 0;
-    padding: var(--tooltip-py) var(--tooltip-px);
-    border-color: var(--tooltip-border-color);
-    border-style: var(--tooltip-border-style);
-    border-width: var(--tooltip-border-width);
-    border-radius: var(--tooltip-border-radius);
+    padding: theme(spacing.5);
+    border: 2px solid theme(colors.black);
 
-    font-size: var(--tooltip-font-size);
-    line-height: var(--tooltip-line-height);
-    color: var(--tooltip-color);
+    font-size: theme(fontSize.sm);
+    color: theme(colors.text);
 
-    visibility: hidden;
-    opacity: 0;
-    background: var(--tooltip-background);
-    box-shadow: var(--tooltip-box-shadow);
-
-    transition-property: opacity, visibility;
-
-    &[data-show] {
-        visibility: visible;
-        opacity: 1;
-    }
+    opacity: var(--tooltip-transition-progress);
+    background: theme(colors.body);
 
     &__arrow {
         position: absolute;
         z-index: 1;
 
-        width: var(--tooltip-arrow-size);
-        height: var(--tooltip-arrow-size);
+        width: theme(spacing[2.5]);
+        height: theme(spacing[2.5]);
         border: inherit;
         border-right-width: 0;
         border-bottom-width: 0;

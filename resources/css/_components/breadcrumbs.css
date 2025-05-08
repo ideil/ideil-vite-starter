@@ -1,15 +1,6 @@
 .c-breadcrumbs {
-    --breadcrumbs-fz: theme(fontSize.xs);
-    --breadcrumbs-pt: theme(spacing.5);
-    --breadcrumbs-mb: var(--page-space);
-
     position: relative;
-
-    margin-bottom: var(--breadcrumbs-mb);
-    padding-top: var(--breadcrumbs-pt);
-
-    font-size: var(--breadcrumbs-fz);
-    line-height: 1;
+    margin-bottom: theme(spacing.page);
 
     &__list {
         display: flex;

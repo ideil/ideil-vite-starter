@@ -1,12 +1,8 @@
 .f-counter {
-    --f-button-height: var(--f-field-height);
-
     display: inline-flex;
     align-items: center;
-
-    height: var(--f-field-height);
-    border: var(--f-field-border-width) solid var(--f-field-border-color);
-    border-radius: var(--f-field-border-radius);
+    height: theme(spacing.field);
+    border: 1px solid theme(colors.field);
 
     &__field {
         max-width: theme(spacing.12);

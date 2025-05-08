@@ -1,25 +1,22 @@
-<footer class="c-footer">
-    <div class="l-container c-footer__inner">
-        <div class="c-footer__top">
-            {% include "_components/logo.twig" with {
-                class: 'c-footer__logo',
-            } %}
+<footer class="mt-20 border-t border-t-gray-200 py-10">
+    <div class="container grid gap-10 md:gap-20 md:grid-cols-[auto_20rem]">
+        {% include "_components/logo.twig" with {
+            class: 'max-w-50',
+        } %}
 
-            <dl class="c-footer__contacts">
-                <dt class="sr-only">Email</dt>
-                <dd class="c-footer__contacts-lg">
-                    <a href="mailto:welcome@ideil.com">welcome@ideil.com</a>
-                </dd>
-                <dt class="sr-only">Телефон</dt>
-                <dd>
-                    <a href="tel:+380 332 28 50 43">+380 332 28 50 43</a>
-                </dd>
-            </dl>
-        </div>
+        <dl class="">
+            <dt class="sr-only">Email</dt>
+            <dd class="">
+                <a href="mailto:welcome@ideil.com">welcome@ideil.com</a>
+            </dd>
+            <dt class="sr-only">Телефон</dt>
+            <dd>
+                <a href="tel:+380 332 28 50 43">+380 332 28 50 43</a>
+            </dd>
+        </dl>
 
-        <div class="c-footer__bottom">
-            <div class="c-footer__copy">© {{ "now"|date("Y") }} <span class="whitespace-nowrap md:sr-only lg:not-sr-only">Всі права захищені</span></div>
-            {% include "_components/ideil.twig" %}
-        </div>
+        <div class="">© {{ "now"|date("Y") }} <span>Всі права захищені</span></div>
+
+        {% include "_components/ideil.twig" %}
     </div>
 </footer>

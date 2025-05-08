@@ -1,33 +1,33 @@
 <nav class="c-pagination {{ class }}" aria-label="navigation">
     <ul class="c-pagination__list">
         <li class="c-pagination__item is-prev">
-            <a class="f-btn f-btn--square f-btn--gray is-disabled" href="#" tabindex="-1" aria-disabled="true">
+            <a class="f-btn f-btn--icon f-btn--primary is-disabled" href="#" tabindex="-1" aria-disabled="true">
                 <span class="sr-only">Назад</span>
 
-                {% include "_app/icon.twig" with { name: 'arrow', class: 'i-icon--left' } only %}
+                {% include "_app/icon.twig" with { name: 'arrow', class: 'rotate-180' } only %}
             </a>
         </li>
 
         <li class="c-pagination__item" aria-current="page">
-            <a class="f-btn f-btn--square f-btn--gray is-active" href="#">1 <span class="sr-only">(current)</span></a>
+            <a class="f-btn f-btn--icon f-btn--primary" href="#">1 <span class="sr-only">(current)</span></a>
         </li>
 
         {% for page in 2..5 %}
             <li class="c-pagination__item">
-                <a class="f-btn f-btn--square f-btn--gray" href="#">{{ page }}</a>
+                <a class="f-btn f-btn--icon" href="#">{{ page }}</a>
             </li>
         {% endfor %}
 
         <li class="c-pagination__item">
-            <span class="f-btn f-btn--square f-btn--gray is-disabled">...</span>
+            <span class="f-btn f-btn--icon is-disabled">...</span>
         </li>
 
         <li class="c-pagination__item ">
-            <a class="f-btn f-btn--square f-btn--gray" href="#">15</a>
+            <a class="f-btn f-btn--icon" href="#">15</a>
         </li>
 
         <li class="c-pagination__item is-next">
-            <a class="f-btn f-btn--square f-btn--gray" href="#">
+            <a class="f-btn f-btn--icon f-btn--primary" href="#">
                 <span class="sr-only">Далі</span>
 
                 {% include "_app/icon.twig" with { name: 'arrow' } only %}

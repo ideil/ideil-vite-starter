@@ -1,0 +1,35 @@
+<div
+    id="mainMenu"
+    role="dialog"
+    class="c-modal z-menu px-0 before:bg-white"
+    tabindex="-1"
+    aria-label="Меню сайту"
+>
+    <div class="c-modal__dialog max-w-full m-0">
+        <div class="c-modal__content min-h-screen pt-header pb-10">
+            <div class="container grow shrink-0 flex gap-10 flex-col pt-page items-center text-center text-xl">
+                <ul class="my-auto font-bold grid gap-5">
+                    {% for item in data.nav %}
+                        <li>
+                            <a href="{{item.link}}">{{item.title}}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+                <ul class="inline-flex gap-5 mt-auto text-2xl">
+                    {% for item in data.socials %}
+                        <li>
+                            <a href="{{item.link}}">
+                                {% include "_app/icon.twig" with { name: item.id } only %}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <button type="button" class="f-btn f-btn--icon c-modal__close" data-modal-dismiss aria-label="Закрити">
+                {% include "_app/icon.twig" with { name: 'close' } only %}
+            </button>
+        </div>
+    </div>
+</div>
