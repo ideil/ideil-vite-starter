@@ -1,5 +1,5 @@
-declare module '*.vue';
+declare module "*.vue";
 
 interface Window {
-    App: any
+    App: any;
 }
