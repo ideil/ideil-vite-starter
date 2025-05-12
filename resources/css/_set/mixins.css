@@ -5,10 +5,10 @@
     }
 
     &::-webkit-scrollbar-track {
-        background-color: theme(colors.gray.200);
+        background-color: theme(color.gray.light);
     }
 
     &::-webkit-scrollbar-thumb {
-        background-color: theme(colors.primary.DEFAULT);
+        background-color: theme(color.primary.DEFAULT);
     }
 }

@@ -9,13 +9,13 @@
     width: max-content;
     margin: 0;
     padding: theme(spacing.5);
-    border: 2px solid theme(colors.black);
+    border: 2px solid theme(color.black);
 
     font-size: theme(fontSize.sm);
-    color: theme(colors.text);
+    color: theme(color.text);
 
     opacity: var(--tooltip-transition-progress);
-    background: theme(colors.body);
+    background: theme(color.body);
 
     &__arrow {
         position: absolute;

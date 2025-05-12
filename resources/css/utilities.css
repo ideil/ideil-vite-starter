@@ -1,9 +1,0 @@
-/* Set */
-@import url('_set/variables.css');
-@import url('_set/mixins.css');
-
-/* Tailwind */
-@import url('tailwindcss/utilities');
-
-/* Utilites */
-@import url('_utilities/base.css');

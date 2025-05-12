@@ -22,9 +22,7 @@
     padding: 0 var(--modal-offset);
 
     opacity: var(--modal-transition-progress);
-    backdrop-filter: blur(
-        calc(var(--modal-transition-progress) * var(--blur-value))
-    );
+    backdrop-filter: blur(calc(var(--modal-transition-progress) * var(--blur)));
     outline: 0;
 
     &::before {
@@ -35,7 +33,7 @@
 
         display: block;
 
-        background-color: var(--blur-bg);
+        background-color: var(--color-backdrop);
     }
 
     &__dialog {
@@ -67,9 +65,9 @@
         width: 100%;
         min-height: 20rem;
 
-        color: theme(colors.text);
+        color: theme(color.text);
 
-        background-color: theme(colors.white);
+        background-color: theme(color.white);
         background-clip: padding-box;
         outline: 0;
     }

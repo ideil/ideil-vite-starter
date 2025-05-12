@@ -57,7 +57,7 @@
             position: relative;
             width: 100%;
             height: theme(spacing.1);
-            background-color: theme(colors.gray.200);
+            background-color: theme(color.gray.light);
 
             &::before {
                 content: '';
@@ -72,17 +72,17 @@
                 height: 100%;
 
                 opacity: 0;
-                background-color: theme(colors.primary.DEFAULT);
+                background-color: theme(color.primary.DEFAULT);
 
                 transition-property: opacity;
             }
 
             &:hover {
-                background-color: theme(colors.primary.hover);
+                background-color: theme(color.primary.hover);
             }
 
             &.is-active {
-                background-color: theme(colors.primary.hover);
+                background-color: theme(color.primary.hover);
 
                 &::before {
                     opacity: 1;

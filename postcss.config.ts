@@ -5,10 +5,7 @@ export default {
         "postcss-advanced-variables": {
             unresolved: "ignore",
         },
-        "tailwindcss/nesting": {},
-        tailwindcss: {},
-        autoprefixer: {
-            remove: false,
-        },
+        "@tailwindcss/nesting": {},
+        "@tailwindcss/postcss": {},
     },
 } as Config;

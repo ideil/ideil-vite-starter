@@ -1,35 +1,35 @@
 @charset "UTF-8";
 
-/* Set */
-@import url('_set/variables.css');
-@import url('_set/mixins.css');
-
 /* Tailwind */
-@import url('tailwindcss/base');
-@import url('tailwindcss/components');
+@import '_tailwind/base.css';
+@import '_tailwind/theme.css';
+@import '_tailwind/utilities.css';
+
+/* Set */
+@import '_set/variables.css' layer(base);
+@import '_set/mixins.css' layer(base);
 
 /* Variables */
-@import url('_variables/base.css');
+@import '_variables/base.css' layer(base);
 
 /* Base */
-@import url('_app/fonts.css');
-@import url('_app/reset.css');
-@import url('_app/measure.css');
-@import url('_app/typography.css');
-@import url('_app/icons.css');
-
-/* Components */
-@import url('_components/ideil.css');
-@import url('_components/logo.css');
-@import url('_components/section.css');
-@import url('_components/modal.css');
-@import url('_components/tooltip.css');
+@import '_app/fonts.css' layer(base);
+@import '_app/reset.css' layer(base);
+@import '_app/icons.css' layer(base);
 
 /* Form */
-@import url('_form/buttons.css');
-
-/* Parts */
-@import url('_app/header.css');
+@import '_form/buttons.css' layer(components);
 
 /* Components */
-@import url('_components/cookies.css');
+@import '_components/measure.css' layer(components);
+@import '_components/typography.css' layer(components);
+@import '_components/ideil.css' layer(components);
+@import '_components/logo.css' layer(components);
+@import '_components/section.css' layer(components);
+@import '_components/modal.css' layer(components);
+@import '_components/tooltip.css' layer(components);
+@import '_components/header.css' layer(components);
+@import '_components/cookies.css' layer(components);
+
+/* Utilities */
+@import '_utilities/base.css' layer(utilities);

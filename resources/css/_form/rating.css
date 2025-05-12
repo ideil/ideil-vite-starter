@@ -13,7 +13,7 @@
 
     &__label {
         cursor: pointer;
-        color: theme(colors.placeholder);
+        color: theme(color.placeholder);
         transition-property: color;
 
         .f-rating__field:checked ~ & {

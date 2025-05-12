@@ -2,7 +2,7 @@
     display: inline-flex;
     align-items: center;
     height: theme(spacing.field);
-    border: 1px solid theme(colors.field);
+    border: 1px solid theme(color.field);
 
     &__field {
         max-width: theme(spacing.12);

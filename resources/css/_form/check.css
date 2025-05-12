@@ -10,7 +10,7 @@
 
         width: theme(spacing.5);
         height: theme(spacing.5);
-        border: 1px solid theme(colors.field);
+        border: 1px solid theme(color.field);
 
         appearance: none;
 

@@ -2,7 +2,7 @@
     width: 100%;
     min-height: theme(spacing.field);
     padding: theme(spacing[2]) theme(spacing.4);
-    border: 1px solid theme(colors.field);
+    border: 1px solid theme(color.field);
 
     font-size: theme(fontSize.base);
     line-height: 1.4;
@@ -18,14 +18,14 @@
 
     &::placeholder,
     &.f-field--placeholder {
-        color: theme(colors.placeholder);
+        color: theme(color.placeholder);
     }
 
     &:-webkit-autofill {
         background-color: transparent;
-        box-shadow: 0 0 0 60px theme(colors.gray.100) inset;
+        box-shadow: 0 0 0 60px theme(color.gray.100) inset;
 
-        -webkit-text-fill-color: theme(colors.text);
+        -webkit-text-fill-color: theme(color.text);
     }
 
     &:has(~ .f-icon) {
@@ -46,7 +46,7 @@
     }
 
     &--error {
-        border-color: theme(colors.red.500);
+        border-color: theme(color.red.500);
     }
 
     &--float {
@@ -61,7 +61,7 @@
         &:focus,
         &:not(:placeholder-shown, :focus) {
             &::placeholder {
-                color: theme(colors.placeholder);
+                color: theme(color.placeholder);
             }
         }
     }
@@ -105,7 +105,7 @@
         height: theme(spacing.field);
         margin: 0;
 
-        color: theme(colors.placeholder);
+        color: theme(color.placeholder);
         text-overflow: ellipsis;
         white-space: nowrap;
 
@@ -144,7 +144,7 @@
     }
 
     &--error {
-        color: theme(colors.error);
+        color: theme(color.error);
     }
 }
 

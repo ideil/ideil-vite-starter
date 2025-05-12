@@ -1,0 +1,8 @@
+@utility container {
+    margin-inline: auto;
+    padding-inline: var(--spacing-box);
+
+    @variant 4xl {
+        max-width: var(--breakpoint-3xl);
+    }
+}
