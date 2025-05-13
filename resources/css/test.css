@@ -1,16 +1,16 @@
-@import 'app.css' reference;
+@import url('app.css') reference;
 
 /* Form */
-@import '_form/base.css' layer(components);
-@import '_form/check.css' layer(components);
-@import '_form/counter.css' layer(components);
-@import '_form/rating.css' layer(components);
-@import '_form/datepicker.css' layer(components);
+@import url('_form/base.css') layer(components);
+@import url('_form/check.css') layer(components);
+@import url('_form/counter.css') layer(components);
+@import url('_form/rating.css') layer(components);
+@import url('_form/datepicker.css') layer(components);
 
 /* Components */
-@import '_components/badge.css' layer(components);
-@import '_components/breadcrumbs.css' layer(components);
-@import '_components/carousel.css' layer(components);
-@import '_components/collapse.css' layer(components);
-@import '_components/pagination.css' layer(components);
-@import '_components/gallery.css' layer(components);
+@import url('_components/badge.css') layer(components);
+@import url('_components/breadcrumbs.css') layer(components);
+@import url('_components/carousel.css') layer(components);
+@import url('_components/collapse.css') layer(components);
+@import url('_components/pagination.css') layer(components);
+@import url('_components/gallery.css') layer(components);

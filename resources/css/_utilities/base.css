@@ -1,19 +1,7 @@
 /* Scroll */
 .u-scroll {
+    @apply custom-scrollbar;
     scroll-behavior: smooth;
-
-    &::-webkit-scrollbar {
-        width: --spacing(1);
-        height: --spacing(1);
-    }
-
-    &::-webkit-scrollbar-track {
-        background-color: var(--color-gray-light);
-    }
-
-    &::-webkit-scrollbar-thumb {
-        background-color: var(--color-primary);
-    }
 
     &--horizontal {
         overflow-x: auto;

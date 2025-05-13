@@ -1,0 +1,20 @@
+@import url('app.css') reference;
+
+$isAmp: 1;
+
+@if $isAmp == 1 {
+    /* Form */
+    @import url('_form/base.css') layer(components);
+    @import url('_form/check.css') layer(components);
+    @import url('_form/counter.css') layer(components);
+    @import url('_form/rating.css') layer(components);
+    @import url('_form/datepicker.css') layer(components);
+
+    /* Components */
+    @import url('_components/badge.css') layer(components);
+    @import url('_components/breadcrumbs.css') layer(components);
+    @import url('_components/carousel.css') layer(components);
+    @import url('_components/collapse.css') layer(components);
+    @import url('_components/pagination.css') layer(components);
+    @import url('_components/gallery.css') layer(components);
+}
