@@ -1,16 +1,16 @@
 .f-btn {
     display: inline-flex;
     flex-shrink: 0;
-    gap: theme(spacing.2);
+    gap: --spacing(2);
     align-items: center;
     justify-content: center;
 
     max-width: 100%;
-    height: theme(spacing.button);
-    padding: 0 theme(spacing.4);
+    height: var(--spacing-button);
+    padding: 0 --spacing(4);
     border: 2px solid transparent;
 
-    font-size: theme(fontSize.base);
+    font-size: var(--text-base);
     color: currentcolor;
     text-decoration: none;
     vertical-align: middle;
@@ -27,42 +27,42 @@
     @media (hover: hover) {
         a&:hover,
         button&:hover {
-            color: theme(color.primary.DEFAULT);
+            color: var(--color-primary);
             text-decoration: none;
         }
     }
 
     /* stylelint-disable-next-line order/order */
     &--primary {
-        color: theme(color.white);
-        background-color: theme(color.primary.DEFAULT);
+        color: var(--color-white);
+        background-color: var(--color-primary);
 
         @media (hover: hover) {
             a&:hover,
             button&:hover {
-                color: theme(color.white);
-                background-color: theme(color.primary.hover);
+                color: var(--color-white);
+                background-color: var(--color-primary-hover);
             }
         }
     }
 
     &--primary-outline {
-        border-color: theme(color.primary.DEFAULT);
+        border-color: var(--color-primary);
 
         @media (hover: hover) {
             a&:hover,
             button&:hover {
-                border-color: theme(color.primary.hover);
-                color: theme(color.white);
-                background-color: theme(color.primary.hover);
+                border-color: var(--color-primary-hover);
+                color: var(--color-white);
+                background-color: var(--color-primary-hover);
             }
         }
     }
 
     &--icon {
-        min-width: theme(spacing.button);
-        padding-right: theme(spacing.2);
-        padding-left: theme(spacing.2);
+        min-width: var(--spacing-button);
+        padding-right: --spacing(2);
+        padding-left: --spacing(2);
     }
 
     &:disabled,

@@ -1,23 +1,23 @@
 .c-cookies {
     position: fixed;
     z-index: 9999;
-    bottom: theme(spacing.box);
-    left: theme(spacing.box);
+    bottom: var(--spacing-box);
+    left: var(--spacing-box);
     transform: translateY(10px);
 
     display: flex;
     flex-direction: column;
-    gap: theme(spacing.3) theme(spacing.6);
+    gap: --spacing(3) --spacing(6);
 
-    width: calc(100% - theme(spacing.box) * 2);
+    width: calc(100% - var(--spacing-box) * 2);
     max-width: 37rem;
-    padding: theme(spacing.box);
+    padding: var(--spacing-box);
 
-    color: theme(color.white);
+    color: var(--color-white);
 
     visibility: hidden;
     opacity: 0;
-    background: theme(color.primary.DEFAULT);
+    background: var(--color-primary);
 
     transition-property: opacity, transform, visibility;
 
@@ -32,11 +32,11 @@
     }
 
     &__icon {
-        font-size: theme(fontSize.3xl);
+        font-size: var(--text-3xl);
     }
 }
 
-@screen sm {
+@variant sm {
     .c-cookies {
         flex-direction: row;
         align-items: center;

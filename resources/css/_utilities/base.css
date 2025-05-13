@@ -1,21 +1,32 @@
 /* Scroll */
 .u-scroll {
-    @include scrollbar-sm;
-
     scroll-behavior: smooth;
+
+    &::-webkit-scrollbar {
+        width: --spacing(1);
+        height: --spacing(1);
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: var(--color-gray-light);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--color-primary);
+    }
 
     &--horizontal {
         overflow-x: auto;
         overflow-y: hidden;
 
-        margin-inline: calc(theme(spacing.box) * -1);
-        padding-inline: theme(spacing.box);
+        margin-inline: calc(var(--spacing-box) * -1);
+        padding-inline: var(--spacing-box);
 
         mask-image: linear-gradient(
             to right,
             rgb(0 0 0 / 0%) 0,
-            rgb(0 0 0 / 100%) theme(spacing.box),
-            rgb(0 0 0 / 100%) calc(100% - theme(spacing.box)),
+            rgb(0 0 0 / 100%) var(--spacing-box),
+            rgb(0 0 0 / 100%) calc(100% - var(--spacing-box)),
             rgb(0 0 0 / 0%) 100%
         );
     }
@@ -24,14 +35,14 @@
         overflow-x: hidden;
         overflow-y: auto;
 
-        margin-block: calc(theme(spacing.box) * -1);
-        padding-block: theme(spacing.box);
+        margin-block: calc(var(--spacing-box) * -1);
+        padding-block: var(--spacing-box);
 
         mask-image: linear-gradient(
             to bottom,
             rgb(0 0 0 / 0%) 0,
-            rgb(0 0 0 / 100%) theme(spacing.box),
-            rgb(0 0 0 / 100%) calc(100% - theme(spacing.box)),
+            rgb(0 0 0 / 100%) var(--spacing-box),
+            rgb(0 0 0 / 100%) calc(100% - var(--spacing-box)),
             rgb(0 0 0 / 0%) 100%
         );
     }

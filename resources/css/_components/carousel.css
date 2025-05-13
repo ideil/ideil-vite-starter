@@ -6,8 +6,8 @@
     visibility: inherit;
     transition-property: visibility;
 
-    .is-initialized&,
-    .is-rendered& {
+    &.is-initialized,
+    &.is-rendered {
         visibility: inherit;
     }
 
@@ -17,8 +17,8 @@
 
     &__slide {
         display: flex;
-        width: 100%;
-        margin-right: theme(spacing.col);
+        width: 90%;
+        margin-right: var(--spacing-col);
     }
 
     &__inner {
@@ -27,7 +27,7 @@
 
     &__arrows {
         display: none;
-        gap: theme(spacing.5);
+        gap: --spacing(5);
         align-items: center;
         transition-property: opacity, visibility;
     }
@@ -42,7 +42,7 @@
         display: flex;
         flex-grow: 1;
         align-items: stretch;
-        margin-top: theme(spacing.5);
+        margin-top: --spacing(5);
 
         .splide:not(.is-overflow) & {
             display: flex;
@@ -56,8 +56,8 @@
         &__page {
             position: relative;
             width: 100%;
-            height: theme(spacing.1);
-            background-color: theme(color.gray.light);
+            height: --spacing(1);
+            background-color: var(--color-gray-light);
 
             &::before {
                 content: '';
@@ -72,17 +72,17 @@
                 height: 100%;
 
                 opacity: 0;
-                background-color: theme(color.primary.DEFAULT);
+                background-color: var(--color-primary);
 
                 transition-property: opacity;
             }
 
             &:hover {
-                background-color: theme(color.primary.hover);
+                background-color: var(--color-primary-hover);
             }
 
             &.is-active {
-                background-color: theme(color.primary.hover);
+                background-color: var(--color-primary-hover);
 
                 &::before {
                     opacity: 1;
@@ -90,86 +90,22 @@
             }
         }
     }
+}
 
-    &--5 {
-        .splide__slide {
-            width: 90%;
+@variant md {
+    .splide {
+        &__slide {
+            width: 100%;
 
-            @screen sm {
-                width: calc(50% - theme(spacing.col) * 2 / 3);
+            .splide--3 & {
+                width: calc(50% - var(--spacing-col) * 1 / 2);
             }
 
-            @screen md {
-                width: calc(33.333% - theme(spacing.col) * 2 / 3);
-            }
-
-            @screen lg {
-                width: calc(25% - theme(spacing.col) * 2 / 3);
-            }
-
-            @screen xl {
-                width: calc(20% - theme(spacing.col) * 3 / 4);
+            .splide--2 & {
+                width: calc(50% - var(--spacing-col) * 1 / 2);
             }
         }
-    }
 
-    &--4 {
-        .splide__slide {
-            width: 90%;
-
-            @screen md {
-                width: calc(50% - theme(spacing.col) * 1 / 2);
-            }
-
-            @screen lg {
-                width: calc(33.333% - theme(spacing.col) * 2 / 3);
-            }
-
-            @screen xl {
-                width: calc(25% - theme(spacing.col) * 3 / 4);
-            }
-        }
-    }
-
-    &--3 {
-        .splide__slide {
-            width: 90%;
-
-            @screen md {
-                width: calc(50% - theme(spacing.col) * 1 / 2);
-            }
-
-            @screen xl {
-                width: calc(33.333% - theme(spacing.col) * 2 / 3);
-            }
-        }
-    }
-
-    &--2\.5 {
-        .splide__slide {
-            width: 90%;
-
-            @screen md {
-                width: calc(60% - theme(spacing.col) * 1 / 2);
-            }
-
-            @screen lg {
-                width: calc(40% - theme(spacing.col) * 1 / 2);
-            }
-        }
-    }
-
-    &--2 {
-        .splide__slide {
-            width: 90%;
-
-            @screen md {
-                width: calc(50% - theme(spacing.col) * 1 / 2);
-            }
-        }
-    }
-
-    @screen md {
         &__track {
             overflow: hidden;
         }
@@ -180,6 +116,17 @@
 
         &__pagination {
             margin-top: 0;
+        }
+    }
+}
+
+@variant xl {
+    .splide {
+        &__slide {
+
+            .splide--3 & {
+                width: calc(33.333% - var(--spacing-col) * 2 / 3);
+            }
         }
     }
 }

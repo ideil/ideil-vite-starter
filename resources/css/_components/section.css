@@ -1,9 +1,9 @@
 .c-section {
-    margin-bottom: theme(spacing.15);
+    margin-bottom: --spacing(15);
 }
 
-@screen xl {
+@variant xl {
     .c-section {
-        margin-bottom: theme(spacing.28);
+        margin-bottom: --spacing(28);
     }
 }

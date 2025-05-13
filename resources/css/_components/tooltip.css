@@ -1,6 +1,6 @@
 .c-tooltip {
     position: fixed;
-    z-index: theme(zIndex.tooltip);
+    z-index: var(--z-index-tooltip);
     top: 0;
     left: 0;
 
@@ -8,21 +8,21 @@
 
     width: max-content;
     margin: 0;
-    padding: theme(spacing.5);
-    border: 2px solid theme(color.black);
+    padding: --spacing(5);
+    border: 2px solid var(--color-black);
 
-    font-size: theme(fontSize.sm);
-    color: theme(color.text);
+    font-size: var(--text-sm);
+    color: var(--color-text);
 
     opacity: var(--tooltip-transition-progress);
-    background: theme(color.body);
+    background: var(--color-body);
 
     &__arrow {
         position: absolute;
         z-index: 1;
 
-        width: theme(spacing[2.5]);
-        height: theme(spacing[2.5]);
+        width: --spacing(2.5);
+        height: --spacing(2.5);
         border: inherit;
         border-right-width: 0;
         border-bottom-width: 0;

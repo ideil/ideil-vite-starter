@@ -1,6 +1,6 @@
 .c-breadcrumbs {
     position: relative;
-    margin-bottom: theme(spacing.page);
+    margin-bottom: var(--spacing-page);
 
     &__list {
         display: flex;
@@ -15,7 +15,7 @@
         &:not(:last-child) {
             &::after {
                 content: '/';
-                margin: 0 theme(spacing.3);
+                margin: 0 --spacing(3);
             }
         }
 

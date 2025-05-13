@@ -5,10 +5,6 @@
 @import '_tailwind/theme.css';
 @import '_tailwind/utilities.css';
 
-/* Set */
-@import '_set/variables.css' layer(base);
-@import '_set/mixins.css' layer(base);
-
 /* Variables */
 @import '_variables/base.css' layer(base);
 

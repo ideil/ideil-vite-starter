@@ -74,6 +74,7 @@
     --radius-md: calc(var(--radius) * 0.75);
     --radius-lg: calc(var(--radius) * 1.25);
     --radius-xl: calc(var(--radius) * 1.5);
+    --radius-full: 9999px;
 
     /* blur */
     --blur: 12px;

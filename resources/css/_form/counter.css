@@ -1,11 +1,11 @@
 .f-counter {
     display: inline-flex;
     align-items: center;
-    height: theme(spacing.field);
-    border: 1px solid theme(color.field);
+    height: var(--spacing-field);
+    border: 1px solid var(--color-field);
 
     &__field {
-        max-width: theme(spacing.12);
+        max-width: --spacing(12);
         border: none;
         text-align: center;
 

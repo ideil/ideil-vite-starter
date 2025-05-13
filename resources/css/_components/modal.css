@@ -3,13 +3,13 @@
 }
 
 .c-modal {
-    --modal-offset: theme(spacing.5);
-    --modal-px: theme(spacing.box);
-    --modal-py: theme(spacing.10);
+    --modal-offset: --spacing(5);
+    --modal-px: var(--spacing-box);
+    --modal-py: --spacing(10);
     --modal-max-width: 32rem;
 
     position: fixed;
-    z-index: theme(zIndex.modal);
+    z-index: var(--z-index-modal);
     top: 0;
     left: 0;
 
@@ -41,7 +41,7 @@
 
         position: relative;
         transform: translateY(
-            calc((1 - var(--modal-transition-progress)) * -20px)
+            calc((1 - var(--modal-transition-progress)) * -5px)
         );
 
         display: flex;
@@ -65,9 +65,9 @@
         width: 100%;
         min-height: 20rem;
 
-        color: theme(color.text);
+        color: var(--color-text);
 
-        background-color: theme(color.white);
+        background-color: var(--color-white);
         background-clip: padding-box;
         outline: 0;
     }
@@ -77,33 +77,33 @@
         top: 0;
         right: 0;
 
-        padding: theme(spacing.3);
+        padding: --spacing(3);
 
-        font-size: theme(spacing.4);
+        font-size: --spacing(4);
     }
 
     &__body {
         width: 100%;
-        padding: theme(spacing.6);
+        padding: --spacing(6);
     }
 }
 
 .c-modal--xs {
-    --modal-max-width: 18rem;
+    --modal-max-width: --spacing(72);
 }
 
 .c-modal--sm {
-    --modal-max-width: 25rem;
+    --modal-max-width: --spacing(100);
 }
 
-@screen md {
+@variant md {
     .c-modal--md {
-        --modal-max-width: 44rem;
+        --modal-max-width: --spacing(176);
     }
 }
 
-@screen lg {
+@variant lg {
     .c-modal--lg {
-        --modal-max-width: 64rem;
+        --modal-max-width: --spacing(256);
     }
 }
