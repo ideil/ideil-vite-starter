@@ -20,11 +20,6 @@
             true,
             {
                 "ignoreAtRules": [
-                    "mixin",
-                    "include",
-                    "screen",
-                    "tailwind",
-                    "import",
                     "config",
                     "utility",
                     "theme",
@@ -32,17 +27,19 @@
                 ]
             }
         ],
-        "value-keyword-case": [
-            "lower",
+        "at-rule-no-deprecated": [
+            true,
             {
-                "ignoreFunctions": ["theme"]
+                "ignoreAtRules": [
+                    "apply"
+                ]
             }
         ],
         "declaration-property-value-no-unknown": [
             true,
             {
                 "ignoreProperties": {
-                    "/^.*/": ["/theme(.*)/"]
+                    "/^.*/": ["/theme(.*)/", "/--spacing(.*)/"]
                 }
             }
         ],

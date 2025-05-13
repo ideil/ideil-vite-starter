@@ -24,12 +24,10 @@
             margin-left: auto;
         }
     }
-
 }
 
 @variant lg {
     .c-pagination {
-
         &__item {
             &.is-prev,
             &.is-next {

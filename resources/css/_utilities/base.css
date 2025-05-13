@@ -1,6 +1,7 @@
 /* Scroll */
 .u-scroll {
     @apply custom-scrollbar;
+
     scroll-behavior: smooth;
 
     &--horizontal {

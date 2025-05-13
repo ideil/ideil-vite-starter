@@ -20,7 +20,7 @@
     --vc-color: var(--color-text);
     --vc-font-family: var(--font-sans);
     --vc-weekday-color: var(--vc-color);
-    --vc-focus-ring: 0 0 0 2px alpha(var(--color-black) / 10%);
+    --vc-focus-ring: 0 0 0 2px --alpha(var(--color-black) / 10%);
     --vc-nav-item-active-bg: var(--color-black);
     --vc-highlight-solid-bg: var(--color-primary);
     --popover-vertical-content-offset: 0;

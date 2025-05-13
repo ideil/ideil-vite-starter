@@ -4,8 +4,8 @@
     --pswp-bg: var(--color-backdrop);
     --pswp-placeholder-bg: #222;
     --pswp-root-z-index: 100000;
-    --pswp-preloader-color: alpha(var(--color-black / 40%));
-    --pswp-preloader-color-secondary: alpha(var(--color-white / 40%));
+    --pswp-preloader-color: --alpha(var(--color-black / 40%));
+    --pswp-preloader-color-secondary: --alpha(var(--color-white / 40%));
 
     backdrop-filter: blur(var(--blur));
 }
