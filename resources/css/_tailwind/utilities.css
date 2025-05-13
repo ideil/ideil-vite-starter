@@ -1,0 +1,23 @@
+@utility container {
+    margin-inline: auto;
+    padding-inline: var(--spacing-box);
+
+    @variant 4xl {
+        max-width: var(--breakpoint-3xl);
+    }
+}
+
+@utility custom-scrollbar {
+    &::-webkit-scrollbar {
+        width: --spacing(1);
+        height: --spacing(1);
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: var(--color-gray-light);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--color-primary);
+    }
+}

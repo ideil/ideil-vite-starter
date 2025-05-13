@@ -2,7 +2,7 @@
     svg,
     img {
         width: auto;
-        height: theme(spacing.5);
+        height: --spacing(5);
 
         *:not([fill='#ED2024']) {
             fill: currentcolor;

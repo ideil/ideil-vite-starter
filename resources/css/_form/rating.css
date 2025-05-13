@@ -1,7 +1,7 @@
 .f-rating {
     display: inline-flex;
     flex-direction: row-reverse;
-    gap: theme(spacing.1);
+    gap: --spacing(1);
     line-height: 0;
 
     &__field {
@@ -13,7 +13,7 @@
 
     &__label {
         cursor: pointer;
-        color: theme(colors.placeholder);
+        color: var(--color-placeholder);
         transition-property: color;
 
         .f-rating__field:checked ~ & {

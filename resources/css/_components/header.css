@@ -1,26 +1,26 @@
 .c-header {
     position: fixed;
-    z-index: theme(zIndex.header);
+    z-index: var(--z-index-header);
     top: 0;
     left: 0;
 
     width: 100%;
-    padding-right: var(--body-scroll-width);
-    border-bottom: 1px solid theme(colors.gray.200);
+    padding-right: var(--body-scroll-width, 0);
+    border-bottom: 1px solid var(--color-gray-light);
 
-    color: theme(colors.text);
+    color: var(--color-text);
 
-    background-color: theme(colors.body);
+    background-color: var(--color-body);
 
     &__inner {
         display: flex;
         align-items: center;
-        height: theme(spacing.header);
+        height: var(--spacing-header);
     }
 
     &__logo {
-        width: theme(spacing.28);
-        margin-right: theme(spacing.8);
+        width: --spacing(28);
+        margin-right: --spacing(8);
     }
 
     &__hamburger {
@@ -29,8 +29,8 @@
         &-icon {
             position: relative;
             display: block;
-            width: theme(spacing.6);
-            height: theme(spacing.4);
+            width: --spacing(6);
+            height: --spacing(4);
 
             div {
                 position: absolute;
@@ -40,7 +40,7 @@
                 flex-shrink: 0;
 
                 width: 100%;
-                height: theme(spacing[0.5]);
+                height: --spacing(0.5);
 
                 background-color: currentcolor;
 

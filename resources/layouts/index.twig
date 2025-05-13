@@ -15,7 +15,7 @@
             {% else %}
                 {% for page in data.pages %}
                     {% if page.slug != 'index' %}
-                        <div class="relative md:flex md:items-center p-2 md:px-6 {% if not loop.first %}border-t border-gray-200{% endif %} hover:bg-black/5 transition-colors">
+                        <div class="relative md:flex md:items-center p-2 md:px-6 {% if not loop.first %}border-t{% endif %} hover:bg-black/5 transition-colors">
                             <div class="md:flex-grow">
                                 <a
                                     href="{{ page.html }}"

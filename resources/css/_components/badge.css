@@ -1,27 +1,27 @@
 .c-badge {
-    --badge-size: theme(spacing.4);
+    --badge-size: --spacing(4);
 
     display: inline-flex;
     flex-shrink: 0;
-    gap: theme(spacing.1);
+    gap: --spacing(1);
     align-items: center;
     justify-content: center;
 
     min-width: var(--badge-size);
     height: var(--badge-size);
-    padding: 0 theme(spacing.1);
-    border-radius: theme(borderRadius.full);
+    padding: 0 --spacing(1);
+    border-radius: var(--radius-full);
 
-    font-size: theme(fontSize.xs);
+    font-size: var(--text-xs);
     font-weight: 700;
     line-height: 1;
-    color: theme(colors.text);
+    color: var(--color-text);
     vertical-align: middle;
 
-    background-color: theme(colors.gray.200);
+    background-color: var(--color-gray-light);
 
     &--primary {
-        color: theme(colors.white);
-        background-color: theme(colors.primary.DEFAULT);
+        color: var(--color-white);
+        background-color: var(--color-primary);
     }
 }

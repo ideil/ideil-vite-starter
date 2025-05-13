@@ -3,7 +3,7 @@
 }
 
 :focus-visible {
-    outline-color: theme(colors.black);
+    outline-color: var(--color-black);
     outline-width: 2px;
     outline-offset: 4px;
 }
@@ -11,17 +11,17 @@
 *,
 *::before,
 *::after {
-    scroll-margin: calc(theme(spacing.header) + theme(spacing.page));
+    scroll-margin: calc(var(--spacing-header) + var(--spacing-page));
 
     min-width: 0;
     min-height: 0;
-    border-color: theme(colors.gray.DEFAULT);
+    border-color: var(--color-gray-light);
 
     word-break: keep-all;
     word-wrap: break-word;
 
-    transition-timing-function: var(--transition-timing-function);
-    transition-duration: var(--transition-duration);
+    transition-timing-function: var(--default-transition-timing-function);
+    transition-duration: var(--default-transition-duration);
     transition-property: none;
 }
 
@@ -34,16 +34,16 @@ body {
     flex-direction: column;
 
     min-height: 100vh;
-    padding-top: calc(theme(spacing.header) + theme(spacing.page));
+    padding-top: calc(var(--spacing-header) + var(--spacing-page));
     padding-right: var(--body-scroll-width);
 
-    font-size: theme(fontSize.base);
+    font-size: var(--text-base);
     -webkit-font-smoothing: antialiased;
-    line-height: theme(lineHeight.normal);
-    color: theme(colors.text);
+    line-height: var(--leading-normal);
+    color: var(--color-text);
     text-rendering: optimizelegibility !important;
 
-    background-color: theme(colors.body);
+    background-color: var(--color-body);
 
     .is-nospace & {
         padding-top: 0;

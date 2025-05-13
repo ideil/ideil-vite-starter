@@ -4,27 +4,27 @@
 .vc-light,
 .vc-light.vc-attr,
 .vc-light .vc-attr {
-    --vc-gray-50: theme(colors.gray.50);
-    --vc-gray-100: theme(colors.gray.100);
-    --vc-gray-200: theme(colors.gray.200);
-    --vc-gray-300: theme(colors.gray.300);
-    --vc-gray-400: theme(colors.gray.400);
-    --vc-gray-500: theme(colors.gray.500);
-    --vc-gray-600: theme(colors.gray.600);
-    --vc-gray-700: theme(colors.gray.700);
-    --vc-gray-800: theme(colors.gray.800);
-    --vc-gray-900: theme(colors.gray.900);
+    --vc-gray-50: var(--color-gray-50);
+    --vc-gray-100: var(--color-gray-100);
+    --vc-gray-200: var(--color-gray-200);
+    --vc-gray-300: var(--color-gray-300);
+    --vc-gray-400: var(--color-gray-400);
+    --vc-gray-500: var(--color-gray-500);
+    --vc-gray-600: var(--color-gray-600);
+    --vc-gray-700: var(--color-gray-700);
+    --vc-gray-800: var(--color-gray-800);
+    --vc-gray-900: var(--color-gray-900);
     --vc-rounded: 0;
     --vc-rounded-md: 0;
     --vc-rounded-lg: 0;
-    --vc-color: theme(colors.text);
-    --vc-font-family: theme(fontFamily.sans);
+    --vc-color: var(--color-text);
+    --vc-font-family: var(--font-sans);
     --vc-weekday-color: var(--vc-color);
-    --vc-focus-ring: 0 0 0 2px theme(colors.black / 10%);
-    --vc-nav-item-active-bg: theme(colors.black);
-    --vc-highlight-solid-bg: theme(colors.primary.DEFAULT);
+    --vc-focus-ring: 0 0 0 2px alpha(var(--color-black) / 10%);
+    --vc-nav-item-active-bg: var(--color-black);
+    --vc-highlight-solid-bg: var(--color-primary);
     --popover-vertical-content-offset: 0;
-    --vc-slide-translate: calc(theme(spacing.1) * -1);
+    --vc-slide-translate: --spacing(-1);
     --vc-slide-duration: var(--transition-duration);
     --vc-slide-timing: var(--transition-timing-function);
 }

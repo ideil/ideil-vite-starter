@@ -1,24 +1,7 @@
 :root {
-    --vw: 1vw;
-    --transition-duration: theme(transitionDuration.base);
-    --transition-timing-function: theme(transitionTimingFunction.base);
-    --transition-property: var(--transition-duration) var(--transition-function);
-    --spacing-header: theme(spacing.15);
-    --spacing-page: theme(spacing.6);
-    --spacing-box: theme(spacing.4);
-    --spacing-col: theme(spacing.5);
-    --spacing-button: theme(spacing.11);
-    --spacing-field: theme(spacing.11);
-    --blur-value: 12px;
-    --blur-bg: theme(colors.black / 50%);
-    --wrapper-width: calc(100 * var(--vw, 1vw));
-    --colors-field: theme(colors.gray.DEFAULT);
-    --colors-placeholder: theme(colors.gray.DEFAULT);
-    --colors-body: theme(colors.white);
-    --colors-text: theme(colors.black);
-    --radius: 1rem;
+    --spacing-box: --spacing(4);
 
-    @screen xl {
-        --spacing-box: theme(spacing.10);
+    @variant xl {
+        --spacing-box: --spacing(10);
     }
 }

@@ -1,0 +1,81 @@
+/* stylelint-disable custom-property-pattern */
+@theme {
+    --font-sans:
+        'RobotoI', 'Roboto', 'Arial', sans-serif, system-ui, -apple-system,
+        'Segoe UI', 'Helvetica Neue', 'Noto Sans', 'Liberation Sans',
+        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+        'Noto Color Emoji';
+
+    /* colors */
+    --color-gray: var(--color-stone-400);
+    --color-gray-light: var(--color-stone-200);
+    --color-gray-dark: var(--color-stone-800);
+    --color-gray-50: var(--color-stone-50);
+    --color-gray-100: var(--color-stone-100);
+    --color-gray-200: var(--color-stone-200);
+    --color-gray-300: var(--color-stone-300);
+    --color-gray-400: var(--color-stone-400);
+    --color-gray-500: var(--color-stone-500);
+    --color-gray-600: var(--color-stone-600);
+    --color-gray-700: var(--color-stone-700);
+    --color-gray-800: var(--color-stone-800);
+    --color-gray-900: var(--color-stone-900);
+    --color-primary: #e74c3c;
+    --color-primary-hover: #ff7668;
+    --color-error: var(--color-red-500);
+    --color-field: var(--color-gray);
+    --color-placeholder: var(--color-gray);
+    --color-backdrop: --alpha(var(--color-black) / 50%);
+    --color-body: var(--color-white);
+    --color-text: var(--color-black);
+
+    /* spacing */
+    --spacing-13: 3.25rem;
+    --spacing-15: 3.75rem;
+    --spacing-17: 4.25rem;
+    --spacing-18: 4.5rem;
+    --spacing-22: 5.5rem;
+    --spacing-50: 12.5rem;
+    --spacing-hd: 1920px;
+    --spacing-box: var(--spacing-box);
+    --spacing-col: --spacing(5);
+    --spacing-page: --spacing(6);
+    --spacing-header: --spacing(15);
+    --spacing-button: --spacing(11);
+    --spacing-field: --spacing(11);
+
+    /* breakpoint */
+    --breakpoint-xs: 480px;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1260px;
+    --breakpoint-2xl: 1440px;
+    --breakpoint-3xl: 1600px;
+    --breakpoint-4xl: 1920px;
+
+    /* transition */
+    --default-transition-duration: 300ms;
+    --default-transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+
+    /* z-index */
+    --z-index-1: 1;
+    --z-index-2: 2;
+    --z-index-menu: 99;
+    --z-index-header: 100;
+    --z-index-modal: 200;
+    --z-index-dropdown: 300;
+    --z-index-tooltip: 400;
+
+    /* radius */
+    --radius: 1rem;
+    --radius-xs: calc(var(--radius) * 0.375);
+    --radius-sm: calc(var(--radius) * 0.5);
+    --radius-md: calc(var(--radius) * 0.75);
+    --radius-lg: calc(var(--radius) * 1.25);
+    --radius-xl: calc(var(--radius) * 1.5);
+    --radius-full: 9999px;
+
+    /* blur */
+    --blur: 12px;
+}

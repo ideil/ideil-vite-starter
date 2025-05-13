@@ -16,26 +16,24 @@
         ],
         "declaration-block-no-redundant-longhand-properties": null,
         "selector-class-pattern": null,
-        "value-keyword-case": [
-            "lower",
-            {
-                "ignoreFunctions": ["theme"]
-            }
-        ],
         "at-rule-no-unknown": [
             true,
             {
-                "ignoreAtRules": ["mixin", "include", "screen", "tailwind", "import"]
+                "ignoreAtRules": [
+                    "mixin",
+                    "include",
+                    "screen",
+                    "tailwind",
+                    "import",
+                    "config",
+                    "utility",
+                    "theme",
+                    "variant"
+                ]
             }
         ],
-        "unit-no-unknown": [
-            true,
-            {
-                "ignoreFunctions": ["theme"]
-            }
-        ],
-        "function-no-unknown": [
-            true,
+        "value-keyword-case": [
+            "lower",
             {
                 "ignoreFunctions": ["theme"]
             }

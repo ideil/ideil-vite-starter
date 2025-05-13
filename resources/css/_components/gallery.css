@@ -1,11 +1,11 @@
 @import 'photoswipe/dist/photoswipe.css';
 
 .pswp {
-    --pswp-bg: var(--blur-bg);
+    --pswp-bg: var(--color-backdrop);
     --pswp-placeholder-bg: #222;
     --pswp-root-z-index: 100000;
-    --pswp-preloader-color: theme(colors.black / 40%);
-    --pswp-preloader-color-secondary: theme(colors.white / 40%);
+    --pswp-preloader-color: alpha(var(--color-black / 40%));
+    --pswp-preloader-color-secondary: alpha(var(--color-white / 40%));
 
-    backdrop-filter: blur(var(--blur-value));
+    backdrop-filter: blur(var(--blur));
 }
