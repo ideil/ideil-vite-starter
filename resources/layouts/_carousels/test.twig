@@ -1,12 +1,12 @@
-<section class="splide {{ class }}" data-gallery data-carousel aria-labelledby="testCarouselHeading{{ index }}">
+<section class="embla {{ class }}" data-gallery data-carousel aria-labelledby="testCarouselHeading{{ index }}">
     <div class="container">
         <h2 id="testCarouselHeading{{ index }}" class="mb-5 c-title c-title--h3">Карусель {{ index }}</h2>
 
-        <div class="splide__inner">
-            <div class="splide__track">
-                <ul class="splide__list">
+        <div class="embla__container">
+            <div class="embla__track">
+                <ul class="embla__list">
                     {% for i in 1..5 %}
-                        <li class="splide__slide">
+                        <li class="embla__slide">
                             <a
                                 href="../img/demo/test_1920x980@2x.jpg"
                                 data-gallery-link
@@ -16,6 +16,8 @@
                             >
                                 <picture class="w-full relative block bg-gray-light h-96">
                                     <img class="inset-0 absolute size-full object-contain" src="../img/demo/test_1920x980.jpg" srcset="../img/demo/test_1920x980@2x.jpg 2x" alt="">
+
+                                    <span class="absolute top-0 left-0 px-2 py-1 text-red-500 z-1">{{ i }}</span>
                                 </picture>
                             </a>
                         </li>
@@ -23,15 +25,15 @@
                 </ul>
             </div>
 
-            <div class="mt-3 splide__arrows">
-                <button class="f-btn f-btn--icon f-btn--primary splide__arrow splide__arrow--prev">
+            <div class="embla__controls mt-3">
+                <button type="button" class="f-btn f-btn--icon f-btn--primary embla__arrow embla__arrow--prev">
                     <span class="sr-only">Previous</span>
                     {% include '_app/icon.twig' with { name: 'arrow', class: 'rotate-180' } only %}
                 </button>
 
-                <div class="splide__pagination {{ pagination ? 'splide__pages' : '' }}"></div>
+                <div class="embla__pagination {{ pagination ? 'embla__pages' : '' }}"></div>
 
-                <button class="f-btn f-btn--icon f-btn--primary splide__arrow splide__arrow--next">
+                <button type="button" class="f-btn f-btn--icon f-btn--primary embla__arrow embla__arrow--next">
                     <span class="sr-only">Next</span>
                     {% include '_app/icon.twig' with { name: 'arrow' } only %}
                 </button>

@@ -1,65 +1,52 @@
-import Splide from "@splidejs/splide";
+import {
+    default as EmblaCarousel,
+    type EmblaOptionsType,
+    type EmblaPluginType,
+} from "embla-carousel";
+import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
 
-const carousel = (el: HTMLElement) => {
-    const arrowsEl = el.querySelector(".splide__arrows") as HTMLElement;
-    const paginationEl = el.querySelector(".splide__pagination") as HTMLElement;
-    const trackEl = el.querySelector(".splide__track") as HTMLElement;
-    const pagesEl = el.querySelector(".splide__pages") as HTMLElement;
-    const wheelEvent =
-        "onwheel" in document.createElement("div") ? "wheel" : "mousewheel";
-    let oldTimestamp = 0;
+import { initArrows } from "./initArrows";
+import { initPages } from "./initPages";
+import { initPagination } from "./initPagination";
 
-    const carousel = new Splide(el, {
-        autoWidth: true,
-        arrows: !!arrowsEl,
-        updateOnMove: true,
-        omitEnd: true,
-        focus: 0,
-        pagination: !!paginationEl,
+export default (el: HTMLElement) => {
+    const prevArrowEl = el.querySelector(
+        ".embla__arrow.embla__arrow--prev",
+    ) as HTMLButtonElement;
+    const nextArrowEl = el.querySelector(
+        ".embla__arrow.embla__arrow--next",
+    ) as HTMLButtonElement;
+    const trackEl = el.querySelector(".embla__track") as HTMLElement;
+    const paginationEl = el.querySelector(".embla__pagination") as HTMLElement;
+    const pagesEl = el.querySelector<HTMLElement>(".embla__pages");
 
-        flickPower: 200,
-    });
+    let removeArrowsHandlers: () => void = () => {};
+    let removePaginationHandlers: () => void = () => {};
 
-    const wheelListener = (event: Event) => {
-        const e = event as WheelEvent;
-        const deltaX = e.deltaX;
-        const deltaY = e.deltaY;
-
-        if (!deltaX) {
-            return;
-        }
-
-        e.preventDefault();
-        e.stopPropagation();
-
-        if (deltaY || e.timeStamp - oldTimestamp < 300) {
-            return;
-        }
-
-        oldTimestamp = e.timeStamp;
-
-        carousel.go(deltaX > 0 ? ">" : "<");
+    const options: EmblaOptionsType = {
+        loop: false,
+        align: "start",
     };
+    const plugins: EmblaPluginType[] = [WheelGesturesPlugin()];
 
-    if (pagesEl) {
-        carousel.on("pagination:mounted", (e) => {
-            const activeIndex = e.items.findIndex((item) =>
-                item.button.classList.contains("is-active"),
-            );
-            pagesEl.innerHTML = `${activeIndex + 1} / ${e.items.length}`;
-        });
+    const emblaApi = EmblaCarousel(trackEl, options, plugins);
 
-        carousel.on("pagination:updated", (e) => {
-            const activeIndex = e.items.findIndex((item) =>
-                item.button.classList.contains("is-active"),
-            );
-            pagesEl.innerHTML = `${activeIndex + 1} / ${e.items.length}`;
-        });
+    if (prevArrowEl && nextArrowEl) {
+        ({ removeArrowsHandlers } = initArrows(
+            emblaApi,
+            prevArrowEl,
+            nextArrowEl,
+        ));
     }
 
-    trackEl.addEventListener(wheelEvent, wheelListener);
+    if (pagesEl) {
+        initPages(emblaApi, pagesEl);
+    } else if (paginationEl) {
+        ({ removePaginationHandlers } = initPagination(emblaApi, paginationEl));
+    }
 
-    return carousel;
+    emblaApi.on("destroy", removeArrowsHandlers);
+    emblaApi.on("destroy", removePaginationHandlers);
+
+    return emblaApi;
 };
-
-export default carousel;

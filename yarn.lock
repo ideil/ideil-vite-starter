@@ -2974,6 +2974,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"embla-carousel-wheel-gestures@npm:^8.0.2":
+  version: 8.0.2
+  resolution: "embla-carousel-wheel-gestures@npm:8.0.2"
+  dependencies:
+    wheel-gestures: "npm:^2.2.5"
+  peerDependencies:
+    embla-carousel: ^8.0.0 || ~8.0.0-rc03
+  checksum: 10c0/9094ab22378d2ca32d819929fb0d5ba43dd6265f23279351669fbd97e624ce52b0b09bcd98b0fbf4ae79d7a52b75464ef6e29092dc1d7c9b0c79999a6512a1a7
+  languageName: node
+  linkType: hard
+
+"embla-carousel@npm:^8.6.0":
+  version: 8.6.0
+  resolution: "embla-carousel@npm:8.6.0"
+  checksum: 10c0/f4c598e7be28b70340d31ffd2bebb2472db370b0c81d9b089bf9555cf618695f35dc4a0694565c994c9ab972731123063f945aa09ff485df0df761d79c6a08ef
+  languageName: node
+  linkType: hard
+
 "emoji-regex@npm:^8.0.0":
   version: 8.0.0
   resolution: "emoji-regex@npm:8.0.0"
@@ -6802,6 +6820,8 @@ __metadata:
     autoprefixer: "npm:^10.4.21"
     autosize: "npm:^6.0.1"
     debounce: "npm:^2.2.0"
+    embla-carousel: "npm:^8.6.0"
+    embla-carousel-wheel-gestures: "npm:^8.0.2"
     eslint: "npm:^9.26.0"
     eslint-config-prettier: "npm:^10.1.5"
     eslint-plugin-import: "npm:^2.31.0"
@@ -8308,6 +8328,13 @@ __metadata:
   dependencies:
     foreachasync: "npm:^3.0.0"
   checksum: 10c0/c390221ff6fdb8e95f9b03d90fa9980edc2c01ce9efac44c0ade2036ee2823bf2bc9abfae388bdf64ab59e9262610e7cf6634ad54acac018e62621b85edad2cf
+  languageName: node
+  linkType: hard
+
+"wheel-gestures@npm:^2.2.5":
+  version: 2.2.48
+  resolution: "wheel-gestures@npm:2.2.48"
+  checksum: 10c0/03dcd4aa3df8a4cbfdee51a44fe7899a1e6019f0b43adf5ab21bbade1d5a9560dd5deb402dfcac8bf31f7bf64c663e36f08fdd8476c9712defc7e9aa0821327a
   languageName: node
   linkType: hard
 

@@ -1,131 +1,98 @@
-@import '@splidejs/splide/css/core';
+.embla {
+    --slide-spacing: var(--spacing-col);
+    --slide-size: 90%;
 
-.splide {
     contain: layout;
     overflow: hidden;
-    visibility: inherit;
-    transition-property: visibility;
 
-    &.is-initialized,
-    &.is-rendered {
-        visibility: inherit;
-    }
+    /* &__viewport {} */
 
-    &__track {
-        overflow: visible;
+    &__list {
+        touch-action: pan-y pinch-zoom;
+        display: flex;
+        margin-left: calc(var(--slide-spacing) * -1);
     }
 
     &__slide {
+        transform: translate3d(0, 0, 0);
+        flex: 0 0 var(--slide-size);
+        min-width: 0;
+        padding-left: var(--slide-spacing);
+    }
+
+    &__controls {
         display: flex;
-        width: 90%;
-        margin-right: var(--spacing-col);
-    }
-
-    &__inner {
-        position: relative;
-    }
-
-    &__arrows {
-        display: none;
-        gap: --spacing(5);
+        gap: var(--spacing-col);
         align-items: center;
-        transition-property: opacity, visibility;
-    }
-
-    &__arrow {
-        &:disabled {
-            opacity: 0.5;
-        }
     }
 
     &__pagination {
         display: flex;
         flex-grow: 1;
         align-items: stretch;
-        margin-top: --spacing(5);
+        justify-content: center;
+    }
 
-        .splide:not(.is-overflow) & {
-            display: flex;
+    &__dot {
+        position: relative;
+        width: 100%;
+        height: --spacing(1);
+        background-color: var(--color-gray-light);
+
+        &::before {
+            content: '';
+
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            display: block;
+
+            width: var(--carousel-progress, 100%);
+            height: 100%;
+
+            opacity: 0;
+            background-color: var(--color-primary);
+
+            transition-property: opacity;
         }
 
-        li {
-            display: flex;
-            flex-grow: 1;
+        &:hover {
+            background-color: var(--color-primary-hover);
         }
 
-        &__page {
-            position: relative;
-            width: 100%;
-            height: --spacing(1);
-            background-color: var(--color-gray-light);
+        &--selected {
+            background-color: var(--color-primary-hover);
 
             &::before {
-                content: '';
-
-                position: absolute;
-                top: 0;
-                left: 0;
-
-                display: block;
-
-                width: var(--carousel-progress, 100%);
-                height: 100%;
-
-                opacity: 0;
-                background-color: var(--color-primary);
-
-                transition-property: opacity;
-            }
-
-            &:hover {
-                background-color: var(--color-primary-hover);
-            }
-
-            &.is-active {
-                background-color: var(--color-primary-hover);
-
-                &::before {
-                    opacity: 1;
-                }
+                opacity: 1;
             }
         }
     }
 }
 
 @variant md {
-    .splide {
-        &__slide {
-            width: 100%;
+    .embla {
+        --slide-size: 100%;
 
-            .splide--3 & {
-                width: calc(50% - var(--spacing-col) * 1 / 2);
-            }
+        &--3 {
+            --slide-size: 50%;
+        }
 
-            .splide--2 & {
-                width: calc(50% - var(--spacing-col) * 1 / 2);
-            }
+        &--2 {
+            --slide-size: 50%;
         }
 
         &__track {
             overflow: hidden;
         }
-
-        &__arrows {
-            display: flex;
-        }
-
-        &__pagination {
-            margin-top: 0;
-        }
     }
 }
 
 @variant xl {
-    .splide {
-        &__slide {
-            .splide--3 & {
-                width: calc(33.333% - var(--spacing-col) * 2 / 3);
-            }
+    .embla {
+        &--3 {
+            --slide-size: 33.333%;
         }
     }
 }

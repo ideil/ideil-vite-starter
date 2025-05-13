@@ -42,6 +42,8 @@
         "autoprefixer": "^10.4.21",
         "autosize": "^6.0.1",
         "debounce": "^2.2.0",
+        "embla-carousel": "^8.6.0",
+        "embla-carousel-wheel-gestures": "^8.0.2",
         "eslint": "^9.26.0",
         "eslint-config-prettier": "^10.1.5",
         "eslint-plugin-import": "^2.31.0",
