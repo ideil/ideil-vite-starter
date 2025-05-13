@@ -54,7 +54,6 @@ export default defineConfig({
                             }
 
                             if (/css/i.test(extType)) {
-                                console.log(assetInfo);
                                 folders = "css/";
                             }
                         }
