@@ -2,12 +2,6 @@
     color-scheme: light;
 }
 
-:focus-visible {
-    outline-color: var(--color-black);
-    outline-width: 2px;
-    outline-offset: 4px;
-}
-
 *,
 *::before,
 *::after {
@@ -23,6 +17,13 @@
     transition-timing-function: var(--default-transition-timing-function);
     transition-duration: var(--default-transition-duration);
     transition-property: none;
+}
+
+*:focus-visible {
+    outline-color: var(--color-black);
+    outline-style: solid;
+    outline-width: 2px;
+    outline-offset: 2px;
 }
 
 html {

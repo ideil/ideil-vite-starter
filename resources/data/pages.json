@@ -7,23 +7,23 @@
         "responsive": true
     },
     {
-        "html": "home.html",
-        "title": "Головна",
+        "html": "pages-home.html",
+        "title": "Сторінки – Головна",
         "slug": "home",
         "desktop": true,
         "responsive": true
     },
     {
-        "html": "404.html",
-        "title": "404",
-        "slug": "404",
+        "html": "errors-404.html",
+        "title": "Помилки – 404",
+        "slug": "errors",
         "desktop": true,
         "responsive": true
     },
     {
-        "html": "500.html",
-        "title": "500",
-        "slug": "500",
+        "html": "errors-500.html",
+        "title": "Помилки – 500",
+        "slug": "errors",
         "desktop": true,
         "responsive": true
     }

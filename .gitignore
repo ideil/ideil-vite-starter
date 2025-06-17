@@ -8,6 +8,7 @@
 #Defaults
 
 /node_modules
+/emails/node_modules
 /static/build
 /storage/*.key
 /vendor

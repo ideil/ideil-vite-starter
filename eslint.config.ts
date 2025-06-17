@@ -23,6 +23,10 @@ export default defineConfigWithVueTs(
     {
         rules: {
             "vue/multi-word-component-names": "off",
+            "vue/no-undef-components": "error",
+
+            // typescript
+            "@typescript-eslint/no-explicit-any": "off",
 
             // import
             "sort-imports": ["error", { ignoreDeclarationSort: true }],
@@ -32,6 +36,7 @@ export default defineConfigWithVueTs(
             "import/no-named-as-default": "off",
             "import/no-anonymous-default-export": "off",
             "import/namespace": "off",
+            "import/named": "off",
             "import/order": [
                 "error",
                 {
@@ -47,6 +52,14 @@ export default defineConfigWithVueTs(
                         ["sibling", "index"],
                     ],
                     pathGroups: [
+                        {
+                            pattern: "@src/**",
+                            group: "internal",
+                        },
+                        {
+                            pattern: "@pub/**",
+                            group: "internal",
+                        },
                         {
                             pattern: "@/**",
                             group: "internal",

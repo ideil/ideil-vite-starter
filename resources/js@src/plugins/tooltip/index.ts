@@ -1,11 +1,12 @@
 import { arrow, computePosition, flip, offset, shift } from "@floating-ui/dom";
 import type { Placement } from "@floating-ui/dom";
-import getElement from "@src/helpers/getElement";
 import { animate } from "animejs";
+import EventEmitter from "eventemitter3";
 import { type FocusTrap, createFocusTrap } from "focus-trap";
 import { type FocusableElement, tabbable } from "tabbable";
 
-import getCSSTransition from "@/js@src/helpers/getCSSTransition";
+import getCSSTransition from "@src/helpers/getCSSTransition";
+import getElement from "@src/helpers/getElement";
 
 type Options = {
     toggleEl: HTMLElement | string;
@@ -26,6 +27,7 @@ export default class Tooltip {
     #placement: Placement | undefined;
     #type: string;
     #content: string | undefined;
+    #eventEmitter: EventEmitter;
 
     #focusTrap: FocusTrap | undefined;
     #tabbableEls: FocusableElement[] = [];
@@ -65,6 +67,9 @@ export default class Tooltip {
         const { duration, easing } = getCSSTransition(this.#targetEl);
         this.#animationDuration = duration;
         this.#animationEasing = easing;
+
+        // Event emitter
+        this.#eventEmitter = new EventEmitter();
 
         this.#dismissEls = this.#targetEl.querySelectorAll(
             "[data-tooltip-dismiss]",
@@ -125,7 +130,7 @@ export default class Tooltip {
         return targetEl;
     };
 
-    #updatePosition() {
+    #updatePosition = () => {
         const middleware = [
             offset(this.#spacer),
             flip(),
@@ -173,20 +178,18 @@ export default class Tooltip {
                 });
             }
         });
-    }
+    };
 
     #onDismissClick = () => {
         if (this.#isOpened) {
             this.hide();
         }
-        this.#isClicked = false;
     };
 
     #onDocumentClick = () => {
         if (this.#isOpened) {
             this.hide();
         }
-        this.#isClicked = false;
     };
 
     #onWindowScroll = () => {
@@ -198,12 +201,8 @@ export default class Tooltip {
 
     #onToggleClick = () => {
         if (this.#type.includes("clickable")) {
-            if (this.#isClicked) {
-                this.#isClicked = false;
-
-                if (this.#isOpened) {
-                    this.hide();
-                }
+            if (this.#isClicked && this.#isOpened) {
+                this.hide();
             } else {
                 this.#isClicked = true;
                 this.show();
@@ -235,16 +234,17 @@ export default class Tooltip {
         }
     };
 
-    #onTargetClick = (e: MouseEvent) => e.stopPropagation();
+    #onTargetClick = (e: MouseEvent) => {
+        e.stopPropagation();
+    };
 
     #onKeyUp = (e: KeyboardEvent) => {
         if (e.key === "Escape" && this.#isOpened) {
-            this.#isClicked = false;
             this.hide();
         }
     };
 
-    show() {
+    show = () => {
         this.#isOpened = true;
 
         if (this.#type.includes("clickable") && this.#isClicked) {
@@ -265,8 +265,13 @@ export default class Tooltip {
             easing: this.#animationEasing,
             "--tooltip-transition-progress": 1,
             onBegin: () => {
+                this.#eventEmitter.emit("show");
+
                 this.#targetEl.style.display = "block";
                 this.#updatePosition();
+            },
+            onComplete: () => {
+                this.#eventEmitter.emit("shown");
             },
         });
 
@@ -276,20 +281,26 @@ export default class Tooltip {
         this.#dismissEls.forEach((dismissEl) => {
             dismissEl.addEventListener("click", this.#onDismissClick, false);
         });
-    }
+    };
 
-    hide() {
+    hide = () => {
         this.#isOpened = false;
 
         if (this.#type.includes("clickable")) {
             this.#toggleEl.setAttribute("aria-expanded", "false");
+            this.#isClicked = false;
         }
 
         animate(this.#targetEl, {
             duration: this.#animationDuration,
             easing: this.#animationEasing,
             "--tooltip-transition-progress": 0,
+            onBegin: () => {
+                this.#eventEmitter.emit("hide");
+            },
             onComplete: () => {
+                this.#eventEmitter.emit("hidden");
+
                 this.#targetEl.style.display = "none";
 
                 this.#focusTrap?.deactivate();
@@ -303,5 +314,25 @@ export default class Tooltip {
         this.#dismissEls.forEach((dismissEl) => {
             dismissEl.removeEventListener("click", this.#onDismissClick);
         });
-    }
+    };
+
+    onShow = (callback: () => void) => {
+        this.#eventEmitter.on("show", callback);
+        return () => this.#eventEmitter.off("show", callback);
+    };
+
+    onHide = (callback: () => void) => {
+        this.#eventEmitter.on("hide", callback);
+        return () => this.#eventEmitter.off("hide", callback);
+    };
+
+    onShown = (callback: () => void) => {
+        this.#eventEmitter.on("shown", callback);
+        return () => this.#eventEmitter.off("shown", callback);
+    };
+
+    onHidden = (callback: () => void) => {
+        this.#eventEmitter.on("hidden", callback);
+        return () => this.#eventEmitter.off("hidden", callback);
+    };
 }

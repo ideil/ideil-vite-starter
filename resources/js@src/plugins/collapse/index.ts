@@ -1,6 +1,6 @@
 import { animate } from "animejs";
 
-import getCSSTransition from "@/js@src/helpers/getCSSTransition";
+import getCSSTransition from "@src/helpers/getCSSTransition";
 
 const collapse = (toggleEl: HTMLElement) => {
     const target = toggleEl.dataset.collapseTarget;

@@ -1,16 +1,16 @@
-import getCSSTransition from "@src/helpers/getCSSTransition";
-import getElement from "@src/helpers/getElement";
-import { clearSpaces, setSpaces } from "@src/helpers/measure";
 import { animate } from "animejs";
 import EventEmitter from "eventemitter3";
 import { type FocusTrap, createFocusTrap } from "focus-trap";
 import { type FocusableElement, tabbable } from "tabbable";
 
+import getCSSTransition from "@src/helpers/getCSSTransition";
+import getElement from "@src/helpers/getElement";
+import { clearSpaces, setSpaces } from "@src/helpers/measure";
+
 class Modal {
     element: HTMLElement;
     #dismissEls: NodeListOf<HTMLElement>;
     #toggleEls: NodeListOf<HTMLElement>;
-    #mouseDownElement: HTMLElement | null = null;
     #animationDuration: number;
     #animationEasing: string;
     #eventEmitter: EventEmitter;
@@ -19,46 +19,88 @@ class Modal {
     #focusTrap: FocusTrap | undefined;
     #tabbableEls: FocusableElement[] = [];
 
-    #showHandle = () => {
+    #handleModalShow = () => {
         this.isOpen = true;
-        this.#eventEmitter.emit("shown");
+        this.element.style.display = "block";
+        document.documentElement.classList.add("is-modal-open");
+
+        // Accessibility
+        if (this.#toggleEls.length > 0) {
+            this.#toggleEls.forEach((el) => {
+                el.setAttribute("aria-expanded", "true");
+            });
+        }
+        this.element.setAttribute("aria-modal", "");
+        this.element.setAttribute("role", "dialog");
+
+        // Focus
+        this.#focusTrap?.activate();
+        this.element.scrollTop = 0;
+
+        // Events
+        this.#addEventListeners();
+
+        // Animation
+        setSpaces();
     };
-    #hideHandle = () => {
+    #handleModalShown = () => {};
+    #handleModalHide = () => {
         this.isOpen = false;
+
+        // Accessibility
+        if (this.#toggleEls.length > 0) {
+            this.#toggleEls.forEach((el) => {
+                el.setAttribute("aria-expanded", "false");
+            });
+        }
         this.element.removeAttribute("aria-modal");
         this.element.removeAttribute("role");
-        document.documentElement.classList.remove("is-modal-open");
 
-        this.#eventEmitter.emit("hidden");
+        // Focus
+        this.#focusTrap?.deactivate();
 
-        clearSpaces();
-
-        this.element.removeEventListener("mousedown", this.#modalMouseDown);
-        this.element.removeEventListener("click", this.#modalClick);
-        this.#dismissEls.forEach((el) => {
-            el.removeEventListener("click", this.#dismissHandle);
-        });
-        document.removeEventListener("keyup", this.#escClick);
+        // Events
+        this.#removeEventListeners();
     };
-    #dismissHandle = (e: Event) => {
+    #handleModalHidden = () => {
+        this.element.style.display = "none";
+        document.documentElement.classList.remove("is-modal-open");
+        this.#handleModalHide();
+
+        // Animation
+        clearSpaces();
+    };
+
+    // Event handlers
+    #handleDismissClick = (e: Event) => {
         e.preventDefault();
         this.hide();
     };
-    #modalClick = (e: Event) => {
-        if (
-            e.target === this.element &&
-            this.#mouseDownElement === this.element
-        ) {
+    #handleModalClick = (e: Event) => {
+        if (e.target === this.element) {
             this.hide();
         }
     };
-    #modalMouseDown = (e: MouseEvent) => {
-        this.#mouseDownElement = e.target as HTMLElement;
-    };
-    #escClick = (e: KeyboardEvent) => {
+    #handleDocumentKeyup = (e: KeyboardEvent) => {
         if (e.key === "Escape") {
             this.hide();
         }
+    };
+
+    // Listeners
+    #removeEventListeners = () => {
+        this.element.removeEventListener("click", this.#handleModalClick);
+        this.#dismissEls.forEach((el) => {
+            el.removeEventListener("click", this.#handleDismissClick);
+        });
+        document.removeEventListener("keyup", this.#handleDocumentKeyup);
+    };
+    #addEventListeners = () => {
+        this.element.addEventListener("click", this.#handleModalClick);
+        this.#dismissEls.forEach((el) => {
+            el.addEventListener("click", this.#handleDismissClick);
+        });
+        document.addEventListener("keyup", this.#handleDocumentKeyup);
     };
 
     static instances: Map<HTMLElement, Modal> = new Map();
@@ -74,25 +116,29 @@ class Modal {
             throw new Error(`Modal element ${element} doesn't exist.`);
         }
 
+        // Instance
+        Modal.instances.set(this.element, this);
+
+        // Elements
         this.#toggleEls = document.documentElement.querySelectorAll(
             `[data-modal-target="#${this.element.id}"]`,
         );
-
-        const { duration, easing } = getCSSTransition(this.element);
-        this.#animationDuration = duration;
-        this.#animationEasing = easing;
-        this.#eventEmitter = new EventEmitter();
-
-        Modal.instances.set(this.element, this);
-
         this.#dismissEls = this.element.querySelectorAll(
             "[data-modal-dismiss]",
         );
 
+        // Animation
+        const { duration, easing } = getCSSTransition(this.element);
+        this.#animationDuration = duration;
+        this.#animationEasing = easing;
+
+        // Event emitter
+        this.#eventEmitter = new EventEmitter();
+
+        // Focus trap
         this.#tabbableEls = tabbable(this.element, {
             displayCheck: "none",
         });
-
         if (this.#tabbableEls.length > 0) {
             this.#focusTrap = createFocusTrap(this.element, {
                 allowOutsideClick: true,
@@ -101,6 +147,12 @@ class Modal {
                 },
             });
         }
+
+        // Events
+        this.onShow(this.#handleModalShow);
+        this.onShown(this.#handleModalShown);
+        this.onHide(this.#handleModalHide);
+        this.onHidden(this.#handleModalHidden);
     }
 
     show() {
@@ -108,38 +160,17 @@ class Modal {
             return;
         }
 
-        if (this.#toggleEls.length > 0) {
-            this.#toggleEls.forEach((el) => {
-                el.setAttribute("aria-expanded", "true");
-            });
-        }
-
-        this.#eventEmitter.emit("show");
-        this.#focusTrap?.activate();
-
-        setSpaces();
         animate(this.element, {
-            "--modal-transition-progress": [0, 1],
+            "--modal-transition-progress": 1,
             duration: this.#animationDuration,
             easing: this.#animationEasing,
             onBegin: () => {
-                this.element.style.display = "block";
-                this.#showHandle();
+                this.#eventEmitter.emit("show");
+            },
+            onComplete: () => {
+                this.#eventEmitter.emit("shown");
             },
         });
-
-        document.documentElement.classList.add("is-modal-open");
-
-        this.element.setAttribute("aria-modal", "");
-        this.element.setAttribute("role", "dialog");
-        this.element.scrollTop = 0;
-
-        this.#dismissEls.forEach((el) => {
-            el.addEventListener("click", this.#dismissHandle, false);
-        });
-        this.element.addEventListener("mousedown", this.#modalMouseDown, false);
-        this.element.addEventListener("click", this.#modalClick, false);
-        document.addEventListener("keyup", this.#escClick, false);
     }
 
     hide() {
@@ -147,22 +178,15 @@ class Modal {
             return;
         }
 
-        if (this.#toggleEls.length > 0) {
-            this.#toggleEls.forEach((el) => {
-                el.setAttribute("aria-expanded", "false");
-            });
-        }
-
-        this.#eventEmitter.emit("hide");
-
         animate(this.element, {
+            "--modal-transition-progress": 0,
             duration: this.#animationDuration,
             easing: this.#animationEasing,
-            "--modal-transition-progress": [1, 0],
+            onBegin: () => {
+                this.#eventEmitter.emit("hide");
+            },
             onComplete: () => {
-                this.element.style.display = "none";
-                this.#hideHandle();
-                this.#focusTrap?.deactivate();
+                this.#eventEmitter.emit("hidden");
             },
         });
     }
