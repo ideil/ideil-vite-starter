@@ -535,6 +535,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@isaacs/balanced-match@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "@isaacs/balanced-match@npm:4.0.1"
+  checksum: 10c0/7da011805b259ec5c955f01cee903da72ad97c5e6f01ca96197267d3f33103d5b2f8a1af192140f3aa64526c593c8d098ae366c2b11f7f17645d12387c2fd420
+  languageName: node
+  linkType: hard
+
+"@isaacs/brace-expansion@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "@isaacs/brace-expansion@npm:5.0.0"
+  dependencies:
+    "@isaacs/balanced-match": "npm:^4.0.1"
+  checksum: 10c0/b4d4812f4be53afc2c5b6c545001ff7a4659af68d4484804e9d514e183d20269bb81def8682c01a22b17c4d6aed14292c8494f7d2ac664e547101c1a905aa977
+  languageName: node
+  linkType: hard
+
 "@isaacs/cliui@npm:^8.0.2":
   version: 8.0.2
   resolution: "@isaacs/cliui@npm:8.0.2"
@@ -861,6 +877,13 @@ __metadata:
     "@resvg/resvg-js-win32-x64-msvc":
       optional: true
   checksum: 10c0/f04192e98d7ead730f9474f07e81aa9d9b28dc18218028f2a15c808e1ab0de511f07d8a77e01d058534e78f0ef7e9f33201f15f052e28bbaabaf159c68698a5e
+  languageName: node
+  linkType: hard
+
+"@rolldown/pluginutils@npm:1.0.0-beta.29":
+  version: 1.0.0-beta.29
+  resolution: "@rolldown/pluginutils@npm:1.0.0-beta.29"
+  checksum: 10c0/6b53011bb93c83be617a5511197656991b06a2ffa8eb869af211cbb0aed8cc9a6cf48f0a6d0ec92c0daadb912fd74808a635a6a6477f97ca9effaf5606c77deb
   languageName: node
   linkType: hard
 
@@ -1309,6 +1332,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/twig@npm:^1":
+  version: 1.12.17
+  resolution: "@types/twig@npm:1.12.17"
+  checksum: 10c0/a54d62abb979ecc81707c7da9ffe641cdbb12c5e73d782c5fbed69c41123d7c2142c8c79fe7a92295bc13eea7abbafd68863e5f0eb3f54094a26b179e3a2d653
+  languageName: node
+  linkType: hard
+
 "@typescript-eslint/eslint-plugin@npm:8.44.0":
   version: 8.44.0
   resolution: "@typescript-eslint/eslint-plugin@npm:8.44.0"
@@ -1446,13 +1476,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitejs/plugin-vue@npm:^5.2.4":
-  version: 5.2.4
-  resolution: "@vitejs/plugin-vue@npm:5.2.4"
+"@vitejs/plugin-vue@npm:^6.0.1":
+  version: 6.0.1
+  resolution: "@vitejs/plugin-vue@npm:6.0.1"
+  dependencies:
+    "@rolldown/pluginutils": "npm:1.0.0-beta.29"
   peerDependencies:
-    vite: ^5.0.0 || ^6.0.0
+    vite: ^5.0.0 || ^6.0.0 || ^7.0.0
     vue: ^3.2.25
-  checksum: 10c0/9559224f178daf35e3a665410d09089b0ce7c0402981f8757481c24c22f29df377f96cc6161d92f74d16c37c6e32ac19fea99086f75338ad6ceb9b5ee8375509
+  checksum: 10c0/6d11fa9637e1e76e16e1deebec35e04a08c302ce13ed794f1463e5251f17152c481e9534411faa31c56122f2a75490fac534fa6b4535f1d336d1d4e7ae37bdf6
   languageName: node
   linkType: hard
 
@@ -3311,7 +3343,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fdir@npm:^6.4.4, fdir@npm:^6.5.0":
+"fdir@npm:^6.5.0":
   version: 6.5.0
   resolution: "fdir@npm:6.5.0"
   peerDependencies:
@@ -3434,7 +3466,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"foreground-child@npm:^3.1.0":
+"foreground-child@npm:^3.1.0, foreground-child@npm:^3.3.1":
   version: 3.3.1
   resolution: "foreground-child@npm:3.3.1"
   dependencies:
@@ -3621,7 +3653,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"glob@npm:^10.2.2, glob@npm:^10.3.10, glob@npm:^10.4.2":
+"glob@npm:^10.2.2, glob@npm:^10.4.2":
   version: 10.4.5
   resolution: "glob@npm:10.4.5"
   dependencies:
@@ -3634,6 +3666,22 @@ __metadata:
   bin:
     glob: dist/esm/bin.mjs
   checksum: 10c0/19a9759ea77b8e3ca0a43c2f07ecddc2ad46216b786bb8f993c445aee80d345925a21e5280c7b7c6c59e860a0154b84e4b2b60321fea92cd3c56b4a7489f160e
+  languageName: node
+  linkType: hard
+
+"glob@npm:^11.0.3":
+  version: 11.0.3
+  resolution: "glob@npm:11.0.3"
+  dependencies:
+    foreground-child: "npm:^3.3.1"
+    jackspeak: "npm:^4.1.1"
+    minimatch: "npm:^10.0.3"
+    minipass: "npm:^7.1.2"
+    package-json-from-dist: "npm:^1.0.0"
+    path-scurry: "npm:^2.0.0"
+  bin:
+    glob: dist/esm/bin.mjs
+  checksum: 10c0/7d24457549ec2903920dfa3d8e76850e7c02aa709122f0164b240c712f5455c0b457e6f2a1eee39344c6148e39895be8094ae8cfef7ccc3296ed30bce250c661
   languageName: node
   linkType: hard
 
@@ -4360,6 +4408,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jackspeak@npm:^4.1.1":
+  version: 4.1.1
+  resolution: "jackspeak@npm:4.1.1"
+  dependencies:
+    "@isaacs/cliui": "npm:^8.0.2"
+  checksum: 10c0/84ec4f8e21d6514db24737d9caf65361511f75e5e424980eebca4199f400874f45e562ac20fa8aeb1dd20ca2f3f81f0788b6e9c3e64d216a5794fd6f30e0e042
+  languageName: node
+  linkType: hard
+
 "jiti@npm:^2.5.1":
   version: 2.5.1
   resolution: "jiti@npm:2.5.1"
@@ -4518,17 +4575,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"laravel-vite-plugin@npm:^1.3.0":
-  version: 1.3.0
-  resolution: "laravel-vite-plugin@npm:1.3.0"
+"laravel-vite-plugin@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "laravel-vite-plugin@npm:2.0.1"
   dependencies:
     picocolors: "npm:^1.0.0"
     vite-plugin-full-reload: "npm:^1.1.0"
   peerDependencies:
-    vite: ^5.0.0 || ^6.0.0
+    vite: ^7.0.0
   bin:
     clean-orphaned-assets: bin/clean.js
-  checksum: 10c0/550ea8c06085ec317a424ce36ee15eb2c29c2a60943f9d057f3231127335a559413110bd67fd3704fcdc0e3e2b051f221821d8b5d0f1f788bdc02896424c4e65
+  checksum: 10c0/3af833faa6b3926404a7084f67107a61d4e44e7f5101836c7ccb43a9b7d5d40ef2e7a6ec2a09e7f19f073ef0cb71e9c5cd4a5a0d4127c65f52a7d21ca94d7215
   languageName: node
   linkType: hard
 
@@ -4738,6 +4795,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lru-cache@npm:^11.0.0":
+  version: 11.2.1
+  resolution: "lru-cache@npm:11.2.1"
+  checksum: 10c0/6f0e6b27f368d5e464e7813bd5b0af8f9a81a3a7ce2f40509841fdef07998b2588869f3e70edfbdb3bf705857f7bb21cca58fb01e1a1dc2440a83fcedcb7e8d8
+  languageName: node
+  linkType: hard
+
 "lru-cache@npm:^7.7.1":
   version: 7.18.3
   resolution: "lru-cache@npm:7.18.3"
@@ -4885,6 +4949,15 @@ __metadata:
   dependencies:
     brace-expansion: "npm:^2.0.1"
   checksum: 10c0/aa043eb8822210b39888a5d0d28df0017b365af5add9bd522f180d2a6962de1cbbf1bdeacdb1b17f410dc3336bc8d76fb1d3e814cdc65d00c2f68e01f0010096
+  languageName: node
+  linkType: hard
+
+"minimatch@npm:^10.0.3":
+  version: 10.0.3
+  resolution: "minimatch@npm:10.0.3"
+  dependencies:
+    "@isaacs/brace-expansion": "npm:^5.0.0"
+  checksum: 10c0/e43e4a905c5d70ac4cec8530ceaeccb9c544b1ba8ac45238e2a78121a01c17ff0c373346472d221872563204eabe929ad02669bb575cb1f0cc30facab369f70f
   languageName: node
   linkType: hard
 
@@ -5325,7 +5398,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"open@npm:^8.4.0":
+"open@npm:^8.0.0":
   version: 8.4.2
   resolution: "open@npm:8.4.2"
   dependencies:
@@ -5468,6 +5541,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"path-scurry@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "path-scurry@npm:2.0.0"
+  dependencies:
+    lru-cache: "npm:^11.0.0"
+    minipass: "npm:^7.1.2"
+  checksum: 10c0/3da4adedaa8e7ef8d6dc4f35a0ff8f05a9b4d8365f2b28047752b62d4c1ad73eec21e37b1579ef2d075920157856a3b52ae8309c480a6f1a8bbe06ff8e52b33c
+  languageName: node
+  linkType: hard
+
 "path-type@npm:^4.0.0":
   version: 4.0.0
   resolution: "path-type@npm:4.0.0"
@@ -5606,7 +5689,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.4.32, postcss@npm:^8.4.41, postcss@npm:^8.5.3, postcss@npm:^8.5.6":
+"postcss@npm:^8.4.32, postcss@npm:^8.4.41, postcss@npm:^8.5.6":
   version: 8.5.6
   resolution: "postcss@npm:8.5.6"
   dependencies:
@@ -5887,16 +5970,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rollup-plugin-visualizer@npm:^5.14.0":
-  version: 5.14.0
-  resolution: "rollup-plugin-visualizer@npm:5.14.0"
+"rollup-plugin-visualizer@npm:^6.0.3":
+  version: 6.0.3
+  resolution: "rollup-plugin-visualizer@npm:6.0.3"
   dependencies:
-    open: "npm:^8.4.0"
+    open: "npm:^8.0.0"
     picomatch: "npm:^4.0.2"
     source-map: "npm:^0.7.4"
     yargs: "npm:^17.5.1"
   peerDependencies:
-    rolldown: 1.x
+    rolldown: 1.x || ^1.0.0-beta
     rollup: 2.x || 3.x || 4.x
   peerDependenciesMeta:
     rolldown:
@@ -5905,11 +5988,11 @@ __metadata:
       optional: true
   bin:
     rollup-plugin-visualizer: dist/bin/cli.js
-  checksum: 10c0/ec6ca9ed125bce9994ba49a340bda730661d8e8dc5c5dc014dc757185182e1eda49c6708f990cb059095e71a3741a5248f1e6ba0ced7056020692888e06b1ddf
+  checksum: 10c0/595d68936a6338744e8facd165fceedf7f2ebedc44863e640e725198001ed62948cc4a5d8403aa74e679de92957e4def3b1dffc4a9f8de71e4245929566553a3
   languageName: node
   linkType: hard
 
-"rollup@npm:^4.34.9":
+"rollup@npm:^4.43.0":
   version: 4.50.2
   resolution: "rollup@npm:4.50.2"
   dependencies:
@@ -6001,7 +6084,8 @@ __metadata:
     "@types/autosize": "npm:^4.0.3"
     "@types/fs-extra": "npm:^11.0.4"
     "@types/pretty": "npm:^2.0.3"
-    "@vitejs/plugin-vue": "npm:^5.2.4"
+    "@types/twig": "npm:^1"
+    "@vitejs/plugin-vue": "npm:^6.0.1"
     "@vue/eslint-config-typescript": "npm:^14.6.0"
     animejs: "npm:^4.1.3"
     autoprefixer: "npm:^10.4.21"
@@ -6018,7 +6102,7 @@ __metadata:
     fast-glob: "npm:^3.3.3"
     focus-trap: "npm:^7.6.5"
     fs-extra: "npm:^11.3.2"
-    laravel-vite-plugin: "npm:^1.3.0"
+    laravel-vite-plugin: "npm:^2.0.1"
     libphonenumber-js: "npm:^1.12.17"
     maska: "npm:^3.2.0"
     merge: "npm:^2.1.1"
@@ -6028,20 +6112,21 @@ __metadata:
     postcss-load-config: "npm:^6.0.1"
     prettier: "npm:^3.6.2"
     pretty: "npm:^2.0.0"
-    rollup-plugin-visualizer: "npm:^5.14.0"
+    rollup-plugin-visualizer: "npm:^6.0.3"
     stylelint: "npm:^16.24.0"
     stylelint-config-clean-order: "npm:^7.0.0"
-    stylelint-config-standard: "npm:^38.0.0"
+    stylelint-config-standard: "npm:^39.0.0"
     stylelint-config-tailwindcss: "npm:^1.0.0"
     stylelint-prettier: "npm:^5.0.3"
     tabbable: "npm:^6.2.0"
     tailwindcss: "npm:^4.1.13"
+    twig: "npm:^1.17.1"
     typescript: "npm:^5.9.2"
     typescript-eslint: "npm:^8.44.0"
     v-calendar: "npm:^3.1.2"
-    vite: "npm:^6.3.6"
+    vite: "npm:^7.1.6"
     vite-plugin-twig: "npm:^2.1.1"
-    vite-svg-2-webfont: "npm:^4.0.0"
+    vite-svg-2-webfont: "npm:^5.0.0"
     vite-svg-sprite-wrapper: "npm:^1.4.1"
     vue: "npm:^3.5.21"
   languageName: unknown
@@ -6522,23 +6607,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint-config-recommended@npm:^16.0.0":
-  version: 16.0.0
-  resolution: "stylelint-config-recommended@npm:16.0.0"
+"stylelint-config-recommended@npm:^17.0.0":
+  version: 17.0.0
+  resolution: "stylelint-config-recommended@npm:17.0.0"
   peerDependencies:
-    stylelint: ^16.16.0
-  checksum: 10c0/b2b4ea2633a606a0f686521aa5e8908810c9dd21fd4525c86b34213de1e362b445fd5472b6e5ff251d46f999e2ca2c6c704f2efc1c08d5a532084427f4e1c9d8
+    stylelint: ^16.23.0
+  checksum: 10c0/49e5d1c0f58197b2c5585b85fad814fed9bdec44c9870368c46a762664c5ff158c1145b6337456ae194409d692992b5b87421d62880422f71d8a3360417f5ad1
   languageName: node
   linkType: hard
 
-"stylelint-config-standard@npm:^38.0.0":
-  version: 38.0.0
-  resolution: "stylelint-config-standard@npm:38.0.0"
+"stylelint-config-standard@npm:^39.0.0":
+  version: 39.0.0
+  resolution: "stylelint-config-standard@npm:39.0.0"
   dependencies:
-    stylelint-config-recommended: "npm:^16.0.0"
+    stylelint-config-recommended: "npm:^17.0.0"
   peerDependencies:
-    stylelint: ^16.18.0
-  checksum: 10c0/8b52c7b7d6287c7495a8fe3a681e07ea9478374e7e66b28d61779072d46cd5b845530b2410df7496a008a8efafe834fb46cf07792f4cf57f996e39f24a801b90
+    stylelint: ^16.23.0
+  checksum: 10c0/b965f2708b0a506beebbe75ce6533ea56c58988e6b473c4789fb5a33f9911a4e163c0d27553d080fda6905cffefc7b7c34794a6d396207606478551ffa662efa
   languageName: node
   linkType: hard
 
@@ -6826,7 +6911,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tinyglobby@npm:^0.2.12, tinyglobby@npm:^0.2.13":
+"tinyglobby@npm:^0.2.12, tinyglobby@npm:^0.2.15":
   version: 0.2.15
   resolution: "tinyglobby@npm:0.2.15"
   dependencies:
@@ -6917,7 +7002,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"twig@npm:^1.15.4":
+"twig@npm:^1.15.4, twig@npm:^1.17.1":
   version: 1.17.1
   resolution: "twig@npm:1.17.1"
   dependencies:
@@ -7216,15 +7301,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite-svg-2-webfont@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "vite-svg-2-webfont@npm:4.0.0"
+"vite-svg-2-webfont@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "vite-svg-2-webfont@npm:5.0.0"
   dependencies:
     "@vusion/webfonts-generator": "npm:^0.8.0"
-    glob: "npm:^10.3.10"
+    glob: "npm:^11.0.3"
   peerDependencies:
-    vite: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0
-  checksum: 10c0/e37bb69106dd11f2deca925737d396394d95ceb7b9c08c1c03c72ace0c8c49b5223af4caeed1a8bfe82a4a4be897ae05f76e84b6587cffab000053098aa22288
+    vite: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0  || ^7.0.0
+  checksum: 10c0/7a7b6cbee827b29826c81dcd5687e222164c6d685e5895f9f36414a188973a67e07b45271a493c6de5f03a38f015832d574b6879d1bb6a6d576dbe5af173e63b
   languageName: node
   linkType: hard
 
@@ -7242,26 +7327,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^6.3.6":
-  version: 6.3.6
-  resolution: "vite@npm:6.3.6"
+"vite@npm:^7.1.6":
+  version: 7.1.6
+  resolution: "vite@npm:7.1.6"
   dependencies:
     esbuild: "npm:^0.25.0"
-    fdir: "npm:^6.4.4"
+    fdir: "npm:^6.5.0"
     fsevents: "npm:~2.3.3"
-    picomatch: "npm:^4.0.2"
-    postcss: "npm:^8.5.3"
-    rollup: "npm:^4.34.9"
-    tinyglobby: "npm:^0.2.13"
+    picomatch: "npm:^4.0.3"
+    postcss: "npm:^8.5.6"
+    rollup: "npm:^4.43.0"
+    tinyglobby: "npm:^0.2.15"
   peerDependencies:
-    "@types/node": ^18.0.0 || ^20.0.0 || >=22.0.0
+    "@types/node": ^20.19.0 || >=22.12.0
     jiti: ">=1.21.0"
-    less: "*"
+    less: ^4.0.0
     lightningcss: ^1.21.0
-    sass: "*"
-    sass-embedded: "*"
-    stylus: "*"
-    sugarss: "*"
+    sass: ^1.70.0
+    sass-embedded: ^1.70.0
+    stylus: ">=0.54.8"
+    sugarss: ^5.0.0
     terser: ^5.16.0
     tsx: ^4.8.1
     yaml: ^2.4.2
@@ -7293,7 +7378,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: 10c0/add701f1e72596c002275782e38d0389ab400c1be330c93a3009804d62db68097a936ca1c53c3301df3aaacfe5e328eab547060f31ef9c49a277ae50df6ad4fb
+  checksum: 10c0/2cd8baec0054956dae61289dd1497109c762cfc27ec6f6b88f39a15d5ddc7e0cc4559b72fbdd701b296c739d2f734d051c28e365539462fb92f83b5e7908f9de
   languageName: node
   linkType: hard
 

@@ -1,15 +1,13 @@
-import vuePlugin from "@vitejs/plugin-vue";
+import vue from "@vitejs/plugin-vue";
 import fastGlob from "fast-glob";
-import laravel from "laravel-vite-plugin";
 import path from "path";
 import { visualizer } from "rollup-plugin-visualizer";
-import { type PluginOption, defineConfig } from "vite";
-import viteSvgToWebFont from "vite-svg-2-webfont";
+import { defineConfig } from "vite";
+import svgToFont from "vite-svg-2-webfont";
 
 import config from "./vite-config/config";
-import twigHtmlPlugin from "./vite-config/twig-html";
-
-// import viteSvgSpriteWrapper from 'vite-svg-sprite-wrapper';
+import laravel from "./vite-config/laravel";
+import twig from "./vite-config/twig";
 
 const { globSync } = fastGlob;
 
@@ -22,9 +20,6 @@ export default defineConfig({
     css: {
         devSourcemap: true,
     },
-    // assetsInclude: [
-    //     'resources/gltf/**'
-    // ],
     build: {
         outDir: path.resolve(config.buildDir),
         emptyOutDir: true,
@@ -63,22 +58,7 @@ export default defineConfig({
                 },
                 chunkFileNames: "js/chunks/[name].[hash].js",
                 entryFileNames: "js/[name].[hash].js",
-                // For smaller chunks
-                // manualChunks(id) {
-                //     if (id.includes('@sentry')) {
-                //         return '@open-ish';
-                //     }
-
-                //     if (id.includes('gsap')) {
-                //         return 'gsap';
-                //     }
-
-                //     if (id.includes('inputmask')) {
-                //         return 'inputmask';
-                //     }
-                // },
             },
-            // avoids files optimization and pages reload
             input: [
                 ...globSync(path.resolve(`${config.rootDir}/css/*.css`)),
                 `${config.rootDir}/js@src/app.js`,
@@ -113,19 +93,8 @@ export default defineConfig({
                 },
             ],
         }),
-        {
-            name: "laravel-fix",
-            enforce: "post",
-            config(userConfig) {
-                userConfig.base = config.base;
-
-                if (userConfig.server) {
-                    userConfig.server.origin = undefined;
-                }
-            },
-        } as PluginOption,
-        twigHtmlPlugin(),
-        viteSvgToWebFont({
+        twig(),
+        svgToFont({
             context: path.resolve(`${config.rootDir}/icons`),
             dest: path.resolve(`${config.rootDir}/fonts/icons`),
             cssTemplate: path.resolve(`./vite-config/icons-css.hbs`),
@@ -141,12 +110,7 @@ export default defineConfig({
             generateFiles: true,
             // cssFontsUrl: '/fonts/icons',
         }),
-        // or icons via svg sprite
-        // viteSvgSpriteWrapper({
-        //     icons: path.resolve(`${ config.rootDir }/${ config.iconsDir }/**/*.svg`),
-        //     outputDir: path.resolve(`${ config.rootDir }/${ config.imageDir }`)
-        // }),
-        vuePlugin({
+        vue({
             template: {
                 transformAssetUrls: true,
             },

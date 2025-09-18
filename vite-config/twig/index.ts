@@ -4,11 +4,12 @@ import merge from "merge";
 import path from "path";
 import pretty from "pretty";
 import type { HmrContext, PluginOption, UserConfig, ViteDevServer } from "vite";
-import twigPlugin from "vite-plugin-twig";
+
+import config from "../config";
+
+import { viteTwigPlugin } from "./plugin";
 
 const { globSync } = fastGlob;
-
-import config from "./config";
 
 type Pages = { [entryAlias: string]: string };
 
@@ -60,7 +61,7 @@ function createPages(): Pages {
     return pages;
 }
 
-export default function twigHtmlPlugin(): PluginOption[] {
+export default function twigPlugin(): PluginOption[] {
     let pages: Pages;
 
     return [
@@ -178,7 +179,7 @@ export default function twigHtmlPlugin(): PluginOption[] {
                 }
             },
         },
-        twigPlugin({
+        viteTwigPlugin({
             settings: {
                 views: `${config.rootDir}/${config.layoutsDir}`,
                 "twig options": false,
