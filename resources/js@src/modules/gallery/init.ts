@@ -1,8 +1,8 @@
 import PhotoSwipe from "photoswipe";
 import PhotoSwipeLightbox from "photoswipe/lightbox";
 
-export default (el) => {
-    const linkEls = el.querySelectorAll("[data-gallery-link]");
+export default (el: HTMLElement) => {
+    const linkEls = el.querySelectorAll<HTMLElement>("[data-gallery-link]");
 
     const gallery = new PhotoSwipeLightbox({
         gallery: el,

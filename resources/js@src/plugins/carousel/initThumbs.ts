@@ -4,7 +4,7 @@ import { SLIDE_SELECTED_CLASS, THUMBS_CLASS, TRACK_CLASS } from "./constants";
 
 export const initThumbs = (
     emblaApi: EmblaCarouselType,
-    containerEl: HTMLElement,
+    containerEl: Element,
 ) => {
     const thumbsEl = containerEl.querySelector(
         `.${THUMBS_CLASS}`,

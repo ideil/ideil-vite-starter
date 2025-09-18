@@ -25,9 +25,6 @@ export default defineConfigWithVueTs(
             "vue/multi-word-component-names": "off",
             "vue/no-undef-components": "error",
 
-            // typescript
-            "@typescript-eslint/no-explicit-any": "off",
-
             // import
             "sort-imports": ["error", { ignoreDeclarationSort: true }],
             "import/no-unresolved": "off",

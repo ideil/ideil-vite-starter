@@ -1,7 +1,7 @@
 import Modal from "@/js@src/plugins/modal";
 
 (() => {
-    const menuEl = document.querySelector("#menuModal");
+    const menuEl = document.querySelector<HTMLElement>("#menuModal");
     let menuModal = null;
 
     if (menuEl) {

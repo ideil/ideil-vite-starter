@@ -97,7 +97,7 @@
     {% for carouselIndex in 1..2 %}
         {% include '_carousels/test.twig' with {
             class: 'c-section embla--' ~ (carouselIndex + 1),
-            pagination: carouselIndex == 1,
+            page: carouselIndex == 1,
             index: carouselIndex
         } %}
     {% endfor %}

@@ -1,7 +1,8 @@
 import { Loader } from "@googlemaps/js-api-loader";
 import markRaw from "@img/svg/mark.svg?raw";
 
-/*global google*/
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+declare const google: any;
 
 const styles = [
     {
@@ -117,7 +118,7 @@ const styles = [
     },
 ];
 
-export default async (el) => {
+export default async (el: HTMLElement) => {
     const lat = Number(el.dataset.lat);
     const lng = Number(el.dataset.lng);
     const target = {

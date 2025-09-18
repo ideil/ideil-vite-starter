@@ -31,7 +31,9 @@
                     {% include '_app/icon.twig' with { name: 'arrow', class: 'rotate-180' } only %}
                 </button>
 
-                <div class="embla__pagination {{ pagination ? 'embla__pages' : '' }}"></div>
+                <div class="embla__pagination {{ page ? 'embla__pages' : '' }}">
+                    <span class="current">01</span> / <span class="total">04</span>
+                </div>
 
                 <button type="button" class="f-btn f-btn--icon f-btn--primary embla__arrow embla__arrow--next">
                     <span class="sr-only">Next</span>

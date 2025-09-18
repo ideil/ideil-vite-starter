@@ -9,8 +9,12 @@ export const initPages = (
     const updatePages = (emblaApi: EmblaCarouselType) => {
         const selectedSnap = emblaApi.selectedScrollSnap();
         const snapCount = emblaApi.scrollSnapList().length;
-        const currentEl = pagesEl.querySelector(".current") as HTMLElement;
-        const totalEl = pagesEl.querySelector(".total") as HTMLElement;
+        const currentEl = pagesEl.querySelector<HTMLElement>(".current");
+        const totalEl = pagesEl.querySelector<HTMLElement>(".total");
+
+        if (!currentEl || !totalEl) {
+            return;
+        }
 
         currentEl.textContent = makePadding(selectedSnap + 1);
         totalEl.textContent = makePadding(snapCount);

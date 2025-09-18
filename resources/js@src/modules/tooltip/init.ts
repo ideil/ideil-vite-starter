@@ -1,11 +1,14 @@
 import Tooltip from "@src/plugins/tooltip";
 
-export default (el) => {
+export default (el: HTMLElement) => {
     const tooltipTarget = el.dataset.tooltipTarget;
-    let targetEl = undefined;
+    let targetEl: HTMLElement | undefined = undefined;
 
     if (tooltipTarget) {
-        targetEl = document.querySelector(tooltipTarget);
+        targetEl =
+            document.documentElement.querySelector<HTMLElement>(
+                tooltipTarget,
+            ) ?? undefined;
     }
 
     const placement = el.dataset.tooltipPlacement;

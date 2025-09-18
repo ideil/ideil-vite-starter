@@ -1,5 +1,8 @@
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default (els: Element[], initPromise: () => Promise<any>) => {
+export default (
+    els: NodeListOf<Element> | Element[],
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    initPromise: () => Promise<any>,
+) => {
     let init: ((el: Element) => void) | null = null;
 
     if (!els.length) {

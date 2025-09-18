@@ -1,13 +1,13 @@
 import Modal from "@src/plugins/modal";
 
-export default (el) => {
+export default (el: HTMLElement) => {
     const modalTarget = el.dataset.modalTarget;
 
     if (!modalTarget) {
         return;
     }
 
-    const modalEl = document.querySelector(modalTarget);
+    const modalEl = document.querySelector<HTMLElement>(modalTarget);
 
     if (!modalEl) {
         return;

@@ -16,7 +16,7 @@ import {
     TRACK_CLASS,
 } from "./constants";
 
-export default async (el: HTMLElement, initOptions?: EmblaOptionsType) => {
+export default async (el: Element, initOptions?: EmblaOptionsType) => {
     const prevArrowEl = el.querySelector(
         `.${ARROW_CLASS}.${ARROW_PREV_CLASS}`,
     ) as HTMLButtonElement;
@@ -51,9 +51,7 @@ export default async (el: HTMLElement, initOptions?: EmblaOptionsType) => {
         const { initPages } = await import("./initPages");
 
         initPages(emblaApi, pagesEl);
-    }
-
-    if (paginationEl) {
+    } else if (paginationEl) {
         const { initPagination } = await import("./initPagination");
 
         initPagination(emblaApi, paginationEl);

@@ -1,10 +1,10 @@
-export default (el) => {
-    let timeout = null;
+export default (el: HTMLElement) => {
+    let timeout: NodeJS.Timeout | null = null;
 
     el.addEventListener("click", (e) => {
         e.preventDefault();
 
-        const copyText = el.getAttribute("data-copy");
+        const copyText = el.getAttribute("data-copy") || "";
 
         navigator.clipboard.writeText(copyText).then(() => {
             el.classList.add("is-copied");
