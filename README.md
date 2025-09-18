@@ -55,10 +55,6 @@ Edit the [`vite-config/config.js`](vite-config/config.js) or [`vite.config.js`](
 
 For more information you can refer to [`vitejs/vite`](https://github.com/vitejs/vite)
 
-### Images
-
-For more information you can refer to [`vite-plugin-imagemin`](https://github.com/vbenjs/vite-plugin-imagemin)
-
 ### SVG Sprites
 
 For more information you can refer to [`vite-plugin-svg-icons`](https://github.com/vbenjs/vite-plugin-svg-icons)
