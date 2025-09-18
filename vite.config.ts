@@ -93,7 +93,12 @@ export default defineConfig({
                 },
             ],
         }),
-        twig(),
+        twig({
+            settings: {
+                views: `${config.rootDir}/${config.layoutsDir}`,
+                "twig options": false,
+            },
+        }),
         svgToFont({
             context: path.resolve(`${config.rootDir}/icons`),
             dest: path.resolve(`${config.rootDir}/fonts/icons`),

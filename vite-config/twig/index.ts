@@ -7,7 +7,8 @@ import type { HmrContext, PluginOption, UserConfig, ViteDevServer } from "vite";
 
 import config from "../config";
 
-import { viteTwigPlugin } from "./plugin";
+import { configureTwig, parseHTML } from "./tasks";
+import type { PluginOptions } from "./types";
 
 const { globSync } = fastGlob;
 
@@ -61,7 +62,9 @@ function createPages(): Pages {
     return pages;
 }
 
-export default function twigPlugin(): PluginOption[] {
+export default function twigPlugin(options: PluginOptions): PluginOption[] {
+    configureTwig(options);
+
     let pages: Pages;
 
     return [
@@ -179,12 +182,20 @@ export default function twigPlugin(): PluginOption[] {
                 }
             },
         },
-        viteTwigPlugin({
-            settings: {
-                views: `${config.rootDir}/${config.layoutsDir}`,
-                "twig options": false,
+        {
+            name: "vite-plugin-twig",
+            transformIndexHtml: {
+                order: "pre",
+                handler: async (html, ctx) => {
+                    return await parseHTML(html, ctx, options);
+                },
             },
-        }),
+            handleHotUpdate({ file, server }) {
+                if (path.extname(file) === ".twig") {
+                    server.ws.send({ type: "full-reload" });
+                }
+            },
+        },
         {
             name: "prettify-html",
             apply: "build",
