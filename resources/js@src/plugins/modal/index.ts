@@ -12,7 +12,6 @@ class Modal {
     #dismissEls: NodeListOf<HTMLElement>;
     #toggleEls: NodeListOf<HTMLElement>;
     #animationDuration: number;
-    #animationEasing: string;
     #eventEmitter: EventEmitter;
     isOpen = false;
 
@@ -128,9 +127,8 @@ class Modal {
         );
 
         // Animation
-        const { duration, easing } = getCSSTransition(this.element);
+        const { duration } = getCSSTransition(this.element);
         this.#animationDuration = duration;
-        this.#animationEasing = easing;
 
         // Event emitter
         this.#eventEmitter = new EventEmitter();
@@ -142,6 +140,7 @@ class Modal {
         if (this.#tabbableEls.length > 0) {
             this.#focusTrap = createFocusTrap(this.element, {
                 allowOutsideClick: true,
+                initialFocus: false,
                 tabbableOptions: {
                     displayCheck: "none",
                 },
@@ -163,7 +162,6 @@ class Modal {
         animate(this.element, {
             "--modal-transition-progress": 1,
             duration: this.#animationDuration,
-            easing: this.#animationEasing,
             onBegin: () => {
                 this.#eventEmitter.emit("show");
             },
@@ -181,7 +179,6 @@ class Modal {
         animate(this.element, {
             "--modal-transition-progress": 0,
             duration: this.#animationDuration,
-            easing: this.#animationEasing,
             onBegin: () => {
                 this.#eventEmitter.emit("hide");
             },

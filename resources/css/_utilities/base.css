@@ -1,8 +1,7 @@
 /* Scroll */
 .u-scroll {
-    @apply custom-scrollbar;
-
     scroll-behavior: smooth;
+    display: flex;
 
     &--horizontal {
         overflow-x: auto;
@@ -35,14 +34,14 @@
             rgb(0 0 0 / 0%) 100%
         );
     }
-}
 
-/* Typography */
-.u-link-overlay {
-    &::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        display: block;
+    &--clear {
+        scrollbar-width: none;
+
+        -ms-overflow-style: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
     }
 }

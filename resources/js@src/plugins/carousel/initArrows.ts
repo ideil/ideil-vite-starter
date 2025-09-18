@@ -4,9 +4,7 @@ export const initArrows = (
     emblaApi: EmblaCarouselType,
     prevBtnEl: HTMLElement,
     nextBtnEl: HTMLElement,
-): {
-    removeArrowsHandlers: () => void;
-} => {
+) => {
     const scrollPrev = (): void => {
         emblaApi.scrollPrev();
     };
@@ -24,21 +22,17 @@ export const initArrows = (
         else nextBtnEl.setAttribute("disabled", "disabled");
     };
 
-    const removeArrowsActive = () => {
+    const destroyArrows = () => {
         prevBtnEl.removeAttribute("disabled");
         nextBtnEl.removeAttribute("disabled");
+        prevBtnEl.removeEventListener("click", scrollPrev, false);
+        nextBtnEl.removeEventListener("click", scrollNext, false);
     };
+
+    toggleArrowsState();
 
     emblaApi
         .on("select", toggleArrowsState)
-        .on("init", toggleArrowsState)
-        .on("reInit", toggleArrowsState);
-
-    return {
-        removeArrowsHandlers: () => {
-            removeArrowsActive();
-            prevBtnEl.removeEventListener("click", scrollPrev, false);
-            nextBtnEl.removeEventListener("click", scrollNext, false);
-        },
-    };
+        .on("reInit", toggleArrowsState)
+        .on("destroy", destroyArrows);
 };

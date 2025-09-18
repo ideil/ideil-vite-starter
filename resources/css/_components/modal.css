@@ -87,23 +87,3 @@
         padding: --spacing(6);
     }
 }
-
-.c-modal--xs {
-    --modal-max-width: --spacing(72);
-}
-
-.c-modal--sm {
-    --modal-max-width: --spacing(100);
-}
-
-@variant md {
-    .c-modal--md {
-        --modal-max-width: --spacing(176);
-    }
-}
-
-@variant lg {
-    .c-modal--lg {
-        --modal-max-width: --spacing(256);
-    }
-}

@@ -5,48 +5,71 @@ import {
 } from "embla-carousel";
 import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
 
-import { initArrows } from "./initArrows";
-import { initPages } from "./initPages";
-import { initPagination } from "./initPagination";
+import {
+    ARROW_CLASS,
+    ARROW_NEXT_CLASS,
+    ARROW_PREV_CLASS,
+    PAGES_CLASS,
+    PAGINATION_CLASS,
+    PARALLAX_CLASS,
+    THUMBS_CLASS,
+    TRACK_CLASS,
+} from "./constants";
 
-export default (el: HTMLElement) => {
+export default async (el: HTMLElement, initOptions?: EmblaOptionsType) => {
     const prevArrowEl = el.querySelector(
-        ".embla__arrow.embla__arrow--prev",
+        `.${ARROW_CLASS}.${ARROW_PREV_CLASS}`,
     ) as HTMLButtonElement;
     const nextArrowEl = el.querySelector(
-        ".embla__arrow.embla__arrow--next",
+        `.${ARROW_CLASS}.${ARROW_NEXT_CLASS}`,
     ) as HTMLButtonElement;
-    const trackEl = el.querySelector(".embla__track") as HTMLElement;
-    const paginationEl = el.querySelector(".embla__pagination") as HTMLElement;
-    const pagesEl = el.querySelector<HTMLElement>(".embla__pages");
-
-    let removeArrowsHandlers: () => void = () => {};
-    let removePaginationHandlers: () => void = () => {};
+    const trackEl = el.querySelector(`.${TRACK_CLASS}`) as HTMLElement;
+    const paginationEl = el.querySelector(
+        `.${PAGINATION_CLASS}`,
+    ) as HTMLElement;
+    const pagesEl = el.querySelector<HTMLElement>(`.${PAGES_CLASS}`);
+    const thumbsEl = el.querySelector<HTMLElement>(`.${THUMBS_CLASS}`);
+    const parallaxEl = el.querySelector<HTMLElement>(`.${PARALLAX_CLASS}`);
 
     const options: EmblaOptionsType = {
         loop: false,
         align: "start",
+
+        ...initOptions,
     };
     const plugins: EmblaPluginType[] = [WheelGesturesPlugin()];
 
     const emblaApi = EmblaCarousel(trackEl, options, plugins);
 
     if (prevArrowEl && nextArrowEl) {
-        ({ removeArrowsHandlers } = initArrows(
-            emblaApi,
-            prevArrowEl,
-            nextArrowEl,
-        ));
+        const { initArrows } = await import("./initArrows");
+
+        initArrows(emblaApi, prevArrowEl, nextArrowEl);
     }
 
     if (pagesEl) {
+        const { initPages } = await import("./initPages");
+
         initPages(emblaApi, pagesEl);
-    } else if (paginationEl) {
-        ({ removePaginationHandlers } = initPagination(emblaApi, paginationEl));
     }
 
-    emblaApi.on("destroy", removeArrowsHandlers);
-    emblaApi.on("destroy", removePaginationHandlers);
+    if (paginationEl) {
+        const { initPagination } = await import("./initPagination");
+
+        initPagination(emblaApi, paginationEl);
+    }
+
+    if (thumbsEl) {
+        const { initThumbs } = await import("./initThumbs");
+
+        initThumbs(emblaApi, el);
+    }
+
+    if (parallaxEl) {
+        const { initParallax } = await import("./initParallax");
+
+        initParallax(emblaApi);
+    }
 
     return emblaApi;
 };

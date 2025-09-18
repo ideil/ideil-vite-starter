@@ -38,11 +38,28 @@
     --spacing-50: 12.5rem;
     --spacing-hd: 1920px;
     --spacing-box: var(--spacing-box);
-    --spacing-col: --spacing(5);
-    --spacing-page: --spacing(6);
-    --spacing-header: --spacing(15);
-    --spacing-button: --spacing(11);
-    --spacing-field: --spacing(11);
+    --spacing-col: var(--spacing-col);
+    --spacing-page: var(--spacing-page);
+    --spacing-header: var(--spacing-header);
+    --spacing-button: var(--spacing-button);
+    --spacing-field: var(--spacing-field);
+
+    /* text */
+    --text-*: initial;
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-md: 1.125rem;
+    --text-lg: 1.25rem;
+    --text-xl: 1.375rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 1.75rem;
+    --text-4xl: 2rem;
+    --text-5xl: 2.25rem;
+    --text-6xl: 2.5rem;
+    --text-7xl: 3rem;
+    --text-8xl: 3.5rem;
+    --text-9xl: 7.5rem;
 
     /* breakpoint */
     --breakpoint-xs: 480px;

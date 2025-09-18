@@ -23,7 +23,6 @@ export default class Tooltip {
     #arrowEl: HTMLElement | undefined;
 
     #animationDuration: number;
-    #animationEasing: string;
     #placement: Placement | undefined;
     #type: string;
     #content: string | undefined;
@@ -64,9 +63,8 @@ export default class Tooltip {
             );
         }
 
-        const { duration, easing } = getCSSTransition(this.#targetEl);
+        const { duration } = getCSSTransition(this.#targetEl);
         this.#animationDuration = duration;
-        this.#animationEasing = easing;
 
         // Event emitter
         this.#eventEmitter = new EventEmitter();
@@ -87,6 +85,7 @@ export default class Tooltip {
             if (this.#tabbableEls.length > 0) {
                 this.#focusTrap = createFocusTrap(this.#targetEl, {
                     allowOutsideClick: true,
+                    initialFocus: false,
                     tabbableOptions: {
                         displayCheck: "none",
                     },
@@ -262,7 +261,6 @@ export default class Tooltip {
 
         animate(this.#targetEl, {
             duration: this.#animationDuration,
-            easing: this.#animationEasing,
             "--tooltip-transition-progress": 1,
             onBegin: () => {
                 this.#eventEmitter.emit("show");
@@ -293,7 +291,6 @@ export default class Tooltip {
 
         animate(this.#targetEl, {
             duration: this.#animationDuration,
-            easing: this.#animationEasing,
             "--tooltip-transition-progress": 0,
             onBegin: () => {
                 this.#eventEmitter.emit("hide");

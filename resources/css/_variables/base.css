@@ -1,5 +1,10 @@
 :root {
     --spacing-box: --spacing(4);
+    --spacing-col: --spacing(5);
+    --spacing-page: --spacing(6);
+    --spacing-header: --spacing(15);
+    --spacing-button: --spacing(11);
+    --spacing-field: --spacing(11);
 
     @variant xl {
         --spacing-box: --spacing(10);

@@ -1,27 +1,28 @@
-import { clearSpaces, setSpaces } from "@src/helpers/measure";
+import Modal from "@/js@src/plugins/modal";
 
 (() => {
-    const menuToggle = document.querySelector("[data-menu-toggle]");
+    const menuEl = document.querySelector("#menuModal");
+    let menuModal = null;
 
-    if (!menuToggle) {
-        return;
+    if (menuEl) {
+        menuModal = Modal.getInstance(menuEl) || new Modal(menuEl);
+
+        if (menuModal) {
+            menuModal.onShow(() => {
+                document.documentElement.classList.add("is-menu-open");
+            });
+
+            menuModal.onHide(() => {
+                document.documentElement.classList.remove("is-menu-open");
+            });
+        }
     }
 
-    menuToggle.addEventListener("click", () => {
-        document.documentElement.classList.toggle("is-menu-open");
-
-        if (document.documentElement.classList.contains("is-menu-open")) {
-            setSpaces();
-        } else {
-            clearSpaces();
-        }
-    });
-
     const checkScroll = () => {
-        if (document.documentElement.scrollTop >= 10) {
-            document.documentElement.classList.add("is-header-sticky");
+        if (document.documentElement.scrollTop > 0) {
+            document.documentElement.classList.add("is-scrolled");
         } else {
-            document.documentElement.classList.remove("is-header-sticky");
+            document.documentElement.classList.remove("is-scrolled");
         }
     };
 

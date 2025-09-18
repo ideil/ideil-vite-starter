@@ -1,0 +1,11 @@
+export const TRACK_CLASS = "embla__track";
+export const PAGINATION_CLASS = "embla__pagination";
+export const PAGES_CLASS = "embla__pages";
+export const THUMBS_CLASS = "embla__thumbs";
+export const ARROW_CLASS = "embla__arrow";
+export const ARROW_PREV_CLASS = "embla__arrow--prev";
+export const ARROW_NEXT_CLASS = "embla__arrow--next";
+export const DOT_CLASS = "embla__dot";
+export const DOT_SELECTED_CLASS = "embla__dot--selected";
+export const SLIDE_SELECTED_CLASS = "embla__slide--selected";
+export const PARALLAX_CLASS = "embla__parallax";

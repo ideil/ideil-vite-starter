@@ -17,7 +17,7 @@ const collapse = (toggleEl: HTMLElement) => {
         return;
     }
 
-    const { duration, easing } = getCSSTransition(toggleEl);
+    const { duration } = getCSSTransition(toggleEl);
     let isOpen = toggleEl.ariaExpanded === "true";
     let isCollapsing = false;
 
@@ -35,7 +35,6 @@ const collapse = (toggleEl: HTMLElement) => {
 
         animate(panelEl, {
             duration,
-            easing,
             height: panelEl.scrollHeight,
             onComplete: () => {
                 isCollapsing = false;
@@ -58,7 +57,6 @@ const collapse = (toggleEl: HTMLElement) => {
 
         animate(panelEl, {
             duration,
-            easing,
             height: 0,
             onComplete: () => {
                 isCollapsing = false;
